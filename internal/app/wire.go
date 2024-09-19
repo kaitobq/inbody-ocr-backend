@@ -33,6 +33,16 @@ func New() (*container.App, error) {
 		controller.NewUserController,
 		usecase.NewUserUsecase,
 		db.NewUserRepository,
+
+		// organization
+		controller.NewOrganizationController,
+		usecase.NewOrganizationUsecase,
+		db.NewOrganizationRepository,
+
+		// membership
+		controller.NewUserOrganizationMembershipController,
+		usecase.NewUserOrganizationMembershipUsecase,
+		db.NewUserOrganizationMembershipRepository,
 	)
 
 	return nil, nil

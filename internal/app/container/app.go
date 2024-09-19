@@ -14,15 +14,20 @@ import (
 type container struct {
 	userCtrl *controller.UserController
 	organizationCtrl *controller.OrganizationController
+	membershipCtrl *controller.UserOrganizationMembershipController
 	tokenService service.TokenService
 }
 
 func NewCtrl(
 	userCtrl *controller.UserController,
+	organizationCtrl *controller.OrganizationController,
+	membershipCtrl *controller.UserOrganizationMembershipController,
 	tokenService service.TokenService,
 ) *container {
 	return &container{
 		userCtrl: userCtrl,
+		organizationCtrl: organizationCtrl,
+		membershipCtrl: membershipCtrl,
 		tokenService: tokenService,
 	}
 }
@@ -38,6 +43,7 @@ func NewApp(r *gin.Engine, container *container, cfg *config.Config, db *databas
 		r,
 		container.userCtrl,
 		container.organizationCtrl,
+		container.membershipCtrl,
 		container.tokenService,
 	)
 

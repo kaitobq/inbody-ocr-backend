@@ -11,6 +11,7 @@ func SetUpRoutes(
 	r *gin.Engine,
 	userCtrl *UserController,
 	organizationCtrl *OrganizationController,
+	membershipCtrl *UserOrganizationMembershipController,
 	tokenService service.TokenService,
 ) {
 	v1 := r.Group("api/v1")
