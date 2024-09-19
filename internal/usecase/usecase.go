@@ -10,3 +10,7 @@ type UserUsecase interface {
 type OrganizationUsecase interface {
 	CreateOrganization(name string, founderID string) (*response.CreateOrganizationResponse, error)
 }
+
+type UserOrganizationMembershipUsecase interface {
+	DeleteMembership(executorID, deleteUserID, organizationID string) (*response.DeleteMembershipResponse, error)
+}
