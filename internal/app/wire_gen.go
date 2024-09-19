@@ -10,6 +10,10 @@ import (
 	"github.com/gin-gonic/gin"
 	"inbody-ocr-backend/internal/app/config"
 	"inbody-ocr-backend/internal/app/container"
+	"inbody-ocr-backend/internal/controller"
+	"inbody-ocr-backend/internal/domain/service"
+	"inbody-ocr-backend/internal/infra/db"
+	"inbody-ocr-backend/internal/usecase"
 	"inbody-ocr-backend/pkg/database"
 )
 
@@ -17,13 +21,19 @@ import (
 
 func New() (*container.App, error) {
 	engine := provideGinEngine()
-	configConfig := config.New()
 	dbConfig := config.NewDBConfig()
-	db, err := database.New(dbConfig)
+	databaseDB, err := database.New(dbConfig)
 	if err != nil {
 		return nil, err
 	}
-	app := container.NewApp(engine, configConfig, db)
+	userRepository := db.NewUserRepository(databaseDB)
+	tokenService := service.NewTokenService()
+	ulidService := service.NewULIDService()
+	userUsecase := usecase.NewUserUsecase(userRepository, tokenService, ulidService)
+	userController := controller.NewUserController(userUsecase)
+	containerContainer := container.NewCtrl(userController, tokenService)
+	configConfig := config.New()
+	app := container.NewApp(engine, containerContainer, configConfig, databaseDB)
 	return app, nil
 }
 

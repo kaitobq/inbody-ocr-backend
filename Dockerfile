@@ -16,7 +16,7 @@ RUN --mount=type=cache,target=/go/pkg/mod/ \
 
 FROM golang:1.23.0-alpine as final
 
-# COPY migrations /migrations
+COPY migrations /migrations
 COPY --from=builder /bin/server /bin/
 
 EXPOSE 8080

@@ -28,7 +28,7 @@ services:
     develop:
       watch:
         - action: rebuild
-          path: ./server
+          path: .
     depends_on:
       db:
         condition: service_healthy

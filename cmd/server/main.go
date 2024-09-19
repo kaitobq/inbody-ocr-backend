@@ -15,6 +15,12 @@ func main() {
 			log.Printf("close app failed: %v\n", err)
 		}
 	}()
+	log.Println("app initialized")
+
+	if err := app.Migrate(); err != nil {
+		log.Printf("failed to migrate: %v\n", err)
+	}
+	log.Println("migrated")
 
 	if err := app.Run(); err != nil {
 		log.Printf("app downed: %v\n", err)
