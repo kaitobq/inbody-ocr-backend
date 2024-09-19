@@ -13,6 +13,7 @@ import (
 
 type container struct {
 	userCtrl *controller.UserController
+	organizationCtrl *controller.OrganizationController
 	tokenService service.TokenService
 }
 
@@ -36,6 +37,7 @@ func NewApp(r *gin.Engine, container *container, cfg *config.Config, db *databas
 	controller.SetUpRoutes(
 		r,
 		container.userCtrl,
+		container.organizationCtrl,
 		container.tokenService,
 	)
 

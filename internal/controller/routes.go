@@ -2,6 +2,7 @@ package controller
 
 import (
 	"inbody-ocr-backend/internal/domain/service"
+	"inbody-ocr-backend/internal/middleware"
 
 	"github.com/gin-gonic/gin"
 )
@@ -9,6 +10,7 @@ import (
 func SetUpRoutes(
 	r *gin.Engine,
 	userCtrl *UserController,
+	organizationCtrl *OrganizationController,
 	tokenService service.TokenService,
 ) {
 	v1 := r.Group("api/v1")
@@ -17,5 +19,11 @@ func SetUpRoutes(
 	{
 		auth.POST("/signup", userCtrl.SignUp)
 		auth.POST("/signin", userCtrl.SignIn)
+	}
+
+	organization := v1.Group("organization")
+	organization.Use(middleware.AuthMiddleware(tokenService))
+	{
+		organization.POST("/", organizationCtrl.CreateOrganization)
 	}
 }
