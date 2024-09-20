@@ -25,6 +25,8 @@ services:
       - "8080:8080"
     env_file:
       - .env
+    environment:
+      - GOOGLE_APPLICATION_CREDENTIALS=inbody-ocrc624d4390a73.json
     develop:
       watch:
         - action: rebuild

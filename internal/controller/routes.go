@@ -12,6 +12,7 @@ func SetUpRoutes(
 	userCtrl *UserController,
 	organizationCtrl *OrganizationController,
 	membershipCtrl *UserOrganizationMembershipController,
+	imageCtrl *ImageController,
 	tokenService service.TokenService,
 ) {
 	v1 := r.Group("api/v1")
@@ -25,6 +26,11 @@ func SetUpRoutes(
 	organization := v1.Group("organization")
 	organization.Use(middleware.AuthMiddleware(tokenService))
 	{
-		organization.POST("/", organizationCtrl.CreateOrganization)
+		organization.POST("", organizationCtrl.CreateOrganization)
+	}
+
+	image := v1.Group("image")
+	{
+		image.POST("", imageCtrl.AnalyzeImage)
 	}
 }

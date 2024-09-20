@@ -1,0 +1,6526 @@
+[
+  {
+    "locale": "und",
+    "description": "InBody\n[InBody470]\nInBody\nWebsite:www.inbody.co.jp\n|ID\n|身長\n年齢\n|Jane Doe\n|156.9cm\n51\n性別 | 測定日時\n|女性\n2021.05.04.09:46\n体成分分析 Body Composition Analysis\n測定値\n体水分量\n筋肉量\n除脂肪量\n体重\nInBody 点数 In\nInBody Score.\n体水分量\n27.5\n(L)\n27.5\nTotal\nBody Water\n(26.3-32.1)\n35.1\n68/10\n1/100点\nタンパク質量 (kg)\n7.2\n(33.8~41.7) 37.3\n体成分の総合点数です。\nProtein\nミネラル量\nMinerals\n(7.0~8.6)\n2.63\n(35.8~43.7)\n59.1\n筋肉量がとても多いと100点を超えることもあります。\n(43.9-59.5)\n(kg)\n(2.44~2.98)\n体型評価 Body Type-\n体脂肪量\n21.8\n(kg)\nBody Fit Mas\n(10.3~16.5)\n筋肉 脂肪\nSoft Lean-Fat Analysis\n(gm)\nBMI アスリート\n過体重 肥満\n25.0\n筋肉型\n適正\nやや肥満\n|標準\n高\n体重\n55 70\n05\n100\n115\n130 145 180 175\n190\n205\n(kg)\nWeighr\n59.1\n筋肉量\n70\n80\n(kg)\nSoft Lean Mass\n90 100\n35.1\n110\n120 130\n140\n150\n160\n170\n筋肉型 スリム\nスリム\n隠れ肥満\n体脂肪量 (kg)\n40\n60\n80\n100\n160\n220\n280\n340 400\n460\n520\n18.5\nBody Fat M\n■ 21.8\n|痩せ\nやや痩せ\n18.0\n28.0\n肥満指標 Obesity Index Analysis\n体脂肪率 (%)\n低\n標準\nBMI\n10.0 15.0 18.5 21.0\nBody Mass Indes (kgm)\n25.0\n124.0\n30.0 35.0 40.0 45.0\n50.0\n55.0\n体重調節 Weige Castod\n適正体重\n51.7kg\n体脂肪率\n8.0\n13.0\n18.0\n230\n280 330\n(%)\n43.0\n38.0\n36.9\n48.0 53.0\n58.0\n体重調節\n-7.4kg\nPaceal Body Fat\n脂肪調節\n-9.9 kg\n筋肉調節\n+2.5kg\n筋肉量\n体脂肪量\n発達率\n発達率\n部位別筋肉量 Segmental Lean Amailysis 部位別体脂肪量 Segmental Fat Analysis\n栄養評価 Nation\n1.94kg\n2.02kg\n1.6kg\n98.1%\n102.2%\n183.0%\n左\n標準\n5.02kg\n80.6%\n17.7kg\n95.4%\n標準\n標準\n高\n1.5kg\n_178.0%\n高\n11.7kg\n240.0%\n右\n左\n右\n高\n5.20kg\n83.6%\n2.9kg\n132.0%\n低\n低\n標準\n2.9kg\n132.0%\n標準\nタンパク質量 良好 □不足\nミネラル量 良好 不足\n体脂肪量 □良好 不足\n筋肉均衡 Leon Balance-\n上半身均衡均衡\n下半身均衡均衡\n上下均衡均衡\n内臓脂肪レベル Vesceral Fat Leved.\n過多\n口やや不均衡不均衡\nやや不均衡不均衡\nやや不均衡不均衡\n10\n12\n骨格筋量\n基礎代謝量\n体成分履歴 Body Composition History\n腹囲\n骨ミネラル量\n研究項目nentes-\n19.6kg (19.5~23.9)\n1176 kcal\n91cm\n2.18kg (2.01~2.45)\n体重\n65.3 63.9\n62.4 61.8\n62.3\n60.9 60.5\n(kg)\n59.1\n骨格筋指数(SMI)\n5.8 kglim\nWeigh\n35.6 35.5\n筋肉量\n(kg)\nSoft Lean Mass\n41.3\n40.7\n体脂肪率 (%)\n352 352\n39.2 39.0 39.4\n35.3 35.2\nインピーダンス lugelance-\n35.3\n35.1\n38.6 37.8 36.9\n右腕 左腕 体幹 右脚 左脚\nZ (2) 5kHx 373.1 385.4 25.7 303.0 314.1\n50Hz 337.2 352.5 23.0 282.3 289.8\n250kx 307.9 322.9 20.4 263.3 272.7\nPacent Body Fat\n最近全体 09:15\n20.10.10 20.10.30 20.11.02 20.12.15 21.01.12 21.02.10 21.03.15 21.05.04\n09:40 09:35 11:01 08:33 15:50 08:35\n09:46\nCopyright 1998 by InBody Japan Inc. All rights reserved. IR-JPN-470R250801",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 57, "y": 76 },
+        { "x": 658, "y": 76 },
+        { "x": 658, "y": 966 },
+        { "x": 57, "y": 966 }
+      ]
+    }
+  },
+  {
+    "description": "InBody",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 57, "y": 76 },
+        { "x": 198, "y": 77 },
+        { "x": 198, "y": 115 },
+        { "x": 57, "y": 114 }
+      ]
+    }
+  },
+  {
+    "description": "[",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 384, "y": 106 },
+        { "x": 388, "y": 106 },
+        { "x": 388, "y": 117 },
+        { "x": 384, "y": 117 }
+      ]
+    }
+  },
+  {
+    "description": "InBody470",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 386, "y": 105 },
+        { "x": 435, "y": 104 },
+        { "x": 435, "y": 115 },
+        { "x": 386, "y": 116 }
+      ]
+    }
+  },
+  {
+    "description": "]",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 434, "y": 105 },
+        { "x": 438, "y": 105 },
+        { "x": 438, "y": 116 },
+        { "x": 434, "y": 116 }
+      ]
+    }
+  },
+  {
+    "description": "InBody",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 513, "y": 98 },
+        { "x": 610, "y": 98 },
+        { "x": 610, "y": 123 },
+        { "x": 513, "y": 123 }
+      ]
+    }
+  },
+  {
+    "description": "Website",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 505, "y": 127 },
+        { "x": 538, "y": 127 },
+        { "x": 538, "y": 136 },
+        { "x": 505, "y": 136 }
+      ]
+    }
+  },
+  {
+    "description": ":",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 540, "y": 127 },
+        { "x": 543, "y": 127 },
+        { "x": 543, "y": 136 },
+        { "x": 540, "y": 136 }
+      ]
+    }
+  },
+  {
+    "description": "www.inbody.co.jp",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 541, "y": 127 },
+        { "x": 612, "y": 127 },
+        { "x": 612, "y": 136 },
+        { "x": 541, "y": 136 }
+      ]
+    }
+  },
+  {
+    "description": "|",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 59, "y": 126 },
+        { "x": 62, "y": 126 },
+        { "x": 62, "y": 138 },
+        { "x": 59, "y": 138 }
+      ]
+    }
+  },
+  {
+    "description": "ID",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 63, "y": 126 },
+        { "x": 76, "y": 126 },
+        { "x": 76, "y": 138 },
+        { "x": 63, "y": 138 }
+      ]
+    }
+  },
+  {
+    "description": "|",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 174, "y": 127 },
+        { "x": 177, "y": 127 },
+        { "x": 177, "y": 138 },
+        { "x": 174, "y": 138 }
+      ]
+    }
+  },
+  {
+    "description": "身長",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 178, "y": 127 },
+        { "x": 199, "y": 127 },
+        { "x": 199, "y": 138 },
+        { "x": 178, "y": 138 }
+      ]
+    }
+  },
+  {
+    "description": "年",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 249, "y": 127 },
+        { "x": 260, "y": 127 },
+        { "x": 260, "y": 137 },
+        { "x": 249, "y": 137 }
+      ]
+    }
+  },
+  {
+    "description": "齢",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 258, "y": 127 },
+        { "x": 269, "y": 127 },
+        { "x": 269, "y": 137 },
+        { "x": 258, "y": 137 }
+      ]
+    }
+  },
+  {
+    "description": "|",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 58, "y": 141 },
+        { "x": 62, "y": 141 },
+        { "x": 62, "y": 151 },
+        { "x": 58, "y": 151 }
+      ]
+    }
+  },
+  {
+    "description": "Jane",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 63, "y": 141 },
+        { "x": 87, "y": 141 },
+        { "x": 87, "y": 151 },
+        { "x": 63, "y": 151 }
+      ]
+    }
+  },
+  {
+    "description": "Doe",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 90, "y": 141 },
+        { "x": 112, "y": 141 },
+        { "x": 112, "y": 151 },
+        { "x": 90, "y": 151 }
+      ]
+    }
+  },
+  {
+    "description": "|",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 173, "y": 140 },
+        { "x": 176, "y": 140 },
+        { "x": 176, "y": 152 },
+        { "x": 173, "y": 152 }
+      ]
+    }
+  },
+  {
+    "description": "156.9cm",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 178, "y": 139 },
+        { "x": 225, "y": 138 },
+        { "x": 225, "y": 151 },
+        { "x": 178, "y": 152 }
+      ]
+    }
+  },
+  {
+    "description": "51",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 248, "y": 144 },
+        { "x": 260, "y": 144 },
+        { "x": 260, "y": 151 },
+        { "x": 248, "y": 151 }
+      ]
+    }
+  },
+  {
+    "description": "性別",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 293, "y": 127 },
+        { "x": 313, "y": 127 },
+        { "x": 313, "y": 136 },
+        { "x": 293, "y": 136 }
+      ]
+    }
+  },
+  {
+    "description": "|",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 334, "y": 127 },
+        { "x": 338, "y": 127 },
+        { "x": 338, "y": 138 },
+        { "x": 334, "y": 138 }
+      ]
+    }
+  },
+  {
+    "description": "測定",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 338, "y": 127 },
+        { "x": 359, "y": 127 },
+        { "x": 359, "y": 138 },
+        { "x": 338, "y": 138 }
+      ]
+    }
+  },
+  {
+    "description": "日",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 361, "y": 127 },
+        { "x": 369, "y": 127 },
+        { "x": 369, "y": 138 },
+        { "x": 361, "y": 138 }
+      ]
+    }
+  },
+  {
+    "description": "時",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 370, "y": 127 },
+        { "x": 381, "y": 127 },
+        { "x": 381, "y": 138 },
+        { "x": 370, "y": 138 }
+      ]
+    }
+  },
+  {
+    "description": "|",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 289, "y": 140 },
+        { "x": 295, "y": 140 },
+        { "x": 295, "y": 151 },
+        { "x": 289, "y": 151 }
+      ]
+    }
+  },
+  {
+    "description": "女性",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 293, "y": 140 },
+        { "x": 317, "y": 140 },
+        { "x": 317, "y": 151 },
+        { "x": 293, "y": 151 }
+      ]
+    }
+  },
+  {
+    "description": "2021.05.04.09:46",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 338, "y": 142 },
+        { "x": 436, "y": 142 },
+        { "x": 436, "y": 152 },
+        { "x": 338, "y": 152 }
+      ]
+    }
+  },
+  {
+    "description": "体",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 61, "y": 180 },
+        { "x": 76, "y": 180 },
+        { "x": 76, "y": 194 },
+        { "x": 61, "y": 194 }
+      ]
+    }
+  },
+  {
+    "description": "成分",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 76, "y": 180 },
+        { "x": 104, "y": 181 },
+        { "x": 104, "y": 195 },
+        { "x": 76, "y": 194 }
+      ]
+    }
+  },
+  {
+    "description": "分析",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 104, "y": 181 },
+        { "x": 132, "y": 182 },
+        { "x": 132, "y": 196 },
+        { "x": 104, "y": 195 }
+      ]
+    }
+  },
+  {
+    "description": "Body",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 135, "y": 181 },
+        { "x": 155, "y": 182 },
+        { "x": 154, "y": 197 },
+        { "x": 135, "y": 196 }
+      ]
+    }
+  },
+  {
+    "description": "Composition",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 157, "y": 182 },
+        { "x": 203, "y": 184 },
+        { "x": 202, "y": 199 },
+        { "x": 157, "y": 197 }
+      ]
+    }
+  },
+  {
+    "description": "Analysis",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 206, "y": 184 },
+        { "x": 238, "y": 185 },
+        { "x": 237, "y": 200 },
+        { "x": 206, "y": 199 }
+      ]
+    }
+  },
+  {
+    "description": "測定",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 152, "y": 200 },
+        { "x": 169, "y": 201 },
+        { "x": 169, "y": 209 },
+        { "x": 152, "y": 208 }
+      ]
+    }
+  },
+  {
+    "description": "値",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 172, "y": 200 },
+        { "x": 180, "y": 200 },
+        { "x": 180, "y": 208 },
+        { "x": 172, "y": 208 }
+      ]
+    }
+  },
+  {
+    "description": "体",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 208, "y": 201 },
+        { "x": 217, "y": 201 },
+        { "x": 217, "y": 209 },
+        { "x": 208, "y": 209 }
+      ]
+    }
+  },
+  {
+    "description": "水分",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 217, "y": 200 },
+        { "x": 237, "y": 200 },
+        { "x": 237, "y": 208 },
+        { "x": 217, "y": 208 }
+      ]
+    }
+  },
+  {
+    "description": "量",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 237, "y": 200 },
+        { "x": 246, "y": 200 },
+        { "x": 246, "y": 208 },
+        { "x": 237, "y": 208 }
+      ]
+    }
+  },
+  {
+    "description": "筋肉",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 273, "y": 201 },
+        { "x": 289, "y": 201 },
+        { "x": 289, "y": 209 },
+        { "x": 273, "y": 209 }
+      ]
+    }
+  },
+  {
+    "description": "量",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 292, "y": 201 },
+        { "x": 300, "y": 201 },
+        { "x": 300, "y": 209 },
+        { "x": 292, "y": 209 }
+      ]
+    }
+  },
+  {
+    "description": "除",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 328, "y": 201 },
+        { "x": 337, "y": 201 },
+        { "x": 337, "y": 210 },
+        { "x": 328, "y": 210 }
+      ]
+    }
+  },
+  {
+    "description": "脂肪",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 338, "y": 201 },
+        { "x": 356, "y": 201 },
+        { "x": 356, "y": 210 },
+        { "x": 338, "y": 210 }
+      ]
+    }
+  },
+  {
+    "description": "量",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 357, "y": 201 },
+        { "x": 366, "y": 201 },
+        { "x": 366, "y": 210 },
+        { "x": 357, "y": 210 }
+      ]
+    }
+  },
+  {
+    "description": "体重",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 398, "y": 201 },
+        { "x": 419, "y": 201 },
+        { "x": 419, "y": 208 },
+        { "x": 398, "y": 208 }
+      ]
+    }
+  },
+  {
+    "description": "InBody",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 462, "y": 197 },
+        { "x": 501, "y": 197 },
+        { "x": 501, "y": 208 },
+        { "x": 462, "y": 208 }
+      ]
+    }
+  },
+  {
+    "description": "点数",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 501, "y": 197 },
+        { "x": 524, "y": 197 },
+        { "x": 524, "y": 208 },
+        { "x": 501, "y": 208 }
+      ]
+    }
+  },
+  {
+    "description": "In",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 525, "y": 197 },
+        { "x": 530, "y": 197 },
+        { "x": 530, "y": 208 },
+        { "x": 525, "y": 208 }
+      ]
+    }
+  },
+  {
+    "description": "InBody",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 525, "y": 202 },
+        { "x": 545, "y": 202 },
+        { "x": 545, "y": 209 },
+        { "x": 525, "y": 209 }
+      ]
+    }
+  },
+  {
+    "description": "Score",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 546, "y": 202 },
+        { "x": 561, "y": 202 },
+        { "x": 561, "y": 209 },
+        { "x": 546, "y": 209 }
+      ]
+    }
+  },
+  {
+    "description": ".",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 562, "y": 202 },
+        { "x": 563, "y": 202 },
+        { "x": 563, "y": 209 },
+        { "x": 562, "y": 209 }
+      ]
+    }
+  },
+  {
+    "description": "体",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 63, "y": 217 },
+        { "x": 73, "y": 217 },
+        { "x": 73, "y": 226 },
+        { "x": 63, "y": 226 }
+      ]
+    }
+  },
+  {
+    "description": "水分",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 73, "y": 217 },
+        { "x": 93, "y": 217 },
+        { "x": 93, "y": 226 },
+        { "x": 73, "y": 226 }
+      ]
+    }
+  },
+  {
+    "description": "量",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 94, "y": 217 },
+        { "x": 104, "y": 217 },
+        { "x": 104, "y": 226 },
+        { "x": 94, "y": 226 }
+      ]
+    }
+  },
+  {
+    "description": "27.5",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 152, "y": 216 },
+        { "x": 176, "y": 216 },
+        { "x": 176, "y": 225 },
+        { "x": 152, "y": 225 }
+      ]
+    }
+  },
+  {
+    "description": "(",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 121, "y": 223 },
+        { "x": 124, "y": 223 },
+        { "x": 124, "y": 229 },
+        { "x": 121, "y": 229 }
+      ]
+    }
+  },
+  {
+    "description": "L",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 123, "y": 222 },
+        { "x": 129, "y": 222 },
+        { "x": 129, "y": 228 },
+        { "x": 123, "y": 228 }
+      ]
+    }
+  },
+  {
+    "description": ")",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 127, "y": 222 },
+        { "x": 131, "y": 222 },
+        { "x": 131, "y": 228 },
+        { "x": 127, "y": 228 }
+      ]
+    }
+  },
+  {
+    "description": "27.5",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 216, "y": 219 },
+        { "x": 239, "y": 220 },
+        { "x": 239, "y": 228 },
+        { "x": 216, "y": 227 }
+      ]
+    }
+  },
+  {
+    "description": "Total",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 63, "y": 227 },
+        { "x": 76, "y": 227 },
+        { "x": 76, "y": 235 },
+        { "x": 63, "y": 235 }
+      ]
+    }
+  },
+  {
+    "description": "Body",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 77, "y": 227 },
+        { "x": 91, "y": 227 },
+        { "x": 91, "y": 234 },
+        { "x": 77, "y": 234 }
+      ]
+    }
+  },
+  {
+    "description": "Water",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 93, "y": 227 },
+        { "x": 110, "y": 227 },
+        { "x": 110, "y": 234 },
+        { "x": 93, "y": 234 }
+      ]
+    }
+  },
+  {
+    "description": "(",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 140, "y": 227 },
+        { "x": 144, "y": 227 },
+        { "x": 144, "y": 234 },
+        { "x": 140, "y": 234 }
+      ]
+    }
+  },
+  {
+    "description": "26.3-32.1",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 144, "y": 227 },
+        { "x": 188, "y": 227 },
+        { "x": 188, "y": 234 },
+        { "x": 144, "y": 234 }
+      ]
+    }
+  },
+  {
+    "description": ")",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 189, "y": 227 },
+        { "x": 193, "y": 227 },
+        { "x": 193, "y": 234 },
+        { "x": 189, "y": 234 }
+      ]
+    }
+  },
+  {
+    "description": "35.1",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 274, "y": 226 },
+        { "x": 297, "y": 227 },
+        { "x": 297, "y": 236 },
+        { "x": 274, "y": 235 }
+      ]
+    }
+  },
+  {
+    "description": "68/10",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 527, "y": 221 },
+        { "x": 568, "y": 221 },
+        { "x": 568, "y": 239 },
+        { "x": 527, "y": 239 }
+      ]
+    }
+  },
+  {
+    "description": "1/100",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 549, "y": 231 },
+        { "x": 577, "y": 231 },
+        { "x": 577, "y": 239 },
+        { "x": 549, "y": 239 }
+      ]
+    }
+  },
+  {
+    "description": "点",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 579, "y": 231 },
+        { "x": 588, "y": 231 },
+        { "x": 588, "y": 239 },
+        { "x": 579, "y": 239 }
+      ]
+    }
+  },
+  {
+    "description": "タンパク",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 63, "y": 240 },
+        { "x": 94, "y": 242 },
+        { "x": 93, "y": 254 },
+        { "x": 62, "y": 252 }
+      ]
+    }
+  },
+  {
+    "description": "質量",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 93, "y": 242 },
+        { "x": 112, "y": 243 },
+        { "x": 111, "y": 254 },
+        { "x": 92, "y": 253 }
+      ]
+    }
+  },
+  {
+    "description": "(",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 120, "y": 244 },
+        { "x": 124, "y": 244 },
+        { "x": 123, "y": 255 },
+        { "x": 119, "y": 255 }
+      ]
+    }
+  },
+  {
+    "description": "kg",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 121, "y": 244 },
+        { "x": 130, "y": 245 },
+        { "x": 129, "y": 257 },
+        { "x": 120, "y": 256 }
+      ]
+    }
+  },
+  {
+    "description": ")",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 130, "y": 245 },
+        { "x": 133, "y": 245 },
+        { "x": 132, "y": 256 },
+        { "x": 129, "y": 256 }
+      ]
+    }
+  },
+  {
+    "description": "7.2",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 155, "y": 242 },
+        { "x": 172, "y": 242 },
+        { "x": 172, "y": 250 },
+        { "x": 155, "y": 250 }
+      ]
+    }
+  },
+  {
+    "description": "(",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 260, "y": 240 },
+        { "x": 264, "y": 240 },
+        { "x": 264, "y": 248 },
+        { "x": 260, "y": 248 }
+      ]
+    }
+  },
+  {
+    "description": "33.8",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 264, "y": 240 },
+        { "x": 281, "y": 240 },
+        { "x": 281, "y": 248 },
+        { "x": 264, "y": 248 }
+      ]
+    }
+  },
+  {
+    "description": "~",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 283, "y": 240 },
+        { "x": 290, "y": 240 },
+        { "x": 290, "y": 248 },
+        { "x": 283, "y": 248 }
+      ]
+    }
+  },
+  {
+    "description": "41.7",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 292, "y": 240 },
+        { "x": 311, "y": 240 },
+        { "x": 311, "y": 248 },
+        { "x": 292, "y": 248 }
+      ]
+    }
+  },
+  {
+    "description": ")",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 309, "y": 240 },
+        { "x": 314, "y": 240 },
+        { "x": 314, "y": 248 },
+        { "x": 309, "y": 248 }
+      ]
+    }
+  },
+  {
+    "description": "37.3",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 335, "y": 240 },
+        { "x": 357, "y": 240 },
+        { "x": 357, "y": 247 },
+        { "x": 335, "y": 247 }
+      ]
+    }
+  },
+  {
+    "description": "体",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 466, "y": 247 },
+        { "x": 475, "y": 247 },
+        { "x": 475, "y": 255 },
+        { "x": 466, "y": 255 }
+      ]
+    }
+  },
+  {
+    "description": "成分",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 476, "y": 247 },
+        { "x": 493, "y": 247 },
+        { "x": 493, "y": 255 },
+        { "x": 476, "y": 255 }
+      ]
+    }
+  },
+  {
+    "description": "の",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 494, "y": 247 },
+        { "x": 500, "y": 247 },
+        { "x": 500, "y": 255 },
+        { "x": 494, "y": 255 }
+      ]
+    }
+  },
+  {
+    "description": "総合",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 501, "y": 247 },
+        { "x": 516, "y": 247 },
+        { "x": 516, "y": 255 },
+        { "x": 501, "y": 255 }
+      ]
+    }
+  },
+  {
+    "description": "点数",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 518, "y": 247 },
+        { "x": 534, "y": 247 },
+        { "x": 534, "y": 255 },
+        { "x": 518, "y": 255 }
+      ]
+    }
+  },
+  {
+    "description": "です",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 536, "y": 247 },
+        { "x": 549, "y": 247 },
+        { "x": 549, "y": 255 },
+        { "x": 536, "y": 255 }
+      ]
+    }
+  },
+  {
+    "description": "。",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 551, "y": 247 },
+        { "x": 555, "y": 247 },
+        { "x": 555, "y": 255 },
+        { "x": 551, "y": 255 }
+      ]
+    }
+  },
+  {
+    "description": "Protein",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 63, "y": 255 },
+        { "x": 84, "y": 255 },
+        { "x": 84, "y": 260 },
+        { "x": 63, "y": 260 }
+      ]
+    }
+  },
+  {
+    "description": "ミネラル",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 63, "y": 269 },
+        { "x": 93, "y": 269 },
+        { "x": 93, "y": 276 },
+        { "x": 63, "y": 276 }
+      ]
+    }
+  },
+  {
+    "description": "量",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 92, "y": 269 },
+        { "x": 103, "y": 269 },
+        { "x": 103, "y": 276 },
+        { "x": 92, "y": 276 }
+      ]
+    }
+  },
+  {
+    "description": "Minerals",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 63, "y": 281 },
+        { "x": 87, "y": 281 },
+        { "x": 87, "y": 286 },
+        { "x": 63, "y": 286 }
+      ]
+    }
+  },
+  {
+    "description": "(",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 140, "y": 253 },
+        { "x": 144, "y": 253 },
+        { "x": 144, "y": 261 },
+        { "x": 140, "y": 261 }
+      ]
+    }
+  },
+  {
+    "description": "7.0",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 148, "y": 253 },
+        { "x": 160, "y": 253 },
+        { "x": 160, "y": 261 },
+        { "x": 148, "y": 261 }
+      ]
+    }
+  },
+  {
+    "description": "~",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 163, "y": 253 },
+        { "x": 170, "y": 253 },
+        { "x": 170, "y": 261 },
+        { "x": 163, "y": 261 }
+      ]
+    }
+  },
+  {
+    "description": "8.6",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 171, "y": 253 },
+        { "x": 185, "y": 253 },
+        { "x": 185, "y": 261 },
+        { "x": 171, "y": 261 }
+      ]
+    }
+  },
+  {
+    "description": ")",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 188, "y": 253 },
+        { "x": 193, "y": 253 },
+        { "x": 193, "y": 261 },
+        { "x": 188, "y": 261 }
+      ]
+    }
+  },
+  {
+    "description": "2.63",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 152, "y": 267 },
+        { "x": 175, "y": 267 },
+        { "x": 175, "y": 275 },
+        { "x": 152, "y": 275 }
+      ]
+    }
+  },
+  {
+    "description": "(",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 322, "y": 253 },
+        { "x": 325, "y": 253 },
+        { "x": 325, "y": 261 },
+        { "x": 322, "y": 261 }
+      ]
+    }
+  },
+  {
+    "description": "35.8",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 326, "y": 253 },
+        { "x": 343, "y": 253 },
+        { "x": 343, "y": 261 },
+        { "x": 326, "y": 261 }
+      ]
+    }
+  },
+  {
+    "description": "~",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 346, "y": 253 },
+        { "x": 352, "y": 253 },
+        { "x": 352, "y": 261 },
+        { "x": 346, "y": 261 }
+      ]
+    }
+  },
+  {
+    "description": "43.7",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 353, "y": 253 },
+        { "x": 371, "y": 253 },
+        { "x": 371, "y": 261 },
+        { "x": 353, "y": 261 }
+      ]
+    }
+  },
+  {
+    "description": ")",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 370, "y": 253 },
+        { "x": 373, "y": 253 },
+        { "x": 373, "y": 261 },
+        { "x": 370, "y": 261 }
+      ]
+    }
+  },
+  {
+    "description": "59.1",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 395, "y": 252 },
+        { "x": 418, "y": 253 },
+        { "x": 418, "y": 262 },
+        { "x": 395, "y": 261 }
+      ]
+    }
+  },
+  {
+    "description": "筋肉",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 466, "y": 258 },
+        { "x": 483, "y": 258 },
+        { "x": 483, "y": 266 },
+        { "x": 466, "y": 266 }
+      ]
+    }
+  },
+  {
+    "description": "量",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 484, "y": 258 },
+        { "x": 492, "y": 258 },
+        { "x": 492, "y": 266 },
+        { "x": 484, "y": 266 }
+      ]
+    }
+  },
+  {
+    "description": "が",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 493, "y": 258 },
+        { "x": 501, "y": 258 },
+        { "x": 501, "y": 266 },
+        { "x": 493, "y": 266 }
+      ]
+    }
+  },
+  {
+    "description": "とても",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 501, "y": 258 },
+        { "x": 519, "y": 258 },
+        { "x": 519, "y": 266 },
+        { "x": 501, "y": 266 }
+      ]
+    }
+  },
+  {
+    "description": "多い",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 520, "y": 258 },
+        { "x": 536, "y": 258 },
+        { "x": 536, "y": 266 },
+        { "x": 520, "y": 266 }
+      ]
+    }
+  },
+  {
+    "description": "と",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 536, "y": 258 },
+        { "x": 542, "y": 258 },
+        { "x": 542, "y": 266 },
+        { "x": 536, "y": 266 }
+      ]
+    }
+  },
+  {
+    "description": "100",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 542, "y": 258 },
+        { "x": 554, "y": 258 },
+        { "x": 554, "y": 266 },
+        { "x": 542, "y": 266 }
+      ]
+    }
+  },
+  {
+    "description": "点",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 555, "y": 258 },
+        { "x": 563, "y": 258 },
+        { "x": 563, "y": 266 },
+        { "x": 555, "y": 266 }
+      ]
+    }
+  },
+  {
+    "description": "を",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 564, "y": 258 },
+        { "x": 571, "y": 258 },
+        { "x": 571, "y": 266 },
+        { "x": 564, "y": 266 }
+      ]
+    }
+  },
+  {
+    "description": "超える",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 571, "y": 258 },
+        { "x": 592, "y": 258 },
+        { "x": 592, "y": 266 },
+        { "x": 571, "y": 266 }
+      ]
+    }
+  },
+  {
+    "description": "こと",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 594, "y": 258 },
+        { "x": 605, "y": 258 },
+        { "x": 605, "y": 266 },
+        { "x": 594, "y": 266 }
+      ]
+    }
+  },
+  {
+    "description": "も",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 605, "y": 258 },
+        { "x": 611, "y": 258 },
+        { "x": 611, "y": 266 },
+        { "x": 605, "y": 266 }
+      ]
+    }
+  },
+  {
+    "description": "あり",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 612, "y": 258 },
+        { "x": 624, "y": 258 },
+        { "x": 624, "y": 266 },
+        { "x": 612, "y": 266 }
+      ]
+    }
+  },
+  {
+    "description": "ます",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 625, "y": 258 },
+        { "x": 638, "y": 258 },
+        { "x": 638, "y": 266 },
+        { "x": 625, "y": 266 }
+      ]
+    }
+  },
+  {
+    "description": "。",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 639, "y": 258 },
+        { "x": 643, "y": 258 },
+        { "x": 643, "y": 266 },
+        { "x": 639, "y": 266 }
+      ]
+    }
+  },
+  {
+    "description": "(",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 381, "y": 266 },
+        { "x": 384, "y": 266 },
+        { "x": 384, "y": 273 },
+        { "x": 381, "y": 273 }
+      ]
+    }
+  },
+  {
+    "description": "43.9-59.5",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 384, "y": 266 },
+        { "x": 429, "y": 266 },
+        { "x": 429, "y": 273 },
+        { "x": 384, "y": 273 }
+      ]
+    }
+  },
+  {
+    "description": ")",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 430, "y": 266 },
+        { "x": 433, "y": 266 },
+        { "x": 433, "y": 273 },
+        { "x": 430, "y": 273 }
+      ]
+    }
+  },
+  {
+    "description": "(",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 120, "y": 273 },
+        { "x": 123, "y": 273 },
+        { "x": 123, "y": 281 },
+        { "x": 120, "y": 281 }
+      ]
+    }
+  },
+  {
+    "description": "kg",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 122, "y": 273 },
+        { "x": 131, "y": 273 },
+        { "x": 131, "y": 281 },
+        { "x": 122, "y": 281 }
+      ]
+    }
+  },
+  {
+    "description": ")",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 129, "y": 273 },
+        { "x": 132, "y": 273 },
+        { "x": 132, "y": 281 },
+        { "x": 129, "y": 281 }
+      ]
+    }
+  },
+  {
+    "description": "(",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 140, "y": 279 },
+        { "x": 143, "y": 279 },
+        { "x": 143, "y": 286 },
+        { "x": 140, "y": 286 }
+      ]
+    }
+  },
+  {
+    "description": "2.44",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 144, "y": 279 },
+        { "x": 161, "y": 279 },
+        { "x": 161, "y": 286 },
+        { "x": 144, "y": 286 }
+      ]
+    }
+  },
+  {
+    "description": "~",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 166, "y": 279 },
+        { "x": 169, "y": 279 },
+        { "x": 169, "y": 286 },
+        { "x": 166, "y": 286 }
+      ]
+    }
+  },
+  {
+    "description": "2.98",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 171, "y": 279 },
+        { "x": 189, "y": 279 },
+        { "x": 189, "y": 286 },
+        { "x": 171, "y": 286 }
+      ]
+    }
+  },
+  {
+    "description": ")",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 189, "y": 279 },
+        { "x": 193, "y": 279 },
+        { "x": 193, "y": 286 },
+        { "x": 189, "y": 286 }
+      ]
+    }
+  },
+  {
+    "description": "体型",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 462, "y": 274 },
+        { "x": 485, "y": 275 },
+        { "x": 484, "y": 288 },
+        { "x": 461, "y": 287 }
+      ]
+    }
+  },
+  {
+    "description": "評価",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 486, "y": 275 },
+        { "x": 509, "y": 276 },
+        { "x": 508, "y": 289 },
+        { "x": 485, "y": 288 }
+      ]
+    }
+  },
+  {
+    "description": "Body",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 508, "y": 276 },
+        { "x": 525, "y": 277 },
+        { "x": 524, "y": 290 },
+        { "x": 507, "y": 289 }
+      ]
+    }
+  },
+  {
+    "description": "Type-",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 526, "y": 278 },
+        { "x": 543, "y": 279 },
+        { "x": 542, "y": 291 },
+        { "x": 525, "y": 290 }
+      ]
+    }
+  },
+  {
+    "description": "体",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 63, "y": 295 },
+        { "x": 72, "y": 295 },
+        { "x": 72, "y": 304 },
+        { "x": 63, "y": 304 }
+      ]
+    }
+  },
+  {
+    "description": "脂肪",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 73, "y": 295 },
+        { "x": 93, "y": 295 },
+        { "x": 93, "y": 304 },
+        { "x": 73, "y": 304 }
+      ]
+    }
+  },
+  {
+    "description": "量",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 93, "y": 295 },
+        { "x": 102, "y": 295 },
+        { "x": 102, "y": 304 },
+        { "x": 93, "y": 304 }
+      ]
+    }
+  },
+  {
+    "description": "21.8",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 153, "y": 293 },
+        { "x": 175, "y": 293 },
+        { "x": 175, "y": 301 },
+        { "x": 153, "y": 301 }
+      ]
+    }
+  },
+  {
+    "description": "(",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 120, "y": 299 },
+        { "x": 123, "y": 299 },
+        { "x": 123, "y": 306 },
+        { "x": 120, "y": 306 }
+      ]
+    }
+  },
+  {
+    "description": "kg",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 122, "y": 299 },
+        { "x": 131, "y": 299 },
+        { "x": 131, "y": 306 },
+        { "x": 122, "y": 306 }
+      ]
+    }
+  },
+  {
+    "description": ")",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 129, "y": 299 },
+        { "x": 132, "y": 299 },
+        { "x": 132, "y": 306 },
+        { "x": 129, "y": 306 }
+      ]
+    }
+  },
+  {
+    "description": "Body",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 63, "y": 306 },
+        { "x": 78, "y": 306 },
+        { "x": 78, "y": 313 },
+        { "x": 63, "y": 313 }
+      ]
+    }
+  },
+  {
+    "description": "Fit",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 79, "y": 306 },
+        { "x": 88, "y": 306 },
+        { "x": 88, "y": 313 },
+        { "x": 79, "y": 313 }
+      ]
+    }
+  },
+  {
+    "description": "Mas",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 89, "y": 306 },
+        { "x": 103, "y": 306 },
+        { "x": 103, "y": 313 },
+        { "x": 89, "y": 313 }
+      ]
+    }
+  },
+  {
+    "description": "(",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 140, "y": 304 },
+        { "x": 143, "y": 304 },
+        { "x": 143, "y": 312 },
+        { "x": 140, "y": 312 }
+      ]
+    }
+  },
+  {
+    "description": "10.3",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 144, "y": 304 },
+        { "x": 159, "y": 304 },
+        { "x": 159, "y": 312 },
+        { "x": 144, "y": 312 }
+      ]
+    }
+  },
+  {
+    "description": "~",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 166, "y": 304 },
+        { "x": 170, "y": 304 },
+        { "x": 170, "y": 312 },
+        { "x": 166, "y": 312 }
+      ]
+    }
+  },
+  {
+    "description": "16.5",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 172, "y": 304 },
+        { "x": 189, "y": 304 },
+        { "x": 189, "y": 312 },
+        { "x": 172, "y": 312 }
+      ]
+    }
+  },
+  {
+    "description": ")",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 189, "y": 304 },
+        { "x": 193, "y": 304 },
+        { "x": 193, "y": 312 },
+        { "x": 189, "y": 312 }
+      ]
+    }
+  },
+  {
+    "description": "筋肉",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 61, "y": 341 },
+        { "x": 88, "y": 341 },
+        { "x": 88, "y": 354 },
+        { "x": 61, "y": 354 }
+      ]
+    }
+  },
+  {
+    "description": "脂肪",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 94, "y": 341 },
+        { "x": 122, "y": 341 },
+        { "x": 122, "y": 354 },
+        { "x": 94, "y": 354 }
+      ]
+    }
+  },
+  {
+    "description": "Soft",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 125, "y": 347 },
+        { "x": 142, "y": 347 },
+        { "x": 142, "y": 355 },
+        { "x": 125, "y": 355 }
+      ]
+    }
+  },
+  {
+    "description": "Lean",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 142, "y": 347 },
+        { "x": 162, "y": 347 },
+        { "x": 162, "y": 355 },
+        { "x": 142, "y": 355 }
+      ]
+    }
+  },
+  {
+    "description": "-",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 160, "y": 347 },
+        { "x": 164, "y": 347 },
+        { "x": 164, "y": 355 },
+        { "x": 160, "y": 355 }
+      ]
+    }
+  },
+  {
+    "description": "Fat",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 164, "y": 347 },
+        { "x": 176, "y": 347 },
+        { "x": 176, "y": 355 },
+        { "x": 164, "y": 355 }
+      ]
+    }
+  },
+  {
+    "description": "Analysis",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 178, "y": 347 },
+        { "x": 211, "y": 347 },
+        { "x": 211, "y": 356 },
+        { "x": 178, "y": 356 }
+      ]
+    }
+  },
+  {
+    "description": "(",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 469, "y": 316 },
+        { "x": 476, "y": 316 },
+        { "x": 476, "y": 323 },
+        { "x": 469, "y": 323 }
+      ]
+    }
+  },
+  {
+    "description": "gm",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 472, "y": 315 },
+        { "x": 484, "y": 315 },
+        { "x": 484, "y": 322 },
+        { "x": 472, "y": 322 }
+      ]
+    }
+  },
+  {
+    "description": ")",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 485, "y": 315 },
+        { "x": 489, "y": 315 },
+        { "x": 489, "y": 322 },
+        { "x": 485, "y": 322 }
+      ]
+    }
+  },
+  {
+    "description": "BMI",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 469, "y": 303 },
+        { "x": 488, "y": 305 },
+        { "x": 487, "y": 317 },
+        { "x": 468, "y": 315 }
+      ]
+    }
+  },
+  {
+    "description": "アスリート",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 495, "y": 306 },
+        { "x": 531, "y": 309 },
+        { "x": 530, "y": 320 },
+        { "x": 494, "y": 317 }
+      ]
+    }
+  },
+  {
+    "description": "過",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 568, "y": 309 },
+        { "x": 577, "y": 309 },
+        { "x": 577, "y": 318 },
+        { "x": 568, "y": 318 }
+      ]
+    }
+  },
+  {
+    "description": "体重",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 579, "y": 309 },
+        { "x": 598, "y": 309 },
+        { "x": 598, "y": 318 },
+        { "x": 579, "y": 318 }
+      ]
+    }
+  },
+  {
+    "description": "肥満",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 607, "y": 309 },
+        { "x": 628, "y": 309 },
+        { "x": 628, "y": 318 },
+        { "x": 607, "y": 318 }
+      ]
+    }
+  },
+  {
+    "description": "25.0",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 470, "y": 344 },
+        { "x": 489, "y": 344 },
+        { "x": 489, "y": 350 },
+        { "x": 470, "y": 350 }
+      ]
+    }
+  },
+  {
+    "description": "筋肉",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 495, "y": 349 },
+        { "x": 513, "y": 349 },
+        { "x": 513, "y": 359 },
+        { "x": 495, "y": 359 }
+      ]
+    }
+  },
+  {
+    "description": "型",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 515, "y": 349 },
+        { "x": 524, "y": 349 },
+        { "x": 524, "y": 359 },
+        { "x": 515, "y": 359 }
+      ]
+    }
+  },
+  {
+    "description": "適",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 569, "y": 349 },
+        { "x": 579, "y": 349 },
+        { "x": 579, "y": 357 },
+        { "x": 569, "y": 357 }
+      ]
+    }
+  },
+  {
+    "description": "正",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 580, "y": 349 },
+        { "x": 590, "y": 349 },
+        { "x": 590, "y": 357 },
+        { "x": 580, "y": 357 }
+      ]
+    }
+  },
+  {
+    "description": "やや",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 607, "y": 350 },
+        { "x": 623, "y": 350 },
+        { "x": 623, "y": 358 },
+        { "x": 607, "y": 358 }
+      ]
+    }
+  },
+  {
+    "description": "肥満",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 623, "y": 350 },
+        { "x": 643, "y": 350 },
+        { "x": 643, "y": 358 },
+        { "x": 623, "y": 358 }
+      ]
+    }
+  },
+  {
+    "description": "|",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 218, "y": 361 },
+        { "x": 221, "y": 361 },
+        { "x": 221, "y": 369 },
+        { "x": 218, "y": 369 }
+      ]
+    }
+  },
+  {
+    "description": "標準",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 221, "y": 361 },
+        { "x": 241, "y": 361 },
+        { "x": 241, "y": 369 },
+        { "x": 221, "y": 369 }
+      ]
+    }
+  },
+  {
+    "description": "高",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 343, "y": 361 },
+        { "x": 352, "y": 361 },
+        { "x": 352, "y": 370 },
+        { "x": 343, "y": 370 }
+      ]
+    }
+  },
+  {
+    "description": "体重",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 63, "y": 377 },
+        { "x": 82, "y": 377 },
+        { "x": 82, "y": 385 },
+        { "x": 63, "y": 385 }
+      ]
+    }
+  },
+  {
+    "description": "55",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 149, "y": 375 },
+        { "x": 156, "y": 375 },
+        { "x": 156, "y": 382 },
+        { "x": 149, "y": 382 }
+      ]
+    }
+  },
+  {
+    "description": "70",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 175, "y": 376 },
+        { "x": 182, "y": 376 },
+        { "x": 182, "y": 381 },
+        { "x": 175, "y": 381 }
+      ]
+    }
+  },
+  {
+    "description": "05",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 202, "y": 377 },
+        { "x": 208, "y": 377 },
+        { "x": 208, "y": 382 },
+        { "x": 202, "y": 382 }
+      ]
+    }
+  },
+  {
+    "description": "100",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 226, "y": 375 },
+        { "x": 237, "y": 375 },
+        { "x": 237, "y": 381 },
+        { "x": 226, "y": 381 }
+      ]
+    }
+  },
+  {
+    "description": "115",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 252, "y": 375 },
+        { "x": 263, "y": 375 },
+        { "x": 263, "y": 382 },
+        { "x": 252, "y": 382 }
+      ]
+    }
+  },
+  {
+    "description": "130",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 278, "y": 376 },
+        { "x": 290, "y": 376 },
+        { "x": 290, "y": 382 },
+        { "x": 278, "y": 382 }
+      ]
+    }
+  },
+  {
+    "description": "145",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 304, "y": 376 },
+        { "x": 315, "y": 376 },
+        { "x": 315, "y": 382 },
+        { "x": 304, "y": 382 }
+      ]
+    }
+  },
+  {
+    "description": "180",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 331, "y": 376 },
+        { "x": 343, "y": 376 },
+        { "x": 343, "y": 381 },
+        { "x": 331, "y": 381 }
+      ]
+    }
+  },
+  {
+    "description": "175",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 357, "y": 374 },
+        { "x": 368, "y": 374 },
+        { "x": 368, "y": 381 },
+        { "x": 357, "y": 381 }
+      ]
+    }
+  },
+  {
+    "description": "190",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 384, "y": 376 },
+        { "x": 395, "y": 376 },
+        { "x": 395, "y": 382 },
+        { "x": 384, "y": 382 }
+      ]
+    }
+  },
+  {
+    "description": "205",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 409, "y": 375 },
+        { "x": 420, "y": 375 },
+        { "x": 420, "y": 381 },
+        { "x": 409, "y": 381 }
+      ]
+    }
+  },
+  {
+    "description": "(",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 120, "y": 382 },
+        { "x": 123, "y": 382 },
+        { "x": 123, "y": 389 },
+        { "x": 120, "y": 389 }
+      ]
+    }
+  },
+  {
+    "description": "kg",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 122, "y": 382 },
+        { "x": 131, "y": 382 },
+        { "x": 131, "y": 389 },
+        { "x": 122, "y": 389 }
+      ]
+    }
+  },
+  {
+    "description": ")",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 129, "y": 382 },
+        { "x": 132, "y": 382 },
+        { "x": 132, "y": 389 },
+        { "x": 129, "y": 389 }
+      ]
+    }
+  },
+  {
+    "description": "Weighr",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 62, "y": 389 },
+        { "x": 81, "y": 389 },
+        { "x": 81, "y": 394 },
+        { "x": 62, "y": 394 }
+      ]
+    }
+  },
+  {
+    "description": "59.1",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 258, "y": 385 },
+        { "x": 281, "y": 385 },
+        { "x": 281, "y": 393 },
+        { "x": 258, "y": 393 }
+      ]
+    }
+  },
+  {
+    "description": "筋肉",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 63, "y": 403 },
+        { "x": 84, "y": 403 },
+        { "x": 84, "y": 412 },
+        { "x": 63, "y": 412 }
+      ]
+    }
+  },
+  {
+    "description": "量",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 84, "y": 403 },
+        { "x": 94, "y": 403 },
+        { "x": 94, "y": 412 },
+        { "x": 84, "y": 412 }
+      ]
+    }
+  },
+  {
+    "description": "70",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 149, "y": 402 },
+        { "x": 156, "y": 402 },
+        { "x": 156, "y": 407 },
+        { "x": 149, "y": 407 }
+      ]
+    }
+  },
+  {
+    "description": "80",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 175, "y": 403 },
+        { "x": 183, "y": 403 },
+        { "x": 183, "y": 408 },
+        { "x": 175, "y": 408 }
+      ]
+    }
+  },
+  {
+    "description": "(",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 120, "y": 408 },
+        { "x": 124, "y": 408 },
+        { "x": 124, "y": 416 },
+        { "x": 120, "y": 416 }
+      ]
+    }
+  },
+  {
+    "description": "kg",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 121, "y": 408 },
+        { "x": 132, "y": 409 },
+        { "x": 131, "y": 417 },
+        { "x": 121, "y": 416 }
+      ]
+    }
+  },
+  {
+    "description": ")",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 129, "y": 408 },
+        { "x": 134, "y": 408 },
+        { "x": 134, "y": 416 },
+        { "x": 129, "y": 416 }
+      ]
+    }
+  },
+  {
+    "description": "Soft",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 63, "y": 414 },
+        { "x": 74, "y": 414 },
+        { "x": 74, "y": 420 },
+        { "x": 63, "y": 420 }
+      ]
+    }
+  },
+  {
+    "description": "Lean",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 74, "y": 414 },
+        { "x": 88, "y": 414 },
+        { "x": 88, "y": 420 },
+        { "x": 74, "y": 420 }
+      ]
+    }
+  },
+  {
+    "description": "Mass",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 88, "y": 414 },
+        { "x": 103, "y": 414 },
+        { "x": 103, "y": 420 },
+        { "x": 88, "y": 420 }
+      ]
+    }
+  },
+  {
+    "description": "90",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 201, "y": 402 },
+        { "x": 210, "y": 402 },
+        { "x": 210, "y": 407 },
+        { "x": 201, "y": 407 }
+      ]
+    }
+  },
+  {
+    "description": "100",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 226, "y": 402 },
+        { "x": 237, "y": 402 },
+        { "x": 237, "y": 408 },
+        { "x": 226, "y": 408 }
+      ]
+    }
+  },
+  {
+    "description": "35.1",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 211, "y": 411 },
+        { "x": 233, "y": 411 },
+        { "x": 233, "y": 419 },
+        { "x": 211, "y": 419 }
+      ]
+    }
+  },
+  {
+    "description": "110",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 252, "y": 401 },
+        { "x": 264, "y": 401 },
+        { "x": 264, "y": 408 },
+        { "x": 252, "y": 408 }
+      ]
+    }
+  },
+  {
+    "description": "120",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 278, "y": 402 },
+        { "x": 289, "y": 402 },
+        { "x": 289, "y": 408 },
+        { "x": 278, "y": 408 }
+      ]
+    }
+  },
+  {
+    "description": "130",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 304, "y": 401 },
+        { "x": 316, "y": 401 },
+        { "x": 316, "y": 407 },
+        { "x": 304, "y": 407 }
+      ]
+    }
+  },
+  {
+    "description": "140",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 330, "y": 401 },
+        { "x": 342, "y": 401 },
+        { "x": 342, "y": 407 },
+        { "x": 330, "y": 407 }
+      ]
+    }
+  },
+  {
+    "description": "150",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 356, "y": 402 },
+        { "x": 369, "y": 402 },
+        { "x": 369, "y": 407 },
+        { "x": 356, "y": 407 }
+      ]
+    }
+  },
+  {
+    "description": "160",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 382, "y": 401 },
+        { "x": 394, "y": 401 },
+        { "x": 394, "y": 407 },
+        { "x": 382, "y": 407 }
+      ]
+    }
+  },
+  {
+    "description": "170",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 409, "y": 401 },
+        { "x": 421, "y": 401 },
+        { "x": 421, "y": 407 },
+        { "x": 409, "y": 407 }
+      ]
+    }
+  },
+  {
+    "description": "筋肉",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 495, "y": 390 },
+        { "x": 513, "y": 390 },
+        { "x": 513, "y": 400 },
+        { "x": 495, "y": 400 }
+      ]
+    }
+  },
+  {
+    "description": "型",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 516, "y": 390 },
+        { "x": 525, "y": 390 },
+        { "x": 525, "y": 400 },
+        { "x": 516, "y": 400 }
+      ]
+    }
+  },
+  {
+    "description": "スリム",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 533, "y": 390 },
+        { "x": 556, "y": 390 },
+        { "x": 556, "y": 400 },
+        { "x": 533, "y": 400 }
+      ]
+    }
+  },
+  {
+    "description": "スリム",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 494, "y": 401 },
+        { "x": 515, "y": 401 },
+        { "x": 515, "y": 410 },
+        { "x": 494, "y": 410 }
+      ]
+    }
+  },
+  {
+    "description": "隠れ",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 607, "y": 390 },
+        { "x": 627, "y": 390 },
+        { "x": 627, "y": 399 },
+        { "x": 607, "y": 399 }
+      ]
+    }
+  },
+  {
+    "description": "肥満",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 625, "y": 390 },
+        { "x": 644, "y": 390 },
+        { "x": 644, "y": 399 },
+        { "x": 625, "y": 399 }
+      ]
+    }
+  },
+  {
+    "description": "体",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 63, "y": 427 },
+        { "x": 74, "y": 428 },
+        { "x": 73, "y": 439 },
+        { "x": 62, "y": 438 }
+      ]
+    }
+  },
+  {
+    "description": "脂肪",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 75, "y": 427 },
+        { "x": 95, "y": 428 },
+        { "x": 94, "y": 439 },
+        { "x": 74, "y": 438 }
+      ]
+    }
+  },
+  {
+    "description": "量",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 95, "y": 428 },
+        { "x": 106, "y": 429 },
+        { "x": 105, "y": 440 },
+        { "x": 94, "y": 439 }
+      ]
+    }
+  },
+  {
+    "description": "(",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 120, "y": 430 },
+        { "x": 125, "y": 430 },
+        { "x": 124, "y": 441 },
+        { "x": 119, "y": 441 }
+      ]
+    }
+  },
+  {
+    "description": "kg",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 122, "y": 430 },
+        { "x": 130, "y": 430 },
+        { "x": 129, "y": 441 },
+        { "x": 121, "y": 441 }
+      ]
+    }
+  },
+  {
+    "description": ")",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 131, "y": 431 },
+        { "x": 133, "y": 431 },
+        { "x": 132, "y": 442 },
+        { "x": 130, "y": 442 }
+      ]
+    }
+  },
+  {
+    "description": "40",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 149, "y": 428 },
+        { "x": 161, "y": 428 },
+        { "x": 161, "y": 434 },
+        { "x": 149, "y": 434 }
+      ]
+    }
+  },
+  {
+    "description": "60",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 175, "y": 429 },
+        { "x": 182, "y": 429 },
+        { "x": 182, "y": 434 },
+        { "x": 175, "y": 434 }
+      ]
+    }
+  },
+  {
+    "description": "80",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 201, "y": 427 },
+        { "x": 208, "y": 427 },
+        { "x": 208, "y": 434 },
+        { "x": 201, "y": 434 }
+      ]
+    }
+  },
+  {
+    "description": "100",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 226, "y": 428 },
+        { "x": 238, "y": 428 },
+        { "x": 238, "y": 433 },
+        { "x": 226, "y": 433 }
+      ]
+    }
+  },
+  {
+    "description": "160",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 252, "y": 427 },
+        { "x": 263, "y": 427 },
+        { "x": 263, "y": 433 },
+        { "x": 252, "y": 433 }
+      ]
+    }
+  },
+  {
+    "description": "220",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 278, "y": 428 },
+        { "x": 290, "y": 428 },
+        { "x": 290, "y": 433 },
+        { "x": 278, "y": 433 }
+      ]
+    }
+  },
+  {
+    "description": "280",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 304, "y": 428 },
+        { "x": 316, "y": 428 },
+        { "x": 316, "y": 433 },
+        { "x": 304, "y": 433 }
+      ]
+    }
+  },
+  {
+    "description": "340",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 330, "y": 428 },
+        { "x": 341, "y": 428 },
+        { "x": 341, "y": 433 },
+        { "x": 330, "y": 433 }
+      ]
+    }
+  },
+  {
+    "description": "400",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 356, "y": 429 },
+        { "x": 368, "y": 429 },
+        { "x": 368, "y": 434 },
+        { "x": 356, "y": 434 }
+      ]
+    }
+  },
+  {
+    "description": "460",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 382, "y": 429 },
+        { "x": 394, "y": 429 },
+        { "x": 394, "y": 434 },
+        { "x": 382, "y": 434 }
+      ]
+    }
+  },
+  {
+    "description": "520",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 408, "y": 429 },
+        { "x": 421, "y": 429 },
+        { "x": 421, "y": 433 },
+        { "x": 408, "y": 433 }
+      ]
+    }
+  },
+  {
+    "description": "18.5",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 470, "y": 424 },
+        { "x": 487, "y": 424 },
+        { "x": 487, "y": 432 },
+        { "x": 470, "y": 432 }
+      ]
+    }
+  },
+  {
+    "description": "Body",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 63, "y": 440 },
+        { "x": 76, "y": 440 },
+        { "x": 76, "y": 446 },
+        { "x": 63, "y": 446 }
+      ]
+    }
+  },
+  {
+    "description": "Fat",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 76, "y": 440 },
+        { "x": 85, "y": 440 },
+        { "x": 85, "y": 445 },
+        { "x": 76, "y": 445 }
+      ]
+    }
+  },
+  {
+    "description": "M",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 86, "y": 440 },
+        { "x": 93, "y": 440 },
+        { "x": 93, "y": 445 },
+        { "x": 86, "y": 445 }
+      ]
+    }
+  },
+  {
+    "description": "■",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 279, "y": 437 },
+        { "x": 284, "y": 437 },
+        { "x": 284, "y": 445 },
+        { "x": 279, "y": 445 }
+      ]
+    }
+  },
+  {
+    "description": "21.8",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 285, "y": 437 },
+        { "x": 308, "y": 437 },
+        { "x": 308, "y": 445 },
+        { "x": 285, "y": 445 }
+      ]
+    }
+  },
+  {
+    "description": "|",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 491, "y": 431 },
+        { "x": 494, "y": 431 },
+        { "x": 494, "y": 441 },
+        { "x": 491, "y": 441 }
+      ]
+    }
+  },
+  {
+    "description": "痩せ",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 494, "y": 431 },
+        { "x": 514, "y": 432 },
+        { "x": 514, "y": 442 },
+        { "x": 494, "y": 441 }
+      ]
+    }
+  },
+  {
+    "description": "やや",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 533, "y": 432 },
+        { "x": 551, "y": 432 },
+        { "x": 551, "y": 440 },
+        { "x": 533, "y": 440 }
+      ]
+    }
+  },
+  {
+    "description": "痩せ",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 551, "y": 432 },
+        { "x": 569, "y": 432 },
+        { "x": 569, "y": 440 },
+        { "x": 551, "y": 440 }
+      ]
+    }
+  },
+  {
+    "description": "18.0",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 521, "y": 474 },
+        { "x": 540, "y": 474 },
+        { "x": 540, "y": 481 },
+        { "x": 521, "y": 481 }
+      ]
+    }
+  },
+  {
+    "description": "28.0",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 597, "y": 474 },
+        { "x": 618, "y": 474 },
+        { "x": 618, "y": 481 },
+        { "x": 597, "y": 481 }
+      ]
+    }
+  },
+  {
+    "description": "肥満",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 62, "y": 473 },
+        { "x": 89, "y": 474 },
+        { "x": 88, "y": 490 },
+        { "x": 61, "y": 489 }
+      ]
+    }
+  },
+  {
+    "description": "指標",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 90, "y": 474 },
+        { "x": 119, "y": 475 },
+        { "x": 118, "y": 491 },
+        { "x": 89, "y": 490 }
+      ]
+    }
+  },
+  {
+    "description": "Obesity",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 121, "y": 475 },
+        { "x": 151, "y": 476 },
+        { "x": 150, "y": 492 },
+        { "x": 120, "y": 491 }
+      ]
+    }
+  },
+  {
+    "description": "Index",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 153, "y": 477 },
+        { "x": 174, "y": 478 },
+        { "x": 173, "y": 493 },
+        { "x": 152, "y": 492 }
+      ]
+    }
+  },
+  {
+    "description": "Analysis",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 175, "y": 477 },
+        { "x": 207, "y": 478 },
+        { "x": 206, "y": 494 },
+        { "x": 174, "y": 493 }
+      ]
+    }
+  },
+  {
+    "description": "体",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 590, "y": 484 },
+        { "x": 600, "y": 484 },
+        { "x": 600, "y": 495 },
+        { "x": 590, "y": 495 }
+      ]
+    }
+  },
+  {
+    "description": "脂肪",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 601, "y": 484 },
+        { "x": 623, "y": 484 },
+        { "x": 623, "y": 495 },
+        { "x": 601, "y": 495 }
+      ]
+    }
+  },
+  {
+    "description": "率",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 622, "y": 484 },
+        { "x": 632, "y": 484 },
+        { "x": 632, "y": 495 },
+        { "x": 622, "y": 495 }
+      ]
+    }
+  },
+  {
+    "description": "(",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 634, "y": 484 },
+        { "x": 638, "y": 484 },
+        { "x": 638, "y": 495 },
+        { "x": 634, "y": 495 }
+      ]
+    }
+  },
+  {
+    "description": "%",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 636, "y": 484 },
+        { "x": 640, "y": 484 },
+        { "x": 640, "y": 495 },
+        { "x": 636, "y": 495 }
+      ]
+    }
+  },
+  {
+    "description": ")",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 643, "y": 484 },
+        { "x": 647, "y": 484 },
+        { "x": 647, "y": 495 },
+        { "x": 643, "y": 495 }
+      ]
+    }
+  },
+  {
+    "description": "低",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 166, "y": 495 },
+        { "x": 177, "y": 495 },
+        { "x": 177, "y": 504 },
+        { "x": 166, "y": 504 }
+      ]
+    }
+  },
+  {
+    "description": "標準",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 221, "y": 496 },
+        { "x": 241, "y": 496 },
+        { "x": 241, "y": 503 },
+        { "x": 221, "y": 503 }
+      ]
+    }
+  },
+  {
+    "description": "BMI",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 63, "y": 512 },
+        { "x": 82, "y": 512 },
+        { "x": 82, "y": 519 },
+        { "x": 63, "y": 519 }
+      ]
+    }
+  },
+  {
+    "description": "10.0",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 147, "y": 510 },
+        { "x": 160, "y": 510 },
+        { "x": 160, "y": 516 },
+        { "x": 147, "y": 516 }
+      ]
+    }
+  },
+  {
+    "description": "15.0",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 173, "y": 511 },
+        { "x": 186, "y": 511 },
+        { "x": 186, "y": 517 },
+        { "x": 173, "y": 517 }
+      ]
+    }
+  },
+  {
+    "description": "18.5",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 199, "y": 509 },
+        { "x": 212, "y": 509 },
+        { "x": 212, "y": 517 },
+        { "x": 199, "y": 517 }
+      ]
+    }
+  },
+  {
+    "description": "21.0",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 223, "y": 509 },
+        { "x": 237, "y": 509 },
+        { "x": 237, "y": 516 },
+        { "x": 223, "y": 516 }
+      ]
+    }
+  },
+  {
+    "description": "Body",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 62, "y": 520 },
+        { "x": 78, "y": 519 },
+        { "x": 79, "y": 528 },
+        { "x": 63, "y": 529 }
+      ]
+    }
+  },
+  {
+    "description": "Mass",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 76, "y": 519 },
+        { "x": 90, "y": 518 },
+        { "x": 91, "y": 527 },
+        { "x": 77, "y": 528 }
+      ]
+    }
+  },
+  {
+    "description": "Indes",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 90, "y": 518 },
+        { "x": 105, "y": 517 },
+        { "x": 106, "y": 525 },
+        { "x": 91, "y": 526 }
+      ]
+    }
+  },
+  {
+    "description": "(",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 109, "y": 517 },
+        { "x": 113, "y": 517 },
+        { "x": 114, "y": 525 },
+        { "x": 110, "y": 525 }
+      ]
+    }
+  },
+  {
+    "description": "kgm",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 110, "y": 516 },
+        { "x": 128, "y": 515 },
+        { "x": 129, "y": 524 },
+        { "x": 111, "y": 525 }
+      ]
+    }
+  },
+  {
+    "description": ")",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 128, "y": 515 },
+        { "x": 132, "y": 515 },
+        { "x": 133, "y": 523 },
+        { "x": 129, "y": 523 }
+      ]
+    }
+  },
+  {
+    "description": "25.0",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 249, "y": 509 },
+        { "x": 264, "y": 509 },
+        { "x": 264, "y": 516 },
+        { "x": 249, "y": 516 }
+      ]
+    }
+  },
+  {
+    "description": "124.0",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 254, "y": 519 },
+        { "x": 281, "y": 518 },
+        { "x": 281, "y": 528 },
+        { "x": 254, "y": 529 }
+      ]
+    }
+  },
+  {
+    "description": "30.0",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 277, "y": 511 },
+        { "x": 290, "y": 511 },
+        { "x": 290, "y": 517 },
+        { "x": 277, "y": 517 }
+      ]
+    }
+  },
+  {
+    "description": "35.0",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 303, "y": 511 },
+        { "x": 315, "y": 511 },
+        { "x": 315, "y": 516 },
+        { "x": 303, "y": 516 }
+      ]
+    }
+  },
+  {
+    "description": "40.0",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 329, "y": 511 },
+        { "x": 343, "y": 511 },
+        { "x": 343, "y": 517 },
+        { "x": 329, "y": 517 }
+      ]
+    }
+  },
+  {
+    "description": "45.0",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 355, "y": 511 },
+        { "x": 369, "y": 511 },
+        { "x": 369, "y": 517 },
+        { "x": 355, "y": 517 }
+      ]
+    }
+  },
+  {
+    "description": "50.0",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 382, "y": 510 },
+        { "x": 395, "y": 510 },
+        { "x": 395, "y": 516 },
+        { "x": 382, "y": 516 }
+      ]
+    }
+  },
+  {
+    "description": "55.0",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 408, "y": 511 },
+        { "x": 420, "y": 511 },
+        { "x": 420, "y": 516 },
+        { "x": 408, "y": 516 }
+      ]
+    }
+  },
+  {
+    "description": "体重",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 462, "y": 500 },
+        { "x": 486, "y": 501 },
+        { "x": 485, "y": 514 },
+        { "x": 461, "y": 513 }
+      ]
+    }
+  },
+  {
+    "description": "調節",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 485, "y": 501 },
+        { "x": 509, "y": 502 },
+        { "x": 508, "y": 515 },
+        { "x": 484, "y": 514 }
+      ]
+    }
+  },
+  {
+    "description": "Weige",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 509, "y": 502 },
+        { "x": 528, "y": 503 },
+        { "x": 527, "y": 516 },
+        { "x": 508, "y": 515 }
+      ]
+    }
+  },
+  {
+    "description": "Castod",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 529, "y": 503 },
+        { "x": 549, "y": 504 },
+        { "x": 548, "y": 517 },
+        { "x": 528, "y": 516 }
+      ]
+    }
+  },
+  {
+    "description": "適",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 462, "y": 519 },
+        { "x": 473, "y": 519 },
+        { "x": 473, "y": 529 },
+        { "x": 462, "y": 529 }
+      ]
+    }
+  },
+  {
+    "description": "正",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 474, "y": 519 },
+        { "x": 485, "y": 519 },
+        { "x": 485, "y": 529 },
+        { "x": 474, "y": 529 }
+      ]
+    }
+  },
+  {
+    "description": "体重",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 485, "y": 519 },
+        { "x": 507, "y": 519 },
+        { "x": 507, "y": 529 },
+        { "x": 485, "y": 529 }
+      ]
+    }
+  },
+  {
+    "description": "51.7kg",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 561, "y": 519 },
+        { "x": 596, "y": 520 },
+        { "x": 596, "y": 528 },
+        { "x": 561, "y": 527 }
+      ]
+    }
+  },
+  {
+    "description": "体",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 63, "y": 538 },
+        { "x": 72, "y": 538 },
+        { "x": 72, "y": 547 },
+        { "x": 63, "y": 547 }
+      ]
+    }
+  },
+  {
+    "description": "脂肪",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 74, "y": 537 },
+        { "x": 94, "y": 537 },
+        { "x": 94, "y": 546 },
+        { "x": 74, "y": 546 }
+      ]
+    }
+  },
+  {
+    "description": "率",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 95, "y": 537 },
+        { "x": 104, "y": 537 },
+        { "x": 104, "y": 546 },
+        { "x": 95, "y": 546 }
+      ]
+    }
+  },
+  {
+    "description": "8.0",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 148, "y": 537 },
+        { "x": 156, "y": 537 },
+        { "x": 156, "y": 543 },
+        { "x": 148, "y": 543 }
+      ]
+    }
+  },
+  {
+    "description": "13.0",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 173, "y": 538 },
+        { "x": 185, "y": 538 },
+        { "x": 185, "y": 543 },
+        { "x": 173, "y": 543 }
+      ]
+    }
+  },
+  {
+    "description": "18.0",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 199, "y": 536 },
+        { "x": 213, "y": 536 },
+        { "x": 213, "y": 543 },
+        { "x": 199, "y": 543 }
+      ]
+    }
+  },
+  {
+    "description": "230",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 224, "y": 537 },
+        { "x": 239, "y": 537 },
+        { "x": 239, "y": 543 },
+        { "x": 224, "y": 543 }
+      ]
+    }
+  },
+  {
+    "description": "280",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 251, "y": 535 },
+        { "x": 265, "y": 536 },
+        { "x": 265, "y": 544 },
+        { "x": 251, "y": 543 }
+      ]
+    }
+  },
+  {
+    "description": "330",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 276, "y": 536 },
+        { "x": 291, "y": 537 },
+        { "x": 291, "y": 545 },
+        { "x": 276, "y": 544 }
+      ]
+    }
+  },
+  {
+    "description": "(",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 119, "y": 541 },
+        { "x": 123, "y": 541 },
+        { "x": 123, "y": 548 },
+        { "x": 119, "y": 548 }
+      ]
+    }
+  },
+  {
+    "description": "%",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 121, "y": 540 },
+        { "x": 130, "y": 540 },
+        { "x": 130, "y": 547 },
+        { "x": 121, "y": 547 }
+      ]
+    }
+  },
+  {
+    "description": ")",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 129, "y": 540 },
+        { "x": 132, "y": 540 },
+        { "x": 132, "y": 547 },
+        { "x": 129, "y": 547 }
+      ]
+    }
+  },
+  {
+    "description": "43.0",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 329, "y": 536 },
+        { "x": 343, "y": 536 },
+        { "x": 343, "y": 542 },
+        { "x": 329, "y": 542 }
+      ]
+    }
+  },
+  {
+    "description": "38.0",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 303, "y": 537 },
+        { "x": 317, "y": 537 },
+        { "x": 317, "y": 543 },
+        { "x": 303, "y": 543 }
+      ]
+    }
+  },
+  {
+    "description": "36.9",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 305, "y": 546 },
+        { "x": 328, "y": 545 },
+        { "x": 328, "y": 553 },
+        { "x": 305, "y": 554 }
+      ]
+    }
+  },
+  {
+    "description": "48.0",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 355, "y": 536 },
+        { "x": 369, "y": 536 },
+        { "x": 369, "y": 542 },
+        { "x": 355, "y": 542 }
+      ]
+    }
+  },
+  {
+    "description": "53.0",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 381, "y": 537 },
+        { "x": 394, "y": 537 },
+        { "x": 394, "y": 542 },
+        { "x": 381, "y": 542 }
+      ]
+    }
+  },
+  {
+    "description": "58.0",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 407, "y": 537 },
+        { "x": 421, "y": 538 },
+        { "x": 421, "y": 544 },
+        { "x": 407, "y": 543 }
+      ]
+    }
+  },
+  {
+    "description": "体重",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 462, "y": 534 },
+        { "x": 484, "y": 534 },
+        { "x": 484, "y": 543 },
+        { "x": 462, "y": 543 }
+      ]
+    }
+  },
+  {
+    "description": "調節",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 485, "y": 534 },
+        { "x": 507, "y": 534 },
+        { "x": 507, "y": 543 },
+        { "x": 485, "y": 543 }
+      ]
+    }
+  },
+  {
+    "description": "-7.4kg",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 559, "y": 533 },
+        { "x": 595, "y": 534 },
+        { "x": 595, "y": 542 },
+        { "x": 559, "y": 541 }
+      ]
+    }
+  },
+  {
+    "description": "Paceal",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 63, "y": 549 },
+        { "x": 82, "y": 549 },
+        { "x": 82, "y": 554 },
+        { "x": 63, "y": 554 }
+      ]
+    }
+  },
+  {
+    "description": "Body",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 83, "y": 549 },
+        { "x": 97, "y": 549 },
+        { "x": 97, "y": 554 },
+        { "x": 83, "y": 554 }
+      ]
+    }
+  },
+  {
+    "description": "Fat",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 98, "y": 549 },
+        { "x": 107, "y": 549 },
+        { "x": 107, "y": 554 },
+        { "x": 98, "y": 554 }
+      ]
+    }
+  },
+  {
+    "description": "脂肪",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 463, "y": 548 },
+        { "x": 484, "y": 548 },
+        { "x": 484, "y": 558 },
+        { "x": 463, "y": 558 }
+      ]
+    }
+  },
+  {
+    "description": "調節",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 486, "y": 548 },
+        { "x": 507, "y": 548 },
+        { "x": 507, "y": 558 },
+        { "x": 486, "y": 558 }
+      ]
+    }
+  },
+  {
+    "description": "-9.9",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 560, "y": 548 },
+        { "x": 580, "y": 549 },
+        { "x": 580, "y": 558 },
+        { "x": 560, "y": 557 }
+      ]
+    }
+  },
+  {
+    "description": "kg",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 585, "y": 548 },
+        { "x": 595, "y": 548 },
+        { "x": 595, "y": 557 },
+        { "x": 585, "y": 557 }
+      ]
+    }
+  },
+  {
+    "description": "筋肉",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 463, "y": 561 },
+        { "x": 483, "y": 561 },
+        { "x": 483, "y": 572 },
+        { "x": 463, "y": 572 }
+      ]
+    }
+  },
+  {
+    "description": "調節",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 484, "y": 561 },
+        { "x": 505, "y": 561 },
+        { "x": 505, "y": 571 },
+        { "x": 484, "y": 571 }
+      ]
+    }
+  },
+  {
+    "description": "+",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 557, "y": 562 },
+        { "x": 562, "y": 562 },
+        { "x": 562, "y": 570 },
+        { "x": 557, "y": 570 }
+      ]
+    }
+  },
+  {
+    "description": "2.5kg",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 566, "y": 561 },
+        { "x": 595, "y": 562 },
+        { "x": 595, "y": 571 },
+        { "x": 566, "y": 570 }
+      ]
+    }
+  },
+  {
+    "description": "筋肉",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 217, "y": 569 },
+        { "x": 229, "y": 569 },
+        { "x": 229, "y": 576 },
+        { "x": 217, "y": 576 }
+      ]
+    }
+  },
+  {
+    "description": "量",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 231, "y": 569 },
+        { "x": 237, "y": 569 },
+        { "x": 237, "y": 576 },
+        { "x": 231, "y": 576 }
+      ]
+    }
+  },
+  {
+    "description": "体",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 410, "y": 570 },
+        { "x": 417, "y": 570 },
+        { "x": 417, "y": 577 },
+        { "x": 410, "y": 577 }
+      ]
+    }
+  },
+  {
+    "description": "脂肪",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 417, "y": 569 },
+        { "x": 430, "y": 569 },
+        { "x": 430, "y": 576 },
+        { "x": 417, "y": 576 }
+      ]
+    }
+  },
+  {
+    "description": "量",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 431, "y": 569 },
+        { "x": 437, "y": 569 },
+        { "x": 437, "y": 576 },
+        { "x": 431, "y": 576 }
+      ]
+    }
+  },
+  {
+    "description": "発",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 217, "y": 587 },
+        { "x": 224, "y": 587 },
+        { "x": 224, "y": 593 },
+        { "x": 217, "y": 593 }
+      ]
+    }
+  },
+  {
+    "description": "達",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 223, "y": 586 },
+        { "x": 231, "y": 586 },
+        { "x": 231, "y": 592 },
+        { "x": 223, "y": 592 }
+      ]
+    }
+  },
+  {
+    "description": "率",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 230, "y": 586 },
+        { "x": 238, "y": 586 },
+        { "x": 238, "y": 592 },
+        { "x": 230, "y": 592 }
+      ]
+    }
+  },
+  {
+    "description": "発",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 414, "y": 587 },
+        { "x": 421, "y": 587 },
+        { "x": 421, "y": 593 },
+        { "x": 414, "y": 593 }
+      ]
+    }
+  },
+  {
+    "description": "達",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 420, "y": 587 },
+        { "x": 427, "y": 587 },
+        { "x": 427, "y": 593 },
+        { "x": 420, "y": 593 }
+      ]
+    }
+  },
+  {
+    "description": "率",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 427, "y": 587 },
+        { "x": 435, "y": 587 },
+        { "x": 435, "y": 593 },
+        { "x": 427, "y": 593 }
+      ]
+    }
+  },
+  {
+    "description": "部位",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 61, "y": 590 },
+        { "x": 89, "y": 590 },
+        { "x": 89, "y": 602 },
+        { "x": 61, "y": 602 }
+      ]
+    }
+  },
+  {
+    "description": "別",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 90, "y": 590 },
+        { "x": 103, "y": 590 },
+        { "x": 103, "y": 602 },
+        { "x": 90, "y": 602 }
+      ]
+    }
+  },
+  {
+    "description": "筋肉",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 104, "y": 590 },
+        { "x": 131, "y": 590 },
+        { "x": 131, "y": 602 },
+        { "x": 104, "y": 602 }
+      ]
+    }
+  },
+  {
+    "description": "量",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 132, "y": 590 },
+        { "x": 146, "y": 590 },
+        { "x": 146, "y": 602 },
+        { "x": 132, "y": 602 }
+      ]
+    }
+  },
+  {
+    "description": "Segmental",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 149, "y": 590 },
+        { "x": 186, "y": 590 },
+        { "x": 186, "y": 604 },
+        { "x": 149, "y": 604 }
+      ]
+    }
+  },
+  {
+    "description": "Lean",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 190, "y": 590 },
+        { "x": 208, "y": 590 },
+        { "x": 208, "y": 604 },
+        { "x": 190, "y": 604 }
+      ]
+    }
+  },
+  {
+    "description": "Amailysis",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 210, "y": 590 },
+        { "x": 241, "y": 590 },
+        { "x": 241, "y": 604 },
+        { "x": 210, "y": 604 }
+      ]
+    }
+  },
+  {
+    "description": "部位",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 256, "y": 590 },
+        { "x": 284, "y": 590 },
+        { "x": 284, "y": 604 },
+        { "x": 256, "y": 604 }
+      ]
+    }
+  },
+  {
+    "description": "別",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 284, "y": 590 },
+        { "x": 297, "y": 590 },
+        { "x": 297, "y": 604 },
+        { "x": 284, "y": 604 }
+      ]
+    }
+  },
+  {
+    "description": "体",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 298, "y": 590 },
+        { "x": 312, "y": 590 },
+        { "x": 312, "y": 604 },
+        { "x": 298, "y": 604 }
+      ]
+    }
+  },
+  {
+    "description": "脂肪",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 312, "y": 590 },
+        { "x": 340, "y": 590 },
+        { "x": 340, "y": 604 },
+        { "x": 312, "y": 604 }
+      ]
+    }
+  },
+  {
+    "description": "量",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 340, "y": 590 },
+        { "x": 354, "y": 590 },
+        { "x": 354, "y": 604 },
+        { "x": 340, "y": 604 }
+      ]
+    }
+  },
+  {
+    "description": "Segmental",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 356, "y": 590 },
+        { "x": 394, "y": 590 },
+        { "x": 394, "y": 604 },
+        { "x": 356, "y": 604 }
+      ]
+    }
+  },
+  {
+    "description": "Fat",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 396, "y": 590 },
+        { "x": 406, "y": 590 },
+        { "x": 406, "y": 604 },
+        { "x": 396, "y": 604 }
+      ]
+    }
+  },
+  {
+    "description": "Analysis",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 409, "y": 590 },
+        { "x": 441, "y": 590 },
+        { "x": 441, "y": 604 },
+        { "x": 409, "y": 604 }
+      ]
+    }
+  },
+  {
+    "description": "栄養",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 462, "y": 579 },
+        { "x": 487, "y": 580 },
+        { "x": 486, "y": 593 },
+        { "x": 461, "y": 592 }
+      ]
+    }
+  },
+  {
+    "description": "評価",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 488, "y": 581 },
+        { "x": 512, "y": 582 },
+        { "x": 511, "y": 594 },
+        { "x": 487, "y": 593 }
+      ]
+    }
+  },
+  {
+    "description": "Nation",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 510, "y": 581 },
+        { "x": 566, "y": 583 },
+        { "x": 565, "y": 596 },
+        { "x": 509, "y": 594 }
+      ]
+    }
+  },
+  {
+    "description": "1.94kg",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 84, "y": 631 },
+        { "x": 118, "y": 632 },
+        { "x": 118, "y": 643 },
+        { "x": 84, "y": 642 }
+      ]
+    }
+  },
+  {
+    "description": "2.02kg",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 184, "y": 631 },
+        { "x": 222, "y": 634 },
+        { "x": 221, "y": 644 },
+        { "x": 183, "y": 641 }
+      ]
+    }
+  },
+  {
+    "description": "1.6kg",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 283, "y": 632 },
+        { "x": 315, "y": 635 },
+        { "x": 314, "y": 644 },
+        { "x": 282, "y": 641 }
+      ]
+    }
+  },
+  {
+    "description": "98.1",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 84, "y": 648 },
+        { "x": 104, "y": 648 },
+        { "x": 104, "y": 657 },
+        { "x": 84, "y": 657 }
+      ]
+    }
+  },
+  {
+    "description": "%",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 108, "y": 648 },
+        { "x": 117, "y": 648 },
+        { "x": 117, "y": 657 },
+        { "x": 108, "y": 657 }
+      ]
+    }
+  },
+  {
+    "description": "102.2",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 182, "y": 648 },
+        { "x": 208, "y": 649 },
+        { "x": 208, "y": 658 },
+        { "x": 182, "y": 657 }
+      ]
+    }
+  },
+  {
+    "description": "%",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 212, "y": 649 },
+        { "x": 223, "y": 649 },
+        { "x": 223, "y": 657 },
+        { "x": 212, "y": 657 }
+      ]
+    }
+  },
+  {
+    "description": "183.0",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 279, "y": 650 },
+        { "x": 305, "y": 650 },
+        { "x": 305, "y": 658 },
+        { "x": 279, "y": 658 }
+      ]
+    }
+  },
+  {
+    "description": "%",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 309, "y": 650 },
+        { "x": 320, "y": 650 },
+        { "x": 320, "y": 658 },
+        { "x": 309, "y": 658 }
+      ]
+    }
+  },
+  {
+    "description": "左",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 63, "y": 697 },
+        { "x": 74, "y": 697 },
+        { "x": 74, "y": 705 },
+        { "x": 63, "y": 705 }
+      ]
+    }
+  },
+  {
+    "description": "標準",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 89, "y": 662 },
+        { "x": 110, "y": 662 },
+        { "x": 110, "y": 672 },
+        { "x": 89, "y": 672 }
+      ]
+    }
+  },
+  {
+    "description": "5.02kg",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 83, "y": 727 },
+        { "x": 119, "y": 728 },
+        { "x": 119, "y": 737 },
+        { "x": 83, "y": 736 }
+      ]
+    }
+  },
+  {
+    "description": "80.6",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 83, "y": 744 },
+        { "x": 104, "y": 744 },
+        { "x": 104, "y": 751 },
+        { "x": 83, "y": 751 }
+      ]
+    }
+  },
+  {
+    "description": "%",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 107, "y": 744 },
+        { "x": 118, "y": 744 },
+        { "x": 118, "y": 751 },
+        { "x": 107, "y": 751 }
+      ]
+    }
+  },
+  {
+    "description": "17.7kg",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 135, "y": 671 },
+        { "x": 168, "y": 673 },
+        { "x": 167, "y": 683 },
+        { "x": 135, "y": 681 }
+      ]
+    }
+  },
+  {
+    "description": "95.4",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 134, "y": 688 },
+        { "x": 156, "y": 689 },
+        { "x": 156, "y": 698 },
+        { "x": 134, "y": 697 }
+      ]
+    }
+  },
+  {
+    "description": "%",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 158, "y": 688 },
+        { "x": 169, "y": 688 },
+        { "x": 169, "y": 697 },
+        { "x": 158, "y": 697 }
+      ]
+    }
+  },
+  {
+    "description": "標準",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 139, "y": 703 },
+        { "x": 160, "y": 704 },
+        { "x": 160, "y": 712 },
+        { "x": 139, "y": 711 }
+      ]
+    }
+  },
+  {
+    "description": "標準",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 190, "y": 662 },
+        { "x": 210, "y": 662 },
+        { "x": 210, "y": 671 },
+        { "x": 190, "y": 671 }
+      ]
+    }
+  },
+  {
+    "description": "高",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 291, "y": 662 },
+        { "x": 303, "y": 662 },
+        { "x": 303, "y": 672 },
+        { "x": 291, "y": 672 }
+      ]
+    }
+  },
+  {
+    "description": "1.5kg",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 385, "y": 632 },
+        { "x": 414, "y": 634 },
+        { "x": 413, "y": 642 },
+        { "x": 384, "y": 640 }
+      ]
+    }
+  },
+  {
+    "description": "_178.0",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 376, "y": 650 },
+        { "x": 407, "y": 650 },
+        { "x": 407, "y": 658 },
+        { "x": 376, "y": 658 }
+      ]
+    }
+  },
+  {
+    "description": "%",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 410, "y": 650 },
+        { "x": 420, "y": 650 },
+        { "x": 420, "y": 658 },
+        { "x": 410, "y": 658 }
+      ]
+    }
+  },
+  {
+    "description": "高",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 393, "y": 663 },
+        { "x": 404, "y": 663 },
+        { "x": 404, "y": 673 },
+        { "x": 393, "y": 673 }
+      ]
+    }
+  },
+  {
+    "description": "11.7kg",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 332, "y": 671 },
+        { "x": 365, "y": 673 },
+        { "x": 364, "y": 683 },
+        { "x": 331, "y": 681 }
+      ]
+    }
+  },
+  {
+    "description": "240.0",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 327, "y": 688 },
+        { "x": 359, "y": 688 },
+        { "x": 359, "y": 697 },
+        { "x": 327, "y": 697 }
+      ]
+    }
+  },
+  {
+    "description": "%",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 360, "y": 688 },
+        { "x": 370, "y": 688 },
+        { "x": 370, "y": 697 },
+        { "x": 360, "y": 697 }
+      ]
+    }
+  },
+  {
+    "description": "右",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 224, "y": 696 },
+        { "x": 235, "y": 696 },
+        { "x": 235, "y": 705 },
+        { "x": 224, "y": 705 }
+      ]
+    }
+  },
+  {
+    "description": "左",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 261, "y": 697 },
+        { "x": 271, "y": 697 },
+        { "x": 271, "y": 705 },
+        { "x": 261, "y": 705 }
+      ]
+    }
+  },
+  {
+    "description": "右",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 422, "y": 696 },
+        { "x": 433, "y": 696 },
+        { "x": 433, "y": 705 },
+        { "x": 422, "y": 705 }
+      ]
+    }
+  },
+  {
+    "description": "高",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 342, "y": 704 },
+        { "x": 353, "y": 704 },
+        { "x": 353, "y": 713 },
+        { "x": 342, "y": 713 }
+      ]
+    }
+  },
+  {
+    "description": "5.20kg",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 184, "y": 727 },
+        { "x": 221, "y": 729 },
+        { "x": 221, "y": 737 },
+        { "x": 184, "y": 735 }
+      ]
+    }
+  },
+  {
+    "description": "83.6",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 184, "y": 743 },
+        { "x": 205, "y": 743 },
+        { "x": 205, "y": 751 },
+        { "x": 184, "y": 751 }
+      ]
+    }
+  },
+  {
+    "description": "%",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 208, "y": 743 },
+        { "x": 219, "y": 743 },
+        { "x": 219, "y": 751 },
+        { "x": 208, "y": 751 }
+      ]
+    }
+  },
+  {
+    "description": "2.9kg",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 283, "y": 726 },
+        { "x": 314, "y": 729 },
+        { "x": 313, "y": 738 },
+        { "x": 282, "y": 735 }
+      ]
+    }
+  },
+  {
+    "description": "132.0",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 279, "y": 745 },
+        { "x": 305, "y": 745 },
+        { "x": 305, "y": 752 },
+        { "x": 279, "y": 752 }
+      ]
+    }
+  },
+  {
+    "description": "%",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 309, "y": 745 },
+        { "x": 320, "y": 745 },
+        { "x": 320, "y": 752 },
+        { "x": 309, "y": 752 }
+      ]
+    }
+  },
+  {
+    "description": "低",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 94, "y": 758 },
+        { "x": 107, "y": 758 },
+        { "x": 107, "y": 767 },
+        { "x": 94, "y": 767 }
+      ]
+    }
+  },
+  {
+    "description": "低",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 195, "y": 758 },
+        { "x": 207, "y": 758 },
+        { "x": 207, "y": 767 },
+        { "x": 195, "y": 767 }
+      ]
+    }
+  },
+  {
+    "description": "標準",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 286, "y": 758 },
+        { "x": 307, "y": 758 },
+        { "x": 307, "y": 766 },
+        { "x": 286, "y": 766 }
+      ]
+    }
+  },
+  {
+    "description": "2.9kg",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 384, "y": 726 },
+        { "x": 415, "y": 729 },
+        { "x": 414, "y": 738 },
+        { "x": 383, "y": 736 }
+      ]
+    }
+  },
+  {
+    "description": "132.0",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 379, "y": 745 },
+        { "x": 407, "y": 746 },
+        { "x": 407, "y": 754 },
+        { "x": 379, "y": 753 }
+      ]
+    }
+  },
+  {
+    "description": "%",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 410, "y": 745 },
+        { "x": 421, "y": 745 },
+        { "x": 421, "y": 753 },
+        { "x": 410, "y": 753 }
+      ]
+    }
+  },
+  {
+    "description": "標準",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 388, "y": 758 },
+        { "x": 409, "y": 758 },
+        { "x": 409, "y": 767 },
+        { "x": 388, "y": 767 }
+      ]
+    }
+  },
+  {
+    "description": "タンパク",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 462, "y": 599 },
+        { "x": 489, "y": 599 },
+        { "x": 489, "y": 610 },
+        { "x": 462, "y": 610 }
+      ]
+    }
+  },
+  {
+    "description": "質量",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 489, "y": 599 },
+        { "x": 507, "y": 599 },
+        { "x": 507, "y": 609 },
+        { "x": 489, "y": 609 }
+      ]
+    }
+  },
+  {
+    "description": "良好",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 523, "y": 599 },
+        { "x": 541, "y": 599 },
+        { "x": 541, "y": 609 },
+        { "x": 523, "y": 609 }
+      ]
+    }
+  },
+  {
+    "description": "□",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 555, "y": 598 },
+        { "x": 562, "y": 598 },
+        { "x": 562, "y": 608 },
+        { "x": 555, "y": 608 }
+      ]
+    }
+  },
+  {
+    "description": "不足",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 564, "y": 598 },
+        { "x": 582, "y": 598 },
+        { "x": 582, "y": 608 },
+        { "x": 564, "y": 608 }
+      ]
+    }
+  },
+  {
+    "description": "ミネラル",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 462, "y": 616 },
+        { "x": 496, "y": 616 },
+        { "x": 496, "y": 628 },
+        { "x": 462, "y": 628 }
+      ]
+    }
+  },
+  {
+    "description": "量",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 496, "y": 616 },
+        { "x": 507, "y": 616 },
+        { "x": 507, "y": 627 },
+        { "x": 496, "y": 627 }
+      ]
+    }
+  },
+  {
+    "description": "良好",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 524, "y": 616 },
+        { "x": 542, "y": 616 },
+        { "x": 542, "y": 627 },
+        { "x": 524, "y": 627 }
+      ]
+    }
+  },
+  {
+    "description": "不足",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 564, "y": 615 },
+        { "x": 582, "y": 615 },
+        { "x": 582, "y": 626 },
+        { "x": 564, "y": 626 }
+      ]
+    }
+  },
+  {
+    "description": "体",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 462, "y": 634 },
+        { "x": 473, "y": 634 },
+        { "x": 473, "y": 645 },
+        { "x": 462, "y": 645 }
+      ]
+    }
+  },
+  {
+    "description": "脂肪",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 473, "y": 633 },
+        { "x": 496, "y": 633 },
+        { "x": 496, "y": 644 },
+        { "x": 473, "y": 644 }
+      ]
+    }
+  },
+  {
+    "description": "量",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 496, "y": 633 },
+        { "x": 507, "y": 633 },
+        { "x": 507, "y": 644 },
+        { "x": 496, "y": 644 }
+      ]
+    }
+  },
+  {
+    "description": "□",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 513, "y": 633 },
+        { "x": 519, "y": 633 },
+        { "x": 519, "y": 644 },
+        { "x": 513, "y": 644 }
+      ]
+    }
+  },
+  {
+    "description": "良好",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 523, "y": 633 },
+        { "x": 542, "y": 633 },
+        { "x": 542, "y": 644 },
+        { "x": 523, "y": 644 }
+      ]
+    }
+  },
+  {
+    "description": "不足",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 564, "y": 633 },
+        { "x": 582, "y": 633 },
+        { "x": 582, "y": 644 },
+        { "x": 564, "y": 644 }
+      ]
+    }
+  },
+  {
+    "description": "筋肉",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 463, "y": 652 },
+        { "x": 486, "y": 653 },
+        { "x": 485, "y": 666 },
+        { "x": 462, "y": 665 }
+      ]
+    }
+  },
+  {
+    "description": "均衡",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 488, "y": 654 },
+        { "x": 510, "y": 655 },
+        { "x": 509, "y": 667 },
+        { "x": 487, "y": 666 }
+      ]
+    }
+  },
+  {
+    "description": "Leon",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 510, "y": 655 },
+        { "x": 528, "y": 656 },
+        { "x": 527, "y": 668 },
+        { "x": 509, "y": 667 }
+      ]
+    }
+  },
+  {
+    "description": "Balance-",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 527, "y": 656 },
+        { "x": 551, "y": 657 },
+        { "x": 550, "y": 669 },
+        { "x": 526, "y": 668 }
+      ]
+    }
+  },
+  {
+    "description": "上半身",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 462, "y": 674 },
+        { "x": 489, "y": 674 },
+        { "x": 489, "y": 684 },
+        { "x": 462, "y": 684 }
+      ]
+    }
+  },
+  {
+    "description": "均衡",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 491, "y": 674 },
+        { "x": 508, "y": 674 },
+        { "x": 508, "y": 684 },
+        { "x": 491, "y": 684 }
+      ]
+    }
+  },
+  {
+    "description": "均衡",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 523, "y": 674 },
+        { "x": 541, "y": 674 },
+        { "x": 541, "y": 684 },
+        { "x": 523, "y": 684 }
+      ]
+    }
+  },
+  {
+    "description": "下半身",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 463, "y": 691 },
+        { "x": 490, "y": 691 },
+        { "x": 490, "y": 702 },
+        { "x": 463, "y": 702 }
+      ]
+    }
+  },
+  {
+    "description": "均衡",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 490, "y": 691 },
+        { "x": 509, "y": 691 },
+        { "x": 509, "y": 702 },
+        { "x": 490, "y": 702 }
+      ]
+    }
+  },
+  {
+    "description": "均衡",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 523, "y": 691 },
+        { "x": 542, "y": 691 },
+        { "x": 542, "y": 702 },
+        { "x": 523, "y": 702 }
+      ]
+    }
+  },
+  {
+    "description": "上下",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 462, "y": 709 },
+        { "x": 484, "y": 709 },
+        { "x": 484, "y": 718 },
+        { "x": 462, "y": 718 }
+      ]
+    }
+  },
+  {
+    "description": "均衡",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 487, "y": 709 },
+        { "x": 509, "y": 709 },
+        { "x": 509, "y": 718 },
+        { "x": 487, "y": 718 }
+      ]
+    }
+  },
+  {
+    "description": "均衡",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 523, "y": 709 },
+        { "x": 542, "y": 709 },
+        { "x": 542, "y": 718 },
+        { "x": 523, "y": 718 }
+      ]
+    }
+  },
+  {
+    "description": "内臓",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 463, "y": 727 },
+        { "x": 486, "y": 728 },
+        { "x": 486, "y": 739 },
+        { "x": 463, "y": 738 }
+      ]
+    }
+  },
+  {
+    "description": "脂肪",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 488, "y": 727 },
+        { "x": 512, "y": 728 },
+        { "x": 512, "y": 739 },
+        { "x": 488, "y": 738 }
+      ]
+    }
+  },
+  {
+    "description": "レベル",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 510, "y": 727 },
+        { "x": 544, "y": 728 },
+        { "x": 544, "y": 740 },
+        { "x": 510, "y": 739 }
+      ]
+    }
+  },
+  {
+    "description": "Vesceral",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 546, "y": 729 },
+        { "x": 570, "y": 730 },
+        { "x": 570, "y": 741 },
+        { "x": 546, "y": 740 }
+      ]
+    }
+  },
+  {
+    "description": "Fat",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 569, "y": 729 },
+        { "x": 583, "y": 729 },
+        { "x": 583, "y": 740 },
+        { "x": 569, "y": 740 }
+      ]
+    }
+  },
+  {
+    "description": "Leved",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 574, "y": 729 },
+        { "x": 593, "y": 729 },
+        { "x": 593, "y": 741 },
+        { "x": 574, "y": 741 }
+      ]
+    }
+  },
+  {
+    "description": ".",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 596, "y": 730 },
+        { "x": 597, "y": 730 },
+        { "x": 597, "y": 741 },
+        { "x": 596, "y": 741 }
+      ]
+    }
+  },
+  {
+    "description": "過多",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 616, "y": 634 },
+        { "x": 635, "y": 634 },
+        { "x": 635, "y": 643 },
+        { "x": 616, "y": 643 }
+      ]
+    }
+  },
+  {
+    "description": "口",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 556, "y": 674 },
+        { "x": 563, "y": 674 },
+        { "x": 563, "y": 684 },
+        { "x": 556, "y": 684 }
+      ]
+    }
+  },
+  {
+    "description": "やや",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 564, "y": 673 },
+        { "x": 578, "y": 673 },
+        { "x": 578, "y": 683 },
+        { "x": 564, "y": 683 }
+      ]
+    }
+  },
+  {
+    "description": "不均衡",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 579, "y": 673 },
+        { "x": 605, "y": 673 },
+        { "x": 605, "y": 683 },
+        { "x": 579, "y": 683 }
+      ]
+    }
+  },
+  {
+    "description": "不均衡",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 616, "y": 673 },
+        { "x": 644, "y": 673 },
+        { "x": 644, "y": 683 },
+        { "x": 616, "y": 683 }
+      ]
+    }
+  },
+  {
+    "description": "やや",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 565, "y": 691 },
+        { "x": 580, "y": 691 },
+        { "x": 580, "y": 702 },
+        { "x": 565, "y": 702 }
+      ]
+    }
+  },
+  {
+    "description": "不均衡",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 580, "y": 691 },
+        { "x": 606, "y": 691 },
+        { "x": 606, "y": 702 },
+        { "x": 580, "y": 702 }
+      ]
+    }
+  },
+  {
+    "description": "不均衡",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 617, "y": 691 },
+        { "x": 644, "y": 691 },
+        { "x": 644, "y": 702 },
+        { "x": 617, "y": 702 }
+      ]
+    }
+  },
+  {
+    "description": "やや",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 565, "y": 709 },
+        { "x": 580, "y": 709 },
+        { "x": 580, "y": 718 },
+        { "x": 565, "y": 718 }
+      ]
+    }
+  },
+  {
+    "description": "不均衡",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 580, "y": 709 },
+        { "x": 607, "y": 709 },
+        { "x": 607, "y": 718 },
+        { "x": 580, "y": 718 }
+      ]
+    }
+  },
+  {
+    "description": "不均衡",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 617, "y": 709 },
+        { "x": 644, "y": 709 },
+        { "x": 644, "y": 718 },
+        { "x": 617, "y": 718 }
+      ]
+    }
+  },
+  {
+    "description": "10",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 601, "y": 743 },
+        { "x": 610, "y": 743 },
+        { "x": 610, "y": 748 },
+        { "x": 601, "y": 748 }
+      ]
+    }
+  },
+  {
+    "description": "12",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 492, "y": 751 },
+        { "x": 503, "y": 751 },
+        { "x": 503, "y": 757 },
+        { "x": 492, "y": 757 }
+      ]
+    }
+  },
+  {
+    "description": "骨",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 462, "y": 790 },
+        { "x": 472, "y": 790 },
+        { "x": 472, "y": 800 },
+        { "x": 462, "y": 800 }
+      ]
+    }
+  },
+  {
+    "description": "格",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 473, "y": 790 },
+        { "x": 484, "y": 790 },
+        { "x": 484, "y": 800 },
+        { "x": 473, "y": 800 }
+      ]
+    }
+  },
+  {
+    "description": "筋",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 484, "y": 790 },
+        { "x": 494, "y": 790 },
+        { "x": 494, "y": 800 },
+        { "x": 484, "y": 800 }
+      ]
+    }
+  },
+  {
+    "description": "量",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 495, "y": 790 },
+        { "x": 505, "y": 790 },
+        { "x": 505, "y": 800 },
+        { "x": 495, "y": 800 }
+      ]
+    }
+  },
+  {
+    "description": "基礎",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 462, "y": 805 },
+        { "x": 484, "y": 805 },
+        { "x": 484, "y": 814 },
+        { "x": 462, "y": 814 }
+      ]
+    }
+  },
+  {
+    "description": "代謝",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 485, "y": 805 },
+        { "x": 505, "y": 805 },
+        { "x": 505, "y": 814 },
+        { "x": 485, "y": 814 }
+      ]
+    }
+  },
+  {
+    "description": "量",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 506, "y": 805 },
+        { "x": 516, "y": 805 },
+        { "x": 516, "y": 814 },
+        { "x": 506, "y": 814 }
+      ]
+    }
+  },
+  {
+    "description": "体",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 61, "y": 818 },
+        { "x": 75, "y": 818 },
+        { "x": 74, "y": 833 },
+        { "x": 61, "y": 833 }
+      ]
+    }
+  },
+  {
+    "description": "成分",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 76, "y": 818 },
+        { "x": 104, "y": 819 },
+        { "x": 103, "y": 834 },
+        { "x": 76, "y": 833 }
+      ]
+    }
+  },
+  {
+    "description": "履歴",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 104, "y": 819 },
+        { "x": 132, "y": 820 },
+        { "x": 131, "y": 835 },
+        { "x": 104, "y": 834 }
+      ]
+    }
+  },
+  {
+    "description": "Body",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 136, "y": 820 },
+        { "x": 157, "y": 821 },
+        { "x": 156, "y": 836 },
+        { "x": 136, "y": 835 }
+      ]
+    }
+  },
+  {
+    "description": "Composition",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 159, "y": 820 },
+        { "x": 206, "y": 822 },
+        { "x": 205, "y": 838 },
+        { "x": 158, "y": 836 }
+      ]
+    }
+  },
+  {
+    "description": "History",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 208, "y": 822 },
+        { "x": 237, "y": 823 },
+        { "x": 236, "y": 839 },
+        { "x": 207, "y": 838 }
+      ]
+    }
+  },
+  {
+    "description": "腹",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 462, "y": 819 },
+        { "x": 472, "y": 819 },
+        { "x": 472, "y": 829 },
+        { "x": 462, "y": 829 }
+      ]
+    }
+  },
+  {
+    "description": "囲",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 473, "y": 818 },
+        { "x": 484, "y": 818 },
+        { "x": 484, "y": 828 },
+        { "x": 473, "y": 828 }
+      ]
+    }
+  },
+  {
+    "description": "骨",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 462, "y": 833 },
+        { "x": 473, "y": 833 },
+        { "x": 473, "y": 843 },
+        { "x": 462, "y": 843 }
+      ]
+    }
+  },
+  {
+    "description": "ミネラル",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 474, "y": 833 },
+        { "x": 504, "y": 833 },
+        { "x": 504, "y": 843 },
+        { "x": 474, "y": 843 }
+      ]
+    }
+  },
+  {
+    "description": "量",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 504, "y": 833 },
+        { "x": 515, "y": 833 },
+        { "x": 515, "y": 843 },
+        { "x": 504, "y": 843 }
+      ]
+    }
+  },
+  {
+    "description": "研究",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 462, "y": 772 },
+        { "x": 486, "y": 773 },
+        { "x": 485, "y": 785 },
+        { "x": 462, "y": 784 }
+      ]
+    }
+  },
+  {
+    "description": "項目",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 485, "y": 773 },
+        { "x": 510, "y": 774 },
+        { "x": 509, "y": 786 },
+        { "x": 485, "y": 785 }
+      ]
+    }
+  },
+  {
+    "description": "nentes-",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 542, "y": 775 },
+        { "x": 570, "y": 776 },
+        { "x": 569, "y": 788 },
+        { "x": 542, "y": 787 }
+      ]
+    }
+  },
+  {
+    "description": "19.6kg",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 562, "y": 790 },
+        { "x": 595, "y": 791 },
+        { "x": 595, "y": 802 },
+        { "x": 562, "y": 801 }
+      ]
+    }
+  },
+  {
+    "description": "(",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 606, "y": 791 },
+        { "x": 611, "y": 791 },
+        { "x": 611, "y": 801 },
+        { "x": 606, "y": 801 }
+      ]
+    }
+  },
+  {
+    "description": "19.5",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 611, "y": 791 },
+        { "x": 627, "y": 791 },
+        { "x": 627, "y": 802 },
+        { "x": 611, "y": 802 }
+      ]
+    }
+  },
+  {
+    "description": "~",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 628, "y": 792 },
+        { "x": 634, "y": 792 },
+        { "x": 634, "y": 802 },
+        { "x": 628, "y": 802 }
+      ]
+    }
+  },
+  {
+    "description": "23.9",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 635, "y": 792 },
+        { "x": 650, "y": 792 },
+        { "x": 650, "y": 802 },
+        { "x": 635, "y": 802 }
+      ]
+    }
+  },
+  {
+    "description": ")",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 650, "y": 792 },
+        { "x": 654, "y": 792 },
+        { "x": 654, "y": 802 },
+        { "x": 650, "y": 802 }
+      ]
+    }
+  },
+  {
+    "description": "1176",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 560, "y": 804 },
+        { "x": 582, "y": 805 },
+        { "x": 582, "y": 814 },
+        { "x": 560, "y": 813 }
+      ]
+    }
+  },
+  {
+    "description": "kcal",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 585, "y": 805 },
+        { "x": 604, "y": 806 },
+        { "x": 604, "y": 815 },
+        { "x": 585, "y": 814 }
+      ]
+    }
+  },
+  {
+    "description": "91cm",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 570, "y": 818 },
+        { "x": 595, "y": 821 },
+        { "x": 594, "y": 831 },
+        { "x": 569, "y": 828 }
+      ]
+    }
+  },
+  {
+    "description": "2.18kg",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 562, "y": 833 },
+        { "x": 594, "y": 833 },
+        { "x": 594, "y": 842 },
+        { "x": 562, "y": 842 }
+      ]
+    }
+  },
+  {
+    "description": "(",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 607, "y": 833 },
+        { "x": 611, "y": 833 },
+        { "x": 611, "y": 842 },
+        { "x": 607, "y": 842 }
+      ]
+    }
+  },
+  {
+    "description": "2.01",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 610, "y": 833 },
+        { "x": 625, "y": 833 },
+        { "x": 625, "y": 842 },
+        { "x": 610, "y": 842 }
+      ]
+    }
+  },
+  {
+    "description": "~",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 627, "y": 833 },
+        { "x": 634, "y": 833 },
+        { "x": 634, "y": 842 },
+        { "x": 627, "y": 842 }
+      ]
+    }
+  },
+  {
+    "description": "2.45",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 634, "y": 834 },
+        { "x": 650, "y": 834 },
+        { "x": 650, "y": 843 },
+        { "x": 634, "y": 843 }
+      ]
+    }
+  },
+  {
+    "description": ")",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 650, "y": 834 },
+        { "x": 655, "y": 834 },
+        { "x": 655, "y": 843 },
+        { "x": 650, "y": 843 }
+      ]
+    }
+  },
+  {
+    "description": "体重",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 63, "y": 845 },
+        { "x": 83, "y": 846 },
+        { "x": 83, "y": 855 },
+        { "x": 63, "y": 854 }
+      ]
+    }
+  },
+  {
+    "description": "65.3",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 147, "y": 836 },
+        { "x": 170, "y": 838 },
+        { "x": 169, "y": 849 },
+        { "x": 146, "y": 847 }
+      ]
+    }
+  },
+  {
+    "description": "63.9",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 184, "y": 839 },
+        { "x": 209, "y": 841 },
+        { "x": 208, "y": 852 },
+        { "x": 183, "y": 850 }
+      ]
+    }
+  },
+  {
+    "description": "62.4",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 221, "y": 838 },
+        { "x": 246, "y": 840 },
+        { "x": 245, "y": 851 },
+        { "x": 220, "y": 849 }
+      ]
+    }
+  },
+  {
+    "description": "61.8",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 255, "y": 841 },
+        { "x": 282, "y": 843 },
+        { "x": 281, "y": 854 },
+        { "x": 254, "y": 852 }
+      ]
+    }
+  },
+  {
+    "description": "62.3",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 294, "y": 842 },
+        { "x": 318, "y": 842 },
+        { "x": 318, "y": 849 },
+        { "x": 294, "y": 849 }
+      ]
+    }
+  },
+  {
+    "description": "60.9",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 332, "y": 844 },
+        { "x": 354, "y": 844 },
+        { "x": 354, "y": 852 },
+        { "x": 332, "y": 852 }
+      ]
+    }
+  },
+  {
+    "description": "60.5",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 369, "y": 844 },
+        { "x": 392, "y": 844 },
+        { "x": 392, "y": 852 },
+        { "x": 369, "y": 852 }
+      ]
+    }
+  },
+  {
+    "description": "(",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 119, "y": 850 },
+        { "x": 122, "y": 850 },
+        { "x": 122, "y": 857 },
+        { "x": 119, "y": 857 }
+      ]
+    }
+  },
+  {
+    "description": "kg",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 121, "y": 850 },
+        { "x": 130, "y": 850 },
+        { "x": 130, "y": 857 },
+        { "x": 121, "y": 857 }
+      ]
+    }
+  },
+  {
+    "description": ")",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 129, "y": 850 },
+        { "x": 132, "y": 850 },
+        { "x": 132, "y": 857 },
+        { "x": 129, "y": 857 }
+      ]
+    }
+  },
+  {
+    "description": "59.1",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 406, "y": 851 },
+        { "x": 428, "y": 851 },
+        { "x": 428, "y": 859 },
+        { "x": 406, "y": 859 }
+      ]
+    }
+  },
+  {
+    "description": "骨格",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 463, "y": 847 },
+        { "x": 483, "y": 847 },
+        { "x": 483, "y": 857 },
+        { "x": 463, "y": 857 }
+      ]
+    }
+  },
+  {
+    "description": "筋",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 482, "y": 847 },
+        { "x": 493, "y": 847 },
+        { "x": 493, "y": 857 },
+        { "x": 482, "y": 857 }
+      ]
+    }
+  },
+  {
+    "description": "指数",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 494, "y": 847 },
+        { "x": 516, "y": 847 },
+        { "x": 516, "y": 857 },
+        { "x": 494, "y": 857 }
+      ]
+    }
+  },
+  {
+    "description": "(",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 515, "y": 847 },
+        { "x": 520, "y": 847 },
+        { "x": 520, "y": 857 },
+        { "x": 515, "y": 857 }
+      ]
+    }
+  },
+  {
+    "description": "SMI",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 520, "y": 847 },
+        { "x": 538, "y": 847 },
+        { "x": 538, "y": 857 },
+        { "x": 520, "y": 857 }
+      ]
+    }
+  },
+  {
+    "description": ")",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 537, "y": 847 },
+        { "x": 540, "y": 847 },
+        { "x": 540, "y": 857 },
+        { "x": 537, "y": 857 }
+      ]
+    }
+  },
+  {
+    "description": "5.8",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 567, "y": 846 },
+        { "x": 583, "y": 847 },
+        { "x": 582, "y": 857 },
+        { "x": 566, "y": 856 }
+      ]
+    }
+  },
+  {
+    "description": "kglim",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 585, "y": 848 },
+        { "x": 599, "y": 849 },
+        { "x": 598, "y": 858 },
+        { "x": 584, "y": 857 }
+      ]
+    }
+  },
+  {
+    "description": "Weigh",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 63, "y": 857 },
+        { "x": 79, "y": 857 },
+        { "x": 79, "y": 863 },
+        { "x": 63, "y": 863 }
+      ]
+    }
+  },
+  {
+    "description": "35.6",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 147, "y": 866 },
+        { "x": 170, "y": 867 },
+        { "x": 169, "y": 877 },
+        { "x": 146, "y": 876 }
+      ]
+    }
+  },
+  {
+    "description": "35.5",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 184, "y": 868 },
+        { "x": 207, "y": 869 },
+        { "x": 206, "y": 879 },
+        { "x": 183, "y": 878 }
+      ]
+    }
+  },
+  {
+    "description": "筋肉",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 63, "y": 876 },
+        { "x": 82, "y": 876 },
+        { "x": 82, "y": 885 },
+        { "x": 63, "y": 885 }
+      ]
+    }
+  },
+  {
+    "description": "量",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 84, "y": 876 },
+        { "x": 94, "y": 876 },
+        { "x": 94, "y": 885 },
+        { "x": 84, "y": 885 }
+      ]
+    }
+  },
+  {
+    "description": "(",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 118, "y": 881 },
+        { "x": 121, "y": 881 },
+        { "x": 122, "y": 889 },
+        { "x": 119, "y": 889 }
+      ]
+    }
+  },
+  {
+    "description": "kg",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 120, "y": 880 },
+        { "x": 128, "y": 879 },
+        { "x": 129, "y": 887 },
+        { "x": 121, "y": 888 }
+      ]
+    }
+  },
+  {
+    "description": ")",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 128, "y": 879 },
+        { "x": 131, "y": 879 },
+        { "x": 132, "y": 887 },
+        { "x": 129, "y": 887 }
+      ]
+    }
+  },
+  {
+    "description": "Soft",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 63, "y": 887 },
+        { "x": 73, "y": 887 },
+        { "x": 73, "y": 894 },
+        { "x": 63, "y": 894 }
+      ]
+    }
+  },
+  {
+    "description": "Lean",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 74, "y": 887 },
+        { "x": 87, "y": 887 },
+        { "x": 87, "y": 893 },
+        { "x": 74, "y": 893 }
+      ]
+    }
+  },
+  {
+    "description": "Mass",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 88, "y": 887 },
+        { "x": 102, "y": 887 },
+        { "x": 102, "y": 893 },
+        { "x": 88, "y": 893 }
+      ]
+    }
+  },
+  {
+    "description": "41.3",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 146, "y": 899 },
+        { "x": 167, "y": 898 },
+        { "x": 167, "y": 907 },
+        { "x": 146, "y": 908 }
+      ]
+    }
+  },
+  {
+    "description": "40.7",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 183, "y": 904 },
+        { "x": 206, "y": 904 },
+        { "x": 206, "y": 911 },
+        { "x": 183, "y": 911 }
+      ]
+    }
+  },
+  {
+    "description": "体",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 63, "y": 908 },
+        { "x": 73, "y": 908 },
+        { "x": 73, "y": 917 },
+        { "x": 63, "y": 917 }
+      ]
+    }
+  },
+  {
+    "description": "脂肪",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 74, "y": 908 },
+        { "x": 96, "y": 908 },
+        { "x": 96, "y": 917 },
+        { "x": 74, "y": 917 }
+      ]
+    }
+  },
+  {
+    "description": "率",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 96, "y": 908 },
+        { "x": 105, "y": 908 },
+        { "x": 105, "y": 917 },
+        { "x": 96, "y": 917 }
+      ]
+    }
+  },
+  {
+    "description": "(",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 120, "y": 910 },
+        { "x": 124, "y": 910 },
+        { "x": 124, "y": 917 },
+        { "x": 120, "y": 917 }
+      ]
+    }
+  },
+  {
+    "description": "%",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 121, "y": 909 },
+        { "x": 128, "y": 909 },
+        { "x": 128, "y": 916 },
+        { "x": 121, "y": 916 }
+      ]
+    }
+  },
+  {
+    "description": ")",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 129, "y": 909 },
+        { "x": 132, "y": 909 },
+        { "x": 132, "y": 916 },
+        { "x": 129, "y": 916 }
+      ]
+    }
+  },
+  {
+    "description": "352",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 217, "y": 878 },
+        { "x": 244, "y": 878 },
+        { "x": 244, "y": 892 },
+        { "x": 217, "y": 892 }
+      ]
+    }
+  },
+  {
+    "description": "352",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 255, "y": 878 },
+        { "x": 280, "y": 878 },
+        { "x": 280, "y": 891 },
+        { "x": 255, "y": 891 }
+      ]
+    }
+  },
+  {
+    "description": "39.2",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 220, "y": 904 },
+        { "x": 242, "y": 904 },
+        { "x": 242, "y": 916 },
+        { "x": 220, "y": 916 }
+      ]
+    }
+  },
+  {
+    "description": "39.0",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 257, "y": 903 },
+        { "x": 279, "y": 903 },
+        { "x": 279, "y": 915 },
+        { "x": 257, "y": 915 }
+      ]
+    }
+  },
+  {
+    "description": "39.4",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 293, "y": 903 },
+        { "x": 317, "y": 902 },
+        { "x": 317, "y": 913 },
+        { "x": 293, "y": 914 }
+      ]
+    }
+  },
+  {
+    "description": "35.3",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 295, "y": 872 },
+        { "x": 318, "y": 875 },
+        { "x": 316, "y": 886 },
+        { "x": 294, "y": 883 }
+      ]
+    }
+  },
+  {
+    "description": "35.2",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 331, "y": 877 },
+        { "x": 356, "y": 880 },
+        { "x": 355, "y": 890 },
+        { "x": 330, "y": 887 }
+      ]
+    }
+  },
+  {
+    "description": "インピーダンス",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 462, "y": 866 },
+        { "x": 531, "y": 868 },
+        { "x": 531, "y": 881 },
+        { "x": 462, "y": 879 }
+      ]
+    }
+  },
+  {
+    "description": "lugelance-",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 533, "y": 868 },
+        { "x": 564, "y": 869 },
+        { "x": 564, "y": 882 },
+        { "x": 533, "y": 881 }
+      ]
+    }
+  },
+  {
+    "description": "35.3",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 368, "y": 875 },
+        { "x": 391, "y": 875 },
+        { "x": 391, "y": 884 },
+        { "x": 368, "y": 884 }
+      ]
+    }
+  },
+  {
+    "description": "35.1",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 405, "y": 882 },
+        { "x": 430, "y": 883 },
+        { "x": 430, "y": 891 },
+        { "x": 405, "y": 890 }
+      ]
+    }
+  },
+  {
+    "description": "38.6",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 331, "y": 906 },
+        { "x": 355, "y": 907 },
+        { "x": 354, "y": 918 },
+        { "x": 330, "y": 917 }
+      ]
+    }
+  },
+  {
+    "description": "37.8",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 368, "y": 908 },
+        { "x": 392, "y": 909 },
+        { "x": 391, "y": 920 },
+        { "x": 367, "y": 919 }
+      ]
+    }
+  },
+  {
+    "description": "36.9",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 406, "y": 910 },
+        { "x": 430, "y": 911 },
+        { "x": 429, "y": 922 },
+        { "x": 405, "y": 921 }
+      ]
+    }
+  },
+  {
+    "description": "右腕",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 514, "y": 883 },
+        { "x": 534, "y": 883 },
+        { "x": 534, "y": 892 },
+        { "x": 514, "y": 892 }
+      ]
+    }
+  },
+  {
+    "description": "左腕",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 542, "y": 883 },
+        { "x": 561, "y": 883 },
+        { "x": 561, "y": 892 },
+        { "x": 542, "y": 892 }
+      ]
+    }
+  },
+  {
+    "description": "体",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 568, "y": 883 },
+        { "x": 578, "y": 883 },
+        { "x": 578, "y": 892 },
+        { "x": 568, "y": 892 }
+      ]
+    }
+  },
+  {
+    "description": "幹",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 578, "y": 883 },
+        { "x": 588, "y": 883 },
+        { "x": 588, "y": 892 },
+        { "x": 578, "y": 892 }
+      ]
+    }
+  },
+  {
+    "description": "右脚",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 594, "y": 883 },
+        { "x": 613, "y": 883 },
+        { "x": 613, "y": 892 },
+        { "x": 594, "y": 892 }
+      ]
+    }
+  },
+  {
+    "description": "左脚",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 622, "y": 883 },
+        { "x": 640, "y": 883 },
+        { "x": 640, "y": 892 },
+        { "x": 622, "y": 892 }
+      ]
+    }
+  },
+  {
+    "description": "Z",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 462, "y": 894 },
+        { "x": 470, "y": 894 },
+        { "x": 470, "y": 903 },
+        { "x": 462, "y": 903 }
+      ]
+    }
+  },
+  {
+    "description": "(",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 471, "y": 894 },
+        { "x": 474, "y": 894 },
+        { "x": 474, "y": 903 },
+        { "x": 471, "y": 903 }
+      ]
+    }
+  },
+  {
+    "description": "2",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 474, "y": 894 },
+        { "x": 480, "y": 894 },
+        { "x": 480, "y": 903 },
+        { "x": 474, "y": 903 }
+      ]
+    }
+  },
+  {
+    "description": ")",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 480, "y": 894 },
+        { "x": 483, "y": 894 },
+        { "x": 483, "y": 903 },
+        { "x": 480, "y": 903 }
+      ]
+    }
+  },
+  {
+    "description": "5kHx",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 488, "y": 894 },
+        { "x": 505, "y": 894 },
+        { "x": 505, "y": 903 },
+        { "x": 488, "y": 903 }
+      ]
+    }
+  },
+  {
+    "description": "373.1",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 512, "y": 894 },
+        { "x": 534, "y": 894 },
+        { "x": 534, "y": 903 },
+        { "x": 512, "y": 903 }
+      ]
+    }
+  },
+  {
+    "description": "385.4",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 541, "y": 894 },
+        { "x": 565, "y": 894 },
+        { "x": 565, "y": 903 },
+        { "x": 541, "y": 903 }
+      ]
+    }
+  },
+  {
+    "description": "25.7",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 569, "y": 894 },
+        { "x": 586, "y": 894 },
+        { "x": 586, "y": 903 },
+        { "x": 569, "y": 903 }
+      ]
+    }
+  },
+  {
+    "description": "303.0",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 592, "y": 894 },
+        { "x": 613, "y": 894 },
+        { "x": 613, "y": 903 },
+        { "x": 592, "y": 903 }
+      ]
+    }
+  },
+  {
+    "description": "314.1",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 620, "y": 894 },
+        { "x": 642, "y": 894 },
+        { "x": 642, "y": 903 },
+        { "x": 620, "y": 903 }
+      ]
+    }
+  },
+  {
+    "description": "50Hz",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 483, "y": 905 },
+        { "x": 505, "y": 905 },
+        { "x": 505, "y": 914 },
+        { "x": 483, "y": 914 }
+      ]
+    }
+  },
+  {
+    "description": "337.2",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 512, "y": 905 },
+        { "x": 533, "y": 905 },
+        { "x": 533, "y": 913 },
+        { "x": 512, "y": 913 }
+      ]
+    }
+  },
+  {
+    "description": "352.5",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 540, "y": 905 },
+        { "x": 562, "y": 905 },
+        { "x": 562, "y": 913 },
+        { "x": 540, "y": 913 }
+      ]
+    }
+  },
+  {
+    "description": "23.0",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 568, "y": 905 },
+        { "x": 586, "y": 905 },
+        { "x": 586, "y": 913 },
+        { "x": 568, "y": 913 }
+      ]
+    }
+  },
+  {
+    "description": "282.3",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 591, "y": 905 },
+        { "x": 613, "y": 905 },
+        { "x": 613, "y": 913 },
+        { "x": 591, "y": 913 }
+      ]
+    }
+  },
+  {
+    "description": "289.8",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 619, "y": 905 },
+        { "x": 640, "y": 905 },
+        { "x": 640, "y": 913 },
+        { "x": 619, "y": 913 }
+      ]
+    }
+  },
+  {
+    "description": "250kx",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 478, "y": 917 },
+        { "x": 506, "y": 917 },
+        { "x": 506, "y": 925 },
+        { "x": 478, "y": 925 }
+      ]
+    }
+  },
+  {
+    "description": "307.9",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 513, "y": 917 },
+        { "x": 534, "y": 917 },
+        { "x": 534, "y": 925 },
+        { "x": 513, "y": 925 }
+      ]
+    }
+  },
+  {
+    "description": "322.9",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 541, "y": 917 },
+        { "x": 562, "y": 917 },
+        { "x": 562, "y": 925 },
+        { "x": 541, "y": 925 }
+      ]
+    }
+  },
+  {
+    "description": "20.4",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 569, "y": 917 },
+        { "x": 590, "y": 917 },
+        { "x": 590, "y": 925 },
+        { "x": 569, "y": 925 }
+      ]
+    }
+  },
+  {
+    "description": "263.3",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 592, "y": 917 },
+        { "x": 614, "y": 917 },
+        { "x": 614, "y": 925 },
+        { "x": 592, "y": 925 }
+      ]
+    }
+  },
+  {
+    "description": "272.7",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 620, "y": 917 },
+        { "x": 643, "y": 917 },
+        { "x": 643, "y": 925 },
+        { "x": 620, "y": 925 }
+      ]
+    }
+  },
+  {
+    "description": "Pacent",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 63, "y": 918 },
+        { "x": 83, "y": 918 },
+        { "x": 83, "y": 925 },
+        { "x": 63, "y": 925 }
+      ]
+    }
+  },
+  {
+    "description": "Body",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 83, "y": 918 },
+        { "x": 96, "y": 918 },
+        { "x": 96, "y": 925 },
+        { "x": 83, "y": 925 }
+      ]
+    }
+  },
+  {
+    "description": "Fat",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 96, "y": 918 },
+        { "x": 107, "y": 918 },
+        { "x": 107, "y": 925 },
+        { "x": 96, "y": 925 }
+      ]
+    }
+  },
+  {
+    "description": "最近",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 71, "y": 935 },
+        { "x": 90, "y": 935 },
+        { "x": 90, "y": 944 },
+        { "x": 71, "y": 944 }
+      ]
+    }
+  },
+  {
+    "description": "全体",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 114, "y": 935 },
+        { "x": 134, "y": 935 },
+        { "x": 134, "y": 944 },
+        { "x": 114, "y": 944 }
+      ]
+    }
+  },
+  {
+    "description": "09:15",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 147, "y": 941 },
+        { "x": 167, "y": 941 },
+        { "x": 167, "y": 946 },
+        { "x": 147, "y": 946 }
+      ]
+    }
+  },
+  {
+    "description": "20.10.10",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 143, "y": 932 },
+        { "x": 173, "y": 932 },
+        { "x": 173, "y": 939 },
+        { "x": 143, "y": 939 }
+      ]
+    }
+  },
+  {
+    "description": "20.10.30",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 180, "y": 932 },
+        { "x": 209, "y": 932 },
+        { "x": 209, "y": 939 },
+        { "x": 180, "y": 939 }
+      ]
+    }
+  },
+  {
+    "description": "20.11.02",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 217, "y": 932 },
+        { "x": 246, "y": 932 },
+        { "x": 246, "y": 939 },
+        { "x": 217, "y": 939 }
+      ]
+    }
+  },
+  {
+    "description": "20.12.15",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 254, "y": 932 },
+        { "x": 284, "y": 932 },
+        { "x": 284, "y": 939 },
+        { "x": 254, "y": 939 }
+      ]
+    }
+  },
+  {
+    "description": "21.01.12",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 291, "y": 932 },
+        { "x": 320, "y": 932 },
+        { "x": 320, "y": 939 },
+        { "x": 291, "y": 939 }
+      ]
+    }
+  },
+  {
+    "description": "21.02.10",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 328, "y": 932 },
+        { "x": 358, "y": 932 },
+        { "x": 358, "y": 939 },
+        { "x": 328, "y": 939 }
+      ]
+    }
+  },
+  {
+    "description": "21.03.15",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 365, "y": 932 },
+        { "x": 395, "y": 932 },
+        { "x": 395, "y": 939 },
+        { "x": 365, "y": 939 }
+      ]
+    }
+  },
+  {
+    "description": "21.05.04",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 402, "y": 932 },
+        { "x": 433, "y": 932 },
+        { "x": 433, "y": 939 },
+        { "x": 402, "y": 939 }
+      ]
+    }
+  },
+  {
+    "description": "09:40",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 185, "y": 942 },
+        { "x": 205, "y": 942 },
+        { "x": 205, "y": 947 },
+        { "x": 185, "y": 947 }
+      ]
+    }
+  },
+  {
+    "description": "09:35",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 222, "y": 941 },
+        { "x": 241, "y": 941 },
+        { "x": 241, "y": 947 },
+        { "x": 222, "y": 947 }
+      ]
+    }
+  },
+  {
+    "description": "11:01",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 259, "y": 941 },
+        { "x": 277, "y": 941 },
+        { "x": 277, "y": 947 },
+        { "x": 259, "y": 947 }
+      ]
+    }
+  },
+  {
+    "description": "08:33",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 296, "y": 940 },
+        { "x": 314, "y": 940 },
+        { "x": 314, "y": 948 },
+        { "x": 296, "y": 948 }
+      ]
+    }
+  },
+  {
+    "description": "15:50",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 334, "y": 941 },
+        { "x": 352, "y": 941 },
+        { "x": 352, "y": 947 },
+        { "x": 334, "y": 947 }
+      ]
+    }
+  },
+  {
+    "description": "08:35",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 370, "y": 941 },
+        { "x": 391, "y": 940 },
+        { "x": 391, "y": 946 },
+        { "x": 370, "y": 947 }
+      ]
+    }
+  },
+  {
+    "description": "09:46",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 407, "y": 940 },
+        { "x": 426, "y": 940 },
+        { "x": 426, "y": 946 },
+        { "x": 407, "y": 946 }
+      ]
+    }
+  },
+  {
+    "description": "Copyright",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 461, "y": 960 },
+        { "x": 484, "y": 960 },
+        { "x": 484, "y": 966 },
+        { "x": 461, "y": 966 }
+      ]
+    }
+  },
+  {
+    "description": "1998",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 489, "y": 960 },
+        { "x": 503, "y": 960 },
+        { "x": 503, "y": 966 },
+        { "x": 489, "y": 966 }
+      ]
+    }
+  },
+  {
+    "description": "by",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 506, "y": 960 },
+        { "x": 512, "y": 960 },
+        { "x": 512, "y": 966 },
+        { "x": 506, "y": 966 }
+      ]
+    }
+  },
+  {
+    "description": "InBody",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 513, "y": 960 },
+        { "x": 530, "y": 960 },
+        { "x": 530, "y": 966 },
+        { "x": 513, "y": 966 }
+      ]
+    }
+  },
+  {
+    "description": "Japan",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 533, "y": 960 },
+        { "x": 547, "y": 960 },
+        { "x": 547, "y": 966 },
+        { "x": 533, "y": 966 }
+      ]
+    }
+  },
+  {
+    "description": "Inc.",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 548, "y": 960 },
+        { "x": 560, "y": 960 },
+        { "x": 560, "y": 966 },
+        { "x": 548, "y": 966 }
+      ]
+    }
+  },
+  {
+    "description": "All",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 556, "y": 960 },
+        { "x": 564, "y": 960 },
+        { "x": 564, "y": 966 },
+        { "x": 556, "y": 966 }
+      ]
+    }
+  },
+  {
+    "description": "rights",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 566, "y": 960 },
+        { "x": 579, "y": 960 },
+        { "x": 579, "y": 966 },
+        { "x": 566, "y": 966 }
+      ]
+    }
+  },
+  {
+    "description": "reserved",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 580, "y": 960 },
+        { "x": 602, "y": 960 },
+        { "x": 602, "y": 966 },
+        { "x": 580, "y": 966 }
+      ]
+    }
+  },
+  {
+    "description": ".",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 601, "y": 960 },
+        { "x": 603, "y": 960 },
+        { "x": 603, "y": 966 },
+        { "x": 601, "y": 966 }
+      ]
+    }
+  },
+  {
+    "description": "IR",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 604, "y": 960 },
+        { "x": 609, "y": 960 },
+        { "x": 609, "y": 966 },
+        { "x": 604, "y": 966 }
+      ]
+    }
+  },
+  {
+    "description": "-",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 608, "y": 960 },
+        { "x": 613, "y": 960 },
+        { "x": 613, "y": 966 },
+        { "x": 608, "y": 966 }
+      ]
+    }
+  },
+  {
+    "description": "JPN",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 611, "y": 960 },
+        { "x": 623, "y": 960 },
+        { "x": 623, "y": 966 },
+        { "x": 611, "y": 966 }
+      ]
+    }
+  },
+  {
+    "description": "-",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 623, "y": 960 },
+        { "x": 627, "y": 960 },
+        { "x": 627, "y": 966 },
+        { "x": 623, "y": 966 }
+      ]
+    }
+  },
+  {
+    "description": "470R250801",
+    "bounding_poly": {
+      "vertices": [
+        { "x": 624, "y": 960 },
+        { "x": 658, "y": 960 },
+        { "x": 658, "y": 966 },
+        { "x": 624, "y": 966 }
+      ]
+    }
+  }
+]
