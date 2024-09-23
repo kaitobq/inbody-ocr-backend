@@ -96,6 +96,41 @@ func detectTextFromImage(filePath, language string) ([]string, error) {
 		fmt.Println("Closest number to '体重':", closestNumber)
 	}
 
+	closestNumber, err = findClosestNumber("身長", annotations)
+	if err != nil {
+		fmt.Println("Error:", err)
+	} else {
+		fmt.Println("Closest number to '身長':", closestNumber)
+	}
+
+	closestNumber, err = findClosestNumber("筋肉", annotations)
+	if err != nil {
+		fmt.Println("Error:", err)
+	} else {
+		fmt.Println("Closest number to '筋肉':", closestNumber)
+	}
+
+	closestNumber, err = findClosestNumber("脂肪", annotations)
+	if err != nil {
+		fmt.Println("Error:", err)
+	} else {
+		fmt.Println("Closest number to '脂肪':", closestNumber)
+	}
+
+	closestNumber, err = findClosestNumber("ミネラル", annotations)
+	if err != nil {
+		fmt.Println("Error:", err)
+	} else {
+		fmt.Println("Closest number to 'ミネラル':", closestNumber)
+	}
+
+	closestNumber, err = findClosestNumberInDirection("ミネラル", annotations, "Y")
+	if err != nil {
+		fmt.Println("Error:", err)
+	} else {
+		fmt.Println("Closest number to 'ミネラル':", closestNumber)
+	}
+
 	// annotationsをJSON形式に変換
 	annotationsJSON, err := json.Marshal(annotations)
 	if err != nil {
@@ -183,4 +218,89 @@ func getCenter(boundingPoly *visionpb.BoundingPoly) (float64, float64) {
 // calculateDistance calculates the Euclidean distance between two points.
 func calculateDistance(x1, y1, x2, y2 float64) float64 {
 	return math.Sqrt(math.Pow(x2-x1, 2) + math.Pow(y2-y1, 2))
+}
+
+
+
+
+
+
+//
+
+// findClosestNumberInDirection finds the number closest to the given keyword in the list of annotations based on the specified direction (X or Y).
+func findClosestNumberInDirection(keyword string, annotations []*visionpb.EntityAnnotation, direction string) (string, error) {
+	var keywordAnnotation *visionpb.EntityAnnotation
+	var closestNumber string
+	minDistance := math.MaxFloat64
+
+	// Regular expression to match numbers (both integers and floats)
+	numberRegex := regexp.MustCompile(`\d+(\.\d+)?`)
+
+	// Find the annotation that matches the keyword
+	for _, annotation := range annotations {
+		if annotation.Description == keyword {
+			keywordAnnotation = annotation
+			break
+		}
+	}
+
+	// If the keyword is not found, return an error
+	if keywordAnnotation == nil {
+		return "", fmt.Errorf("keyword '%s' not found in annotations", keyword)
+	}
+
+	// Get the center of the keyword's bounding box
+	keywordCenterX, keywordCenterY := getCenter(keywordAnnotation.BoundingPoly)
+
+	// Iterate through all annotations to find the closest number in the specified direction
+	for _, annotation := range annotations {
+		// Skip the keyword itself
+		if annotation.Description == keyword {
+			continue
+		}
+
+		// Check if the annotation is a number
+		if numberRegex.MatchString(annotation.Description) {
+			// Get the center of the current annotation's bounding box
+			currentCenterX, currentCenterY := getCenter(annotation.BoundingPoly)
+
+			var distance float64
+			// Calculate the distance based on the direction (X or Y)
+			if direction == "X" {
+				distance = math.Abs(currentCenterX - keywordCenterX)
+			} else if direction == "Y" {
+				distance = math.Abs(currentCenterY - keywordCenterY)
+			} else {
+				return "", fmt.Errorf("invalid direction '%s', must be 'X' or 'Y'", direction)
+			}
+
+			// If this distance is smaller than the previous minimum, update the closest number
+			if distance < minDistance {
+				minDistance = distance
+				closestNumber = annotation.Description
+			}
+		}
+	}
+
+	// If no number is found, return an error
+	if closestNumber == "" {
+		return "", fmt.Errorf("no number found near the keyword '%s' in direction '%s'", keyword, direction)
+	}
+
+	return closestNumber, nil
+}
+
+// getClosestNumbersByDirection gets the closest numbers in both X and Y directions for the specified keyword.
+func getClosestNumbersByDirection(keyword string, annotations []*visionpb.EntityAnnotation) (string, string, error) {
+	closestNumberX, errX := findClosestNumberInDirection(keyword, annotations, "X")
+	if errX != nil {
+		return "", "", errX
+	}
+
+	closestNumberY, errY := findClosestNumberInDirection(keyword, annotations, "Y")
+	if errY != nil {
+		return "", "", errY
+	}
+
+	return closestNumberX, closestNumberY, nil
 }
