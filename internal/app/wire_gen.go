@@ -13,6 +13,7 @@ import (
 	"inbody-ocr-backend/internal/controller"
 	"inbody-ocr-backend/internal/domain/service"
 	"inbody-ocr-backend/internal/infra/db"
+	"inbody-ocr-backend/internal/infra/vision_api"
 	"inbody-ocr-backend/internal/usecase"
 	"inbody-ocr-backend/pkg/database"
 )
@@ -37,7 +38,9 @@ func New() (*container.App, error) {
 	organizationController := controller.NewOrganizationController(organizationUsecase, tokenService)
 	userOrganizationMembershipUsecase := usecase.NewUserOrganizationMembershipUsecase(userOrganizationMembershipRepository)
 	userOrganizationMembershipController := controller.NewUserOrganizationMembershipController(userOrganizationMembershipUsecase, tokenService)
-	imageController := controller.NewImageController()
+	imageRepository := vision_api.NewImageRepository()
+	imageUsecase := usecase.NewImageUsecase(imageRepository)
+	imageController := controller.NewImageController(imageUsecase)
 	containerContainer := container.NewCtrl(userController, organizationController, userOrganizationMembershipController, imageController, tokenService)
 	configConfig := config.New()
 	app := container.NewApp(engine, containerContainer, configConfig, databaseDB)
