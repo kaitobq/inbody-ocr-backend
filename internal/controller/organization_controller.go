@@ -10,13 +10,13 @@ import (
 )
 
 type OrganizationController struct {
-	uc usecase.OrganizationUsecase
+	uc           usecase.OrganizationUsecase
 	tokenService service.TokenService
 }
 
 func NewOrganizationController(uc usecase.OrganizationUsecase, tokenService service.TokenService) *OrganizationController {
 	return &OrganizationController{
-		uc: uc,
+		uc:           uc,
 		tokenService: tokenService,
 	}
 }
@@ -28,13 +28,7 @@ func (ct *OrganizationController) CreateOrganization(c *gin.Context) {
 		return
 	}
 
-	userID, err := ct.tokenService.ExtractIDFromContext(c)
-	if err != nil {
-		c.JSON(http.StatusUnauthorized, gin.H{"error": err.Error()})
-		return
-	}
-	
-	res, err := ct.uc.CreateOrganization(req.Name, userID)
+	res, err := ct.uc.CreateOrganization(req.UserName, req.Email, req.Password, req.OrgName)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return

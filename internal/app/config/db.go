@@ -14,7 +14,7 @@ func NewDBConfig() *DBConfig {
 	return &DBConfig{
 		Host:     load("DB_HOST"),
 		Port:     load("DB_PORT"),
-		User:	  load("DB_USER"),
+		User:     load("DB_USER"),
 		Password: load("DB_PASSWORD"),
 		DBName:   load("DB_NAME"),
 	}

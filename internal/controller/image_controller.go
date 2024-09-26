@@ -11,13 +11,13 @@ import (
 )
 
 type ImageController struct {
-	uc usecase.ImageUsecase
+	uc           usecase.ImageUsecase
 	tokenService service.TokenService
 }
 
 func NewImageController(uc usecase.ImageUsecase, tokenService service.TokenService) *ImageController {
 	return &ImageController{
-		uc: uc,
+		uc:           uc,
 		tokenService: tokenService,
 	}
 }
@@ -30,13 +30,13 @@ func (ct *ImageController) AnalyzeImage(c *gin.Context) {
 		return
 	}
 
-	userID, err := ct.tokenService.ExtractIDFromContext(c)
+	userID, orgID, err := ct.tokenService.ExtractIDsFromContext(c)
 	if err != nil {
 		c.JSON(http.StatusUnauthorized, gin.H{"error": err.Error()})
 		return
 	}
 
-	res, err := ct.uc.AnalyzeImage(file, userID)
+	res, err := ct.uc.AnalyzeImage(file, userID, orgID)
 	if err != nil {
 		fmt.Printf("Failed to detect text from image: %v\n", err)
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to detect text from image"})

@@ -24,7 +24,7 @@ func NewImageRepository() repository.ImageRepository {
 }
 
 // detectTextFromImage detects text in an image using Google Vision API
-func (r *imageRepository)DetectTextFromImage(filePath, language string) (*entity.ImageData, error) {
+func (r *imageRepository) DetectTextFromImage(filePath, language string) (*entity.ImageData, error) {
 	// Google Vision APIクライアントを作成
 	ctx := context.Background()
 	client, err := vision.NewImageAnnotatorClient(ctx)
@@ -159,7 +159,7 @@ func (r *imageRepository)DetectTextFromImage(filePath, language string) (*entity
 	if err != nil {
 		return nil, err
 	}
-	
+
 	// JSONデータをログに出力
 	fmt.Printf("Annotations JSON: %s\n", string(annotationsJSON))
 
@@ -242,11 +242,6 @@ func getCenter(boundingPoly *visionpb.BoundingPoly) (float64, float64) {
 func calculateDistance(x1, y1, x2, y2 float64) float64 {
 	return math.Sqrt(math.Pow(x2-x1, 2) + math.Pow(y2-y1, 2))
 }
-
-
-
-
-
 
 //
 

@@ -12,20 +12,20 @@ import (
 )
 
 type imageUsecase struct {
-	repo repository.ImageRepository
+	repo          repository.ImageRepository
 	imageDataRepo repository.ImageDataRepository
-	ulidService service.ULIDService
+	ulidService   service.ULIDService
 }
 
 func NewImageUsecase(repo repository.ImageRepository, ulidService service.ULIDService, imageDataRepo repository.ImageDataRepository) ImageUsecase {
 	return &imageUsecase{
-		repo: repo,
+		repo:          repo,
 		imageDataRepo: imageDataRepo,
-		ulidService: ulidService,
+		ulidService:   ulidService,
 	}
 }
 
-func (uc *imageUsecase) AnalyzeImage(file multipart.File, userID string) (*response.AnalyzeImageResponse, error) {
+func (uc *imageUsecase) AnalyzeImage(file multipart.File, userID, orgID string) (*response.AnalyzeImageResponse, error) {
 	// 一時ファイルを作成して、画像データを保存
 	tempFile, err := os.CreateTemp("", "upload-*.jpg")
 	if err != nil {
@@ -46,11 +46,12 @@ func (uc *imageUsecase) AnalyzeImage(file multipart.File, userID string) (*respo
 		logger.Error("AnalyzeImage", "func", "DetectTextFromImage()", "error", err.Error())
 		return nil, err
 	}
-	
+
 	// 実際はフロントから保存するリクエストを送らせるのでここで保存する必要はない
 	id := uc.ulidService.GenerateULID()
 	data.ID = id
 	data.UserID = userID
+	data.OrganizationID = orgID
 	// data, err = uc.imageDataRepo.CreateData(*data)
 	// if err != nil {
 	// 	return nil, err

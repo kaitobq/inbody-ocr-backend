@@ -6,6 +6,7 @@ type SignUpRequest struct {
 	Name     string `json:"name" binding:"required"`
 	Email    string `json:"email" binding:"required,email"`
 	Password string `json:"password" binding:"required,min=8,max=32"`
+	OrgID    string
 }
 
 func NewSignUpRequest(c *gin.Context) (*SignUpRequest, error) {
@@ -13,6 +14,7 @@ func NewSignUpRequest(c *gin.Context) (*SignUpRequest, error) {
 	if err := c.ShouldBindJSON(&req); err != nil {
 		return nil, err
 	}
+	req.OrgID = c.Param("id")
 
 	return &req, nil
 }

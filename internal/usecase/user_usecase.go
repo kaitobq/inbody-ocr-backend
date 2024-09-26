@@ -11,26 +11,29 @@ import (
 
 type userUsecase struct {
 	repo         repository.UserRepository
+	orgRepo      repository.OrganizationRepository
 	tokenService service.TokenService
-	ulidService service.ULIDService
+	ulidService  service.ULIDService
 }
 
-func NewUserUsecase(repo repository.UserRepository, tokenService service.TokenService, ulidService service.ULIDService) UserUsecase {
+func NewUserUsecase(repo repository.UserRepository, orgRepo repository.OrganizationRepository, tokenService service.TokenService, ulidService service.ULIDService) UserUsecase {
 	return &userUsecase{
-		repo: repo,
+		repo:         repo,
+		orgRepo:      orgRepo,
 		tokenService: tokenService,
-		ulidService: ulidService,
+		ulidService:  ulidService,
 	}
 }
 
-func (uc *userUsecase) CreateUser(name, email, password string) (*response.SignUpResponse, error) {
-	exists, err := uc.repo.CheckDuplicateEmail(email)
+// この関数はユーザが組織に参加するときに使用する
+func (uc *userUsecase) CreateUser(name, email, password, orgID string) (*response.SignUpResponse, error) {
+	exists, err := uc.repo.UserExists(email)
 	if err != nil {
-		logger.Error("CreateUser", "func", "CheckDuplicateEmail()", "error", err.Error())
+		logger.Error("CreateUser", "func", "UserExists()", "error", err.Error())
 		return nil, err
 	}
 	if exists {
-		logger.Error("CreateUser", "func", "CheckDuplicateEmail()", "error", "email already exists")
+		logger.Error("CreateUser", "func", "UserExists()", "error", "email already exists")
 		return nil, fmt.Errorf("email already exists")
 	}
 
@@ -42,19 +45,21 @@ func (uc *userUsecase) CreateUser(name, email, password string) (*response.SignU
 
 	id := uc.ulidService.GenerateULID()
 	user := entity.User{
-		ID:       id,
-		Name:     name,
-		Email:    email,
-		Password: hashedPassword,
+		ID:             id,
+		Name:           name,
+		Email:          email,
+		Password:       hashedPassword,
+		OrganizationID: orgID,
+		Role:           entity.OrganizationRoleMember,
 	}
 
-	err = uc.repo.CreateUser(user)
+	_, err = uc.repo.CreateUser(user)
 	if err != nil {
 		logger.Error("CreateUser", "func", "CreateUser()", "error", err.Error())
 		return nil, err
 	}
 
-	token, err := uc.tokenService.GenerateTokenFromID(id)
+	token, err := uc.tokenService.GenerateTokenFromID(user.ID, user.OrganizationID)
 	if err != nil {
 		logger.Error("CreateUser", "func", "GenerateTokenFromID", "error", err.Error())
 		return nil, err
@@ -81,8 +86,8 @@ func (uc *userUsecase) SignIn(email, password string) (*response.SignInResponse,
 		logger.Error("SignIn", "func", "ComparePassword()", "error", err.Error())
 		return nil, err
 	}
-	
-	token, err := uc.tokenService.GenerateTokenFromID(user.ID)
+
+	token, err := uc.tokenService.GenerateTokenFromID(user.ID, user.OrganizationID)
 	if err != nil {
 		logger.Error("SignIn", "func", "GenerateTokenFromID", "error", err.Error())
 		return nil, err
@@ -94,5 +99,5 @@ func (uc *userUsecase) SignIn(email, password string) (*response.SignInResponse,
 		return nil, err
 	}
 
-	return response.NewSignInResponse(token, exp)
+	return response.NewSignInResponse(token, exp, user.OrganizationID)
 }

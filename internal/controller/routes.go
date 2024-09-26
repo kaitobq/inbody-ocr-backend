@@ -11,25 +11,20 @@ func SetUpRoutes(
 	r *gin.Engine,
 	userCtrl *UserController,
 	organizationCtrl *OrganizationController,
-	membershipCtrl *UserOrganizationMembershipController,
 	imageCtrl *ImageController,
 	tokenService service.TokenService,
 ) {
 	v1 := r.Group("api/v1")
 
-	auth := v1.Group("auth")
-	{
-		auth.POST("/signup", userCtrl.SignUp)
-		auth.POST("/signin", userCtrl.SignIn)
-	}
-
 	organization := v1.Group("organization")
-	organization.Use(middleware.AuthMiddleware(tokenService))
 	{
 		organization.POST("", organizationCtrl.CreateOrganization)
+		organization.POST("/:id/signup", userCtrl.SignUp)
+		organization.POST("/signin", userCtrl.SignIn)
 	}
 
 	image := v1.Group("image")
+	image.Use(middleware.AuthMiddleware(tokenService))
 	{
 		image.POST("", imageCtrl.AnalyzeImage)
 	}

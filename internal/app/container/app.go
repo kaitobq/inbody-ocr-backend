@@ -12,33 +12,30 @@ import (
 )
 
 type container struct {
-	userCtrl *controller.UserController
+	userCtrl         *controller.UserController
 	organizationCtrl *controller.OrganizationController
-	membershipCtrl *controller.UserOrganizationMembershipController
-	imageCtrl *controller.ImageController
-	tokenService service.TokenService
+	imageCtrl        *controller.ImageController
+	tokenService     service.TokenService
 }
 
 func NewCtrl(
 	userCtrl *controller.UserController,
 	organizationCtrl *controller.OrganizationController,
-	membershipCtrl *controller.UserOrganizationMembershipController,
 	imageCtrl *controller.ImageController,
 	tokenService service.TokenService,
 ) *container {
 	return &container{
-		userCtrl: userCtrl,
+		userCtrl:         userCtrl,
 		organizationCtrl: organizationCtrl,
-		membershipCtrl: membershipCtrl,
-		imageCtrl: imageCtrl,
-		tokenService: tokenService,
+		imageCtrl:        imageCtrl,
+		tokenService:     tokenService,
 	}
 }
 
 type App struct {
-	r *gin.Engine
+	r   *gin.Engine
 	cfg *config.Config
-	db     *database.DB
+	db  *database.DB
 }
 
 func NewApp(r *gin.Engine, container *container, cfg *config.Config, db *database.DB) *App {
@@ -46,15 +43,14 @@ func NewApp(r *gin.Engine, container *container, cfg *config.Config, db *databas
 		r,
 		container.userCtrl,
 		container.organizationCtrl,
-		container.membershipCtrl,
 		container.imageCtrl,
 		container.tokenService,
 	)
 
 	return &App{
-		r: r,
+		r:   r,
 		cfg: cfg,
-		db: db,
+		db:  db,
 	}
 }
 
