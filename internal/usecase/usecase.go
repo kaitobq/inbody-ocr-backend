@@ -17,3 +17,7 @@ type OrganizationUsecase interface {
 type ImageUsecase interface {
 	AnalyzeImage(file multipart.File, userID, orgID string) (*response.AnalyzeImageResponse, error)
 }
+
+type ImageDataUsecase interface {
+	
+}
