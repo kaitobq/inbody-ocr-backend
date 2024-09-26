@@ -4,10 +4,13 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"inbody-ocr-backend/internal/domain/entity"
 	"inbody-ocr-backend/internal/domain/repository"
 	"math"
 	"os"
 	"regexp"
+	"strconv"
+	"strings"
 
 	vision "cloud.google.com/go/vision/apiv1"
 	"cloud.google.com/go/vision/v2/apiv1/visionpb"
@@ -21,7 +24,7 @@ func NewImageRepository() repository.ImageRepository {
 }
 
 // detectTextFromImage detects text in an image using Google Vision API
-func (r *imageRepository)DetectTextFromImage(filePath, language string) ([]string, error) {
+func (r *imageRepository)DetectTextFromImage(filePath, language string) (*entity.ImageData, error) {
 	// Google Vision APIクライアントを作成
 	ctx := context.Background()
 	client, err := vision.NewImageAnnotatorClient(ctx)
@@ -50,47 +53,106 @@ func (r *imageRepository)DetectTextFromImage(filePath, language string) ([]strin
 	}
 
 	// "体重"に最も近い数値を検索
-	closestNumber, err := findClosestNumber("体重", annotations)
+	weight, err := findClosestNumber("体重", annotations)
 	if err != nil {
 		fmt.Println("Error:", err)
 	} else {
-		fmt.Println("Closest number to '体重':", closestNumber)
+		fmt.Println("Closest number to '体重':", weight)
+	}
+	weightFloat, err := strconv.ParseFloat(weight, 64)
+	if err != nil {
+		return nil, fmt.Errorf("failed to convert weight to float: %v", err)
 	}
 
-	closestNumber, err = findClosestNumber("身長", annotations)
+	height, err := findClosestNumber("身長", annotations)
 	if err != nil {
 		fmt.Println("Error:", err)
 	} else {
-		fmt.Println("Closest number to '身長':", closestNumber)
+		fmt.Println("Closest number to '身長':", height)
+	}
+	height = strings.ReplaceAll(height, "cm", "")
+	heightFloat, err := strconv.ParseFloat(height, 64)
+	if err != nil {
+		return nil, fmt.Errorf("failed to convert weight to float: %v", err)
 	}
 
-	closestNumber, err = findClosestNumber("筋肉", annotations)
+	muscle, err := findClosestNumber("筋肉", annotations)
 	if err != nil {
 		fmt.Println("Error:", err)
 	} else {
-		fmt.Println("Closest number to '筋肉':", closestNumber)
+		fmt.Println("Closest number to '筋肉':", muscle)
+	}
+	muscleFloat, err := strconv.ParseFloat(muscle, 64)
+	if err != nil {
+		return nil, fmt.Errorf("failed to convert weight to float: %v", err)
 	}
 
-	closestNumber, err = findClosestNumber("脂肪", annotations)
+	fat, err := findClosestNumber("脂肪", annotations)
 	if err != nil {
 		fmt.Println("Error:", err)
 	} else {
-		fmt.Println("Closest number to '脂肪':", closestNumber)
+		fmt.Println("Closest number to '脂肪':", fat) // 除脂肪量が検出されているが、体脂肪量で検出するように修正したい
+	}
+	fatFloat, err := strconv.ParseFloat(fat, 64)
+	if err != nil {
+		return nil, fmt.Errorf("failed to convert weight to float: %v", err)
+	}
+	fatFloat = weightFloat - fatFloat
+
+	mineral, err := findClosestNumberInDirection("ミネラル", annotations, "Y")
+	if err != nil {
+		fmt.Println("Error:", err)
+	} else {
+		fmt.Println("Closest number to 'ミネラル':", mineral)
+	}
+	mineralFloat, err := strconv.ParseFloat(mineral, 64)
+	if err != nil {
+		return nil, fmt.Errorf("failed to convert weight to float: %v", err)
 	}
 
-	closestNumber, err = findClosestNumber("ミネラル", annotations)
+	protein, err := findClosestNumberInDirection("タンパク", annotations, "Y")
 	if err != nil {
 		fmt.Println("Error:", err)
 	} else {
-		fmt.Println("Closest number to 'ミネラル':", closestNumber)
+		fmt.Println("Closest number to 'タンパク':", protein)
+	}
+	proteinFloat, err := strconv.ParseFloat(protein, 64)
+	if err != nil {
+		return nil, fmt.Errorf("failed to convert weight to float: %v", err)
 	}
 
-	closestNumber, err = findClosestNumberInDirection("ミネラル", annotations, "Y")
+	water, err := findClosestNumberInDirection("水分", annotations, "Y")
 	if err != nil {
 		fmt.Println("Error:", err)
 	} else {
-		fmt.Println("Closest number to 'ミネラル':", closestNumber)
+		fmt.Println("Closest number to '水分':", water)
 	}
+	waterFloat, err := strconv.ParseFloat(water, 64)
+	if err != nil {
+		return nil, fmt.Errorf("failed to convert weight to float: %v", err)
+	}
+
+	score, err := findClosestNumber("点数", annotations)
+	if err != nil {
+		fmt.Println("Error:", err)
+	} else {
+		fmt.Println("Closest number to '点数':", score)
+	}
+	s := strings.Split(score, "/")
+	scoreUInt, _ := strconv.ParseUint(s[0], 10, 32)
+
+	var imgData entity.ImageData
+	// imgData.OrganizationID
+	// imgData.UserID
+	imgData.Weight = weightFloat
+	imgData.Height = heightFloat
+	imgData.MuscleWeight = muscleFloat
+	imgData.FatWeight = fatFloat
+	imgData.FatPercent = fatFloat / weightFloat * 100
+	imgData.Mineral = mineralFloat
+	imgData.Protein = proteinFloat
+	imgData.BodyWater = waterFloat
+	imgData.Point = uint(scoreUInt)
 
 	// annotationsをJSON形式に変換
 	annotationsJSON, err := json.Marshal(annotations)
@@ -102,12 +164,12 @@ func (r *imageRepository)DetectTextFromImage(filePath, language string) ([]strin
 	fmt.Printf("Annotations JSON: %s\n", string(annotationsJSON))
 
 	// 検出されたテキストを格納
-	var detectedTexts []string
-	for _, annotation := range annotations {
-		detectedTexts = append(detectedTexts, annotation.Description)
-	}
+	// var detectedTexts []string
+	// for _, annotation := range annotations {
+	// 	detectedTexts = append(detectedTexts, annotation.Description)
+	// }
 
-	return detectedTexts, nil
+	return &imgData, nil
 }
 
 // findClosestNumber finds the number closest to the given keyword in the list of annotations.

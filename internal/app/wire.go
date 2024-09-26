@@ -49,6 +49,9 @@ func New() (*container.App, error) {
 		controller.NewImageController,
 		usecase.NewImageUsecase,
 		vision_api.NewImageRepository,
+
+		// image data
+		db.NewImageDataRepository,
 	)
 
 	return nil, nil

@@ -17,16 +17,19 @@ func NewUserOrganizationMembershipRepository(db *database.DB) repository.UserOrg
 	}
 }
 
-func (r *userOrganizationMembershipRepository) CreateMembership(userID, orgID, role string) error {
-	query := `INSERT INTO user_organization_memberships (user_id, organization_id, role, created_at, updated_at) VALUES (?, ?, ?, ?, ?)`
+func (r *userOrganizationMembershipRepository) CreateMembership(membership entity.UserOrganizationMembership) (*entity.UserOrganizationMembership, error) {
+	query := `INSERT INTO user_organization_memberships (id, user_id, organization_id, role, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?)`
 
 	now := time.Now()
-	_, err := r.db.Exec(query, userID, orgID, role, now, now)
+	membership.CreatedAt = now
+	membership.UpdatedAt = now
+
+	_, err := r.db.Exec(query, membership.ID, membership.UserID, membership.OrganizationID, membership.Role, membership.CreatedAt, membership.UpdatedAt)
 	if err != nil {
-		return err
+		return nil, err
 	}
 
-	return nil
+	return &membership, nil
 }
 
 func (r *userOrganizationMembershipRepository) FindByUserID(userID string) (*[]entity.UserOrganizationMembership, error) {

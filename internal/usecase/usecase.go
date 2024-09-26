@@ -19,5 +19,5 @@ type UserOrganizationMembershipUsecase interface {
 }
 
 type ImageUsecase interface {
-	AnalyzeImage(file multipart.File) ([]string, error)
+	AnalyzeImage(file multipart.File, userID string) (*response.AnalyzeImageResponse, error)
 }
