@@ -41,7 +41,7 @@ func (ct *UserController) SignIn(c *gin.Context) {
 		return
 	}
 
-	res, err := ct.uc.SignIn(req.Email, req.Password, req.OrgID)
+	res, err := ct.uc.SignIn(req.Email, req.Password)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return

@@ -74,7 +74,7 @@ func (uc *userUsecase) CreateUser(name, email, password, orgID string) (*respons
 	return response.NewSignUpResponse(token, exp)
 }
 
-func (uc *userUsecase) SignIn(email, password, orgID string) (*response.SignInResponse, error) {
+func (uc *userUsecase) SignIn(email, password string) (*response.SignInResponse, error) {
 	user, err := uc.repo.FindByEmail(email)
 	if err != nil {
 		logger.Error("SignIn", "func", "FindByEmail()", "error", err.Error())
@@ -99,5 +99,5 @@ func (uc *userUsecase) SignIn(email, password, orgID string) (*response.SignInRe
 		return nil, err
 	}
 
-	return response.NewSignInResponse(token, exp)
+	return response.NewSignInResponse(token, exp, user.OrganizationID)
 }

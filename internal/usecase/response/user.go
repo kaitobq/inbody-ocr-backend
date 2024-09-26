@@ -23,16 +23,18 @@ func NewSignUpResponse(token string, exp *time.Time) (*SignUpResponse, error) {
 }
 
 type SignInResponse struct {
-	Message string        `json:"message"`
-	Token   TokenResponse `json:"token"`
+	Message        string        `json:"message"`
+	Token          TokenResponse `json:"token"`
+	OrganizationID string        `json:"organization_id"`
 }
 
-func NewSignInResponse(token string, exp *time.Time) (*SignInResponse, error) {
+func NewSignInResponse(token string, exp *time.Time, orgID string) (*SignInResponse, error) {
 	return &SignInResponse{
 		Message: "Signed in successfully",
 		Token: TokenResponse{
 			Value: token,
 			Exp:   *exp,
 		},
+		OrganizationID: orgID,
 	}, nil
 }

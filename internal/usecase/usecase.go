@@ -7,7 +7,7 @@ import (
 
 type UserUsecase interface {
 	CreateUser(name, email, password, orgID string) (*response.SignUpResponse, error)
-	SignIn(email, password, orgID string) (*response.SignInResponse, error)
+	SignIn(email, password string) (*response.SignInResponse, error)
 }
 
 type OrganizationUsecase interface {

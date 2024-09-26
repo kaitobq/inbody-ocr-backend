@@ -20,11 +20,11 @@ func SetUpRoutes(
 	{
 		organization.POST("", organizationCtrl.CreateOrganization)
 		organization.POST("/:id/signup", userCtrl.SignUp)
-		organization.POST("/:id/signin", userCtrl.SignIn)
+		organization.POST("/signin", userCtrl.SignIn)
 	}
 
 	image := v1.Group("image")
-	organization.Use(middleware.AuthMiddleware(tokenService))
+	image.Use(middleware.AuthMiddleware(tokenService))
 	{
 		image.POST("", imageCtrl.AnalyzeImage)
 	}
