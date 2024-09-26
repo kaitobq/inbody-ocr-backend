@@ -8,6 +8,7 @@ import (
 	"inbody-ocr-backend/internal/controller"
 	"inbody-ocr-backend/internal/domain/service"
 	"inbody-ocr-backend/internal/infra/db"
+	"inbody-ocr-backend/internal/infra/vision_api"
 	"inbody-ocr-backend/internal/usecase"
 	"inbody-ocr-backend/pkg/database"
 
@@ -46,6 +47,11 @@ func New() (*container.App, error) {
 
 		// image
 		controller.NewImageController,
+		usecase.NewImageUsecase,
+		vision_api.NewImageRepository,
+
+		// image data
+		db.NewImageDataRepository,
 	)
 
 	return nil, nil

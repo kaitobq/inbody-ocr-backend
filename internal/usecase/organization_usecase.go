@@ -52,12 +52,18 @@ func (uc *organizationUsecase) CreateOrganization(name string, founderID string)
 		return nil, err
 	}
 
-	role := "owner"
-	err = uc.membershipRepo.CreateMembership(founderID, organization.ID, role)
+	id = uc.ulidService.GenerateULID()
+	membership := entity.UserOrganizationMembership{
+		ID: id,
+		UserID: founderID,
+		OrganizationID: organization.ID,
+		Role: entity.OrganizationRoleOwner,
+	}
+	_, err = uc.membershipRepo.CreateMembership(membership)
 	if err != nil {
 		// 作成者が組織に所属できない場合はロールバック
-		err = uc.repo.DeleteOrganization(organization.ID)
-		if err != nil {
+		rollbackErr := uc.repo.DeleteOrganization(organization.ID)
+		if rollbackErr != nil {
 			return nil, fmt.Errorf("failed to create membership and rollback organization creation: %w", err)
 		}
 

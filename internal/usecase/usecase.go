@@ -1,6 +1,9 @@
 package usecase
 
-import "inbody-ocr-backend/internal/usecase/response"
+import (
+	"inbody-ocr-backend/internal/usecase/response"
+	"mime/multipart"
+)
 
 type UserUsecase interface {
 	CreateUser(name, email, password string) (*response.SignUpResponse, error)
@@ -13,4 +16,8 @@ type OrganizationUsecase interface {
 
 type UserOrganizationMembershipUsecase interface {
 	DeleteMembership(executorID, deleteUserID, organizationID string) (*response.DeleteMembershipResponse, error)
+}
+
+type ImageUsecase interface {
+	AnalyzeImage(file multipart.File, userID string) (*response.AnalyzeImageResponse, error)
 }
