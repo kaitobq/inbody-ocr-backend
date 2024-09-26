@@ -3,6 +3,7 @@ package usecase
 import (
 	"fmt"
 	"inbody-ocr-backend/internal/domain/repository"
+	"inbody-ocr-backend/internal/infra/logger"
 	"inbody-ocr-backend/internal/usecase/response"
 )
 
@@ -20,11 +21,13 @@ func NewUserOrganizationMembershipUsecase(repo repository.UserOrganizationMember
 func (u *userOrganizationMembershipUsecase) DeleteMembership(executorID, deleteUserID, organizationID string) (*response.DeleteMembershipResponse, error) {
 	executorRole, err := u.repo.GetRole(executorID, organizationID)
 	if err != nil {
+		logger.Error("DeleteMembership", "func", "GetRole()", "error", err.Error())
 		return nil, err
 	}
 
 	deleteUserRole, err := u.repo.GetRole(deleteUserID, organizationID)
 	if err != nil {
+		logger.Error("DeleteMembership", "func", "GetRole()", "error", err.Error())
 		return nil, err
 	}
 
@@ -43,6 +46,7 @@ func (u *userOrganizationMembershipUsecase) DeleteMembership(executorID, deleteU
 
 	err = u.repo.DeleteMembership(deleteUserID, organizationID)
 	if err != nil {
+		logger.Error("DeleteMembership", "func", "DeleteMembership()", "error", err.Error())
 		return nil, err
 	}
 
