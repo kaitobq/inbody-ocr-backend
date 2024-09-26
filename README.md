@@ -1,3 +1,3 @@
 # inbody-ocr-backend
 
-inbodyを画像認識できるWebアプリのバックエンドです
+## inbodyを画像認識できるWebアプリのバックエンドです
