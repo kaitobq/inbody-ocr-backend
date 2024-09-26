@@ -25,7 +25,7 @@ func (ct *UserController) SignUp(c *gin.Context) {
 		return
 	}
 
-	res, err := ct.uc.CreateUser(req.Name, req.Email, req.Password)
+	res, err := ct.uc.CreateUser(req.Name, req.Email, req.Password, req.OrgID)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
@@ -41,7 +41,7 @@ func (ct *UserController) SignIn(c *gin.Context) {
 		return
 	}
 
-	res, err := ct.uc.SignIn(req.Email, req.Password)
+	res, err := ct.uc.SignIn(req.Email, req.Password, req.OrgID)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return

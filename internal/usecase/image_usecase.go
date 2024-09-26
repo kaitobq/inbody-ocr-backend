@@ -25,7 +25,7 @@ func NewImageUsecase(repo repository.ImageRepository, ulidService service.ULIDSe
 	}
 }
 
-func (uc *imageUsecase) AnalyzeImage(file multipart.File, userID string) (*response.AnalyzeImageResponse, error) {
+func (uc *imageUsecase) AnalyzeImage(file multipart.File, userID, orgID string) (*response.AnalyzeImageResponse, error) {
 	// 一時ファイルを作成して、画像データを保存
 	tempFile, err := os.CreateTemp("", "upload-*.jpg")
 	if err != nil {
@@ -51,6 +51,7 @@ func (uc *imageUsecase) AnalyzeImage(file multipart.File, userID string) (*respo
 	id := uc.ulidService.GenerateULID()
 	data.ID = id
 	data.UserID = userID
+	data.OrganizationID = orgID
 	// data, err = uc.imageDataRepo.CreateData(*data)
 	// if err != nil {
 	// 	return nil, err

@@ -6,18 +6,14 @@ import (
 )
 
 type UserUsecase interface {
-	CreateUser(name, email, password string) (*response.SignUpResponse, error)
-	SignIn(email, password string) (*response.SignInResponse, error)
+	CreateUser(name, email, password, orgID string) (*response.SignUpResponse, error)
+	SignIn(email, password, orgID string) (*response.SignInResponse, error)
 }
 
 type OrganizationUsecase interface {
-	CreateOrganization(name string, founderID string) (*response.CreateOrganizationResponse, error)
-}
-
-type UserOrganizationMembershipUsecase interface {
-	DeleteMembership(executorID, deleteUserID, organizationID string) (*response.DeleteMembershipResponse, error)
+	CreateOrganization(userName, email, password, OrgName string) (*response.CreateOrganizationResponse, error)
 }
 
 type ImageUsecase interface {
-	AnalyzeImage(file multipart.File, userID string) (*response.AnalyzeImageResponse, error)
+	AnalyzeImage(file multipart.File, userID, orgID string) (*response.AnalyzeImageResponse, error)
 }

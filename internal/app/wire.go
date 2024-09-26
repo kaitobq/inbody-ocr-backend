@@ -40,11 +40,6 @@ func New() (*container.App, error) {
 		usecase.NewOrganizationUsecase,
 		db.NewOrganizationRepository,
 
-		// membership
-		controller.NewUserOrganizationMembershipController,
-		usecase.NewUserOrganizationMembershipUsecase,
-		db.NewUserOrganizationMembershipRepository,
-
 		// image
 		controller.NewImageController,
 		usecase.NewImageUsecase,

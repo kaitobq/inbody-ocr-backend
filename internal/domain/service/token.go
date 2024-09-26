@@ -20,7 +20,7 @@ func NewTokenService() TokenService {
 }
 
 
-func (ts *TokenService) GenerateTokenFromID(id string) (string, error) {
+func (ts *TokenService) GenerateTokenFromID(userID, orgID string) (string, error) {
 	tokenLifeSpanStr := os.Getenv("TOKEN_LIFE_SPAN")
 	if(len(tokenLifeSpanStr) == 0) {
 		return "", fmt.Errorf("TOKEN_LIFE_SPAN is not set in the environment")
@@ -32,7 +32,8 @@ func (ts *TokenService) GenerateTokenFromID(id string) (string, error) {
 
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
 		"authorized": true,
-		"id": id,
+		"user_id": userID,
+		"org_id": orgID,
 		"exp": time.Now().Add(time.Hour * time.Duration(tokenLifeSpan)).Unix(),
 	})
 
@@ -58,28 +59,33 @@ func (ts *TokenService) TokenValid(c *gin.Context) (bool, error) {
 	return true, nil
 }
 
-func (ts *TokenService) ExtractIDFromContext(c *gin.Context) (string, error) {
+func (ts *TokenService) ExtractIDsFromContext(c *gin.Context) (string, string, error) {
 	tokenStr, err := getTokenStringFromRequestHeader(c)
 	if err != nil {
-		return "", err
+		return "", "", err
 	}
 
 	token, err := parseToken(tokenStr)
 	if err != nil {
-		return "", err
+		return "", "", err
 	}
 
 	claims, ok := token.Claims.(jwt.MapClaims)
 	if !ok {
-		return "", errors.New("error while parsing claims")
+		return "", "", errors.New("error while parsing claims")
 	}
 
-	id, ok := claims["id"].(string)
+	userID, ok := claims["user_id"].(string)
 	if !ok {
-		return "", errors.New("error while parsing id")
+		return "", "", errors.New("error while parsing id")
 	}
 
-	return id, nil
+	orgID, ok := claims["org_id"].(string)
+	if !ok {
+		return "", "", errors.New("error while parsing id")
+	}
+
+	return userID, orgID, nil
 }
 
 func (ts *TokenService) ExtractExpFromToken(tokenStr string) (*time.Time, error) {

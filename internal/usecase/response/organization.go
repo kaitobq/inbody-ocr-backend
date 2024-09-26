@@ -1,6 +1,9 @@
 package response
 
-import "time"
+import (
+	"inbody-ocr-backend/internal/domain/entity"
+	"time"
+)
 
 type OrganizationResponse struct {
 	ID        string    `json:"id"`
@@ -10,18 +13,23 @@ type OrganizationResponse struct {
 }
 
 type CreateOrganizationResponse struct {
-	Message   string `json:"message"`
+	Message      string               `json:"message"`
 	Organization OrganizationResponse `json:"organization"`
+	Token        TokenResponse        `json:"token"`
 }
 
-func NewCreateOrganizationResponse(id string, name string, createdAt time.Time, updatedAt time.Time) (*CreateOrganizationResponse, error) {
+func NewCreateOrganizationResponse(org entity.Organization, token string, exp time.Time) (*CreateOrganizationResponse, error) {
 	return &CreateOrganizationResponse{
 		Message: "Organization created successfully",
 		Organization: OrganizationResponse{
-			ID:        id,
-			Name:      name,
-			CreatedAt: createdAt,
-			UpdatedAt: updatedAt,
+			ID:        org.ID,
+			Name:      org.Name,
+			CreatedAt: org.CreatedAt,
+			UpdatedAt: org.UpdatedAt,
+		},
+		Token: TokenResponse{
+			Value: token,
+			Exp:   exp,
 		},
 	}, nil
 }
