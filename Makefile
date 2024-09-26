@@ -6,6 +6,7 @@ down:
 	docker-compose down
 
 lint:
+	gofmt -s -w .
 	golangci-lint run ./...
 
 enter:
