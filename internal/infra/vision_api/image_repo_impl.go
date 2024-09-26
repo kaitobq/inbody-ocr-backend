@@ -314,16 +314,16 @@ func findClosestNumberInDirection(keyword string, annotations []*visionpb.Entity
 }
 
 // getClosestNumbersByDirection gets the closest numbers in both X and Y directions for the specified keyword.
-func getClosestNumbersByDirection(keyword string, annotations []*visionpb.EntityAnnotation) (string, string, error) {
-	closestNumberX, errX := findClosestNumberInDirection(keyword, annotations, "X")
-	if errX != nil {
-		return "", "", errX
-	}
+// func getClosestNumbersByDirection(keyword string, annotations []*visionpb.EntityAnnotation) (string, string, error) {
+// 	closestNumberX, errX := findClosestNumberInDirection(keyword, annotations, "X")
+// 	if errX != nil {
+// 		return "", "", errX
+// 	}
 
-	closestNumberY, errY := findClosestNumberInDirection(keyword, annotations, "Y")
-	if errY != nil {
-		return "", "", errY
-	}
+// 	closestNumberY, errY := findClosestNumberInDirection(keyword, annotations, "Y")
+// 	if errY != nil {
+// 		return "", "", errY
+// 	}
 
-	return closestNumberX, closestNumberY, nil
-}
+// 	return closestNumberX, closestNumberY, nil
+// }
