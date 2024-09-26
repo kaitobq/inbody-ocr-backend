@@ -1,0 +1,23 @@
+name: Golangci-lint ReviewDog 
+
+on:
+  pull_request:
+
+jobs:
+  golangci-lint:
+    permissions:
+      checks: write
+      contents: read
+      pull-requests: write 
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: reviewdog/action-golangci-lint@v2
+        with:
+          github_token: ${{ secrets.github_token }}
+          go_version: ^1.20
+          # reviewdog の動作モードの指定
+          reporter: github-pr-review
+          # Github Status へのレポートレベルの指定
+          level: warning
+          golangci_lint_flags: "--config=.golangci.yml"
