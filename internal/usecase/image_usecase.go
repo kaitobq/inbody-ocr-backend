@@ -48,9 +48,9 @@ func (uc *imageUsecase) AnalyzeImage(file multipart.File, userID string) (*respo
 	}
 	
 	// 実際はフロントから保存するリクエストを送らせるのでここで保存する必要はない
-	// id := uc.ulidService.GenerateULID()
-	// data.ID = id
-	// data.UserID = userID
+	id := uc.ulidService.GenerateULID()
+	data.ID = id
+	data.UserID = userID
 	// data, err = uc.imageDataRepo.CreateData(*data)
 	// if err != nil {
 	// 	return nil, err
