@@ -10,13 +10,13 @@ import (
 )
 
 type OrganizationController struct {
-	uc usecase.OrganizationUsecase
+	uc           usecase.OrganizationUsecase
 	tokenService service.TokenService
 }
 
 func NewOrganizationController(uc usecase.OrganizationUsecase, tokenService service.TokenService) *OrganizationController {
 	return &OrganizationController{
-		uc: uc,
+		uc:           uc,
 		tokenService: tokenService,
 	}
 }

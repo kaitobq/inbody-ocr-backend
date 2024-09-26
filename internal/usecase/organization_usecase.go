@@ -10,23 +10,23 @@ import (
 )
 
 type organizationUsecase struct {
-	repo repository.OrganizationRepository
-	userRepo repository.UserRepository
+	repo         repository.OrganizationRepository
+	userRepo     repository.UserRepository
 	tokenService service.TokenService
-	ulidService service.ULIDService
+	ulidService  service.ULIDService
 }
 
 func NewOrganizationUsecase(repo repository.OrganizationRepository, userRepo repository.UserRepository, tokenService service.TokenService, ulidService service.ULIDService) OrganizationUsecase {
 	return &organizationUsecase{
-		repo: repo,
-		userRepo: userRepo,
+		repo:         repo,
+		userRepo:     userRepo,
 		tokenService: tokenService,
-		ulidService: ulidService,
+		ulidService:  ulidService,
 	}
 }
 
 // signupも同時に行う
-func (uc *organizationUsecase) CreateOrganization(userName, email, password, OrgName string) (*response.CreateOrganizationResponse, error) {
+func (uc *organizationUsecase) CreateOrganization(userName, email, password, orgName string) (*response.CreateOrganizationResponse, error) {
 	exists, err := uc.userRepo.UserExists(email)
 	if err != nil {
 		logger.Error("CreateOrganization", "func", "UserExists()", "error", err.Error())
@@ -38,8 +38,8 @@ func (uc *organizationUsecase) CreateOrganization(userName, email, password, Org
 	}
 
 	org := entity.Organization{
-		ID: uc.ulidService.GenerateULID(),
-		Name: OrgName,
+		ID:   uc.ulidService.GenerateULID(),
+		Name: orgName,
 	}
 
 	hashedPassword, err := uc.userRepo.HashPassword(password)
@@ -48,12 +48,12 @@ func (uc *organizationUsecase) CreateOrganization(userName, email, password, Org
 		return nil, err
 	}
 	user := entity.User{
-		ID: uc.ulidService.GenerateULID(),
-		Name: userName,
-		Email: email,
-		Password: hashedPassword,
+		ID:             uc.ulidService.GenerateULID(),
+		Name:           userName,
+		Email:          email,
+		Password:       hashedPassword,
 		OrganizationID: org.ID,
-		Role: entity.OrganizationRoleOwner,
+		Role:           entity.OrganizationRoleOwner,
 	}
 
 	organization, err := uc.repo.CreateOrganization(org)

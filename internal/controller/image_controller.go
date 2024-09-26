@@ -11,13 +11,13 @@ import (
 )
 
 type ImageController struct {
-	uc usecase.ImageUsecase
+	uc           usecase.ImageUsecase
 	tokenService service.TokenService
 }
 
 func NewImageController(uc usecase.ImageUsecase, tokenService service.TokenService) *ImageController {
 	return &ImageController{
-		uc: uc,
+		uc:           uc,
 		tokenService: tokenService,
 	}
 }

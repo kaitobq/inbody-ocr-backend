@@ -26,6 +26,6 @@ func New(cfg *config.DBConfig) (*DB, error) {
 	if err := db.Ping(); err != nil {
 		return nil, fmt.Errorf("failed to ping database: %w", err)
 	}
-	
+
 	return &DB{db}, nil
 }

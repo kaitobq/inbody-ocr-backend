@@ -24,7 +24,7 @@ func (r *organizationRepository) CreateOrganization(org entity.Organization) (*e
 	now := time.Now()
 	org.CreatedAt = now
 	org.UpdatedAt = now
-	
+
 	_, err := r.db.Exec(query, org.ID, org.Name, org.CreatedAt, org.UpdatedAt)
 	if err != nil {
 		return nil, err

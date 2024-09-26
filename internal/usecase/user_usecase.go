@@ -13,15 +13,15 @@ type userUsecase struct {
 	repo         repository.UserRepository
 	orgRepo      repository.OrganizationRepository
 	tokenService service.TokenService
-	ulidService service.ULIDService
+	ulidService  service.ULIDService
 }
 
 func NewUserUsecase(repo repository.UserRepository, orgRepo repository.OrganizationRepository, tokenService service.TokenService, ulidService service.ULIDService) UserUsecase {
 	return &userUsecase{
-		repo: repo,
-		orgRepo: orgRepo,
+		repo:         repo,
+		orgRepo:      orgRepo,
 		tokenService: tokenService,
-		ulidService: ulidService,
+		ulidService:  ulidService,
 	}
 }
 
@@ -86,7 +86,7 @@ func (uc *userUsecase) SignIn(email, password string) (*response.SignInResponse,
 		logger.Error("SignIn", "func", "ComparePassword()", "error", err.Error())
 		return nil, err
 	}
-	
+
 	token, err := uc.tokenService.GenerateTokenFromID(user.ID, user.OrganizationID)
 	if err != nil {
 		logger.Error("SignIn", "func", "GenerateTokenFromID", "error", err.Error())

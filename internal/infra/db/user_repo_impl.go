@@ -47,16 +47,16 @@ func (r *userRepository) DeleteUser(id string) error {
 }
 
 func (r *userRepository) HashPassword(password string) (string, error) {
-    if password == "" || len(password) == 0 {
-        return "", fmt.Errorf("password is required")
-    }
+	if password == "" || len(password) == 0 {
+		return "", fmt.Errorf("password is required")
+	}
 
-    bytes, err := bcrypt.GenerateFromPassword([]byte(password), 14)
-    if err != nil {
-        return "", err
-    }
+	bytes, err := bcrypt.GenerateFromPassword([]byte(password), 14)
+	if err != nil {
+		return "", err
+	}
 
-    return string(bytes), nil
+	return string(bytes), nil
 }
 
 func (r *userRepository) ComparePassword(hashedPassword, password string) error {
