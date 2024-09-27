@@ -67,5 +67,5 @@ func (uc *imageUsecase) AnalyzeImage(file multipart.File, userID, orgID string) 
 	fmt.Printf("mw: %v\n", data.MuscleWeight)
 	fmt.Printf("point: %v\n", data.Point)
 
-	return response.NewAnalyzeImageResponse(*data), nil
+	return response.NewAnalyzeImageResponse(*data)
 }

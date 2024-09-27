@@ -31,3 +31,73 @@ func (r *imageDataRepository) CreateData(data entity.ImageData) (*entity.ImageDa
 
 	return &data, nil
 }
+
+func (r *imageDataRepository) FindByUserID(userID string) ([]entity.ImageData, error) {
+	var records []entity.ImageData
+
+	query := `SELECT * FROM image_data WHERE user_id = ?`
+
+	rows, err := r.db.Query(query, userID)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	for rows.Next() {
+		var record entity.ImageData
+		var createdAt, updatedAt string
+		err := rows.Scan(&record.ID, &record.OrganizationID, &record.UserID, &record.Weight, &record.Height, &record.MuscleWeight, &record.FatWeight, &record.FatPercent, &record.BodyWater, &record.Protein, &record.Mineral, &record.Point, &createdAt, &updatedAt)
+		if err != nil {
+			return nil, err
+		}
+
+		record.CreatedAt, err = time.Parse("2006-01-02 15:04:05", createdAt)
+		if err != nil {
+			return nil, err
+		}
+
+		record.UpdatedAt, err = time.Parse("2006-01-02 15:04:05", createdAt)
+		if err != nil {
+			return nil, err
+		}
+
+		records = append(records, record)
+	}
+
+	return records, nil
+}
+
+func (r *imageDataRepository) FindByOrganizationID(orgID string) ([]entity.ImageData, error) {
+	var records []entity.ImageData
+
+	query := `SELECT * FROM image_data WHERE organization_id = ?`
+
+	rows, err := r.db.Query(query, orgID)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	for rows.Next() {
+		var record entity.ImageData
+		var createdAt, updatedAt string
+		err := rows.Scan(&record.ID, &record.OrganizationID, &record.UserID, &record.Weight, &record.Height, &record.MuscleWeight, &record.FatWeight, &record.FatPercent, &record.BodyWater, &record.Protein, &record.Mineral, &record.Point, &createdAt, &updatedAt)
+		if err != nil {
+			return nil, err
+		}
+
+		record.CreatedAt, err = time.Parse("2006-01-02 15:04:05", createdAt)
+		if err != nil {
+			return nil, err
+		}
+
+		record.UpdatedAt, err = time.Parse("2006-01-02 15:04:05", createdAt)
+		if err != nil {
+			return nil, err
+		}
+
+		records = append(records, record)
+	}
+
+	return records, nil
+}

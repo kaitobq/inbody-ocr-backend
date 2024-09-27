@@ -47,7 +47,7 @@ func (uc *organizationUsecase) CreateOrganization(userName, email, password, org
 		logger.Error("CreateOrganization", "func", "HashPassword()", "error", err.Error())
 		return nil, err
 	}
-	user := entity.User{
+	user := &entity.User{
 		ID:             uc.ulidService.GenerateULID(),
 		Name:           userName,
 		Email:          email,
@@ -62,7 +62,7 @@ func (uc *organizationUsecase) CreateOrganization(userName, email, password, org
 		return nil, err
 	}
 
-	_, err = uc.userRepo.CreateUser(user)
+	user, err = uc.userRepo.CreateUser(*user)
 	if err != nil {
 		// ユーザのいない組織が作成されるのを防ぐためにロールバック
 		rollbackErr := uc.userRepo.DeleteUser(user.ID)
@@ -86,5 +86,5 @@ func (uc *organizationUsecase) CreateOrganization(userName, email, password, org
 		return nil, err
 	}
 
-	return response.NewCreateOrganizationResponse(*organization, token, *exp)
+	return response.NewCreateOrganizationResponse(*organization, token, user.ID, user.Name, *exp)
 }

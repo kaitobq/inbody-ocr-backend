@@ -15,10 +15,11 @@ type OrganizationResponse struct {
 type CreateOrganizationResponse struct {
 	Message      string               `json:"message"`
 	Organization OrganizationResponse `json:"organization"`
+	User         UserResponse         `json:"user"`
 	Token        TokenResponse        `json:"token"`
 }
 
-func NewCreateOrganizationResponse(org entity.Organization, token string, exp time.Time) (*CreateOrganizationResponse, error) {
+func NewCreateOrganizationResponse(org entity.Organization, token, userID, userName string, exp time.Time) (*CreateOrganizationResponse, error) {
 	return &CreateOrganizationResponse{
 		Message: "Organization created successfully",
 		Organization: OrganizationResponse{
@@ -26,6 +27,11 @@ func NewCreateOrganizationResponse(org entity.Organization, token string, exp ti
 			Name:      org.Name,
 			CreatedAt: org.CreatedAt,
 			UpdatedAt: org.UpdatedAt,
+		},
+		User: UserResponse{
+			ID:   userID,
+			Name: userName,
+			Role: entity.OrganizationRoleOwner,
 		},
 		Token: TokenResponse{
 			Value: token,

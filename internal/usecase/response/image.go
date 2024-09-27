@@ -19,7 +19,7 @@ type AnalyzeImageResponse struct {
 	Results Results `json:"results"`
 }
 
-func NewAnalyzeImageResponse(results entity.ImageData) *AnalyzeImageResponse {
+func NewAnalyzeImageResponse(results entity.ImageData) (*AnalyzeImageResponse, error) {
 	return &AnalyzeImageResponse{
 		Message: "Image analyzed successfully",
 		Results: Results{
@@ -33,5 +33,5 @@ func NewAnalyzeImageResponse(results entity.ImageData) *AnalyzeImageResponse {
 			Mineral:      results.Mineral,
 			Point:        results.Point,
 		},
-	}
+	}, nil
 }

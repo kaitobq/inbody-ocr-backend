@@ -17,3 +17,9 @@ type OrganizationUsecase interface {
 type ImageUsecase interface {
 	AnalyzeImage(file multipart.File, userID, orgID string) (*response.AnalyzeImageResponse, error)
 }
+
+type ImageDataUsecase interface {
+	CreateData(weight, height, muscleWeight, fatWeight, fatPercent, bodyWater, protein, mineral float64, point uint, userID, orgID string) (*response.SaveImageDataResponse, error)
+	GetDataForMember(userID string) (*response.GetImageDataForMemberResponse, error)
+	GetDataForAdmin(userID, orgID string) (*response.GetImageDataForAdminResponse, error)
+}

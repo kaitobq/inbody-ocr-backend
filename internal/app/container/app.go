@@ -15,6 +15,7 @@ type container struct {
 	userCtrl         *controller.UserController
 	organizationCtrl *controller.OrganizationController
 	imageCtrl        *controller.ImageController
+	imageDataCtrl    *controller.ImageDataController
 	tokenService     service.TokenService
 }
 
@@ -22,12 +23,14 @@ func NewCtrl(
 	userCtrl *controller.UserController,
 	organizationCtrl *controller.OrganizationController,
 	imageCtrl *controller.ImageController,
+	imageDataCtrl *controller.ImageDataController,
 	tokenService service.TokenService,
 ) *container {
 	return &container{
 		userCtrl:         userCtrl,
 		organizationCtrl: organizationCtrl,
 		imageCtrl:        imageCtrl,
+		imageDataCtrl:    imageDataCtrl,
 		tokenService:     tokenService,
 	}
 }
@@ -44,6 +47,7 @@ func NewApp(r *gin.Engine, container *container, cfg *config.Config, db *databas
 		container.userCtrl,
 		container.organizationCtrl,
 		container.imageCtrl,
+		container.imageDataCtrl,
 		container.tokenService,
 	)
 

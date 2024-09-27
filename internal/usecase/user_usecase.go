@@ -44,7 +44,7 @@ func (uc *userUsecase) CreateUser(name, email, password, orgID string) (*respons
 	}
 
 	id := uc.ulidService.GenerateULID()
-	user := entity.User{
+	user := &entity.User{
 		ID:             id,
 		Name:           name,
 		Email:          email,
@@ -53,7 +53,7 @@ func (uc *userUsecase) CreateUser(name, email, password, orgID string) (*respons
 		Role:           entity.OrganizationRoleMember,
 	}
 
-	_, err = uc.repo.CreateUser(user)
+	user, err = uc.repo.CreateUser(*user)
 	if err != nil {
 		logger.Error("CreateUser", "func", "CreateUser()", "error", err.Error())
 		return nil, err
@@ -71,7 +71,7 @@ func (uc *userUsecase) CreateUser(name, email, password, orgID string) (*respons
 		return nil, err
 	}
 
-	return response.NewSignUpResponse(token, exp)
+	return response.NewSignUpResponse(token, exp, user.ID, user.Name, user.Role)
 }
 
 func (uc *userUsecase) SignIn(email, password string) (*response.SignInResponse, error) {
@@ -99,5 +99,5 @@ func (uc *userUsecase) SignIn(email, password string) (*response.SignInResponse,
 		return nil, err
 	}
 
-	return response.NewSignInResponse(token, exp, user.OrganizationID)
+	return response.NewSignInResponse(token, exp, user.OrganizationID, user.ID, user.Name, user.Role)
 }
