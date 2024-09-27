@@ -10,18 +10,18 @@ import (
 )
 
 type imageDataUsecase struct {
-	repo repository.ImageDataRepository
+	repo             repository.ImageDataRepository
 	organizationRepo repository.OrganizationRepository
-	userRepo repository.UserRepository
-	ulidService service.ULIDService
+	userRepo         repository.UserRepository
+	ulidService      service.ULIDService
 }
 
 func NewImageDataUsecase(repo repository.ImageDataRepository, organizationRepo repository.OrganizationRepository, userRepo repository.UserRepository, ulidService service.ULIDService) ImageDataUsecase {
 	return &imageDataUsecase{
-		repo: repo,
+		repo:             repo,
 		organizationRepo: organizationRepo,
-		userRepo: userRepo,
-		ulidService: ulidService,
+		userRepo:         userRepo,
+		ulidService:      ulidService,
 	}
 }
 

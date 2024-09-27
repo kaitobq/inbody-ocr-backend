@@ -36,7 +36,7 @@ func NewGetImageDataForAdminResponse(records map[string][]entity.ImageData, user
 			Role: user.Role,
 		})
 	}
-	
+
 	return &GetImageDataForAdminResponse{
 		Records: records,
 		Users:   userResponses,

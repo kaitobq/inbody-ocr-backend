@@ -6,9 +6,9 @@ import (
 )
 
 type UserResponse struct {
-	ID        string    `json:"id"`
-	Name      string    `json:"name"`
-	Role      entity.OrganizationRole	`json:"role"`
+	ID   string                  `json:"id"`
+	Name string                  `json:"name"`
+	Role entity.OrganizationRole `json:"role"`
 }
 
 type TokenResponse struct {
