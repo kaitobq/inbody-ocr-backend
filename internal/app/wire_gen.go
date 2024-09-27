@@ -39,7 +39,7 @@ func New() (*container.App, error) {
 	imageDataRepository := db.NewImageDataRepository(databaseDB)
 	imageUsecase := usecase.NewImageUsecase(imageRepository, ulidService, imageDataRepository)
 	imageController := controller.NewImageController(imageUsecase, tokenService)
-	imageDataUsecase := usecase.NewImageDataUsecase(imageDataRepository, ulidService)
+	imageDataUsecase := usecase.NewImageDataUsecase(imageDataRepository, organizationRepository, userRepository, ulidService)
 	imageDataController := controller.NewImageDataController(imageDataUsecase, tokenService)
 	containerContainer := container.NewCtrl(userController, organizationController, imageController, imageDataController, tokenService)
 	configConfig := config.New()

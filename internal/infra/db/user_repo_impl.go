@@ -91,7 +91,7 @@ func (r *userRepository) FindByEmail(email string) (*entity.User, error) {
 }
 
 func (r *userRepository) FindByID(id string) (*entity.User, error) {
-	query := `SELECT id, name, email, password FROM users WHERE id = ?`
+	query := `SELECT id, name, email, password, organization_id, role, created_at, updated_at FROM users WHERE id = ?`
 
 	var user entity.User
 	var createdAt, updatedAt string

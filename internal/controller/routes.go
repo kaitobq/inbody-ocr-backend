@@ -34,5 +34,7 @@ func SetUpRoutes(
 	imageData.Use(middleware.AuthMiddleware(tokenService))
 	{
 		imageData.POST("", imageDataCtrl.SaveImageData)
+		imageData.GET("", imageDataCtrl.GetImageDataForMember)
+		imageData.GET("/admin", imageDataCtrl.GetImageDataForAdmin)
 	}
 }

@@ -44,3 +44,35 @@ func (ct *ImageDataController) SaveImageData(c *gin.Context) {
 
 	c.JSON(http.StatusOK, res)
 }
+
+func (ct *ImageDataController) GetImageDataForMember(c *gin.Context) {
+	userID, _, err := ct.tokenService.ExtractIDsFromContext(c)
+	if err != nil {
+		logger.Error("GetImageDataForMember", "func", "ExtractIDsFromContext()", "error", err.Error())
+		c.JSON(http.StatusUnauthorized, gin.H{"error": err.Error()})
+	}
+
+	res, err := ct.uc.GetDataForMember(userID)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	c.JSON(http.StatusOK, res)
+}
+
+func (ct *ImageDataController) GetImageDataForAdmin(c *gin.Context) {
+	userID, orgID, err := ct.tokenService.ExtractIDsFromContext(c)
+	if err != nil {
+		logger.Error("GetImageDataForAdmin", "func", "ExtractIDsFromContext()", "error", err.Error())
+		c.JSON(http.StatusUnauthorized, gin.H{"error": err.Error()})
+	}
+
+	res, err := ct.uc.GetDataForAdmin(userID, orgID)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	c.JSON(http.StatusOK, res)
+}

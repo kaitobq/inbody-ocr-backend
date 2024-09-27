@@ -56,3 +56,36 @@ func (r *organizationRepository) DeleteOrganization(id string) error {
 
 	return nil
 }
+
+func (r *organizationRepository) GetMember(orgID string) ([]entity.User, error) {
+	query := `SELECT id, name, email, password, role, organization_id, created_at, updated_at FROM users WHERE organization_id = ?`
+
+	rows, err := r.db.Query(query, orgID)
+	if err != nil {
+		return nil, err
+	}
+
+	var users []entity.User
+	for rows.Next() {
+		var user entity.User
+		var createdAt, updatedAt string
+		err := rows.Scan(&user.ID, &user.Name, &user.Email, &user.Password, &user.Role, &user.OrganizationID, &createdAt, &updatedAt)
+		if err != nil {
+			return nil, err
+		}
+
+		user.CreatedAt, err = time.Parse("2006-01-02 15:04:05", createdAt)
+		if err != nil {
+			return nil, err
+		}
+
+		user.UpdatedAt, err = time.Parse("2006-01-02 15:04:05", updatedAt)
+		if err != nil {
+			return nil, err
+		}
+
+		users = append(users, user)
+	}
+
+	return users, nil
+}
