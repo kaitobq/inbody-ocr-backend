@@ -3,6 +3,7 @@ package service
 import (
 	"errors"
 	"fmt"
+	jptime "inbody-ocr-backend/pkg/jp_time"
 	"os"
 	"strconv"
 	"strings"
@@ -33,7 +34,7 @@ func (ts *TokenService) GenerateTokenFromID(userID, orgID string) (string, error
 		"authorized": true,
 		"user_id":    userID,
 		"org_id":     orgID,
-		"exp":        time.Now().Add(time.Hour * time.Duration(tokenLifeSpan)).Unix(),
+		"exp":        jptime.Now().Add(time.Hour * time.Duration(tokenLifeSpan)).Unix(),
 	})
 
 	return token.SignedString([]byte(os.Getenv("JWT_SECRET")))

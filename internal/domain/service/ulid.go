@@ -2,7 +2,7 @@ package service
 
 import (
 	"crypto/rand"
-	"time"
+	jptime "inbody-ocr-backend/pkg/jp_time"
 
 	"github.com/oklog/ulid/v2"
 )
@@ -15,7 +15,7 @@ func NewULIDService() ULIDService {
 }
 
 func (u *ULIDService) GenerateULID() string {
-	t := time.Now()
+	t := jptime.Now()
 	entropy := ulid.Monotonic(rand.Reader, 0)
 	return ulid.MustNew(ulid.Timestamp(t), entropy).String()
 }

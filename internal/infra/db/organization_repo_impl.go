@@ -4,7 +4,7 @@ import (
 	"inbody-ocr-backend/internal/domain/entity"
 	"inbody-ocr-backend/internal/domain/repository"
 	"inbody-ocr-backend/pkg/database"
-	"time"
+	jptime "inbody-ocr-backend/pkg/jp_time"
 )
 
 type organizationRepository struct {
@@ -21,7 +21,7 @@ func NewOrganizationRepository(db *database.DB) repository.OrganizationRepositor
 func (r *organizationRepository) CreateOrganization(org entity.Organization) (*entity.Organization, error) {
 	query := `INSERT INTO organizations (id, name, created_at, updated_at) VALUES (?, ?, ?, ?)`
 
-	now := time.Now()
+	now := jptime.Now()
 	org.CreatedAt = now
 	org.UpdatedAt = now
 
@@ -74,12 +74,12 @@ func (r *organizationRepository) GetMember(orgID string) ([]entity.User, error) 
 			return nil, err
 		}
 
-		user.CreatedAt, err = time.Parse("2006-01-02 15:04:05", createdAt)
+		user.CreatedAt, err = jptime.ParseDateTime(createdAt)
 		if err != nil {
 			return nil, err
 		}
 
-		user.UpdatedAt, err = time.Parse("2006-01-02 15:04:05", updatedAt)
+		user.UpdatedAt, err = jptime.ParseDateTime(updatedAt)
 		if err != nil {
 			return nil, err
 		}

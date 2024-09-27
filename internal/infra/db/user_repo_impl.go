@@ -6,7 +6,7 @@ import (
 	"inbody-ocr-backend/internal/domain/entity"
 	"inbody-ocr-backend/internal/domain/repository"
 	"inbody-ocr-backend/pkg/database"
-	"time"
+	jptime "inbody-ocr-backend/pkg/jp_time"
 
 	"golang.org/x/crypto/bcrypt"
 )
@@ -24,7 +24,7 @@ func NewUserRepository(db *database.DB) repository.UserRepository {
 func (r *userRepository) CreateUser(user entity.User) (*entity.User, error) {
 	query := `INSERT INTO users (id, name, email, password, organization_id, role, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)`
 
-	now := time.Now()
+	now := jptime.Now()
 	user.CreatedAt = now
 	user.UpdatedAt = now
 	_, err := r.db.Exec(query, user.ID, user.Name, user.Email, user.Password, user.OrganizationID, user.Role, user.CreatedAt, user.UpdatedAt)
@@ -77,12 +77,12 @@ func (r *userRepository) FindByEmail(email string) (*entity.User, error) {
 		return nil, err
 	}
 
-	user.CreatedAt, err = time.Parse("2006-01-02 15:04:05", createdAt)
+	user.CreatedAt, err = jptime.ParseDateTime(createdAt)
 	if err != nil {
 		return nil, err
 	}
 
-	user.UpdatedAt, err = time.Parse("2006-01-02 15:04:05", updatedAt)
+	user.UpdatedAt, err = jptime.ParseDateTime(updatedAt)
 	if err != nil {
 		return nil, err
 	}
@@ -100,12 +100,12 @@ func (r *userRepository) FindByID(id string) (*entity.User, error) {
 		return nil, err
 	}
 
-	user.CreatedAt, err = time.Parse("2006-01-02 15:04:05", createdAt)
+	user.CreatedAt, err = jptime.ParseDateTime(createdAt)
 	if err != nil {
 		return nil, err
 	}
 
-	user.UpdatedAt, err = time.Parse("2006-01-02 15:04:05", updatedAt)
+	user.UpdatedAt, err = jptime.ParseDateTime(updatedAt)
 	if err != nil {
 		return nil, err
 	}

@@ -4,7 +4,7 @@ import (
 	"inbody-ocr-backend/internal/domain/entity"
 	"inbody-ocr-backend/internal/domain/repository"
 	"inbody-ocr-backend/pkg/database"
-	"time"
+	jptime "inbody-ocr-backend/pkg/jp_time"
 )
 
 type imageDataRepository struct {
@@ -20,7 +20,7 @@ func NewImageDataRepository(db *database.DB) repository.ImageDataRepository {
 func (r *imageDataRepository) CreateData(data entity.ImageData) (*entity.ImageData, error) {
 	query := `INSERT INTO image_data (id, organization_id, user_id, weight, height, muscle_weight, fat_weight, fat_percent, body_water, protein, mineral, point, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
 
-	now := time.Now()
+	now := jptime.Now()
 	data.CreatedAt = now
 	data.UpdatedAt = now
 
@@ -51,12 +51,12 @@ func (r *imageDataRepository) FindByUserID(userID string) ([]entity.ImageData, e
 			return nil, err
 		}
 
-		record.CreatedAt, err = time.Parse("2006-01-02 15:04:05", createdAt)
+		record.CreatedAt, err = jptime.ParseDateTime(createdAt)
 		if err != nil {
 			return nil, err
 		}
 
-		record.UpdatedAt, err = time.Parse("2006-01-02 15:04:05", createdAt)
+		record.UpdatedAt, err = jptime.ParseDateTime(updatedAt)
 		if err != nil {
 			return nil, err
 		}
@@ -86,12 +86,12 @@ func (r *imageDataRepository) FindByOrganizationID(orgID string) ([]entity.Image
 			return nil, err
 		}
 
-		record.CreatedAt, err = time.Parse("2006-01-02 15:04:05", createdAt)
+		record.CreatedAt, err = jptime.ParseDateTime(createdAt)
 		if err != nil {
 			return nil, err
 		}
 
-		record.UpdatedAt, err = time.Parse("2006-01-02 15:04:05", createdAt)
+		record.UpdatedAt, err = jptime.ParseDateTime(updatedAt)
 		if err != nil {
 			return nil, err
 		}
