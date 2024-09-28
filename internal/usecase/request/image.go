@@ -6,12 +6,10 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func GetImgFileFromContext(c *gin.Context) (multipart.File, error) {
-	file, _, err := c.Request.FormFile("image")
+func GetImgFileFromContext(c *gin.Context) (multipart.File, *multipart.FileHeader, error) {
+	file, header, err := c.Request.FormFile("image")
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
-	defer file.Close()
-
-	return file, nil
+	return file, header, nil
 }

@@ -24,7 +24,7 @@ func NewImageController(uc usecase.ImageUsecase, tokenService service.TokenServi
 
 // AnalyzeImage detects text from an uploaded image using Google Vision API
 func (ct *ImageController) AnalyzeImage(c *gin.Context) {
-	file, err := request.GetImgFileFromContext(c)
+	file, fileHeader, err := request.GetImgFileFromContext(c)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Failed to get image from request"})
 		return
@@ -36,10 +36,9 @@ func (ct *ImageController) AnalyzeImage(c *gin.Context) {
 		return
 	}
 
-	res, err := ct.uc.AnalyzeImage(file, userID, orgID)
+	res, err := ct.uc.AnalyzeImage(file, fileHeader, userID, orgID)
 	if err != nil {
-		fmt.Printf("Failed to detect text from image: %v\n", err)
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to detect text from image"})
+		c.JSON(http.StatusInternalServerError, gin.H{"error": fmt.Sprintf("Failed to detect text from image: %v", err)})
 		return
 	}
 
