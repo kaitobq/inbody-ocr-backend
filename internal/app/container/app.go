@@ -6,6 +6,7 @@ import (
 	"inbody-ocr-backend/internal/app/config"
 	"inbody-ocr-backend/internal/controller"
 	"inbody-ocr-backend/internal/domain/service"
+	"inbody-ocr-backend/internal/middleware"
 	"inbody-ocr-backend/pkg/database"
 
 	"github.com/gin-gonic/gin"
@@ -42,6 +43,8 @@ type App struct {
 }
 
 func NewApp(r *gin.Engine, container *container, cfg *config.Config, db *database.DB) *App {
+	r.Use(middleware.CORS())
+
 	controller.SetUpRoutes(
 		r,
 		container.userCtrl,
