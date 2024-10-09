@@ -3,6 +3,7 @@ package controller
 import (
 	"inbody-ocr-backend/internal/usecase"
 	"inbody-ocr-backend/internal/usecase/request"
+	"inbody-ocr-backend/internal/usecase/response"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -21,13 +22,17 @@ func NewUserController(uc usecase.UserUsecase) *UserController {
 func (ct *UserController) SignUp(c *gin.Context) {
 	req, err := request.NewSignUpRequest(c)
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		c.JSON(http.StatusBadRequest, response.NewErrorResponse(http.StatusBadRequest, err.Error()))
 		return
 	}
 
 	res, err := ct.uc.CreateUser(req.Name, req.Email, req.Password, req.OrgID)
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		if err.Error() == "email already exists" {
+			c.JSON(http.StatusBadRequest, response.NewErrorResponse(http.StatusBadRequest, err.Error()))
+			return
+		}
+		c.JSON(http.StatusInternalServerError, response.NewErrorResponse(http.StatusInternalServerError, err.Error()))
 		return
 	}
 
@@ -37,13 +42,13 @@ func (ct *UserController) SignUp(c *gin.Context) {
 func (ct *UserController) SignIn(c *gin.Context) {
 	req, err := request.NewSignInRequest(c)
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		c.JSON(http.StatusBadRequest, response.NewErrorResponse(http.StatusBadRequest, err.Error()))
 		return
 	}
 
 	res, err := ct.uc.SignIn(req.Email, req.Password)
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		c.JSON(http.StatusInternalServerError, response.NewErrorResponse(http.StatusInternalServerError, err.Error()))
 		return
 	}
 

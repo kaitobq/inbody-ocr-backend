@@ -5,6 +5,7 @@ import (
 	"inbody-ocr-backend/internal/domain/service"
 	"inbody-ocr-backend/internal/usecase"
 	"inbody-ocr-backend/internal/usecase/request"
+	"inbody-ocr-backend/internal/usecase/response"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -26,19 +27,19 @@ func NewImageController(uc usecase.ImageUsecase, tokenService service.TokenServi
 func (ct *ImageController) AnalyzeImage(c *gin.Context) {
 	file, fileHeader, err := request.GetImgFileFromContext(c)
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Failed to get image from request"})
+		c.JSON(http.StatusBadRequest, response.NewErrorResponse(http.StatusBadRequest, "Failed to get image from request"))
 		return
 	}
 
 	userID, orgID, err := ct.tokenService.ExtractIDsFromContext(c)
 	if err != nil {
-		c.JSON(http.StatusUnauthorized, gin.H{"error": err.Error()})
+		c.JSON(http.StatusUnauthorized, response.NewErrorResponse(http.StatusUnauthorized, err.Error()))
 		return
 	}
 
 	res, err := ct.uc.AnalyzeImage(file, fileHeader, userID, orgID)
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": fmt.Sprintf("Failed to detect text from image: %v", err)})
+		c.JSON(http.StatusInternalServerError, response.NewErrorResponse(http.StatusInternalServerError, fmt.Sprintf("Failed to detect text from image: %v", err)))
 		return
 	}
 
