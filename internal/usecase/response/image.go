@@ -1,6 +1,9 @@
 package response
 
-import "inbody-ocr-backend/internal/domain/entity"
+import (
+	"inbody-ocr-backend/internal/domain/entity"
+	"net/http"
+)
 
 type Results struct {
 	Weight       float64 `json:"weight"`
@@ -15,12 +18,14 @@ type Results struct {
 }
 
 type AnalyzeImageResponse struct {
+	Status  int     `json:"status"`
 	Message string  `json:"message"`
 	Results Results `json:"results"`
 }
 
 func NewAnalyzeImageResponse(results entity.ImageData) (*AnalyzeImageResponse, error) {
 	return &AnalyzeImageResponse{
+		Status:  http.StatusOK,
 		Message: "Image analyzed successfully",
 		Results: Results{
 			Weight:       results.Weight,

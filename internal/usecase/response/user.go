@@ -2,6 +2,7 @@ package response
 
 import (
 	"inbody-ocr-backend/internal/domain/entity"
+	"net/http"
 	"time"
 )
 
@@ -17,6 +18,7 @@ type TokenResponse struct {
 }
 
 type SignUpResponse struct {
+	Status  int           `json:"status"`
 	Message string        `json:"message"`
 	Token   TokenResponse `json:"token"`
 	User    UserResponse  `json:"user"`
@@ -24,6 +26,7 @@ type SignUpResponse struct {
 
 func NewSignUpResponse(token string, exp *time.Time, userID, userName string, role entity.OrganizationRole) (*SignUpResponse, error) {
 	return &SignUpResponse{
+		Status:  http.StatusCreated,
 		Message: "User created successfully",
 		Token: TokenResponse{
 			Value: token,
@@ -38,6 +41,7 @@ func NewSignUpResponse(token string, exp *time.Time, userID, userName string, ro
 }
 
 type SignInResponse struct {
+	Status         int           `json:"status"`
 	Message        string        `json:"message"`
 	Token          TokenResponse `json:"token"`
 	OrganizationID string        `json:"organization_id"`
@@ -46,6 +50,7 @@ type SignInResponse struct {
 
 func NewSignInResponse(token string, exp *time.Time, orgID, userID, userName string, role entity.OrganizationRole) (*SignInResponse, error) {
 	return &SignInResponse{
+		Status:  http.StatusOK,
 		Message: "Signed in successfully",
 		Token: TokenResponse{
 			Value: token,

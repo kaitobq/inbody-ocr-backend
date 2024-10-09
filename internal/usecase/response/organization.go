@@ -2,6 +2,7 @@ package response
 
 import (
 	"inbody-ocr-backend/internal/domain/entity"
+	"net/http"
 	"time"
 )
 
@@ -13,6 +14,7 @@ type OrganizationResponse struct {
 }
 
 type CreateOrganizationResponse struct {
+	Status       int                  `json:"status"`
 	Message      string               `json:"message"`
 	Organization OrganizationResponse `json:"organization"`
 	User         UserResponse         `json:"user"`
@@ -21,6 +23,7 @@ type CreateOrganizationResponse struct {
 
 func NewCreateOrganizationResponse(org entity.Organization, token, userID, userName string, exp time.Time) (*CreateOrganizationResponse, error) {
 	return &CreateOrganizationResponse{
+		Status:  http.StatusCreated,
 		Message: "Organization created successfully",
 		Organization: OrganizationResponse{
 			ID:        org.ID,
