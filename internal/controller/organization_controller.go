@@ -4,6 +4,7 @@ import (
 	"inbody-ocr-backend/internal/domain/service"
 	"inbody-ocr-backend/internal/usecase"
 	"inbody-ocr-backend/internal/usecase/request"
+	"inbody-ocr-backend/internal/usecase/response"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -24,13 +25,18 @@ func NewOrganizationController(uc usecase.OrganizationUsecase, tokenService serv
 func (ct *OrganizationController) CreateOrganization(c *gin.Context) {
 	req, err := request.NewCreateOrganizationRequest(c)
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		c.JSON(http.StatusBadRequest, response.NewErrorResponse(http.StatusBadRequest, err.Error()))
 		return
 	}
 
 	res, err := ct.uc.CreateOrganization(req.UserName, req.Email, req.Password, req.OrgName)
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		if err.Error() == "email already exists" {
+			c.JSON(http.StatusBadRequest, response.NewErrorResponse(http.StatusBadRequest, err.Error()))
+			return
+		}
+
+		c.JSON(http.StatusInternalServerError, response.NewErrorResponse(http.StatusInternalServerError, err.Error()))
 		return
 	}
 
