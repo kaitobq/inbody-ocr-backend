@@ -1,6 +1,7 @@
 package controller
 
 import (
+	"inbody-ocr-backend/internal/domain/service"
 	"inbody-ocr-backend/internal/usecase"
 	"inbody-ocr-backend/internal/usecase/request"
 	"inbody-ocr-backend/internal/usecase/response"
@@ -11,11 +12,13 @@ import (
 
 type UserController struct {
 	uc usecase.UserUsecase
+	tokenService service.TokenService
 }
 
-func NewUserController(uc usecase.UserUsecase) *UserController {
+func NewUserController(uc usecase.UserUsecase, tokenService service.TokenService) *UserController {
 	return &UserController{
 		uc: uc,
+		tokenService: tokenService,
 	}
 }
 
@@ -53,4 +56,14 @@ func (ct *UserController) SignIn(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, res)
+}
+
+func (ct *UserController) Authenticate(c *gin.Context) {
+	ok, err := ct.tokenService.TokenValid(c)
+	if err != nil || !ok {
+		c.JSON(http.StatusUnauthorized, response.NewErrorResponse(http.StatusUnauthorized, err.Error()))
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"status": http.StatusOK, "message": "ok"})
 }

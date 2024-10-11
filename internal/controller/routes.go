@@ -17,6 +17,11 @@ func SetUpRoutes(
 ) {
 	v1 := r.Group("api/v1")
 
+	user := v1.Group("user")
+	{
+		user.POST("/authenticate", userCtrl.Authenticate)
+	}
+
 	organization := v1.Group("organization")
 	{
 		organization.POST("", organizationCtrl.CreateOrganization)

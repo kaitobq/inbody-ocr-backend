@@ -32,7 +32,7 @@ func New() (*container.App, error) {
 	tokenService := service.NewTokenService()
 	ulidService := service.NewULIDService()
 	userUsecase := usecase.NewUserUsecase(userRepository, organizationRepository, tokenService, ulidService)
-	userController := controller.NewUserController(userUsecase)
+	userController := controller.NewUserController(userUsecase, tokenService)
 	organizationUsecase := usecase.NewOrganizationUsecase(organizationRepository, userRepository, tokenService, ulidService)
 	organizationController := controller.NewOrganizationController(organizationUsecase, tokenService)
 	imageRepository := vision_api.NewImageRepository()
