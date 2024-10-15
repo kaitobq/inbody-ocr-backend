@@ -10,18 +10,20 @@ import (
 )
 
 type organizationUsecase struct {
-	repo         repository.OrganizationRepository
-	userRepo     repository.UserRepository
-	tokenService service.TokenService
-	ulidService  service.ULIDService
+	repo          repository.OrganizationRepository
+	userRepo      repository.UserRepository
+	imageDataRepo repository.ImageDataRepository
+	tokenService  service.TokenService
+	ulidService   service.ULIDService
 }
 
-func NewOrganizationUsecase(repo repository.OrganizationRepository, userRepo repository.UserRepository, tokenService service.TokenService, ulidService service.ULIDService) OrganizationUsecase {
+func NewOrganizationUsecase(repo repository.OrganizationRepository, userRepo repository.UserRepository, imageDataRepo repository.ImageDataRepository, tokenService service.TokenService, ulidService service.ULIDService) OrganizationUsecase {
 	return &organizationUsecase{
-		repo:         repo,
-		userRepo:     userRepo,
-		tokenService: tokenService,
-		ulidService:  ulidService,
+		repo:          repo,
+		userRepo:      userRepo,
+		imageDataRepo: imageDataRepo,
+		tokenService:  tokenService,
+		ulidService:   ulidService,
 	}
 }
 
@@ -87,4 +89,30 @@ func (uc *organizationUsecase) CreateOrganization(userName, email, password, org
 	}
 
 	return response.NewCreateOrganizationResponse(*organization, token, user.ID, user.Name, *exp)
+}
+
+func (uc *organizationUsecase) GetScreenDashboard(userID, orgID string) (*response.GetScreenDashboard, error) {
+	user, err := uc.userRepo.FindByID(userID)
+	if err != nil {
+		logger.Error("GetScreenDashboard", "func", "FindByID()", "error", err.Error())
+		return nil, err
+	}
+
+	if user.Role != "member" {
+		logger.Error("GetScreenDashboard", "error", "user is not member")
+		return nil, fmt.Errorf("user is not member")
+	}
+
+	records, err := uc.imageDataRepo.FindByUserID(userID)
+	if err != nil {
+		logger.Error("GetScreenDashboard", "func", "FindByUserID()", "error", err.Error())
+		return nil, err
+	}
+
+	if len(records) == 0 {
+		logger.Error("GetScreenDashboard", "error", "no data found")
+		return nil, fmt.Errorf("no data found")
+	}
+
+	return response.NewGetScreenDashboardResponse(records)
 }

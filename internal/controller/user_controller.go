@@ -11,13 +11,13 @@ import (
 )
 
 type UserController struct {
-	uc usecase.UserUsecase
+	uc           usecase.UserUsecase
 	tokenService service.TokenService
 }
 
 func NewUserController(uc usecase.UserUsecase, tokenService service.TokenService) *UserController {
 	return &UserController{
-		uc: uc,
+		uc:           uc,
 		tokenService: tokenService,
 	}
 }
