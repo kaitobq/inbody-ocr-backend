@@ -12,7 +12,8 @@ type UserUsecase interface {
 
 type OrganizationUsecase interface {
 	CreateOrganization(userName, email, password, OrgName string) (*response.CreateOrganizationResponse, error)
-	GetScreenDashboard(userID, orgID string) (*response.GetScreenDashboard, error)
+	GetScreenDashboard(userID, orgID string) (*response.GetScreenDashboardResponse, error)
+	GetScreenDashboardForAdmin(userID, orgID string) (*response.GetScreenDashboardForAdminResponse, error)
 }
 
 type ImageUsecase interface {

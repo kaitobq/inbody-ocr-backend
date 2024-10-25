@@ -28,6 +28,7 @@ func SetUpRoutes(
 		organization.POST("/:id/signup", userCtrl.SignUp)
 		organization.POST("/signin", userCtrl.SignIn)
 		organization.GET("/dashboard", organizationCtrl.GetScreenDashboard)
+		organization.GET("/dashboard/admin", organizationCtrl.GetScreenDashboardForAdmin)
 	}
 
 	image := v1.Group("image")

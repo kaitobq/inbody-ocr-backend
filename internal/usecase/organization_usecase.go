@@ -91,7 +91,7 @@ func (uc *organizationUsecase) CreateOrganization(userName, email, password, org
 	return response.NewCreateOrganizationResponse(*organization, token, user.ID, user.Name, *exp)
 }
 
-func (uc *organizationUsecase) GetScreenDashboard(userID, orgID string) (*response.GetScreenDashboard, error) {
+func (uc *organizationUsecase) GetScreenDashboard(userID, orgID string) (*response.GetScreenDashboardResponse, error) {
 	user, err := uc.userRepo.FindByID(userID)
 	if err != nil {
 		logger.Error("GetScreenDashboard", "func", "FindByID()", "error", err.Error())
@@ -109,10 +109,32 @@ func (uc *organizationUsecase) GetScreenDashboard(userID, orgID string) (*respon
 		return nil, err
 	}
 
-	if len(records) == 0 {
-		logger.Error("GetScreenDashboard", "error", "no data found")
-		return nil, fmt.Errorf("no data found")
+	return response.NewGetScreenDashboardResponse(records)
+}
+
+func (uc *organizationUsecase) GetScreenDashboardForAdmin(userID, orgID string) (*response.GetScreenDashboardForAdminResponse, error) {
+	user, err := uc.userRepo.FindByID(userID)
+	if err != nil {
+		logger.Error("GetScreenDashboardForAdmin", "func", "FindByID()", "error", err.Error())
+		return nil, err
 	}
 
-	return response.NewGetScreenDashboardResponse(records)
+	if user.Role == "member" {
+		logger.Error("GetScreenDashboardForAdmin", "error", "user is not admin")
+		return nil, fmt.Errorf("user is not admin")
+	}
+
+	records, err := uc.imageDataRepo.FindByOrganizationID(orgID)
+	if err != nil {
+		logger.Error("GetScreenDashboardForAdmin", "func", "FindByOrganizationID()", "error", err.Error())
+		return nil, err
+	}
+
+	users, err := uc.repo.GetMember(orgID)
+	if err != nil {
+		logger.Error("GetScreenDashboardForAdmin", "func", "GetMember()", "error", err.Error())
+		return nil, err
+	}
+
+	return response.NewGetScreenDashboardForAdminResponse(users, records)
 }
