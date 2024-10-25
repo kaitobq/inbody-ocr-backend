@@ -154,40 +154,40 @@ func NewGetScreenDashboardResponse(data []entity.ImageData) (*GetScreenDashboard
 }
 
 type Avg struct {
-	Weight 	 float64 `json:"weight"`
+	Weight       float64 `json:"weight"`
 	MuscleWeight float64 `json:"muscle_weight"`
 	FatPercent   float64 `json:"fat_percent"`
 	Point        uint    `json:"point"`
 }
 
 type Transition struct {
-	Weight 	 float64 `json:"weight"`
+	Weight       float64 `json:"weight"`
 	MuscleWeight float64 `json:"muscle_weight"`
 	FatPercent   float64 `json:"fat_percent"`
 	Point        uint    `json:"point"`
 }
 
 type Chart struct {
-	BMI map[string]int `json:"bmi"`
-	Weight map[string]int `json:"weight"`
+	BMI          map[string]int `json:"bmi"`
+	Weight       map[string]int `json:"weight"`
 	MuscleWeight map[string]int `json:"muscle_weight"`
-	FatPercent map[string]int `json:"fat_percent"`
+	FatPercent   map[string]int `json:"fat_percent"`
 }
 
 type UserPoint struct {
-	Rank  uint `json:"rank"`
-	Name string `json:"name"`
-	Point uint `json:"point"`
+	Rank      uint      `json:"rank"`
+	Name      string    `json:"name"`
+	Point     uint      `json:"point"`
 	CreatedAt time.Time `json:"created_at"`
 }
 
 type GetScreenDashboardForAdminResponse struct {
-	Status  int                `json:"status"`
-	Message string             `json:"message"`
-	Avg    Avg                `json:"avg"`
-	Chart Chart              `json:"chart"`
-	Current []UserImageData    `json:"current"`
-	AllData []UserImageData    `json:"all_data"`
+	Status  int             `json:"status"`
+	Message string          `json:"message"`
+	Avg     Avg             `json:"avg"`
+	Chart   Chart           `json:"chart"`
+	Current []UserImageData `json:"current"`
+	AllData []UserImageData `json:"all_data"`
 }
 
 func NewGetScreenDashboardForAdminResponse(users []entity.User, data []entity.ImageData) (*GetScreenDashboardForAdminResponse, error) {
@@ -233,7 +233,7 @@ func NewGetScreenDashboardForAdminResponse(users []entity.User, data []entity.Im
 	}
 
 	// current
-	var temp [] entity.ImageData
+	var temp []entity.ImageData
 	for _, record := range latestRecords {
 		temp = append(temp, record)
 	}
@@ -251,7 +251,6 @@ func NewGetScreenDashboardForAdminResponse(users []entity.User, data []entity.Im
 	}, nil
 }
 
-
 func getLatestRecords(records []entity.ImageData) map[string]entity.ImageData {
 	latestRecords := make(map[string]entity.ImageData)
 	for _, record := range records {
@@ -259,20 +258,20 @@ func getLatestRecords(records []entity.ImageData) map[string]entity.ImageData {
 			latestRecords[record.UserID] = record
 		}
 	}
-	
+
 	return latestRecords
 }
 
 func collectData(records map[string]entity.ImageData) (weights, BMIs, fatPercents, muscleWeights, points []float64) {
 	for _, record := range records {
 		weights = append(weights, record.Weight)
-        BMI := record.Weight / ((record.Height / 100) * (record.Height / 100))
-        BMIs = append(BMIs, BMI)
-        fatPercents = append(fatPercents, record.FatPercent)
-        muscleWeights = append(muscleWeights, record.MuscleWeight)
+		BMI := record.Weight / ((record.Height / 100) * (record.Height / 100))
+		BMIs = append(BMIs, BMI)
+		fatPercents = append(fatPercents, record.FatPercent)
+		muscleWeights = append(muscleWeights, record.MuscleWeight)
 		points = append(points, float64(record.Point))
-    }
-    return
+	}
+	return
 }
 
 func calcAvg(data []float64) float64 {
@@ -315,7 +314,7 @@ func binData(data []float64, bins []float64, binWidth float64) map[string]int {
 	counts := make(map[string]int)
 	for _, value := range data {
 		found := false
-		for i := 0; i < len(bins) - 1; i++ {
+		for i := 0; i < len(bins)-1; i++ {
 			lower, upper := bins[i], bins[i+1]
 			if value >= lower && value < upper {
 				key := fmt.Sprintf("%.1f-%.1f", lower, upper)
@@ -325,8 +324,8 @@ func binData(data []float64, bins []float64, binWidth float64) map[string]int {
 			}
 		}
 
-		if !found && value >= bins[len(bins) - 1] {
-			lower, upper := bins[len(bins) - 1], bins[len(bins) - 1] + binWidth
+		if !found && value >= bins[len(bins)-1] {
+			lower, upper := bins[len(bins)-1], bins[len(bins)-1]+binWidth
 			key := fmt.Sprintf("%.1f-%.1f", lower, upper)
 			counts[key]++
 		}
