@@ -37,8 +37,22 @@ func (db *DB) Migrate() error {
 
 // SeedDataメソッドをDB構造体に追加
 func (db *DB) SeedData() error {
-	rand.Seed(uint64(time.Now().UnixNano()))
+	// 全てのテーブルからデータを削除
 	ctx := context.Background()
+	_, err := db.DB.ExecContext(ctx, "DELETE FROM image_data")
+	if err != nil {
+		return fmt.Errorf("failed to delete image data: %w", err)
+	}
+	_, err = db.DB.ExecContext(ctx, "DELETE FROM users")
+	if err != nil {
+		return fmt.Errorf("failed to delete users: %w", err)
+	}
+	_, err = db.DB.ExecContext(ctx, "DELETE FROM organizations")
+	if err != nil {
+		return fmt.Errorf("failed to delete organizations: %w", err)
+	}
+
+	rand.Seed(uint64(time.Now().UnixNano()))
 
 	// 組織のシードデータを生成
 	organizationIDs := []string{"org1", "org2"}
@@ -60,7 +74,7 @@ func (db *DB) SeedData() error {
 	}
 
 	// ユーザーのシードデータを生成
-	userIDs := []string{"user1", "user2", "user3", "user4", "user5"}
+	userIDs := []string{"user1", "user2", "user3", "user4", "user5", "user6", "user7", "user8", "user9", "user10"}
 	bytes, _ := bcrypt.GenerateFromPassword([]byte("password"), 14)
 	hashedPassword := string(bytes)
 	for _, userID := range userIDs {
@@ -84,7 +98,7 @@ func (db *DB) SeedData() error {
 		}
 
 		// 各ユーザーに対して画像データを生成
-		numRecords := 10 // 1～3個のレコード
+		numRecords := 20 // 1～3個のレコード
 		for i := 0; i < numRecords; i++ {
 			weight := rand.Float64()*50 + 50    // 50kg～100kg
 			height := rand.Float64()*30 + 150   // 150cm～180cm
@@ -104,7 +118,8 @@ func (db *DB) SeedData() error {
 				Protein:        rand.Float64()*20 + 10, // 10%～30%
 				Mineral:        rand.Float64()*5 + 3,   // 3kg～8kg
 				Point:          uint(rand.Intn(100)),
-				CreatedAt:      time.Now().Add(-time.Duration(rand.Intn(1000)) * time.Hour),
+				// 20日分のデータを生成
+				CreatedAt:      time.Now().Add(-time.Duration(rand.Intn(20)) * 24 * time.Hour),
 				UpdatedAt:      time.Now().Add(-time.Duration(rand.Intn(1000)) * time.Hour),
 			}
 			// 画像データをデータベースに挿入

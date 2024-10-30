@@ -92,52 +92,61 @@ type GetScreenDashboardResponse struct {
 	Current  Current            `json:"current"`
 	Previous Previous           `json:"previous"`
 	Graph    Graph              `json:"graph"`
-	History  []entity.ImageData `json:"history"`
+	History  []UserImageData `json:"history"`
 }
 
-func NewGetScreenDashboardResponse(data []entity.ImageData) (*GetScreenDashboardResponse, error) {
+func NewGetScreenDashboardResponse(user entity.User, data []entity.ImageData) (*GetScreenDashboardResponse, error) {
 	status := http.StatusOK
 	message := "Dashboard data fetched successfully"
 
+	// current
 	sort.Slice(data, func(i, j int) bool {
 		return data[i].CreatedAt.After(data[j].CreatedAt)
 	})
-	var current Current
-	current.Weight = data[0].Weight
-	current.MuscleWeight = data[0].MuscleWeight
-	current.FatWeight = data[0].FatWeight
-	current.CreatedAt = data[0].CreatedAt
-
-	var previous Previous
-	if len(data) > 1 {
-		previous.Weight = data[1].Weight
-		previous.MuscleWeight = data[1].MuscleWeight
-		previous.FatWeight = data[1].FatWeight
-		previous.CreatedAt = data[1].CreatedAt
+	current := Current{
+		Weight:       data[0].Weight,
+		MuscleWeight: data[0].MuscleWeight,
+		FatWeight:    data[0].FatWeight,
+		CreatedAt:    data[0].CreatedAt,
 	}
 
+	// previous
+	var previous Previous
+	if len(data) > 1 {
+		previous = Previous{
+			Weight:       data[1].Weight,
+			MuscleWeight: data[1].MuscleWeight,
+			FatWeight:    data[1].FatWeight,
+			CreatedAt:    data[1].CreatedAt,
+		}
+	}
+
+	// graph
 	var kilo []Kilo
 	var percent []Percent
 	var score []Score
-	for _, d := range data {
+	for _, record := range data {
 		kilo = append(kilo, Kilo{
-			Weight:       d.Weight,
-			MuscleWeight: d.MuscleWeight,
-			FatWeight:    d.FatWeight,
-			BodyWater:    d.BodyWater,
-			Protein:      d.Protein,
-			Mineral:      d.Mineral,
-			CreatedAt:    d.CreatedAt,
+			Weight:       record.Weight,
+			MuscleWeight: record.MuscleWeight,
+			FatWeight:    record.FatWeight,
+			BodyWater:    record.BodyWater,
+			Protein:      record.Protein,
+			Mineral:      record.Mineral,
+			CreatedAt:    record.CreatedAt,
 		})
 		percent = append(percent, Percent{
-			FatPercent: d.FatPercent,
-			CreatedAt:  d.CreatedAt,
+			FatPercent: record.FatPercent,
+			CreatedAt:  record.CreatedAt,
 		})
 		score = append(score, Score{
-			Point:     d.Point,
-			CreatedAt: d.CreatedAt,
+			Point:     record.Point,
+			CreatedAt: record.CreatedAt,
 		})
 	}
+
+	// history
+	history := NewUserImageDataList([]entity.User{user}, data)
 
 	return &GetScreenDashboardResponse{
 		Status:   status,
@@ -149,7 +158,7 @@ func NewGetScreenDashboardResponse(data []entity.ImageData) (*GetScreenDashboard
 			Percent: percent,
 			Score:   score,
 		},
-		History: data,
+		History: history,
 	}, nil
 }
 

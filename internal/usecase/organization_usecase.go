@@ -109,7 +109,13 @@ func (uc *organizationUsecase) GetScreenDashboard(userID, orgID string) (*respon
 		return nil, err
 	}
 
-	return response.NewGetScreenDashboardResponse(records)
+	user, err = uc.userRepo.FindByID(userID)
+	if err != nil {
+		logger.Error("GetScreenDashboard", "func", "FindByID()", "error", err.Error())
+		return nil, err
+	}
+
+	return response.NewGetScreenDashboardResponse(*user, records)
 }
 
 func (uc *organizationUsecase) GetScreenDashboardForAdmin(userID, orgID string) (*response.GetScreenDashboardForAdminResponse, error) {
