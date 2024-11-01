@@ -101,3 +101,14 @@ func (uc *userUsecase) SignIn(email, password string) (*response.SignInResponse,
 
 	return response.NewSignInResponse(token, exp, user.OrganizationID, user.ID, user.Name, user.Role)
 }
+
+func (uc *userUsecase) Authenticate(userID string) (*response.AuthenticateResponse, error) {
+	user, err := uc.repo.FindByID(userID)
+	if err != nil {
+		logger.Error("Authenticate", "func", "FindByID()", "error", err.Error())
+		return nil, err
+	}
+
+
+	return response.NewAuthenticateResponse(*user)
+}

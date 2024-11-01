@@ -19,7 +19,7 @@ func SetUpRoutes(
 
 	user := v1.Group("user")
 	{
-		user.POST("/authenticate", userCtrl.Authenticate)
+		user.GET("/authenticate", userCtrl.Authenticate)
 	}
 
 	organization := v1.Group("organization")

@@ -65,5 +65,17 @@ func (ct *UserController) Authenticate(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusOK, gin.H{"status": http.StatusOK, "message": "ok"})
+	userID, _, err := ct.tokenService.ExtractIDsFromContext(c)
+	if err != nil {
+		c.JSON(http.StatusUnauthorized, response.NewErrorResponse(http.StatusUnauthorized, err.Error()))
+		return
+	}
+
+	res, err := ct.uc.Authenticate(userID)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, response.NewErrorResponse(http.StatusInternalServerError, err.Error()))
+		return
+	}
+
+	c.JSON(http.StatusOK, res)
 }
