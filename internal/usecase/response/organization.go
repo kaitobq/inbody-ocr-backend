@@ -99,6 +99,13 @@ func NewGetScreenDashboardResponse(user entity.User, data []entity.ImageData) (*
 	status := http.StatusOK
 	message := "Dashboard data fetched successfully"
 
+	if len(data) == 0 {
+		return &GetScreenDashboardResponse{
+			Status:  http.StatusOK,
+			Message: "No data available",
+		}, nil
+	}
+
 	// current
 	sort.Slice(data, func(i, j int) bool {
 		return data[i].CreatedAt.After(data[j].CreatedAt)
@@ -200,6 +207,14 @@ type GetScreenDashboardForAdminResponse struct {
 }
 
 func NewGetScreenDashboardForAdminResponse(users []entity.User, data []entity.ImageData) (*GetScreenDashboardForAdminResponse, error) {
+	if len(data) == 0 {
+		return &GetScreenDashboardForAdminResponse{
+			Status:  http.StatusOK,
+			Message: "No data available",
+		}, nil
+	}
+
+	fmt.Println("NewGetScreenDashboardForAdminResponse", users, data)
 	status := http.StatusOK
 	message := "Dashboard data fetched successfully"
 
