@@ -25,6 +25,11 @@ func main() {
 	}
 	log.Println("migrated")
 
+	if err := app.Seed(); err != nil {
+		log.Printf("failed to seed: %v\n", err)
+	}
+	log.Println("seeded")
+
 	if err := app.Run(); err != nil {
 		log.Printf("app downed: %v\n", err)
 	}

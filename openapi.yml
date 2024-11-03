@@ -1,0 +1,672 @@
+openapi: 3.0.0
+servers:
+  - url: http://localhost:8080
+    description: Development server
+info:
+  title: InBody OCR API
+  version: 0.1.0
+  description: InBody OCR API
+paths:
+  /api/v1/user:
+    get:
+      summary: Get Own Info
+      description: Get Own Info
+      parameters: []
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetOwnInfoResponse"
+  /api/v1/organization:
+    post:
+      summary: Create Organization
+      description: Create Organization
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateOrganizationRequest"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreateOrganizationResponse"
+  /api/v1/organization/{organizationId}/signup:
+    post:
+      summary: SignUp To Organization
+      description: SignUp To Organization
+      parameters:
+        - name: organizationId
+          in: path
+          description: Organization Id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SignUpRequest"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SignUpResponse"
+  /api/v1/organization/signin:
+    post:
+      summary: SignIn To Organization
+      description: SignIn To Organization
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SignInRequest"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SignInResponse"
+  /api/v1/organization/role:
+    get:
+      summary: Get All Organization Member And Role
+      description: Get All Organization Member And Role
+      security:
+        - Auth: []
+      parameters: []
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetAllMemberResponse"
+    post:
+      summary: Change Member Role
+      description: Change Member Role
+      security:
+        - Auth: []
+      parameters:
+        - name: user_id
+          in: query
+          description: User Id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                role:
+                  type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NoInfoResponse"
+    delete:
+      summary: Delete Member
+      description: Delete Member
+      security:
+        - Auth: []
+      parameters:
+        - name: user_id
+          in: query
+          description: User Id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NoInfoResponse"
+  /api/v1/image:
+    post:
+      summary: Analyze Image
+      description: Analyze Image
+      security:
+        - Auth: []
+      parameters: []
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                image:
+                  type: string
+                  format: file
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AnalyzeImageResponse"
+  /api/v1/image-data/stats/member:
+    get:
+      summary: Get Personal Stats
+      description: Get Personal Stats
+      security:
+        - Auth: []
+      parameters: []
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetPersonalStatsResponse"
+  /api/v1/image-data/stats/admin:
+    get:
+      summary: Get Organization Stats
+      description: Get Organization Stats
+      security:
+        - Auth: []
+      parameters: []
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetOrganizationStatsResponse"
+  /api/v1/image-data/chart/member:
+    get:
+      summary: Get Personal Data For Chart
+      description: Get Personal Data For Chart
+      security:
+        - Auth: []
+      parameters: []
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetPersonalChartDataResponse"
+  /api/v1/image-data/chart/admin:
+    get:
+      summary: Get Organization Data For Chart
+      description: Get Organization Data For Chart
+      security:
+        - Auth: []
+      parameters: []
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetOrganizationChartDataResponse"
+              example:
+                status: 200
+                message: "Data fetched successfully"
+                chart:
+                  bmi:
+                    "10-15": 3
+                    "15-20": 2
+                    "20-25": 5
+                    "25-30": 2
+                    "35-40": 1
+                  weight:
+                    "10-15": 3
+                    "15-20": 2
+                    "20-25": 5
+                    "25-30": 2
+                    "35-40": 1
+                  muscle_weight:
+                    "10-15": 3
+                    "15-20": 2
+                    "20-25": 5
+                    "25-30": 2
+                    "35-40": 1
+                  fat_weight:
+                    "10-15": 3
+                    "15-20": 2
+                    "20-25": 5
+                    "25-30": 2
+                    "35-40": 1
+  /api/v1/image-data/data/member:
+    get:
+      summary: Get All Personal Data
+      description: Get All Personal Data
+      security:
+        - Auth: []
+      parameters: []
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetPersonalDataResponse"
+  /api/v1/image-data/data/admin/current:
+    get:
+      summary: Get All Organization Data
+      description: Get All Organization Data
+      security:
+        - Auth: []
+      parameters: []
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetCurrentOrganizationDataResponse"
+  /api/v1/image-data/data/admin:
+    get:
+      summary: Get All Organization Data
+      description: Get All Organization Data
+      security:
+        - Auth: []
+      parameters: []
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetAllOrganizationDataResponse"
+components:
+  securitySchemes:
+    Auth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    GetOwnInfoResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+        message:
+          type: string
+        user:
+          $ref: "#/components/schemas/UserResponse"
+    UserResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        role:
+          type: string
+    CreateOrganizationRequest:
+      type: object
+      properties:
+        user_name:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+        organization_name:
+          type: string
+    CreateOrganizationResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+        message:
+          type: string
+        organization:
+          $ref: "#/components/schemas/OrganizationResponse"
+        user:
+          $ref: "#/components/schemas/UserResponse"
+        token:
+          $ref: "#/components/schemas/TokenResponse"
+    OrganizationResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
+    TokenResponse:
+      type: object
+      properties:
+        value:
+          type: string
+        expires_at:
+          type: string
+    SignUpRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+    SignUpResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+        token:
+          $ref: "#/components/schemas/TokenResponse"
+        user:
+          $ref: "#/components/schemas/UserResponse"
+    SignInRequest:
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+    SignInResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+        token:
+          $ref: "#/components/schemas/TokenResponse"
+        organization_id:
+          type: string
+        user:
+          $ref: "#/components/schemas/UserResponse"
+    AnalyzeImageResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+        result:
+          type: object
+          properties:
+            weight:
+              type: number
+            height:
+              type: number
+            muscle_weight:
+              type: number
+            fat_weight:
+              type: number
+            fat_percent:
+              type: number
+            body_water:
+              type: number
+            protein:
+              type: number
+            mineral:
+              type: number
+            point:
+              type: integer
+    GetPersonalStatsResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+        current:
+          type: object
+          properties:
+            weight:
+              type: number
+            muscle_weight:
+              type: number
+            fat_weight:
+              type: number
+            created_at:
+              type: string
+        previous:
+          type: object
+          properties:
+            weight:
+              type: number
+            muscle_weight:
+              type: number
+            fat_weight:
+              type: number
+            created_at:
+              type: string
+    GetPersonalChartDataResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+        chart:
+          type: object
+          properties:
+            kilo:
+              type: array
+              items:
+                type: object
+                properties:
+                  weight:
+                    type: number
+                  muscle_weight:
+                    type: number
+                  fat_weight:
+                    type: number
+                  body_water:
+                    type: number
+                  protein:
+                    type: number
+                  mineral:
+                    type: number
+                  created_at:
+                    type: string
+            percent:
+              type: array
+              items:
+                type: object
+                properties:
+                  fat_percent:
+                    type: number
+                  created_at:
+                    type: string
+            score:
+              type: array
+              items:
+                type: object
+                properties:
+                  point:
+                    type: integer
+                  created_at:
+                    type: string
+    GetPersonalDataResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              weight:
+                type: number
+              height:
+                type: number
+              muscle_weight:
+                type: number
+              fat_weight:
+                type: number
+              fat_percent:
+                type: number
+              body_water:
+                type: number
+              protein:
+                type: number
+              mineral:
+                type: number
+              point:
+                type: integer
+              created_at:
+                type: string
+              updated_at:
+                type: string
+    GetOrganizationStatsResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+        current:
+          type: object
+          properties:
+            weight:
+              type: number
+            muscle_weight:
+              type: number
+            fat_weight:
+              type: number
+            created_at:
+              type: string
+    GetOrganizationChartDataResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+        chart:
+          type: object
+          properties:
+            bmi:
+              type: object
+              additionalProperties:
+                type: number
+            weight:
+              type: object
+              additionalProperties:
+                type: number
+            muscle_weight:
+              type: object
+              additionalProperties:
+                type: number
+            fat_weight:
+              type: object
+              additionalProperties:
+                type: number
+    GetCurrentOrganizationDataResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              weight:
+                type: number
+              height:
+                type: number
+              muscle_weight:
+                type: number
+              fat_weight:
+                type: number
+              fat_percent:
+                type: number
+              body_water:
+                type: number
+              protein:
+                type: number
+              mineral:
+                type: number
+              point:
+                type: integer
+              created_at:
+                type: string
+              updated_at:
+                type: string
+    GetAllOrganizationDataResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              weight:
+                type: number
+              height:
+                type: number
+              muscle_weight:
+                type: number
+              fat_weight:
+                type: number
+              fat_percent:
+                type: number
+              body_water:
+                type: number
+              protein:
+                type: number
+              mineral:
+                type: number
+              point:
+                type: integer
+              created_at:
+                type: string
+              updated_at:
+                type: string
+    GetAllMemberResponse:
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+        member:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              name:
+                type: string
+              role:
+                type: string
+              created_at:
+                type: string
+              updated_at:
+                type: string
+    NoInfoResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        message:
+          type: string

@@ -19,7 +19,7 @@ func SetUpRoutes(
 
 	user := v1.Group("user")
 	{
-		user.POST("/authenticate", userCtrl.Authenticate)
+		user.GET("/authenticate", userCtrl.Authenticate)
 	}
 
 	organization := v1.Group("organization")
@@ -27,6 +27,8 @@ func SetUpRoutes(
 		organization.POST("", organizationCtrl.CreateOrganization)
 		organization.POST("/:id/signup", userCtrl.SignUp)
 		organization.POST("/signin", userCtrl.SignIn)
+		organization.GET("/dashboard", organizationCtrl.GetScreenDashboard)
+		organization.GET("/dashboard/admin", organizationCtrl.GetScreenDashboardForAdmin)
 	}
 
 	image := v1.Group("image")

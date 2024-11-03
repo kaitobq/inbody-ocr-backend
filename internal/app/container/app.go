@@ -65,6 +65,10 @@ func (a *App) Migrate() error {
 	return a.db.Migrate()
 }
 
+func (a *App) Seed() error {
+	return a.db.SeedData()
+}
+
 func (a *App) Run() error {
 	return a.r.Run(fmt.Sprintf(":%d", a.cfg.Port))
 }

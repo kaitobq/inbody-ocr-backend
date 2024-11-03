@@ -64,3 +64,21 @@ func NewSignInResponse(token string, exp *time.Time, orgID, userID, userName str
 		},
 	}, nil
 }
+
+type AuthenticateResponse struct {
+	Status  int          `json:"status"`
+	Message string       `json:"message"`
+	User    UserResponse `json:"user"`
+}
+
+func NewAuthenticateResponse(user entity.User) (*AuthenticateResponse, error) {
+	return &AuthenticateResponse{
+		Status:  http.StatusOK,
+		Message: "Authenticated successfully",
+		User: UserResponse{
+			ID:   user.ID,
+			Name: user.Name,
+			Role: user.Role,
+		},
+	}, nil
+}

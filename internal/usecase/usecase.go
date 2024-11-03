@@ -8,10 +8,13 @@ import (
 type UserUsecase interface {
 	CreateUser(name, email, password, orgID string) (*response.SignUpResponse, error)
 	SignIn(email, password string) (*response.SignInResponse, error)
+	Authenticate(userID string) (*response.AuthenticateResponse, error)
 }
 
 type OrganizationUsecase interface {
 	CreateOrganization(userName, email, password, OrgName string) (*response.CreateOrganizationResponse, error)
+	GetScreenDashboard(userID, orgID string) (*response.GetScreenDashboardResponse, error)
+	GetScreenDashboardForAdmin(userID, orgID string) (*response.GetScreenDashboardForAdminResponse, error)
 }
 
 type ImageUsecase interface {
