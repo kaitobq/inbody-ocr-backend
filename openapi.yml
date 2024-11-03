@@ -1,13 +1,16 @@
 openapi: 3.0.0
+servers:
+  - url: http://localhost:8080
+    description: Development server
 info:
   title: InBody OCR API
   version: 0.1.0
   description: InBody OCR API
 paths:
-  /api/v1/authenticate:
+  /api/v1/user:
     get:
-      summary: Authenticate
-      description: Authenticate
+      summary: Get Own Info
+      description: Get Own Info
       parameters: []
       responses:
         "200":
@@ -15,7 +18,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/AuthenticateResponse"
+                $ref: "#/components/schemas/GetOwnInfoResponse"
   /api/v1/organization:
     post:
       summary: Create Organization
@@ -73,6 +76,66 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/SignInResponse"
+  /api/v1/organization/role:
+    get:
+      summary: Get All Organization Member And Role
+      description: Get All Organization Member And Role
+      security:
+        - Auth: []
+      parameters: []
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetAllMemberResponse"
+    post:
+      summary: Change Member Role
+      description: Change Member Role
+      security:
+        - Auth: []
+      parameters:
+        - name: user_id
+          in: query
+          description: User Id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                role:
+                  type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NoInfoResponse"
+    delete:
+      summary: Delete Member
+      description: Delete Member
+      security:
+        - Auth: []
+      parameters:
+        - name: user_id
+          in: query
+          description: User Id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NoInfoResponse"
   /api/v1/image:
     post:
       summary: Analyze Image
@@ -96,7 +159,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/AnalyzeImageResponse"
-  /api/v1/organization/dashboard/stats/member:
+  /api/v1/image-data/stats/member:
     get:
       summary: Get Personal Stats
       description: Get Personal Stats
@@ -110,7 +173,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/GetPersonalStatsResponse"
-  /api/v1/organization/dashboard/stats/admin:
+  /api/v1/image-data/stats/admin:
     get:
       summary: Get Organization Stats
       description: Get Organization Stats
@@ -124,7 +187,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/GetOrganizationStatsResponse"
-  /api/v1/organization/dashboard/chart/member:
+  /api/v1/image-data/chart/member:
     get:
       summary: Get Personal Data For Chart
       description: Get Personal Data For Chart
@@ -138,7 +201,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/GetPersonalChartDataResponse"
-  /api/v1/organization/dashboard/chart/admin:
+  /api/v1/image-data/chart/admin:
     get:
       summary: Get Organization Data For Chart
       description: Get Organization Data For Chart
@@ -180,7 +243,7 @@ paths:
                     "20-25": 5
                     "25-30": 2
                     "35-40": 1
-  /api/v1/organization/dashboard/data/member:
+  /api/v1/image-data/data/member:
     get:
       summary: Get All Personal Data
       description: Get All Personal Data
@@ -194,7 +257,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/GetPersonalDataResponse"
-  /api/v1/organization/dashboard/data/admin/current:
+  /api/v1/image-data/data/admin/current:
     get:
       summary: Get All Organization Data
       description: Get All Organization Data
@@ -208,7 +271,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/GetCurrentOrganizationDataResponse"
-  /api/v1/organization/dashboard/data/admin:
+  /api/v1/image-data/data/admin:
     get:
       summary: Get All Organization Data
       description: Get All Organization Data
@@ -229,7 +292,7 @@ components:
       scheme: bearer
       bearerFormat: JWT
   schemas:
-    AuthenticateResponse:
+    GetOwnInfoResponse:
       type: object
       properties:
         status:
@@ -579,3 +642,31 @@ components:
                 type: string
               updated_at:
                 type: string
+    GetAllMemberResponse:
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+        member:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              name:
+                type: string
+              role:
+                type: string
+              created_at:
+                type: string
+              updated_at:
+                type: string
+    NoInfoResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        message:
+          type: string
