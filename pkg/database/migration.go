@@ -119,8 +119,8 @@ func (db *DB) SeedData() error {
 				Mineral:        rand.Float64()*5 + 3,   // 3kg～8kg
 				Point:          uint(rand.Intn(100)),
 				// 20日分のデータを生成
-				CreatedAt:      time.Now().Add(-time.Duration(rand.Intn(20)) * 24 * time.Hour),
-				UpdatedAt:      time.Now().Add(-time.Duration(rand.Intn(1000)) * time.Hour),
+				CreatedAt: time.Now().Add(-time.Duration(rand.Intn(20)) * 24 * time.Hour),
+				UpdatedAt: time.Now().Add(-time.Duration(rand.Intn(1000)) * time.Hour),
 			}
 			// 画像データをデータベースに挿入
 			_, err := db.DB.ExecContext(ctx, `

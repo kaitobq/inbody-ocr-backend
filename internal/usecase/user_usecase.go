@@ -109,6 +109,5 @@ func (uc *userUsecase) Authenticate(userID string) (*response.AuthenticateRespon
 		return nil, err
 	}
 
-
 	return response.NewAuthenticateResponse(*user)
 }

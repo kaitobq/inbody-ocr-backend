@@ -66,9 +66,9 @@ func NewSignInResponse(token string, exp *time.Time, orgID, userID, userName str
 }
 
 type AuthenticateResponse struct {
-	Status  int    `json:"status"`
-	Message string `json:"message"`
-	User UserResponse `json:"user"`
+	Status  int          `json:"status"`
+	Message string       `json:"message"`
+	User    UserResponse `json:"user"`
 }
 
 func NewAuthenticateResponse(user entity.User) (*AuthenticateResponse, error) {

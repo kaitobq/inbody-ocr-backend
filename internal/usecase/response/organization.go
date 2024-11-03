@@ -87,11 +87,11 @@ type Graph struct {
 }
 
 type GetScreenDashboardResponse struct {
-	Status   int                `json:"status"`
-	Message  string             `json:"message"`
-	Current  Current            `json:"current"`
-	Previous Previous           `json:"previous"`
-	Graph    Graph              `json:"graph"`
+	Status   int             `json:"status"`
+	Message  string          `json:"message"`
+	Current  Current         `json:"current"`
+	Previous Previous        `json:"previous"`
+	Graph    Graph           `json:"graph"`
 	History  []UserImageData `json:"history"`
 }
 
