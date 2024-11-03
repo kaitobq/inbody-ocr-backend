@@ -18,8 +18,9 @@ func SetUpRoutes(
 	v1 := r.Group("api/v1")
 
 	user := v1.Group("user")
+	user.Use(middleware.AuthMiddleware(tokenService))
 	{
-		user.GET("/authenticate", userCtrl.Authenticate)
+		user.GET("", userCtrl.GetOwnInfo)
 	}
 
 	organization := v1.Group("organization")
@@ -27,6 +28,9 @@ func SetUpRoutes(
 		organization.POST("", organizationCtrl.CreateOrganization)
 		organization.POST("/:id/signup", userCtrl.SignUp)
 		organization.POST("/signin", userCtrl.SignIn)
+	}
+	organization.Use(middleware.AuthMiddleware(tokenService))
+	{
 		organization.GET("/dashboard", organizationCtrl.GetScreenDashboard)
 		organization.GET("/dashboard/admin", organizationCtrl.GetScreenDashboardForAdmin)
 	}

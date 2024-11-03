@@ -58,24 +58,18 @@ func (ct *UserController) SignIn(c *gin.Context) {
 	c.JSON(http.StatusOK, res)
 }
 
-func (ct *UserController) Authenticate(c *gin.Context) {
-	ok, err := ct.tokenService.TokenValid(c)
-	if err != nil || !ok {
-		c.JSON(http.StatusUnauthorized, response.NewErrorResponse(http.StatusUnauthorized, err.Error()))
-		return
-	}
-
+func (ct *UserController) GetOwnInfo(c *gin.Context) {
 	userID, _, err := ct.tokenService.ExtractIDsFromContext(c)
 	if err != nil {
 		c.JSON(http.StatusUnauthorized, response.NewErrorResponse(http.StatusUnauthorized, err.Error()))
 		return
 	}
 
-	res, err := ct.uc.Authenticate(userID)
+	res, err := ct.uc.GetOwnInfo(userID)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, response.NewErrorResponse(http.StatusInternalServerError, err.Error()))
 		return
 	}
-
+	
 	c.JSON(http.StatusOK, res)
 }

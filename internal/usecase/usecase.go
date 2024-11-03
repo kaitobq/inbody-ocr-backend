@@ -8,7 +8,7 @@ import (
 type UserUsecase interface {
 	CreateUser(name, email, password, orgID string) (*response.SignUpResponse, error)
 	SignIn(email, password string) (*response.SignInResponse, error)
-	Authenticate(userID string) (*response.AuthenticateResponse, error)
+	GetOwnInfo(userID string) (*response.GetOwnInfoResponse, error)
 }
 
 type OrganizationUsecase interface {
