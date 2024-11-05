@@ -1,6 +1,7 @@
 package usecase
 
 import (
+	"inbody-ocr-backend/internal/domain/entity"
 	"inbody-ocr-backend/internal/usecase/response"
 	"mime/multipart"
 )
@@ -13,6 +14,8 @@ type UserUsecase interface {
 
 type OrganizationUsecase interface {
 	CreateOrganization(userName, email, password, OrgName string) (*response.CreateOrganizationResponse, error)
+	GetAllMembers(orgID string) (*response.GetAllMembersResponse, error)
+	UpdateRole(updateUserID string, role entity.OrganizationRole, orgID, requestUserID string) (*response.UpdateRoleResponse, error)
 	GetScreenDashboard(userID, orgID string) (*response.GetScreenDashboardResponse, error)
 	GetScreenDashboardForAdmin(userID, orgID string) (*response.GetScreenDashboardForAdminResponse, error)
 }

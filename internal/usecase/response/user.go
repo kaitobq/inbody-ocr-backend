@@ -10,6 +10,18 @@ type UserResponse struct {
 	ID   string                  `json:"id"`
 	Name string                  `json:"name"`
 	Role entity.OrganizationRole `json:"role"`
+	CreatedAt time.Time           `json:"created_at"`
+	UpdatedAt time.Time           `json:"updated_at"`
+}
+
+func NewUserResponse(user entity.User) *UserResponse {
+	return &UserResponse{
+		ID:   user.ID,
+		Name: user.Name,
+		Role: user.Role,
+		CreatedAt: user.CreatedAt,
+		UpdatedAt: user.UpdatedAt,
+	}
 }
 
 type TokenResponse struct {
@@ -24,19 +36,15 @@ type SignUpResponse struct {
 	User    UserResponse  `json:"user"`
 }
 
-func NewSignUpResponse(token string, exp *time.Time, userID, userName string, role entity.OrganizationRole) (*SignUpResponse, error) {
+func NewSignUpResponse(token string, exp *time.Time, user entity.User) (*SignUpResponse, error) {
 	return &SignUpResponse{
 		Status:  http.StatusCreated,
-		Message: "User created successfully",
+		Message: "ok",
 		Token: TokenResponse{
 			Value: token,
 			Exp:   *exp,
 		},
-		User: UserResponse{
-			ID:   userID,
-			Name: userName,
-			Role: role,
-		},
+		User: *NewUserResponse(user),
 	}, nil
 }
 
@@ -48,20 +56,16 @@ type SignInResponse struct {
 	User           UserResponse  `json:"user"`
 }
 
-func NewSignInResponse(token string, exp *time.Time, orgID, userID, userName string, role entity.OrganizationRole) (*SignInResponse, error) {
+func NewSignInResponse(token string, exp *time.Time, user entity.User) (*SignInResponse, error) {
 	return &SignInResponse{
 		Status:  http.StatusOK,
-		Message: "Signed in successfully",
+		Message: "ok",
 		Token: TokenResponse{
 			Value: token,
 			Exp:   *exp,
 		},
-		OrganizationID: orgID,
-		User: UserResponse{
-			ID:   userID,
-			Name: userName,
-			Role: role,
-		},
+		OrganizationID: user.OrganizationID,
+		User: *NewUserResponse(user),
 	}, nil
 }
 
@@ -75,10 +79,6 @@ func NewGetOwnInfoResponse(user entity.User) (*GetOwnInfoResponse, error) {
 	return &GetOwnInfoResponse{
 		Status:  http.StatusOK,
 		Message: "ok",
-		User: UserResponse{
-			ID:   user.ID,
-			Name: user.Name,
-			Role: user.Role,
-		},
+		User: *NewUserResponse(user),
 	}, nil
 }

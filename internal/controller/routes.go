@@ -31,6 +31,8 @@ func SetUpRoutes(
 	}
 	organization.Use(middleware.AuthMiddleware(tokenService))
 	{
+		organization.GET("/role", organizationCtrl.GetAllMembers)
+		organization.PUT("/role", organizationCtrl.UpdateRole)
 		organization.GET("/dashboard", organizationCtrl.GetScreenDashboard)
 		organization.GET("/dashboard/admin", organizationCtrl.GetScreenDashboardForAdmin)
 	}

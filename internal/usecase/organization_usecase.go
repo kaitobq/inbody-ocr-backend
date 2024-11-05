@@ -91,6 +91,43 @@ func (uc *organizationUsecase) CreateOrganization(userName, email, password, org
 	return response.NewCreateOrganizationResponse(*organization, token, user.ID, user.Name, *exp)
 }
 
+func (uc *organizationUsecase) GetAllMembers(orgID string) (*response.GetAllMembersResponse, error) {
+	users, err := uc.repo.GetMember(orgID)
+	if err != nil {
+		logger.Error("GetAllMembers", "func", "GetMember()", "error", err.Error())
+		return nil, err
+	}
+
+	return response.NewGetAllMembersResponse(users)
+}
+
+func (uc *organizationUsecase) UpdateRole(updateUserID string, role entity.OrganizationRole, orgID, requestUserID string) (*response.UpdateRoleResponse, error) {
+	user, err := uc.userRepo.FindByID(requestUserID)
+	if err != nil {
+		logger.Error("UpdateRole", "func", "FindByID()", "error", err.Error())
+		return nil, err
+	}
+
+	if user.Role == "member" {
+		logger.Error("UpdateRole", "error", "user is not admin")
+		return nil, fmt.Errorf("user is not admin")
+	}
+	
+	err = uc.userRepo.UpdateRole(updateUserID, role)
+	if err != nil {
+		logger.Error("UpdateRole", "func", "UpdateRole()", "error", err.Error())
+		return nil, err
+	}
+
+	updatedUser, err := uc.userRepo.FindByID(updateUserID)
+	if err != nil {
+		logger.Error("UpdateRole", "func", "FindByID()", "error", err.Error())
+		return nil, err
+	}
+
+	return response.NewUpdateRoleResponse(*updatedUser)
+}
+
 func (uc *organizationUsecase) GetScreenDashboard(userID, orgID string) (*response.GetScreenDashboardResponse, error) {
 	user, err := uc.userRepo.FindByID(userID)
 	if err != nil {

@@ -27,7 +27,7 @@ type CreateOrganizationResponse struct {
 func NewCreateOrganizationResponse(org entity.Organization, token, userID, userName string, exp time.Time) (*CreateOrganizationResponse, error) {
 	return &CreateOrganizationResponse{
 		Status:  http.StatusCreated,
-		Message: "Organization created successfully",
+		Message: "ok",
 		Organization: OrganizationResponse{
 			ID:        org.ID,
 			Name:      org.Name,
@@ -43,6 +43,39 @@ func NewCreateOrganizationResponse(org entity.Organization, token, userID, userN
 			Value: token,
 			Exp:   exp,
 		},
+	}, nil
+}
+
+type GetAllMembersResponse struct {
+	Status   int           `json:"status"`
+	Message  string        `json:"message"`
+	Members []UserResponse `json:"members"`
+}
+
+func NewGetAllMembersResponse(users []entity.User) (*GetAllMembersResponse, error) {
+	var members []UserResponse
+	for _, user := range users {
+		members = append(members, *NewUserResponse(user))
+	}
+
+	return &GetAllMembersResponse{
+		Status:   http.StatusOK,
+		Message:  "ok",
+		Members: members,
+	}, nil
+}
+
+type UpdateRoleResponse struct {
+	Status  int    `json:"status"`
+	Message string `json:"message"`
+	Updated UserResponse `json:"updated"`
+}
+
+func NewUpdateRoleResponse(user entity.User) (*UpdateRoleResponse, error) {
+	return &UpdateRoleResponse{
+		Status:  http.StatusOK,
+		Message: "ok",
+		Updated: *NewUserResponse(user),
 	}, nil
 }
 
