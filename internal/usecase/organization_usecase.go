@@ -102,15 +102,26 @@ func (uc *organizationUsecase) GetAllMembers(orgID string) (*response.GetAllMemb
 }
 
 func (uc *organizationUsecase) UpdateRole(updateUserID string, role entity.OrganizationRole, orgID, requestUserID string) (*response.UpdateRoleResponse, error) {
-	user, err := uc.userRepo.FindByID(requestUserID)
+	// memberは編集権限を持たない
+	requestUser, err := uc.userRepo.FindByID(requestUserID)
 	if err != nil {
 		logger.Error("UpdateRole", "func", "FindByID()", "error", err.Error())
 		return nil, err
 	}
-
-	if user.Role == "member" {
+	if requestUser.Role == "member" {
 		logger.Error("UpdateRole", "error", "user is not admin")
 		return nil, fmt.Errorf("user is not admin")
+	}
+
+	// ownerから別のロールへの変更は不可
+	updateUser, err := uc.userRepo.FindByID(updateUserID)
+	if err != nil {
+		logger.Error("UpdateRole", "func", "FindByID()", "error", err.Error())
+		return nil, err
+	}
+	if updateUser.Role == "owner" {
+		logger.Error("UpdateRole", "error", "cannot update owner role")
+		return nil, fmt.Errorf("cannot update owner role")
 	}
 	
 	err = uc.userRepo.UpdateRole(updateUserID, role)
@@ -126,6 +137,39 @@ func (uc *organizationUsecase) UpdateRole(updateUserID string, role entity.Organ
 	}
 
 	return response.NewUpdateRoleResponse(*updatedUser)
+}
+
+func (uc *organizationUsecase) DeleteMember(deleteUserID, orgID, requestUserID string) (*response.DeleteMemberResponse, error) {
+	// memberは削除権限を持たない
+	requestUser, err := uc.userRepo.FindByID(requestUserID)
+	if err != nil {
+		logger.Error("DeleteMember", "func", "FindByID()", "error", err.Error())
+		return nil, err
+	}
+	if requestUser.Role == "member" {
+		logger.Error("DeleteMember", "error", "user is not admin")
+		return nil, fmt.Errorf("user is not admin")
+	}
+
+	// ownerは削除不可
+	deleteUser, err := uc.userRepo.FindByID(deleteUserID)
+	if err != nil {
+		logger.Error("DeleteMember", "func", "FindByID()", "error", err.Error())
+		return nil, err
+	}
+
+	if deleteUser.Role == "owner" {
+		logger.Error("DeleteMember", "error", "cannot delete owner")
+		return nil, fmt.Errorf("cannot delete owner")
+	}
+
+	err = uc.userRepo.DeleteUser(deleteUserID)
+	if err != nil {
+		logger.Error("DeleteMember", "func", "DeleteUser()", "error", err.Error())
+		return nil, err
+	}
+
+	return response.NewDeleteMemberResponse()
 }
 
 func (uc *organizationUsecase) GetScreenDashboard(userID, orgID string) (*response.GetScreenDashboardResponse, error) {

@@ -79,6 +79,18 @@ func NewUpdateRoleResponse(user entity.User) (*UpdateRoleResponse, error) {
 	}, nil
 }
 
+type DeleteMemberResponse struct {
+	Status int    `json:"status"`
+	Message string `json:"message"`
+}
+
+func NewDeleteMemberResponse() (*DeleteMemberResponse, error) {
+	return &DeleteMemberResponse{
+		Status:  http.StatusOK,
+		Message: "ok",
+	}, nil
+}
+
 type Current struct {
 	Weight       float64   `json:"weight"`
 	MuscleWeight float64   `json:"muscle_weight"`

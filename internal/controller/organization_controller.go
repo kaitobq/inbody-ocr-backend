@@ -82,6 +82,24 @@ func (ct *OrganizationController) UpdateRole(c *gin.Context) {
 	c.JSON(http.StatusOK, res)
 }
 
+func (ct *OrganizationController) DeleteMember(c *gin.Context) {
+	deleteUserID := c.Query("user_id")
+
+	userID, orgID, err := ct.tokenService.ExtractIDsFromContext(c)
+	if err != nil {
+		c.JSON(http.StatusUnauthorized, response.NewErrorResponse(http.StatusUnauthorized, err.Error()))
+		return
+	}
+
+	res, err := ct.uc.DeleteMember(deleteUserID, orgID, userID)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, response.NewErrorResponse(http.StatusInternalServerError, err.Error()))
+		return
+	}
+
+	c.JSON(http.StatusOK, res)
+}
+
 func (ct *OrganizationController) GetScreenDashboard(c *gin.Context) {
 	userID, orgID, err := ct.tokenService.ExtractIDsFromContext(c)
 	if err != nil {

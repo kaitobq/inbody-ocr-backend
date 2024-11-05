@@ -78,8 +78,8 @@ paths:
                 $ref: "#/components/schemas/SignInResponse"
   /api/v1/organization/role:
     get:
-      summary: Get All Organization Member And Role
-      description: Get All Organization Member And Role
+      summary: Get All Organization Members And Role
+      description: Get All Organization Members And Role
       security:
         - Auth: []
       parameters: []
@@ -89,7 +89,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/GetAllMemberResponse"
+                $ref: "#/components/schemas/GetAllMembersResponse"
     post:
       summary: Change Member Role
       description: Change Member Role
@@ -642,13 +642,13 @@ components:
                 type: string
               updated_at:
                 type: string
-    GetAllMemberResponse:
+    GetAllMembersResponse:
       properties:
         status:
           type: string
         message:
           type: string
-        member:
+        members:
           type: array
           items:
             type: object
