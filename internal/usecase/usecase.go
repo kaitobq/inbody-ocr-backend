@@ -17,7 +17,6 @@ type OrganizationUsecase interface {
 	GetAllMembers(orgID string) (*response.GetAllMembersResponse, error)
 	UpdateRole(updateUserID string, role entity.OrganizationRole, orgID, requestUserID string) (*response.UpdateRoleResponse, error)
 	DeleteMember(deleteUserID, orgID, requestUserID string) (*response.DeleteMemberResponse, error)
-	GetScreenDashboardForAdmin(userID, orgID string) (*response.GetScreenDashboardForAdminResponse, error)
 }
 
 type ImageUsecase interface {

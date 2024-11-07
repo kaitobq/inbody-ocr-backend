@@ -99,19 +99,3 @@ func (ct *OrganizationController) DeleteMember(c *gin.Context) {
 
 	c.JSON(http.StatusOK, res)
 }
-
-func (ct *OrganizationController) GetScreenDashboardForAdmin(c *gin.Context) {
-	userID, orgID, err := ct.tokenService.ExtractIDsFromContext(c)
-	if err != nil {
-		c.JSON(http.StatusUnauthorized, response.NewErrorResponse(http.StatusUnauthorized, err.Error()))
-		return
-	}
-
-	res, err := ct.uc.GetScreenDashboardForAdmin(userID, orgID)
-	if err != nil {
-		c.JSON(http.StatusInternalServerError, response.NewErrorResponse(http.StatusInternalServerError, err.Error()))
-		return
-	}
-
-	c.JSON(http.StatusOK, res)
-}

@@ -34,7 +34,6 @@ func SetUpRoutes(
 		organization.GET("/role", organizationCtrl.GetAllMembers)
 		organization.PUT("/role", organizationCtrl.UpdateRole)
 		organization.DELETE("/role", organizationCtrl.DeleteMember)
-		organization.GET("/dashboard/admin", organizationCtrl.GetScreenDashboardForAdmin)
 	}
 
 	image := v1.Group("image")

@@ -171,30 +171,3 @@ func (uc *organizationUsecase) DeleteMember(deleteUserID, orgID, requestUserID s
 
 	return response.NewDeleteMemberResponse()
 }
-
-func (uc *organizationUsecase) GetScreenDashboardForAdmin(userID, orgID string) (*response.GetScreenDashboardForAdminResponse, error) {
-	user, err := uc.userRepo.FindByID(userID)
-	if err != nil {
-		logger.Error("GetScreenDashboardForAdmin", "func", "FindByID()", "error", err.Error())
-		return nil, err
-	}
-
-	if user.Role == "member" {
-		logger.Error("GetScreenDashboardForAdmin", "error", "user is not admin")
-		return nil, fmt.Errorf("user is not admin")
-	}
-
-	records, err := uc.imageDataRepo.FindByOrganizationID(orgID)
-	if err != nil {
-		logger.Error("GetScreenDashboardForAdmin", "func", "FindByOrganizationID()", "error", err.Error())
-		return nil, err
-	}
-
-	users, err := uc.repo.GetMember(orgID)
-	if err != nil {
-		logger.Error("GetScreenDashboardForAdmin", "func", "GetMember()", "error", err.Error())
-		return nil, err
-	}
-
-	return response.NewGetScreenDashboardForAdminResponse(users, records)
-}
