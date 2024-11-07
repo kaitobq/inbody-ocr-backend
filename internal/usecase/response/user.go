@@ -7,18 +7,18 @@ import (
 )
 
 type UserResponse struct {
-	ID   string                  `json:"id"`
-	Name string                  `json:"name"`
-	Role entity.OrganizationRole `json:"role"`
-	CreatedAt time.Time           `json:"created_at"`
-	UpdatedAt time.Time           `json:"updated_at"`
+	ID        string                  `json:"id"`
+	Name      string                  `json:"name"`
+	Role      entity.OrganizationRole `json:"role"`
+	CreatedAt time.Time               `json:"created_at"`
+	UpdatedAt time.Time               `json:"updated_at"`
 }
 
 func NewUserResponse(user entity.User) *UserResponse {
 	return &UserResponse{
-		ID:   user.ID,
-		Name: user.Name,
-		Role: user.Role,
+		ID:        user.ID,
+		Name:      user.Name,
+		Role:      user.Role,
 		CreatedAt: user.CreatedAt,
 		UpdatedAt: user.UpdatedAt,
 	}
@@ -65,7 +65,7 @@ func NewSignInResponse(token string, exp *time.Time, user entity.User) (*SignInR
 			Exp:   *exp,
 		},
 		OrganizationID: user.OrganizationID,
-		User: *NewUserResponse(user),
+		User:           *NewUserResponse(user),
 	}, nil
 }
 
@@ -79,6 +79,6 @@ func NewGetOwnInfoResponse(user entity.User) (*GetOwnInfoResponse, error) {
 	return &GetOwnInfoResponse{
 		Status:  http.StatusOK,
 		Message: "ok",
-		User: *NewUserResponse(user),
+		User:    *NewUserResponse(user),
 	}, nil
 }

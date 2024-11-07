@@ -70,6 +70,6 @@ func (ct *UserController) GetOwnInfo(c *gin.Context) {
 		c.JSON(http.StatusInternalServerError, response.NewErrorResponse(http.StatusInternalServerError, err.Error()))
 		return
 	}
-	
+
 	c.JSON(http.StatusOK, res)
 }
