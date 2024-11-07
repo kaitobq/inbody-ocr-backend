@@ -50,7 +50,7 @@ func SetUpRoutes(
 		imageData.POST("", imageDataCtrl.SaveImageData)
 		imageData.GET("", imageDataCtrl.GetImageDataForMember)
 		imageData.GET("/stats/member", imageDataCtrl.GetStatsForMember)
-		// imageData.GET("/stats/admin", imageDataCtrl.GetStatsForAdmin)
+		imageData.GET("/stats/admin", imageDataCtrl.GetStatsForAdmin)
 		// imageData.GET("/chart/member", imageDataCtrl.GetChartDataForMember)
 		// imageData.GET("/chart/admin", imageDataCtrl.GetChartDataForAdmin)
 		// imageData.GET("/data/member", imageDataCtrl.GetImageDataForMember)

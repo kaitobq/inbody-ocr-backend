@@ -537,7 +537,7 @@ components:
           type: integer
         message:
           type: string
-        current:
+        stats:
           type: object
           properties:
             weight:
@@ -546,8 +546,8 @@ components:
               type: number
             fat_weight:
               type: number
-            created_at:
-              type: string
+            point:
+              type: number
     GetOrganizationChartDataResponse:
       type: object
       properties:

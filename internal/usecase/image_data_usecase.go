@@ -76,6 +76,53 @@ func (uc *imageDataUsecase) GetStatsForMember(userID, orgID string) (*response.G
 	return response.NewGetStatsForMemberResponse(current, previous)
 }
 
+func (uc *imageDataUsecase) GetStatsForAdmin(userID, orgID string) (*response.GetStatsForAdminResponse, error) {
+	records, err := uc.repo.FindByOrganizationID(orgID)
+	if err != nil {
+		logger.Error("GetStatsForAdmin", "func", "FindByOrganizationID()", "error", err.Error())
+		return nil, err
+	}
+
+	latestRecords := getLatestRecords(records)
+	stats := calcAvg(latestRecords)
+
+	return response.NewGetStatsForAdminResponse(stats)
+}
+
+func getLatestRecords(records []entity.ImageData) map[string]entity.ImageData {
+	latestRecords := make(map[string]entity.ImageData)
+	for _, record := range records {
+		if existing, ok := latestRecords[record.UserID]; !ok || record.CreatedAt.After(existing.CreatedAt) {
+			latestRecords[record.UserID] = record
+		}
+	}
+
+	return latestRecords
+}
+
+func calcAvg(latestRecords map[string]entity.ImageData) response.StatsForAdmin {
+	var weight, muscleWeight, fatPercent float64
+	var point uint
+	for _, record := range latestRecords {
+		weight += record.Weight
+		muscleWeight += record.MuscleWeight
+		fatPercent += record.FatPercent
+		point += record.Point
+	}
+
+	weight /= float64(len(latestRecords))
+	muscleWeight /= float64(len(latestRecords))
+	fatPercent /= float64(len(latestRecords))
+	point /= uint(len(latestRecords))
+
+	return response.StatsForAdmin{
+		Weight:       weight,
+		MuscleWeight: muscleWeight,
+		FatPercent:   fatPercent,
+		Point:        point,
+	}
+}
+
 func (uc *imageDataUsecase) GetDataForMember(userID string) (*response.GetImageDataForMemberResponse, error) {
 	records, err := uc.repo.FindByUserID(userID)
 	if err != nil {

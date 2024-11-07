@@ -54,6 +54,32 @@ func NewGetStatsForMemberResponse(current entity.ImageData, previous entity.Imag
 	}, nil
 }
 
+type StatsForAdmin struct {
+	Weight       float64 `json:"weight"`
+	MuscleWeight float64 `json:"muscle_weight"`
+	FatPercent   float64 `json:"fat_percent"`
+	Point        uint    `json:"point"`
+}
+
+type GetStatsForAdminResponse struct {
+	Status  int           `json:"status"`
+	Message string        `json:"message"`
+	Stats   StatsForAdmin `json:"stats"`
+}
+
+func NewGetStatsForAdminResponse(stats StatsForAdmin) (*GetStatsForAdminResponse, error) {
+	return &GetStatsForAdminResponse{
+		Status:  http.StatusOK,
+		Message: "ok",
+		Stats: StatsForAdmin{
+			Weight:       stats.Weight,
+			MuscleWeight: stats.MuscleWeight,
+			FatPercent:   stats.FatPercent,
+			Point:        stats.Point,
+		},
+	}, nil
+}
+
 type GetImageDataForMemberResponse struct {
 	Status  int                `json:"status"`
 	Records []entity.ImageData `json:"records"`
