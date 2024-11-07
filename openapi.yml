@@ -365,7 +365,7 @@ components:
       type: object
       properties:
         status:
-          type: string
+          type: integer
         message:
           type: string
         token:
@@ -383,7 +383,7 @@ components:
       type: object
       properties:
         status:
-          type: string
+          type: integer
         message:
           type: string
         token:
@@ -396,7 +396,7 @@ components:
       type: object
       properties:
         status:
-          type: string
+          type: integer
         message:
           type: string
         result:
@@ -424,7 +424,7 @@ components:
       type: object
       properties:
         status:
-          type: string
+          type: integer
         message:
           type: string
         current:
@@ -453,7 +453,7 @@ components:
       type: object
       properties:
         status:
-          type: string
+          type: integer
         message:
           type: string
         chart:
@@ -500,7 +500,7 @@ components:
       type: object
       properties:
         status:
-          type: string
+          type: integer
         message:
           type: string
         data:
@@ -534,7 +534,7 @@ components:
       type: object
       properties:
         status:
-          type: string
+          type: integer
         message:
           type: string
         current:
@@ -552,7 +552,7 @@ components:
       type: object
       properties:
         status:
-          type: string
+          type: integer
         message:
           type: string
         chart:
@@ -578,7 +578,7 @@ components:
       type: object
       properties:
         status:
-          type: string
+          type: integer
         message:
           type: string
         data:
@@ -612,7 +612,7 @@ components:
       type: object
       properties:
         status:
-          type: string
+          type: integer
         message:
           type: string
         data:
@@ -645,7 +645,7 @@ components:
     GetAllMembersResponse:
       properties:
         status:
-          type: string
+          type: integer
         message:
           type: string
         members:
@@ -667,6 +667,6 @@ components:
       type: object
       properties:
         status:
-          type: string
+          type: integer
         message:
           type: string

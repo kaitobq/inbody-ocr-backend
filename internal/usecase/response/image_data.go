@@ -2,6 +2,7 @@ package response
 
 import (
 	"inbody-ocr-backend/internal/domain/entity"
+	jptime "inbody-ocr-backend/pkg/jp_time"
 	"net/http"
 )
 
@@ -14,6 +15,42 @@ func NewSaveImageDataResponse() (*SaveImageDataResponse, error) {
 	return &SaveImageDataResponse{
 		Status:  http.StatusOK,
 		Message: "Data saved successfully",
+	}, nil
+}
+
+type StatsForMember struct {
+	Weight       float64 `json:"weight"`
+	MuscleWeight float64 `json:"muscle_weight"`
+	FatWeight    float64 `json:"fat_weight"`
+	CreatedAt    string  `json:"created_at"`
+}
+
+type GetStatsForMemberResponse struct {
+	Status   int            `json:"status"`
+	Message  string         `json:"message"`
+	Current  StatsForMember `json:"current"`
+	Previous StatsForMember `json:"previous"`
+}
+
+func NewGetStatsForMemberResponse(current entity.ImageData, previous entity.ImageData) (*GetStatsForMemberResponse, error) {
+	currentCreatedAt := jptime.FormatDateTime(current.CreatedAt)
+	previousCreatedAt := jptime.FormatDateTime(previous.CreatedAt)
+
+	return &GetStatsForMemberResponse{
+		Status:  http.StatusOK,
+		Message: "ok",
+		Current: StatsForMember{
+			Weight:       current.Weight,
+			MuscleWeight: current.MuscleWeight,
+			FatWeight:    current.FatWeight,
+			CreatedAt:    currentCreatedAt,
+		},
+		Previous: StatsForMember{
+			Weight:       previous.Weight,
+			MuscleWeight: previous.MuscleWeight,
+			FatWeight:    previous.FatWeight,
+			CreatedAt:    previousCreatedAt,
+		},
 	}, nil
 }
 

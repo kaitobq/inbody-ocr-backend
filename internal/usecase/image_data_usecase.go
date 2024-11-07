@@ -50,6 +50,32 @@ func (uc *imageDataUsecase) CreateData(weight, height, muscleWeight, fatWeight, 
 	return response.NewSaveImageDataResponse()
 }
 
+func (uc *imageDataUsecase) GetStatsForMember(userID, orgID string) (*response.GetStatsForMemberResponse, error) {
+	records, err := uc.repo.FindByUserID(userID)
+	if err != nil {
+		logger.Error("GetStatsForMember", "func", "FindByUserID()", "error", err.Error())
+		return nil, err
+	}
+
+	current := entity.ImageData{}
+	previous := entity.ImageData{}
+	// Get the latest record
+	for _, record := range records {
+		if record.CreatedAt.After(current.CreatedAt) {
+			current = record
+		}
+	}
+
+	// Get the second latest record
+	for _, record := range records {
+		if record.CreatedAt.After(previous.CreatedAt) && record.CreatedAt != current.CreatedAt {
+			previous = record
+		}
+	}
+
+	return response.NewGetStatsForMemberResponse(current, previous)
+}
+
 func (uc *imageDataUsecase) GetDataForMember(userID string) (*response.GetImageDataForMemberResponse, error) {
 	records, err := uc.repo.FindByUserID(userID)
 	if err != nil {
