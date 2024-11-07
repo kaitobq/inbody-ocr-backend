@@ -31,4 +31,5 @@ type ImageDataUsecase interface {
 	GetChartDataForAdmin(orgID string) (*response.GetChartDataForAdminResponse, error)
 	GetDataForMember(userID string) (*response.GetImageDataForMemberResponse, error)
 	GetDataForAdmin(userID, orgID string) (*response.GetImageDataForAdminResponse, error)
+	GetCurrentDataForAdmin(userID, orgID string) (*response.GetCurrentImageDataForAdminResponse, error)
 }

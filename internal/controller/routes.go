@@ -46,14 +46,12 @@ func SetUpRoutes(
 	imageData.Use(middleware.AuthMiddleware(tokenService))
 	{
 		imageData.POST("", imageDataCtrl.SaveImageData)
-		imageData.GET("", imageDataCtrl.GetImageDataForMember)
 		imageData.GET("/stats/member", imageDataCtrl.GetStatsForMember)
 		imageData.GET("/stats/admin", imageDataCtrl.GetStatsForAdmin)
 		imageData.GET("/chart/member", imageDataCtrl.GetChartDataForMember)
 		imageData.GET("/chart/admin", imageDataCtrl.GetChartDataForAdmin)
-		// imageData.GET("/data/member", imageDataCtrl.GetImageDataForMember)
-		// imageData.GET("/data/admin/current", imageDataCtrl.GetImageDataForAdmin)
-		// imageData.GET("/data/admin", imageDataCtrl.GetImageDataForAdmin)
-		imageData.GET("/admin", imageDataCtrl.GetImageDataForAdmin)
+		imageData.GET("/data/member", imageDataCtrl.GetImageDataForMember)
+		imageData.GET("/data/admin", imageDataCtrl.GetImageDataForAdmin)
+		imageData.GET("/data/admin/current", imageDataCtrl.GetCurrentImageDataForAdmin)
 	}
 }

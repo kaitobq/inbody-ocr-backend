@@ -508,6 +508,13 @@ components:
           items:
             type: object
             properties:
+              user:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  name:
+                    type: string
               weight:
                 type: number
               height:
@@ -586,6 +593,13 @@ components:
           items:
             type: object
             properties:
+              user:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  name:
+                    type: string
               weight:
                 type: number
               height:
@@ -620,6 +634,13 @@ components:
           items:
             type: object
             properties:
+              user:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  name:
+                    type: string
               weight:
                 type: number
               height:

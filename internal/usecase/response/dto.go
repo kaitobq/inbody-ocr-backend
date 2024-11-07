@@ -6,8 +6,10 @@ import (
 )
 
 type UserImageData struct {
-	UserID       string    `json:"user_id"`
-	UserName     string    `json:"user_name"`
+	User struct {
+		ID   string `json:"id"`
+		Name string `json:"name"`
+	} `json:"user"`
 	Weight       float64   `json:"weight"`
 	Height       float64   `json:"height"`
 	MuscleWeight float64   `json:"muscle_weight"`
@@ -27,8 +29,13 @@ func NewUserImageData(user entity.User, data entity.ImageData) UserImageData {
 	}
 
 	return UserImageData{
-		UserID:       user.ID,
-		UserName:     user.Name,
+		User: struct {
+			ID   string `json:"id"`
+			Name string `json:"name"`
+		}{
+			ID:   user.ID,
+			Name: user.Name,
+		},
 		Weight:       data.Weight,
 		Height:       data.Height,
 		MuscleWeight: data.MuscleWeight,

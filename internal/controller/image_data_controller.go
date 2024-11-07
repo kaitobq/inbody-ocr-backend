@@ -141,3 +141,19 @@ func (ct *ImageDataController) GetImageDataForAdmin(c *gin.Context) {
 
 	c.JSON(http.StatusOK, res)
 }
+
+func (ct *ImageDataController) GetCurrentImageDataForAdmin(c *gin.Context) {
+	userID, orgID, err := ct.tokenService.ExtractIDsFromContext(c)
+	if err != nil {
+		logger.Error("GetImageDataForAdmin", "func", "ExtractIDsFromContext()", "error", err.Error())
+		c.JSON(http.StatusUnauthorized, response.NewErrorResponse(http.StatusUnauthorized, err.Error()))
+	}
+
+	res, err := ct.uc.GetCurrentDataForAdmin(userID, orgID)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, response.NewErrorResponse(http.StatusBadRequest, err.Error()))
+		return
+	}
+
+	c.JSON(http.StatusOK, res)
+}

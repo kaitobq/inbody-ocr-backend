@@ -161,24 +161,29 @@ func NewGetImageDataForMemberResponse(records []entity.ImageData) (*GetImageData
 }
 
 type GetImageDataForAdminResponse struct {
-	Status  int                           `json:"status"`
-	Records map[string][]entity.ImageData `json:"records"`
-	Users   []UserResponse                `json:"users"`
+	Status  int             `json:"status"`
+	Message string          `json:"message"`
+	Data    []UserImageData `json:"data"`
 }
 
-func NewGetImageDataForAdminResponse(records map[string][]entity.ImageData, users []entity.User) (*GetImageDataForAdminResponse, error) {
-	var userResponses []UserResponse
-	for _, user := range users {
-		userResponses = append(userResponses, UserResponse{
-			ID:   user.ID,
-			Name: user.Name,
-			Role: user.Role,
-		})
-	}
-
+func NewGetImageDataForAdminResponse(data []UserImageData) (*GetImageDataForAdminResponse, error) {
 	return &GetImageDataForAdminResponse{
 		Status:  http.StatusOK,
-		Records: records,
-		Users:   userResponses,
+		Message: "ok",
+		Data:    data,
+	}, nil
+}
+
+type GetCurrentImageDataForAdminResponse struct {
+	Status  int             `json:"status"`
+	Message string          `json:"message"`
+	Data    []UserImageData `json:"data"`
+}
+
+func NewGetCurrentImageDataForAdminResponse(data []UserImageData) (*GetCurrentImageDataForAdminResponse, error) {
+	return &GetCurrentImageDataForAdminResponse{
+		Status:  http.StatusOK,
+		Message: "ok",
+		Data:    data,
 	}, nil
 }

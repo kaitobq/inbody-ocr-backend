@@ -301,7 +301,7 @@ func (uc *imageDataUsecase) GetDataForAdmin(userID, orgID string) (*response.Get
 		return nil, err
 	}
 
-	if user.Role != "admin" && user.Role != "owner" {
+	if user.Role != "admin" && user.Role != "owner" { // TODO: use middleware
 		logger.Error("GetDataForAdmin", "error", "user is not admin")
 		return nil, fmt.Errorf("user is not admin")
 	}
@@ -312,17 +312,49 @@ func (uc *imageDataUsecase) GetDataForAdmin(userID, orgID string) (*response.Get
 		return nil, err
 	}
 
-	// Convert records slice to map[string][]entity.ImageData
-	recordsMap := make(map[string][]entity.ImageData)
-	for _, record := range records {
-		recordsMap[record.UserID] = append(recordsMap[record.UserID], record)
-	}
-
-	members, err := uc.organizationRepo.GetMember(orgID)
+	users, err := uc.organizationRepo.GetMember(orgID)
 	if err != nil {
 		logger.Error("GetDataForAdmin", "func", "GetMember()", "error", err.Error())
 		return nil, err
 	}
 
-	return response.NewGetImageDataForAdminResponse(recordsMap, members)
+	userImgData := response.NewUserImageDataList(users, records)
+
+	return response.NewGetImageDataForAdminResponse(userImgData)
+}
+
+func (uc *imageDataUsecase) GetCurrentDataForAdmin(userID, orgID string) (*response.GetCurrentImageDataForAdminResponse, error) {
+	user, err := uc.userRepo.FindByID(userID)
+	if err != nil {
+		logger.Error("GetDataForAdmin", "func", "FindByID()", "error", err.Error())
+		return nil, err
+	}
+
+	if user.Role != "admin" && user.Role != "owner" { // TODO: use middleware
+		logger.Error("GetDataForAdmin", "error", "user is not admin")
+		return nil, fmt.Errorf("user is not admin")
+	}
+
+	records, err := uc.repo.FindByOrganizationID(orgID)
+	if err != nil {
+		logger.Error("GetDataForAdmin", "func", "FindByOrganizationID()", "error", err.Error())
+		return nil, err
+	}
+
+	users, err := uc.organizationRepo.GetMember(orgID)
+	if err != nil {
+		logger.Error("GetDataForAdmin", "func", "GetMember()", "error", err.Error())
+		return nil, err
+	}
+
+	latestRecords := getLatestRecords(records)
+
+	var data []entity.ImageData
+	for _, record := range latestRecords {
+		data = append(data, record)
+	}
+
+	userImgData := response.NewUserImageDataList(users, data)
+
+	return response.NewGetCurrentImageDataForAdminResponse(userImgData)
 }
