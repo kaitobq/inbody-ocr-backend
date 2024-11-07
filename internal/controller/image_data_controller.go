@@ -63,13 +63,45 @@ func (ct *ImageDataController) GetStatsForMember(c *gin.Context) {
 }
 
 func (ct *ImageDataController) GetStatsForAdmin(c *gin.Context) {
-	userID, orgID, err := ct.tokenService.ExtractIDsFromContext(c)
+	_, orgID, err := ct.tokenService.ExtractIDsFromContext(c)
 	if err != nil {
 		logger.Error("GetStatsForAdmin", "func", "ExtractIDsFromContext()", "error", err.Error())
 		c.JSON(http.StatusUnauthorized, response.NewErrorResponse(http.StatusUnauthorized, err.Error()))
 	}
 
-	res, err := ct.uc.GetStatsForAdmin(userID, orgID)
+	res, err := ct.uc.GetStatsForAdmin(orgID)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, response.NewErrorResponse(http.StatusBadRequest, err.Error()))
+		return
+	}
+
+	c.JSON(http.StatusOK, res)
+}
+
+func (ct *ImageDataController) GetChartDataForMember(c *gin.Context) {
+	userID, _, err := ct.tokenService.ExtractIDsFromContext(c)
+	if err != nil {
+		logger.Error("GetChartDataForMember", "func", "ExtractIDsFromContext()", "error", err.Error())
+		c.JSON(http.StatusUnauthorized, response.NewErrorResponse(http.StatusUnauthorized, err.Error()))
+	}
+
+	res, err := ct.uc.GetChartDataForMember(userID)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, response.NewErrorResponse(http.StatusBadRequest, err.Error()))
+		return
+	}
+
+	c.JSON(http.StatusOK, res)
+}
+
+func (ct *ImageDataController) GetChartDataForAdmin(c *gin.Context) {
+	_, orgID, err := ct.tokenService.ExtractIDsFromContext(c)
+	if err != nil {
+		logger.Error("GetChartDataForAdmin", "func", "ExtractIDsFromContext()", "error", err.Error())
+		c.JSON(http.StatusUnauthorized, response.NewErrorResponse(http.StatusUnauthorized, err.Error()))
+	}
+
+	res, err := ct.uc.GetChartDataForAdmin(orgID)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, response.NewErrorResponse(http.StatusBadRequest, err.Error()))
 		return

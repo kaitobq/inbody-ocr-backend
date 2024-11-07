@@ -80,6 +80,51 @@ func NewGetStatsForAdminResponse(stats StatsForAdmin) (*GetStatsForAdminResponse
 	}, nil
 }
 
+type Kilo struct {
+	Weight       float64 `json:"weight"`
+	MuscleWeight float64 `json:"muscle_weight"`
+	FatWeight    float64 `json:"fat_weight"`
+	FatPercent   float64 `json:"fat_percent"`
+	BodyWater    float64 `json:"body_water"`
+	Protein      float64 `json:"protein"`
+	Mineral      float64 `json:"mineral"`
+	CreatedAt    string  `json:"created_at"`
+}
+
+type Percent struct {
+	FatPercent float64 `json:"fat_percent"`
+	CreatedAt  string  `json:"created_at"`
+}
+
+type Score struct {
+	Point     uint   `json:"point"`
+	CreatedAt string `json:"created_at"`
+}
+
+type ChartDataForMember struct {
+	Kilo    []Kilo    `json:"kilo"`
+	Percent []Percent `json:"percent"`
+	Score   []Score   `json:"score"`
+}
+
+type GetChartDataForMemberResponse struct {
+	Status  int                `json:"status"`
+	Message string             `json:"message"`
+	Chart   ChartDataForMember `json:"chart"`
+}
+
+func NewGetChartDataForMemberResponse(kilo []Kilo, percent []Percent, score []Score) (*GetChartDataForMemberResponse, error) {
+	return &GetChartDataForMemberResponse{
+		Status:  http.StatusOK,
+		Message: "ok",
+		Chart: ChartDataForMember{
+			Kilo:    kilo,
+			Percent: percent,
+			Score:   score,
+		},
+	}, nil
+}
+
 type GetImageDataForMemberResponse struct {
 	Status  int                `json:"status"`
 	Records []entity.ImageData `json:"records"`

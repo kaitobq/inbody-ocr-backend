@@ -5,7 +5,6 @@ import (
 	"inbody-ocr-backend/internal/domain/entity"
 	"math"
 	"net/http"
-	"sort"
 	"time"
 )
 
@@ -47,8 +46,8 @@ func NewCreateOrganizationResponse(org entity.Organization, token, userID, userN
 }
 
 type GetAllMembersResponse struct {
-	Status   int           `json:"status"`
-	Message  string        `json:"message"`
+	Status  int            `json:"status"`
+	Message string         `json:"message"`
 	Members []UserResponse `json:"members"`
 }
 
@@ -59,15 +58,15 @@ func NewGetAllMembersResponse(users []entity.User) (*GetAllMembersResponse, erro
 	}
 
 	return &GetAllMembersResponse{
-		Status:   http.StatusOK,
-		Message:  "ok",
+		Status:  http.StatusOK,
+		Message: "ok",
 		Members: members,
 	}, nil
 }
 
 type UpdateRoleResponse struct {
-	Status  int    `json:"status"`
-	Message string `json:"message"`
+	Status  int          `json:"status"`
+	Message string       `json:"message"`
 	Updated UserResponse `json:"updated"`
 }
 
@@ -80,7 +79,7 @@ func NewUpdateRoleResponse(user entity.User) (*UpdateRoleResponse, error) {
 }
 
 type DeleteMemberResponse struct {
-	Status int    `json:"status"`
+	Status  int    `json:"status"`
 	Message string `json:"message"`
 }
 
@@ -88,129 +87,6 @@ func NewDeleteMemberResponse() (*DeleteMemberResponse, error) {
 	return &DeleteMemberResponse{
 		Status:  http.StatusOK,
 		Message: "ok",
-	}, nil
-}
-
-type Current struct {
-	Weight       float64   `json:"weight"`
-	MuscleWeight float64   `json:"muscle_weight"`
-	FatWeight    float64   `json:"fat_weight"`
-	CreatedAt    time.Time `json:"created_at"`
-}
-
-type Previous struct {
-	Weight       float64   `json:"weight"`
-	MuscleWeight float64   `json:"muscle_weight"`
-	FatWeight    float64   `json:"fat_weight"`
-	CreatedAt    time.Time `json:"created_at"`
-}
-
-type Kilo struct {
-	Weight       float64   `json:"weight"`
-	MuscleWeight float64   `json:"muscle_weight"`
-	FatWeight    float64   `json:"fat_weight"`
-	BodyWater    float64   `json:"body_water"`
-	Protein      float64   `json:"protein"`
-	Mineral      float64   `json:"mineral"`
-	CreatedAt    time.Time `json:"created_at"`
-}
-
-type Percent struct {
-	FatPercent float64   `json:"fat_percent"`
-	CreatedAt  time.Time `json:"created_at"`
-}
-
-type Score struct {
-	Point     uint      `json:"point"`
-	CreatedAt time.Time `json:"created_at"`
-}
-
-type Graph struct {
-	Kilo    []Kilo    `json:"kilo"`
-	Percent []Percent `json:"percent"`
-	Score   []Score   `json:"score"`
-}
-
-type GetScreenDashboardResponse struct {
-	Status   int             `json:"status"`
-	Message  string          `json:"message"`
-	Current  Current         `json:"current"`
-	Previous Previous        `json:"previous"`
-	Graph    Graph           `json:"graph"`
-	History  []UserImageData `json:"history"`
-}
-
-func NewGetScreenDashboardResponse(user entity.User, data []entity.ImageData) (*GetScreenDashboardResponse, error) {
-	status := http.StatusOK
-	message := "Dashboard data fetched successfully"
-
-	if len(data) == 0 {
-		return &GetScreenDashboardResponse{
-			Status:  http.StatusOK,
-			Message: "No data available",
-		}, nil
-	}
-
-	// current
-	sort.Slice(data, func(i, j int) bool {
-		return data[i].CreatedAt.After(data[j].CreatedAt)
-	})
-	current := Current{
-		Weight:       data[0].Weight,
-		MuscleWeight: data[0].MuscleWeight,
-		FatWeight:    data[0].FatWeight,
-		CreatedAt:    data[0].CreatedAt,
-	}
-
-	// previous
-	var previous Previous
-	if len(data) > 1 {
-		previous = Previous{
-			Weight:       data[1].Weight,
-			MuscleWeight: data[1].MuscleWeight,
-			FatWeight:    data[1].FatWeight,
-			CreatedAt:    data[1].CreatedAt,
-		}
-	}
-
-	// graph
-	var kilo []Kilo
-	var percent []Percent
-	var score []Score
-	for _, record := range data {
-		kilo = append(kilo, Kilo{
-			Weight:       record.Weight,
-			MuscleWeight: record.MuscleWeight,
-			FatWeight:    record.FatWeight,
-			BodyWater:    record.BodyWater,
-			Protein:      record.Protein,
-			Mineral:      record.Mineral,
-			CreatedAt:    record.CreatedAt,
-		})
-		percent = append(percent, Percent{
-			FatPercent: record.FatPercent,
-			CreatedAt:  record.CreatedAt,
-		})
-		score = append(score, Score{
-			Point:     record.Point,
-			CreatedAt: record.CreatedAt,
-		})
-	}
-
-	// history
-	history := NewUserImageDataList([]entity.User{user}, data)
-
-	return &GetScreenDashboardResponse{
-		Status:   status,
-		Message:  message,
-		Current:  current,
-		Previous: previous,
-		Graph: Graph{
-			Kilo:    kilo,
-			Percent: percent,
-			Score:   score,
-		},
-		History: history,
 	}, nil
 }
 

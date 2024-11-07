@@ -7,6 +7,7 @@ import (
 	"inbody-ocr-backend/internal/domain/service"
 	"inbody-ocr-backend/internal/infra/logger"
 	"inbody-ocr-backend/internal/usecase/response"
+	jptime "inbody-ocr-backend/pkg/jp_time"
 )
 
 type imageDataUsecase struct {
@@ -76,7 +77,7 @@ func (uc *imageDataUsecase) GetStatsForMember(userID, orgID string) (*response.G
 	return response.NewGetStatsForMemberResponse(current, previous)
 }
 
-func (uc *imageDataUsecase) GetStatsForAdmin(userID, orgID string) (*response.GetStatsForAdminResponse, error) {
+func (uc *imageDataUsecase) GetStatsForAdmin(orgID string) (*response.GetStatsForAdminResponse, error) {
 	records, err := uc.repo.FindByOrganizationID(orgID)
 	if err != nil {
 		logger.Error("GetStatsForAdmin", "func", "FindByOrganizationID()", "error", err.Error())
@@ -121,6 +122,59 @@ func calcAvg(latestRecords map[string]entity.ImageData) response.StatsForAdmin {
 		FatPercent:   fatPercent,
 		Point:        point,
 	}
+}
+
+func (uc *imageDataUsecase) GetChartDataForMember(userID string) (*response.GetChartDataForMemberResponse, error) {
+	records, err := uc.repo.FindByUserID(userID)
+	if err != nil {
+		logger.Error("GetChartDataForMember", "func", "FindByUserID()", "error", err.Error())
+		return nil, err
+	}
+
+	// sort records by created_at
+	records = sortRecords(records)
+
+	kilo := make([]response.Kilo, 0)
+	percent := make([]response.Percent, 0)
+	score := make([]response.Score, 0)
+
+	for _, record := range records {
+		createdAt := jptime.FormatDateTime(record.CreatedAt)
+		kilo = append(kilo, response.Kilo{
+			Weight:       record.Weight,
+			MuscleWeight: record.MuscleWeight,
+			FatWeight:    record.FatWeight,
+			FatPercent:   record.FatPercent,
+			BodyWater:    record.BodyWater,
+			Protein:      record.Protein,
+			Mineral:      record.Mineral,
+			CreatedAt:    createdAt,
+		})
+
+		percent = append(percent, response.Percent{
+			FatPercent: record.FatPercent,
+			CreatedAt:  createdAt,
+		})
+
+		score = append(score, response.Score{
+			Point:     record.Point,
+			CreatedAt: createdAt,
+		})
+	}
+
+	return response.NewGetChartDataForMemberResponse(kilo, percent, score)
+}
+
+func sortRecords(records []entity.ImageData) []entity.ImageData {
+	for i := 0; i < len(records); i++ {
+		for j := i + 1; j < len(records); j++ {
+			if records[i].CreatedAt.After(records[j].CreatedAt) {
+				records[i], records[j] = records[j], records[i]
+			}
+		}
+	}
+
+	return records
 }
 
 func (uc *imageDataUsecase) GetDataForMember(userID string) (*response.GetImageDataForMemberResponse, error) {

@@ -49,7 +49,7 @@ func (ct *OrganizationController) GetAllMembers(c *gin.Context) {
 		c.JSON(http.StatusUnauthorized, response.NewErrorResponse(http.StatusUnauthorized, err.Error()))
 		return
 	}
-	
+
 	res, err := ct.uc.GetAllMembers(orgID)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, response.NewErrorResponse(http.StatusInternalServerError, err.Error()))
@@ -92,22 +92,6 @@ func (ct *OrganizationController) DeleteMember(c *gin.Context) {
 	}
 
 	res, err := ct.uc.DeleteMember(deleteUserID, orgID, userID)
-	if err != nil {
-		c.JSON(http.StatusInternalServerError, response.NewErrorResponse(http.StatusInternalServerError, err.Error()))
-		return
-	}
-
-	c.JSON(http.StatusOK, res)
-}
-
-func (ct *OrganizationController) GetScreenDashboard(c *gin.Context) {
-	userID, orgID, err := ct.tokenService.ExtractIDsFromContext(c)
-	if err != nil {
-		c.JSON(http.StatusUnauthorized, response.NewErrorResponse(http.StatusUnauthorized, err.Error()))
-		return
-	}
-
-	res, err := ct.uc.GetScreenDashboard(userID, orgID)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, response.NewErrorResponse(http.StatusInternalServerError, err.Error()))
 		return

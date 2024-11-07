@@ -123,7 +123,7 @@ func (uc *organizationUsecase) UpdateRole(updateUserID string, role entity.Organ
 		logger.Error("UpdateRole", "error", "cannot update owner role")
 		return nil, fmt.Errorf("cannot update owner role")
 	}
-	
+
 	err = uc.userRepo.UpdateRole(updateUserID, role)
 	if err != nil {
 		logger.Error("UpdateRole", "func", "UpdateRole()", "error", err.Error())
@@ -170,33 +170,6 @@ func (uc *organizationUsecase) DeleteMember(deleteUserID, orgID, requestUserID s
 	}
 
 	return response.NewDeleteMemberResponse()
-}
-
-func (uc *organizationUsecase) GetScreenDashboard(userID, orgID string) (*response.GetScreenDashboardResponse, error) {
-	user, err := uc.userRepo.FindByID(userID)
-	if err != nil {
-		logger.Error("GetScreenDashboard", "func", "FindByID()", "error", err.Error())
-		return nil, err
-	}
-
-	if user.Role != "member" {
-		logger.Error("GetScreenDashboard", "error", "user is not member")
-		return nil, fmt.Errorf("user is not member")
-	}
-
-	records, err := uc.imageDataRepo.FindByUserID(userID)
-	if err != nil {
-		logger.Error("GetScreenDashboard", "func", "FindByUserID()", "error", err.Error())
-		return nil, err
-	}
-
-	user, err = uc.userRepo.FindByID(userID)
-	if err != nil {
-		logger.Error("GetScreenDashboard", "func", "FindByID()", "error", err.Error())
-		return nil, err
-	}
-
-	return response.NewGetScreenDashboardResponse(*user, records)
 }
 
 func (uc *organizationUsecase) GetScreenDashboardForAdmin(userID, orgID string) (*response.GetScreenDashboardForAdminResponse, error) {
