@@ -125,6 +125,29 @@ func NewGetChartDataForMemberResponse(kilo []Kilo, percent []Percent, score []Sc
 	}, nil
 }
 
+type ChartDataForAdminMap map[string]int
+
+type ChartDataForAdmin struct {
+	BMI          ChartDataForAdminMap `json:"bmi"`
+	Weight       ChartDataForAdminMap `json:"weight"`
+	MuscleWeight ChartDataForAdminMap `json:"muscle_weight"`
+	FatWeight    ChartDataForAdminMap `json:"fat_weight"`
+}
+
+type GetChartDataForAdminResponse struct {
+	Status  int               `json:"status"`
+	Message string            `json:"message"`
+	Chart   ChartDataForAdmin `json:"chart"`
+}
+
+func NewGetChartDataForAdminResponse(chart ChartDataForAdmin) (*GetChartDataForAdminResponse, error) {
+	return &GetChartDataForAdminResponse{
+		Status:  http.StatusOK,
+		Message: "ok",
+		Chart:   chart,
+	}, nil
+}
+
 type GetImageDataForMemberResponse struct {
 	Status  int                `json:"status"`
 	Records []entity.ImageData `json:"records"`

@@ -8,6 +8,7 @@ import (
 	"inbody-ocr-backend/internal/infra/logger"
 	"inbody-ocr-backend/internal/usecase/response"
 	jptime "inbody-ocr-backend/pkg/jp_time"
+	"math"
 )
 
 type imageDataUsecase struct {
@@ -175,6 +176,112 @@ func sortRecords(records []entity.ImageData) []entity.ImageData {
 	}
 
 	return records
+}
+
+func (uc *imageDataUsecase) GetChartDataForAdmin(orgID string) (*response.GetChartDataForAdminResponse, error) {
+	records, err := uc.repo.FindByOrganizationID(orgID)
+	if err != nil {
+		logger.Error("GetChartDataForAdmin", "func", "FindByOrganizationID()", "error", err.Error())
+		return nil, err
+	}
+
+	records = sortRecords(records)
+
+	var bmi response.ChartDataForAdminMap
+	var weight response.ChartDataForAdminMap
+	var muscleWeight response.ChartDataForAdminMap
+	var fatWeight response.ChartDataForAdminMap
+
+	latestRecords := getLatestRecords(records)
+
+	weights, BMIs, fatPercents, muscleWeights := collectData(latestRecords)
+
+	minWeight, maxWeight := findMinMax(weights)
+	minBMI, maxBMI := findMinMax(BMIs)
+	minFatPercent, maxFatPercent := findMinMax(fatPercents)
+	minMuscleWeight, maxMuscleWeight := findMinMax(muscleWeights)
+
+	weightBins := generateBins(minWeight, maxWeight, 5)
+	bmiBins := generateBins(minBMI, maxBMI, 2)
+	fatPercentBins := generateBins(minFatPercent, maxFatPercent, 5)
+	muscleWeightBins := generateBins(minMuscleWeight, maxMuscleWeight, 5)
+
+	weight = generateBinData(weights, weightBins, 5)
+	bmi = generateBinData(BMIs, bmiBins, 2)
+	fatWeight = generateBinData(fatPercents, fatPercentBins, 5)
+	muscleWeight = generateBinData(muscleWeights, muscleWeightBins, 5)
+
+	chart := response.ChartDataForAdmin{
+		BMI:          bmi,
+		Weight:       weight,
+		MuscleWeight: muscleWeight,
+		FatWeight:    fatWeight,
+	}
+
+	return response.NewGetChartDataForAdminResponse(chart)
+}
+
+func collectData(records map[string]entity.ImageData) (weights, BMIs, fatPercents, muscleWeights []float64) {
+	for _, record := range records {
+		weights = append(weights, record.Weight)
+		BMI := record.Weight / ((record.Height / 100) * (record.Height / 100))
+		BMIs = append(BMIs, BMI)
+		fatPercents = append(fatPercents, record.FatPercent)
+		muscleWeights = append(muscleWeights, record.MuscleWeight)
+	}
+	return
+}
+
+func findMinMax(data []float64) (float64, float64) {
+	if len(data) == 0 {
+		return 0, 0
+	}
+
+	min, max := data[0], data[0]
+	for _, d := range data {
+		if d < min {
+			min = d
+		}
+		if d > max {
+			max = d
+		}
+	}
+
+	return min, max
+}
+
+func generateBins(min, max, binWidth float64) []float64 {
+	bins := []float64{}
+	start := binWidth * math.Floor(min/binWidth)
+	end := binWidth * math.Ceil(max/binWidth)
+	for b := start; b <= end; b += binWidth {
+		bins = append(bins, b)
+	}
+	return bins
+}
+
+func generateBinData(data []float64, bins []float64, binWidth float64) map[string]int {
+	counts := make(map[string]int)
+	for _, value := range data {
+		found := false
+		for i := 0; i < len(bins)-1; i++ {
+			lower, upper := bins[i], bins[i+1]
+			if value >= lower && value < upper {
+				key := fmt.Sprintf("%.1f-%.1f", lower, upper)
+				counts[key]++
+				found = true
+				break
+			}
+		}
+
+		if !found && value >= bins[len(bins)-1] {
+			lower, upper := bins[len(bins)-1], bins[len(bins)-1]+binWidth
+			key := fmt.Sprintf("%.1f-%.1f", lower, upper)
+			counts[key]++
+		}
+	}
+
+	return counts
 }
 
 func (uc *imageDataUsecase) GetDataForMember(userID string) (*response.GetImageDataForMemberResponse, error) {
