@@ -2,6 +2,7 @@ package controller
 
 import (
 	"inbody-ocr-backend/internal/domain/service"
+	"inbody-ocr-backend/internal/infra/logging"
 	"inbody-ocr-backend/internal/usecase"
 	"inbody-ocr-backend/internal/usecase/request"
 	"inbody-ocr-backend/internal/usecase/response"
@@ -55,6 +56,7 @@ func (ct *UserController) SignIn(c *gin.Context) {
 		return
 	}
 
+	logging.Infof(c, "user %s signed in", res.User.Name)
 	c.JSON(http.StatusOK, res)
 }
 

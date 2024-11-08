@@ -15,6 +15,9 @@ func SetUpRoutes(
 	imageDataCtrl *ImageDataController,
 	tokenService service.TokenService,
 ) {
+	r.Use(middleware.UserAgent())
+	r.Use(middleware.LoggingRequestTraceID())
+
 	v1 := r.Group("api/v1")
 
 	user := v1.Group("user")

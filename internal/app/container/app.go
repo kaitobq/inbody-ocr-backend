@@ -6,6 +6,7 @@ import (
 	"inbody-ocr-backend/internal/app/config"
 	"inbody-ocr-backend/internal/controller"
 	"inbody-ocr-backend/internal/domain/service"
+	"inbody-ocr-backend/internal/infra/logging"
 	"inbody-ocr-backend/internal/middleware"
 	"inbody-ocr-backend/pkg/database"
 
@@ -53,6 +54,8 @@ func NewApp(r *gin.Engine, container *container, cfg *config.Config, db *databas
 		container.imageDataCtrl,
 		container.tokenService,
 	)
+
+	logging.Init()
 
 	return &App{
 		r:   r,
