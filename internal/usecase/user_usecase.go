@@ -1,11 +1,10 @@
 package usecase
 
 import (
-	"fmt"
 	"inbody-ocr-backend/internal/domain/entity"
 	"inbody-ocr-backend/internal/domain/repository"
 	"inbody-ocr-backend/internal/domain/service"
-	"inbody-ocr-backend/internal/infra/logger"
+	"inbody-ocr-backend/internal/domain/xerror"
 	"inbody-ocr-backend/internal/usecase/response"
 )
 
@@ -29,17 +28,14 @@ func NewUserUsecase(repo repository.UserRepository, orgRepo repository.Organizat
 func (uc *userUsecase) CreateUser(name, email, password, orgID string) (*response.SignUpResponse, error) {
 	exists, err := uc.repo.UserExists(email)
 	if err != nil {
-		logger.Error("CreateUser", "func", "UserExists()", "error", err.Error())
 		return nil, err
 	}
 	if exists {
-		logger.Error("CreateUser", "func", "UserExists()", "error", "email already exists")
-		return nil, fmt.Errorf("email already exists")
+		return nil, xerror.ErrEmailAlreadyExists
 	}
 
 	hashedPassword, err := uc.repo.HashPassword(password)
 	if err != nil {
-		logger.Error("CreateUser", "func", "HashPassword()", "error", err.Error())
 		return nil, err
 	}
 
@@ -55,19 +51,16 @@ func (uc *userUsecase) CreateUser(name, email, password, orgID string) (*respons
 
 	user, err = uc.repo.CreateUser(*user)
 	if err != nil {
-		logger.Error("CreateUser", "func", "CreateUser()", "error", err.Error())
 		return nil, err
 	}
 
 	token, err := uc.tokenService.GenerateTokenFromID(user.ID, user.OrganizationID)
 	if err != nil {
-		logger.Error("CreateUser", "func", "GenerateTokenFromID", "error", err.Error())
 		return nil, err
 	}
 
 	exp, err := uc.tokenService.ExtractExpFromToken(token)
 	if err != nil {
-		logger.Error("CreateUser", "func", "ExtractExpFromToken", "error", err.Error())
 		return nil, err
 	}
 
@@ -77,37 +70,27 @@ func (uc *userUsecase) CreateUser(name, email, password, orgID string) (*respons
 func (uc *userUsecase) SignIn(email, password string) (*response.SignInResponse, error) {
 	user, err := uc.repo.FindByEmail(email)
 	if err != nil {
-		logger.Error("SignIn", "func", "FindByEmail()", "error", err.Error())
 		return nil, err
 	}
 
 	err = uc.repo.ComparePassword(user.Password, password)
 	if err != nil {
-		logger.Error("SignIn", "func", "ComparePassword()", "error", err.Error())
 		return nil, err
 	}
 
 	token, err := uc.tokenService.GenerateTokenFromID(user.ID, user.OrganizationID)
 	if err != nil {
-		logger.Error("SignIn", "func", "GenerateTokenFromID", "error", err.Error())
 		return nil, err
 	}
 
 	exp, err := uc.tokenService.ExtractExpFromToken(token)
 	if err != nil {
-		logger.Error("SignIn", "func", "ExtractExpFromToken", "error", err.Error())
 		return nil, err
 	}
 
 	return response.NewSignInResponse(token, exp, *user)
 }
 
-func (uc *userUsecase) GetOwnInfo(userID string) (*response.GetOwnInfoResponse, error) {
-	user, err := uc.repo.FindByID(userID)
-	if err != nil {
-		logger.Error("GetOwnInfo", "func", "FindByID()", "error", err.Error())
-		return nil, err
-	}
-
-	return response.NewGetOwnInfoResponse(*user)
+func (uc *userUsecase) GetOwnInfo(user entity.User) (*response.GetOwnInfoResponse, error) {
+	return response.NewGetOwnInfoResponse(user)
 }

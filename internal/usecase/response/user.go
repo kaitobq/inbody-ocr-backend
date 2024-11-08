@@ -2,7 +2,6 @@ package response
 
 import (
 	"inbody-ocr-backend/internal/domain/entity"
-	"net/http"
 	"time"
 )
 
@@ -30,16 +29,12 @@ type TokenResponse struct {
 }
 
 type SignUpResponse struct {
-	Status  int           `json:"status"`
-	Message string        `json:"message"`
-	Token   TokenResponse `json:"token"`
-	User    UserResponse  `json:"user"`
+	Token TokenResponse `json:"token"`
+	User  UserResponse  `json:"user"`
 }
 
 func NewSignUpResponse(token string, exp *time.Time, user entity.User) (*SignUpResponse, error) {
 	return &SignUpResponse{
-		Status:  http.StatusCreated,
-		Message: "ok",
 		Token: TokenResponse{
 			Value: token,
 			Exp:   *exp,
@@ -49,8 +44,6 @@ func NewSignUpResponse(token string, exp *time.Time, user entity.User) (*SignUpR
 }
 
 type SignInResponse struct {
-	Status         int           `json:"status"`
-	Message        string        `json:"message"`
 	Token          TokenResponse `json:"token"`
 	OrganizationID string        `json:"organization_id"`
 	User           UserResponse  `json:"user"`
@@ -58,8 +51,6 @@ type SignInResponse struct {
 
 func NewSignInResponse(token string, exp *time.Time, user entity.User) (*SignInResponse, error) {
 	return &SignInResponse{
-		Status:  http.StatusOK,
-		Message: "ok",
 		Token: TokenResponse{
 			Value: token,
 			Exp:   *exp,
@@ -70,15 +61,11 @@ func NewSignInResponse(token string, exp *time.Time, user entity.User) (*SignInR
 }
 
 type GetOwnInfoResponse struct {
-	Status  int          `json:"status"`
-	Message string       `json:"message"`
-	User    UserResponse `json:"user"`
+	User UserResponse `json:"user"`
 }
 
 func NewGetOwnInfoResponse(user entity.User) (*GetOwnInfoResponse, error) {
 	return &GetOwnInfoResponse{
-		Status:  http.StatusOK,
-		Message: "ok",
-		User:    *NewUserResponse(user),
+		User: *NewUserResponse(user),
 	}, nil
 }

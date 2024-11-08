@@ -1,11 +1,10 @@
 package usecase
 
 import (
-	"fmt"
 	"inbody-ocr-backend/internal/domain/entity"
 	"inbody-ocr-backend/internal/domain/repository"
 	"inbody-ocr-backend/internal/domain/service"
-	"inbody-ocr-backend/internal/infra/logger"
+	"inbody-ocr-backend/internal/domain/xerror"
 	"inbody-ocr-backend/internal/usecase/response"
 )
 
@@ -31,12 +30,10 @@ func NewOrganizationUsecase(repo repository.OrganizationRepository, userRepo rep
 func (uc *organizationUsecase) CreateOrganization(userName, email, password, orgName string) (*response.CreateOrganizationResponse, error) {
 	exists, err := uc.userRepo.UserExists(email)
 	if err != nil {
-		logger.Error("CreateOrganization", "func", "UserExists()", "error", err.Error())
 		return nil, err
 	}
 	if exists {
-		logger.Error("CreateOrganization", "func", "UserExists()", "error", "email already exists")
-		return nil, fmt.Errorf("email already exists")
+		return nil, xerror.ErrEmailAlreadyExists
 	}
 
 	org := entity.Organization{
@@ -46,7 +43,6 @@ func (uc *organizationUsecase) CreateOrganization(userName, email, password, org
 
 	hashedPassword, err := uc.userRepo.HashPassword(password)
 	if err != nil {
-		logger.Error("CreateOrganization", "func", "HashPassword()", "error", err.Error())
 		return nil, err
 	}
 	user := &entity.User{
@@ -60,7 +56,6 @@ func (uc *organizationUsecase) CreateOrganization(userName, email, password, org
 
 	organization, err := uc.repo.CreateOrganization(org)
 	if err != nil {
-		logger.Error("CreateOrganization", "func", "CreateOrganization()", "error", err.Error())
 		return nil, err
 	}
 
@@ -69,22 +64,18 @@ func (uc *organizationUsecase) CreateOrganization(userName, email, password, org
 		// ユーザのいない組織が作成されるのを防ぐためにロールバック
 		rollbackErr := uc.userRepo.DeleteUser(user.ID)
 		if rollbackErr != nil {
-			logger.Error("CreateOrganization", "func", "DeleteUser()", "error", rollbackErr.Error())
 			return nil, rollbackErr
 		}
 
-		logger.Error("CreateOrganization", "func", "CreateUser()", "error", err.Error())
 		return nil, err
 	}
 
 	token, err := uc.tokenService.GenerateTokenFromID(user.ID, user.OrganizationID)
 	if err != nil {
-		logger.Error("CreateOrganization", "func", "GenerateTokenFromID", "error", err.Error())
 		return nil, err
 	}
 	exp, err := uc.tokenService.ExtractExpFromToken(token)
 	if err != nil {
-		logger.Error("CreateOrganization", "func", "ExtractExpFromToken", "error", err.Error())
 		return nil, err
 	}
 
@@ -94,80 +85,50 @@ func (uc *organizationUsecase) CreateOrganization(userName, email, password, org
 func (uc *organizationUsecase) GetAllMembers(orgID string) (*response.GetAllMembersResponse, error) {
 	users, err := uc.repo.GetMember(orgID)
 	if err != nil {
-		logger.Error("GetAllMembers", "func", "GetMember()", "error", err.Error())
 		return nil, err
 	}
 
 	return response.NewGetAllMembersResponse(users)
 }
 
-func (uc *organizationUsecase) UpdateRole(updateUserID string, role entity.OrganizationRole, orgID, requestUserID string) (*response.UpdateRoleResponse, error) {
-	// memberは編集権限を持たない
-	requestUser, err := uc.userRepo.FindByID(requestUserID)
-	if err != nil {
-		logger.Error("UpdateRole", "func", "FindByID()", "error", err.Error())
-		return nil, err
-	}
-	if requestUser.Role == "member" {
-		logger.Error("UpdateRole", "error", "user is not admin")
-		return nil, fmt.Errorf("user is not admin")
-	}
-
+func (uc *organizationUsecase) UpdateRole(updateUserID string, role entity.OrganizationRole, requestUser *entity.User) (*response.UpdateRoleResponse, error) {
 	// ownerから別のロールへの変更は不可
 	updateUser, err := uc.userRepo.FindByID(updateUserID)
 	if err != nil {
-		logger.Error("UpdateRole", "func", "FindByID()", "error", err.Error())
 		return nil, err
 	}
 	if updateUser.Role == "owner" {
-		logger.Error("UpdateRole", "error", "cannot update owner role")
-		return nil, fmt.Errorf("cannot update owner role")
+		return nil, xerror.ErrCannotUpdateOwnerRole
 	}
 
 	err = uc.userRepo.UpdateRole(updateUserID, role)
 	if err != nil {
-		logger.Error("UpdateRole", "func", "UpdateRole()", "error", err.Error())
 		return nil, err
 	}
 
 	updatedUser, err := uc.userRepo.FindByID(updateUserID)
 	if err != nil {
-		logger.Error("UpdateRole", "func", "FindByID()", "error", err.Error())
 		return nil, err
 	}
 
 	return response.NewUpdateRoleResponse(*updatedUser)
 }
 
-func (uc *organizationUsecase) DeleteMember(deleteUserID, orgID, requestUserID string) (*response.DeleteMemberResponse, error) {
-	// memberは削除権限を持たない
-	requestUser, err := uc.userRepo.FindByID(requestUserID)
-	if err != nil {
-		logger.Error("DeleteMember", "func", "FindByID()", "error", err.Error())
-		return nil, err
-	}
-	if requestUser.Role == "member" {
-		logger.Error("DeleteMember", "error", "user is not admin")
-		return nil, fmt.Errorf("user is not admin")
-	}
-
+func (uc *organizationUsecase) DeleteMember(deleteUserID string, requestUser *entity.User) error {
 	// ownerは削除不可
 	deleteUser, err := uc.userRepo.FindByID(deleteUserID)
 	if err != nil {
-		logger.Error("DeleteMember", "func", "FindByID()", "error", err.Error())
-		return nil, err
+		return err
 	}
 
 	if deleteUser.Role == "owner" {
-		logger.Error("DeleteMember", "error", "cannot delete owner")
-		return nil, fmt.Errorf("cannot delete owner")
+		return xerror.ErrCannotDeleteOwner
 	}
 
 	err = uc.userRepo.DeleteUser(deleteUserID)
 	if err != nil {
-		logger.Error("DeleteMember", "func", "DeleteUser()", "error", err.Error())
-		return nil, err
+		return err
 	}
 
-	return response.NewDeleteMemberResponse()
+	return nil
 }
