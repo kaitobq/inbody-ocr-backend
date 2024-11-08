@@ -26,18 +26,23 @@ func NewUserController(uc usecase.UserUsecase, tokenService service.TokenService
 func (ct *UserController) SignUp(c *gin.Context) {
 	req, err := request.NewSignUpRequest(c)
 	if err != nil {
+		logging.Errorf(c, "SignUp NewSignUpRequest %v", err)
 		c.JSON(http.StatusBadRequest, response.NewErrorResponse(http.StatusBadRequest, err.Error()))
 		return
 	}
 
 	res, err := ct.uc.CreateUser(req.Name, req.Email, req.Password, req.OrgID)
 	if err != nil {
-		if err.Error() == "email already exists" {
+		switch err.Error() {
+		case "email already exists":
+			logging.Errorf(c, "SignUp CreateUser err={email already exists} %v", err)
 			c.JSON(http.StatusBadRequest, response.NewErrorResponse(http.StatusBadRequest, err.Error()))
 			return
+		default:
+			logging.Errorf(c, "SignUp CreateUser %v", err)
+			c.JSON(http.StatusInternalServerError, response.NewErrorResponse(http.StatusInternalServerError, err.Error()))
+			return
 		}
-		c.JSON(http.StatusInternalServerError, response.NewErrorResponse(http.StatusInternalServerError, err.Error()))
-		return
 	}
 
 	c.JSON(http.StatusCreated, res)
@@ -46,29 +51,32 @@ func (ct *UserController) SignUp(c *gin.Context) {
 func (ct *UserController) SignIn(c *gin.Context) {
 	req, err := request.NewSignInRequest(c)
 	if err != nil {
+		logging.Errorf(c, "SignIn NewSignInRequest %v", err)
 		c.JSON(http.StatusBadRequest, response.NewErrorResponse(http.StatusBadRequest, err.Error()))
 		return
 	}
 
 	res, err := ct.uc.SignIn(req.Email, req.Password)
 	if err != nil {
+		logging.Errorf(c, "SignIn SignIn %v", err)
 		c.JSON(http.StatusInternalServerError, response.NewErrorResponse(http.StatusInternalServerError, err.Error()))
 		return
 	}
 
-	logging.Infof(c, "user %s signed in", res.User.Name)
 	c.JSON(http.StatusOK, res)
 }
 
 func (ct *UserController) GetOwnInfo(c *gin.Context) {
 	userID, _, err := ct.tokenService.ExtractIDsFromContext(c)
 	if err != nil {
+		logging.Errorf(c, "GetOwnInfo ExtractIDsFromContext %v", err)
 		c.JSON(http.StatusUnauthorized, response.NewErrorResponse(http.StatusUnauthorized, err.Error()))
 		return
 	}
 
 	res, err := ct.uc.GetOwnInfo(userID)
 	if err != nil {
+		logging.Errorf(c, "GetOwnInfo GetOwnInfo %v", err)
 		c.JSON(http.StatusInternalServerError, response.NewErrorResponse(http.StatusInternalServerError, err.Error()))
 		return
 	}
