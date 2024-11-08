@@ -3,6 +3,7 @@ package controller
 import (
 	"fmt"
 	"inbody-ocr-backend/internal/domain/service"
+	"inbody-ocr-backend/internal/domain/xcontext"
 	"inbody-ocr-backend/internal/infra/logging"
 	"inbody-ocr-backend/internal/usecase"
 	"inbody-ocr-backend/internal/usecase/request"
@@ -33,14 +34,9 @@ func (ct *ImageController) AnalyzeImage(c *gin.Context) {
 		return
 	}
 
-	userID, orgID, err := ct.tokenService.ExtractIDsFromContext(c)
-	if err != nil {
-		logging.Errorf(c, "AnalyzeImage ExtractIDsFromContext %v", err)
-		c.JSON(http.StatusUnauthorized, response.NewErrorResponse(http.StatusUnauthorized, err.Error()))
-		return
-	}
+	user := xcontext.MemberUser(c)
 
-	res, err := ct.uc.AnalyzeImage(file, fileHeader, userID, orgID)
+	res, err := ct.uc.AnalyzeImage(file, fileHeader, user)
 	if err != nil {
 		switch err.Error() {
 		case "HEIC file is not supported":

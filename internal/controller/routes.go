@@ -33,7 +33,7 @@ func SetUpRoutes(
 	}
 	organization.Use(middleware.API.GuaranteeAdminOROwner())
 	{
-		organization.GET("/role", organizationCtrl.GetAllMembers)
+		organization.GET("/role", organizationCtrl.GetAllMembers) // memberも取得できるようにするusecaseが出てくるかも
 		organization.PUT("/role", organizationCtrl.UpdateRole)
 		organization.DELETE("/role", organizationCtrl.DeleteMember)
 	}

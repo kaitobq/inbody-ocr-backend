@@ -2,6 +2,7 @@ package usecase
 
 import (
 	"fmt"
+	"inbody-ocr-backend/internal/domain/entity"
 	"inbody-ocr-backend/internal/domain/repository"
 	"inbody-ocr-backend/internal/domain/service"
 	"inbody-ocr-backend/internal/usecase/response"
@@ -25,7 +26,7 @@ func NewImageUsecase(repo repository.ImageRepository, ulidService service.ULIDSe
 	}
 }
 
-func (uc *imageUsecase) AnalyzeImage(file multipart.File, fileHeader *multipart.FileHeader, userID, orgID string) (*response.AnalyzeImageResponse, error) {
+func (uc *imageUsecase) AnalyzeImage(file multipart.File, fileHeader *multipart.FileHeader, user *entity.User) (*response.AnalyzeImageResponse, error) {
 	// 一時ファイルを作成して、画像データを保存
 	tempFile, err := os.CreateTemp("", "upload-*.jpg")
 	if err != nil {
@@ -54,8 +55,8 @@ func (uc *imageUsecase) AnalyzeImage(file multipart.File, fileHeader *multipart.
 	// 実際はフロントから保存するリクエストを送らせるのでここで保存する必要はない
 	id := uc.ulidService.GenerateULID()
 	data.ID = id
-	data.UserID = userID
-	data.OrganizationID = orgID
+	data.UserID = user.ID
+	data.OrganizationID = user.OrganizationID
 
 	return response.NewAnalyzeImageResponse(*data)
 }

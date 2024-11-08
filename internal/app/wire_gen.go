@@ -40,7 +40,7 @@ func New() (*container.App, error) {
 	imageRepository := vision_api.NewImageRepository()
 	imageUsecase := usecase.NewImageUsecase(imageRepository, ulidService, imageDataRepository)
 	imageController := controller.NewImageController(imageUsecase, tokenService)
-	imageDataUsecase := usecase.NewImageDataUsecase(imageDataRepository, organizationRepository, userRepository, ulidService)
+	imageDataUsecase := usecase.NewImageDataUsecase(imageDataRepository, organizationRepository, ulidService)
 	imageDataController := controller.NewImageDataController(imageDataUsecase, tokenService)
 	containerContainer := container.NewCtrl(userController, organizationController, imageController, imageDataController, tokenService)
 	configConfig := config.New()

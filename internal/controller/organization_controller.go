@@ -2,6 +2,7 @@ package controller
 
 import (
 	"inbody-ocr-backend/internal/domain/service"
+	"inbody-ocr-backend/internal/domain/xcontext"
 	"inbody-ocr-backend/internal/infra/logging"
 	"inbody-ocr-backend/internal/usecase"
 	"inbody-ocr-backend/internal/usecase/request"
@@ -49,14 +50,9 @@ func (ct *OrganizationController) CreateOrganization(c *gin.Context) {
 }
 
 func (ct *OrganizationController) GetAllMembers(c *gin.Context) {
-	_, orgID, err := ct.tokenService.ExtractIDsFromContext(c)
-	if err != nil {
-		logging.Errorf(c, "GetAllMembers ExtractIDsFromContext %v", err)
-		c.JSON(http.StatusUnauthorized, response.NewErrorResponse(http.StatusUnauthorized, err.Error()))
-		return
-	}
+	user := xcontext.AdminUser(c)
 
-	res, err := ct.uc.GetAllMembers(orgID)
+	res, err := ct.uc.GetAllMembers(user.OrganizationID)
 	if err != nil {
 		logging.Errorf(c, "GetAllMembers GetAllMembers %v", err)
 		c.JSON(http.StatusInternalServerError, response.NewErrorResponse(http.StatusInternalServerError, err.Error()))
@@ -75,14 +71,9 @@ func (ct *OrganizationController) UpdateRole(c *gin.Context) {
 		return
 	}
 
-	userID, orgID, err := ct.tokenService.ExtractIDsFromContext(c)
-	if err != nil {
-		logging.Errorf(c, "UpdateRole ExtractIDsFromContext %v", err)
-		c.JSON(http.StatusUnauthorized, response.NewErrorResponse(http.StatusUnauthorized, err.Error()))
-		return
-	}
+	user := xcontext.AdminUser(c)
 
-	res, err := ct.uc.UpdateRole(updateUserID, req.Role, orgID, userID)
+	res, err := ct.uc.UpdateRole(updateUserID, req.Role, user)
 	if err != nil {
 		switch err.Error() {
 		case "user is not admin":
@@ -105,15 +96,9 @@ func (ct *OrganizationController) UpdateRole(c *gin.Context) {
 
 func (ct *OrganizationController) DeleteMember(c *gin.Context) {
 	deleteUserID := c.Query("user_id")
+	user := xcontext.AdminUser(c)
 
-	userID, orgID, err := ct.tokenService.ExtractIDsFromContext(c)
-	if err != nil {
-		logging.Errorf(c, "DeleteMember ExtractIDsFromContext %v", err)
-		c.JSON(http.StatusUnauthorized, response.NewErrorResponse(http.StatusUnauthorized, err.Error()))
-		return
-	}
-
-	res, err := ct.uc.DeleteMember(deleteUserID, orgID, userID)
+	res, err := ct.uc.DeleteMember(deleteUserID, user)
 	if err != nil {
 		switch err.Error() {
 		case "user is not admin":

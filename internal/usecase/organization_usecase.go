@@ -91,16 +91,7 @@ func (uc *organizationUsecase) GetAllMembers(orgID string) (*response.GetAllMemb
 	return response.NewGetAllMembersResponse(users)
 }
 
-func (uc *organizationUsecase) UpdateRole(updateUserID string, role entity.OrganizationRole, orgID, requestUserID string) (*response.UpdateRoleResponse, error) {
-	// memberは編集権限を持たない
-	requestUser, err := uc.userRepo.FindByID(requestUserID)
-	if err != nil {
-		return nil, err
-	}
-	if requestUser.Role == "member" {
-		return nil, fmt.Errorf("user is not admin")
-	}
-
+func (uc *organizationUsecase) UpdateRole(updateUserID string, role entity.OrganizationRole, requestUser *entity.User) (*response.UpdateRoleResponse, error) {
 	// ownerから別のロールへの変更は不可
 	updateUser, err := uc.userRepo.FindByID(updateUserID)
 	if err != nil {
@@ -123,9 +114,9 @@ func (uc *organizationUsecase) UpdateRole(updateUserID string, role entity.Organ
 	return response.NewUpdateRoleResponse(*updatedUser)
 }
 
-func (uc *organizationUsecase) DeleteMember(deleteUserID, orgID, requestUserID string) (*response.DeleteMemberResponse, error) {
+func (uc *organizationUsecase) DeleteMember(deleteUserID string, requestUser *entity.User) (*response.DeleteMemberResponse, error) {
 	// memberは削除権限を持たない
-	requestUser, err := uc.userRepo.FindByID(requestUserID)
+	requestUser, err := uc.userRepo.FindByID(requestUser.ID)
 	if err != nil {
 		return nil, err
 	}
