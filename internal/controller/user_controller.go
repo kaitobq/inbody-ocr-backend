@@ -1,12 +1,13 @@
 package controller
 
 import (
+	"inbody-ocr-backend/internal/controller/render"
 	"inbody-ocr-backend/internal/domain/service"
 	"inbody-ocr-backend/internal/domain/xcontext"
+	"inbody-ocr-backend/internal/domain/xerror"
 	"inbody-ocr-backend/internal/infra/logging"
 	"inbody-ocr-backend/internal/usecase"
 	"inbody-ocr-backend/internal/usecase/request"
-	"inbody-ocr-backend/internal/usecase/response"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -28,43 +29,43 @@ func (ct *UserController) SignUp(c *gin.Context) {
 	req, err := request.NewSignUpRequest(c)
 	if err != nil {
 		logging.Errorf(c, "SignUp NewSignUpRequest %v", err)
-		c.JSON(http.StatusBadRequest, response.NewErrorResponse(http.StatusBadRequest, err.Error()))
+		render.ErrorJSON(c, err.Error(), http.StatusBadRequest)
 		return
 	}
 
 	res, err := ct.uc.CreateUser(req.Name, req.Email, req.Password, req.OrgID)
 	if err != nil {
-		switch err.Error() {
-		case "email already exists":
-			logging.Errorf(c, "SignUp CreateUser err={email already exists} %v", err)
-			c.JSON(http.StatusBadRequest, response.NewErrorResponse(http.StatusBadRequest, err.Error()))
+		switch err {
+		case xerror.ErrEmailAlreadyExists:
+			logging.Errorf(c, "SignUp CreateUser err={%v}", err)
+			render.ErrorCodeJSON(c, err.Error(), http.StatusBadRequest, xerror.CodeEmailAlreadyExists)
 			return
 		default:
 			logging.Errorf(c, "SignUp CreateUser %v", err)
-			c.JSON(http.StatusInternalServerError, response.NewErrorResponse(http.StatusInternalServerError, err.Error()))
+			render.ErrorJSON(c, err.Error(), http.StatusInternalServerError)
 			return
 		}
 	}
 
-	c.JSON(http.StatusCreated, res)
+	render.JSON(c, res)
 }
 
 func (ct *UserController) SignIn(c *gin.Context) {
 	req, err := request.NewSignInRequest(c)
 	if err != nil {
 		logging.Errorf(c, "SignIn NewSignInRequest %v", err)
-		c.JSON(http.StatusBadRequest, response.NewErrorResponse(http.StatusBadRequest, err.Error()))
+		render.ErrorJSON(c, err.Error(), http.StatusBadRequest)
 		return
 	}
 
 	res, err := ct.uc.SignIn(req.Email, req.Password)
 	if err != nil {
 		logging.Errorf(c, "SignIn SignIn %v", err)
-		c.JSON(http.StatusInternalServerError, response.NewErrorResponse(http.StatusInternalServerError, err.Error()))
+		render.ErrorJSON(c, err.Error(), http.StatusInternalServerError)
 		return
 	}
 
-	c.JSON(http.StatusOK, res)
+	render.JSON(c, res)
 }
 
 func (ct *UserController) GetOwnInfo(c *gin.Context) {
@@ -73,9 +74,9 @@ func (ct *UserController) GetOwnInfo(c *gin.Context) {
 	res, err := ct.uc.GetOwnInfo(*user)
 	if err != nil {
 		logging.Errorf(c, "GetOwnInfo GetOwnInfo %v", err)
-		c.JSON(http.StatusInternalServerError, response.NewErrorResponse(http.StatusInternalServerError, err.Error()))
+		render.ErrorJSON(c, err.Error(), http.StatusInternalServerError)
 		return
 	}
 
-	c.JSON(http.StatusOK, res)
+	render.JSON(c, res)
 }

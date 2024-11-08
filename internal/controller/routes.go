@@ -14,6 +14,7 @@ func SetUpRoutes(
 	imageDataCtrl *ImageDataController,
 	middleware *middleware.Middleware,
 ) {
+	r.Use(middleware.CORS.CORS())
 	r.Use(middleware.UserAgent.UserAgent())
 	r.Use(middleware.Logging.LoggingRequestTraceID())
 

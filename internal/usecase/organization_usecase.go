@@ -1,10 +1,10 @@
 package usecase
 
 import (
-	"fmt"
 	"inbody-ocr-backend/internal/domain/entity"
 	"inbody-ocr-backend/internal/domain/repository"
 	"inbody-ocr-backend/internal/domain/service"
+	"inbody-ocr-backend/internal/domain/xerror"
 	"inbody-ocr-backend/internal/usecase/response"
 )
 
@@ -33,7 +33,7 @@ func (uc *organizationUsecase) CreateOrganization(userName, email, password, org
 		return nil, err
 	}
 	if exists {
-		return nil, fmt.Errorf("email already exists")
+		return nil, xerror.ErrEmailAlreadyExists
 	}
 
 	org := entity.Organization{
@@ -98,7 +98,7 @@ func (uc *organizationUsecase) UpdateRole(updateUserID string, role entity.Organ
 		return nil, err
 	}
 	if updateUser.Role == "owner" {
-		return nil, fmt.Errorf("cannot update owner role")
+		return nil, xerror.ErrCannotUpdateOwnerRole
 	}
 
 	err = uc.userRepo.UpdateRole(updateUserID, role)
@@ -115,15 +115,6 @@ func (uc *organizationUsecase) UpdateRole(updateUserID string, role entity.Organ
 }
 
 func (uc *organizationUsecase) DeleteMember(deleteUserID string, requestUser *entity.User) (*response.DeleteMemberResponse, error) {
-	// memberは削除権限を持たない
-	requestUser, err := uc.userRepo.FindByID(requestUser.ID)
-	if err != nil {
-		return nil, err
-	}
-	if requestUser.Role == "member" {
-		return nil, fmt.Errorf("user is not admin")
-	}
-
 	// ownerは削除不可
 	deleteUser, err := uc.userRepo.FindByID(deleteUserID)
 	if err != nil {
@@ -131,7 +122,7 @@ func (uc *organizationUsecase) DeleteMember(deleteUserID string, requestUser *en
 	}
 
 	if deleteUser.Role == "owner" {
-		return nil, fmt.Errorf("cannot delete owner")
+		return nil, xerror.ErrCannotDeleteOwner
 	}
 
 	err = uc.userRepo.DeleteUser(deleteUserID)

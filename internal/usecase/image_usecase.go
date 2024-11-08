@@ -1,10 +1,10 @@
 package usecase
 
 import (
-	"fmt"
 	"inbody-ocr-backend/internal/domain/entity"
 	"inbody-ocr-backend/internal/domain/repository"
 	"inbody-ocr-backend/internal/domain/service"
+	"inbody-ocr-backend/internal/domain/xerror"
 	"inbody-ocr-backend/internal/usecase/response"
 	"io"
 	"mime/multipart"
@@ -43,7 +43,7 @@ func (uc *imageUsecase) AnalyzeImage(file multipart.File, fileHeader *multipart.
 	ext := filepath.Ext(fileHeader.Filename)
 
 	if ext == ".heic" || ext == ".HEIC" {
-		return nil, fmt.Errorf("HEIC file is not supported")
+		return nil, xerror.ErrHEICNotSupported
 	}
 
 	// 画像データを分析

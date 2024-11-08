@@ -1,13 +1,13 @@
 package controller
 
 import (
-	"fmt"
+	"inbody-ocr-backend/internal/controller/render"
 	"inbody-ocr-backend/internal/domain/service"
 	"inbody-ocr-backend/internal/domain/xcontext"
+	"inbody-ocr-backend/internal/domain/xerror"
 	"inbody-ocr-backend/internal/infra/logging"
 	"inbody-ocr-backend/internal/usecase"
 	"inbody-ocr-backend/internal/usecase/request"
-	"inbody-ocr-backend/internal/usecase/response"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -30,7 +30,7 @@ func (ct *ImageController) AnalyzeImage(c *gin.Context) {
 	file, fileHeader, err := request.GetImgFileFromContext(c)
 	if err != nil {
 		logging.Errorf(c, "AnalyzeImage GetImgFileFromContext %v", err)
-		c.JSON(http.StatusBadRequest, response.NewErrorResponse(http.StatusBadRequest, "Failed to get image from request"))
+		render.ErrorJSON(c, err.Error(), http.StatusBadRequest)
 		return
 	}
 
@@ -38,17 +38,17 @@ func (ct *ImageController) AnalyzeImage(c *gin.Context) {
 
 	res, err := ct.uc.AnalyzeImage(file, fileHeader, user)
 	if err != nil {
-		switch err.Error() {
-		case "HEIC file is not supported":
-			logging.Errorf(c, "AnalyzeImage AnalyzeImage err={HEIC file is not supported} %v", err)
-			c.JSON(http.StatusBadRequest, response.NewErrorResponse(http.StatusBadRequest, err.Error()))
+		switch err {
+		case xerror.ErrHEICNotSupported:
+			logging.Errorf(c, "AnalyzeImage AnalyzeImage err={%v}", err)
+			render.ErrorJSON(c, err.Error(), http.StatusBadRequest)
 			return
 		default:
 			logging.Errorf(c, "AnalyzeImage AnalyzeImage %v", err)
-			c.JSON(http.StatusInternalServerError, response.NewErrorResponse(http.StatusInternalServerError, fmt.Sprintf("Failed to detect text from image: %v", err)))
+			render.ErrorJSON(c, err.Error(), http.StatusInternalServerError)
 			return
 		}
 	}
 
-	c.JSON(http.StatusOK, res)
+	render.JSON(c, res)
 }

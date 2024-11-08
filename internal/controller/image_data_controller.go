@@ -1,12 +1,12 @@
 package controller
 
 import (
+	"inbody-ocr-backend/internal/controller/render"
 	"inbody-ocr-backend/internal/domain/service"
 	"inbody-ocr-backend/internal/domain/xcontext"
 	"inbody-ocr-backend/internal/infra/logging"
 	"inbody-ocr-backend/internal/usecase"
 	"inbody-ocr-backend/internal/usecase/request"
-	"inbody-ocr-backend/internal/usecase/response"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -28,7 +28,7 @@ func (ct *ImageDataController) SaveImageData(c *gin.Context) {
 	req, err := request.NewSaveImageDataRequest(c)
 	if err != nil {
 		logging.Errorf(c, "SaveImageData NewSaveImageDataRequest %v", err)
-		c.JSON(http.StatusBadRequest, response.NewErrorResponse(http.StatusBadRequest, err.Error()))
+		render.ErrorJSON(c, err.Error(), http.StatusBadRequest)
 		return
 	}
 
@@ -37,11 +37,11 @@ func (ct *ImageDataController) SaveImageData(c *gin.Context) {
 	res, err := ct.uc.CreateData(req.Weight, req.Height, req.MuscleWeight, req.FatWeight, req.FatPercent, req.BodyWater, req.Protein, req.Mineral, req.Point, user)
 	if err != nil {
 		logging.Errorf(c, "SaveImageData CreateData %v", err)
-		c.JSON(http.StatusBadRequest, response.NewErrorResponse(http.StatusBadRequest, err.Error()))
+		render.ErrorJSON(c, err.Error(), http.StatusBadRequest)
 		return
 	}
 
-	c.JSON(http.StatusOK, res)
+	render.JSON(c, res)
 }
 
 func (ct *ImageDataController) GetStatsForMember(c *gin.Context) {
@@ -50,11 +50,11 @@ func (ct *ImageDataController) GetStatsForMember(c *gin.Context) {
 	res, err := ct.uc.GetStatsForMember(user)
 	if err != nil {
 		logging.Errorf(c, "GetStatsForMember GetStatsForMember %v", err)
-		c.JSON(http.StatusBadRequest, response.NewErrorResponse(http.StatusBadRequest, err.Error()))
+		render.ErrorJSON(c, err.Error(), http.StatusBadRequest)
 		return
 	}
 
-	c.JSON(http.StatusOK, res)
+	render.JSON(c, res)
 }
 
 func (ct *ImageDataController) GetStatsForAdmin(c *gin.Context) {
@@ -63,11 +63,11 @@ func (ct *ImageDataController) GetStatsForAdmin(c *gin.Context) {
 	res, err := ct.uc.GetStatsForAdmin(user)
 	if err != nil {
 		logging.Errorf(c, "GetStatsForAdmin GetStatsForAdmin %v", err)
-		c.JSON(http.StatusBadRequest, response.NewErrorResponse(http.StatusBadRequest, err.Error()))
+		render.ErrorJSON(c, err.Error(), http.StatusBadRequest)
 		return
 	}
 
-	c.JSON(http.StatusOK, res)
+	render.JSON(c, res)
 }
 
 func (ct *ImageDataController) GetChartDataForMember(c *gin.Context) {
@@ -76,11 +76,11 @@ func (ct *ImageDataController) GetChartDataForMember(c *gin.Context) {
 	res, err := ct.uc.GetChartDataForMember(user)
 	if err != nil {
 		logging.Errorf(c, "GetChartDataForMember GetChartDataForMember %v", err)
-		c.JSON(http.StatusBadRequest, response.NewErrorResponse(http.StatusBadRequest, err.Error()))
+		render.ErrorJSON(c, err.Error(), http.StatusBadRequest)
 		return
 	}
 
-	c.JSON(http.StatusOK, res)
+	render.JSON(c, res)
 }
 
 func (ct *ImageDataController) GetChartDataForAdmin(c *gin.Context) {
@@ -89,11 +89,11 @@ func (ct *ImageDataController) GetChartDataForAdmin(c *gin.Context) {
 	res, err := ct.uc.GetChartDataForAdmin(user)
 	if err != nil {
 		logging.Errorf(c, "GetChartDataForAdmin GetChartDataForAdmin %v", err)
-		c.JSON(http.StatusBadRequest, response.NewErrorResponse(http.StatusBadRequest, err.Error()))
+		render.ErrorJSON(c, err.Error(), http.StatusBadRequest)
 		return
 	}
 
-	c.JSON(http.StatusOK, res)
+	render.JSON(c, res)
 }
 
 func (ct *ImageDataController) GetImageDataForMember(c *gin.Context) {
@@ -102,11 +102,11 @@ func (ct *ImageDataController) GetImageDataForMember(c *gin.Context) {
 	res, err := ct.uc.GetDataForMember(user)
 	if err != nil {
 		logging.Errorf(c, "GetImageDataForMember GetDataForMember %v", err)
-		c.JSON(http.StatusBadRequest, response.NewErrorResponse(http.StatusBadRequest, err.Error()))
+		render.ErrorJSON(c, err.Error(), http.StatusBadRequest)
 		return
 	}
 
-	c.JSON(http.StatusOK, res)
+	render.JSON(c, res)
 }
 
 func (ct *ImageDataController) GetImageDataForAdmin(c *gin.Context) {
@@ -115,11 +115,11 @@ func (ct *ImageDataController) GetImageDataForAdmin(c *gin.Context) {
 	res, err := ct.uc.GetDataForAdmin(user)
 	if err != nil {
 		logging.Errorf(c, "GetImageDataForAdmin GetDataForAdmin %v", err)
-		c.JSON(http.StatusBadRequest, response.NewErrorResponse(http.StatusBadRequest, err.Error()))
+		render.ErrorJSON(c, err.Error(), http.StatusBadRequest)
 		return
 	}
 
-	c.JSON(http.StatusOK, res)
+	render.JSON(c, res)
 }
 
 func (ct *ImageDataController) GetCurrentImageDataForAdmin(c *gin.Context) {
@@ -128,9 +128,9 @@ func (ct *ImageDataController) GetCurrentImageDataForAdmin(c *gin.Context) {
 	res, err := ct.uc.GetCurrentDataForAdmin(user)
 	if err != nil {
 		logging.Errorf(c, "GetCurrentImageDataForAdmin GetCurrentDataForAdmin %v", err)
-		c.JSON(http.StatusBadRequest, response.NewErrorResponse(http.StatusBadRequest, err.Error()))
+		render.ErrorJSON(c, err.Error(), http.StatusBadRequest)
 		return
 	}
 
-	c.JSON(http.StatusOK, res)
+	render.JSON(c, res)
 }

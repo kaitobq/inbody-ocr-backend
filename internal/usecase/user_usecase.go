@@ -1,10 +1,10 @@
 package usecase
 
 import (
-	"fmt"
 	"inbody-ocr-backend/internal/domain/entity"
 	"inbody-ocr-backend/internal/domain/repository"
 	"inbody-ocr-backend/internal/domain/service"
+	"inbody-ocr-backend/internal/domain/xerror"
 	"inbody-ocr-backend/internal/usecase/response"
 )
 
@@ -31,7 +31,7 @@ func (uc *userUsecase) CreateUser(name, email, password, orgID string) (*respons
 		return nil, err
 	}
 	if exists {
-		return nil, fmt.Errorf("email already exists")
+		return nil, xerror.ErrEmailAlreadyExists
 	}
 
 	hashedPassword, err := uc.repo.HashPassword(password)

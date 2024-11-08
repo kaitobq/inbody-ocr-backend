@@ -2,11 +2,11 @@ package middleware
 
 import (
 	"fmt"
+	"inbody-ocr-backend/internal/controller/render"
 	"inbody-ocr-backend/internal/domain/repository"
 	"inbody-ocr-backend/internal/domain/service"
 	"inbody-ocr-backend/internal/domain/xcontext"
 	"inbody-ocr-backend/internal/infra/logging"
-	"inbody-ocr-backend/internal/usecase/response"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -28,25 +28,25 @@ func (a *API) withUser(c *gin.Context) error {
 	isValid, err := a.tokenService.TokenValid(c)
 	if err != nil || !isValid {
 		logging.Errorf(c, "withUser TokenValid %v", err)
-		c.JSON(http.StatusUnauthorized, response.NewErrorResponse(http.StatusUnauthorized, err.Error()))
+		render.ErrorJSON(c, err.Error(), http.StatusUnauthorized)
 		return err
 	}
 
 	userID, orgID, err := a.tokenService.ExtractIDsFromContext(c)
 	if err != nil {
 		logging.Errorf(c, "withMember ExtractIDsFromContext %v", err)
-		c.JSON(http.StatusUnauthorized, response.NewErrorResponse(http.StatusUnauthorized, err.Error()))
+		render.ErrorJSON(c, err.Error(), http.StatusUnauthorized)
 		return err
 	}
 	user, err := a.userRepo.FindByID(userID)
 	if err != nil {
 		logging.Errorf(c, "withMember FindByID %v", err)
-		c.JSON(http.StatusUnauthorized, response.NewErrorResponse(http.StatusUnauthorized, err.Error()))
+		render.ErrorJSON(c, err.Error(), http.StatusUnauthorized)
 		return err
 	}
 	if user.OrganizationID != orgID {
 		logging.Errorf(c, "withMember OrgID mismatch")
-		c.JSON(http.StatusUnauthorized, response.NewErrorResponse(http.StatusUnauthorized, "Unauthorized"))
+		render.ErrorJSON(c, "Unauthorized", http.StatusUnauthorized)
 		return fmt.Errorf("org_id mismatch")
 	}
 
@@ -71,32 +71,32 @@ func (a *API) withMember(c *gin.Context) error {
 	isValid, err := a.tokenService.TokenValid(c)
 	if err != nil || !isValid {
 		logging.Errorf(c, "withMember TokenValid %v", err)
-		c.JSON(http.StatusUnauthorized, response.NewErrorResponse(http.StatusUnauthorized, err.Error()))
+		render.ErrorJSON(c, err.Error(), http.StatusUnauthorized)
 		return err
 	}
 
 	userID, orgID, err := a.tokenService.ExtractIDsFromContext(c)
 	if err != nil {
 		logging.Errorf(c, "withMember ExtractIDsFromContext %v", err)
-		c.JSON(http.StatusUnauthorized, response.NewErrorResponse(http.StatusUnauthorized, err.Error()))
+		render.ErrorJSON(c, err.Error(), http.StatusUnauthorized)
 		return err
 	}
 
 	user, err := a.userRepo.FindByID(userID)
 	if err != nil {
 		logging.Errorf(c, "withMember FindByID %v", err)
-		c.JSON(http.StatusUnauthorized, response.NewErrorResponse(http.StatusUnauthorized, err.Error()))
+		render.ErrorJSON(c, err.Error(), http.StatusUnauthorized)
 		return err
 	}
 	if user.Role != "member" {
 		logging.Errorf(c, "withMember Role mismatch")
-		c.JSON(http.StatusUnauthorized, response.NewErrorResponse(http.StatusUnauthorized, "Unauthorized"))
+		render.ErrorJSON(c, "Unauthorized", http.StatusUnauthorized)
 		return fmt.Errorf("role mismatch")
 	}
 
 	if user.OrganizationID != orgID {
 		logging.Errorf(c, "withMember OrgID mismatch")
-		c.JSON(http.StatusUnauthorized, response.NewErrorResponse(http.StatusUnauthorized, "Unauthorized"))
+		render.ErrorJSON(c, "Unauthorized", http.StatusUnauthorized)
 		return fmt.Errorf("org_id mismatch")
 	}
 
@@ -121,32 +121,32 @@ func (a *API) withAgminOROwner(c *gin.Context) error {
 	isValid, err := a.tokenService.TokenValid(c)
 	if err != nil || !isValid {
 		logging.Errorf(c, "withAdminOROwner TokenValid %v", err)
-		c.JSON(http.StatusUnauthorized, response.NewErrorResponse(http.StatusUnauthorized, err.Error()))
+		render.ErrorJSON(c, err.Error(), http.StatusUnauthorized)
 		return err
 	}
 
 	userID, orgID, err := a.tokenService.ExtractIDsFromContext(c)
 	if err != nil {
 		logging.Errorf(c, "withAdminOROwner ExtractIDsFromContext %v", err)
-		c.JSON(http.StatusUnauthorized, response.NewErrorResponse(http.StatusUnauthorized, err.Error()))
+		render.ErrorJSON(c, err.Error(), http.StatusUnauthorized)
 		return err
 	}
 
 	user, err := a.userRepo.FindByID(userID)
 	if err != nil {
 		logging.Errorf(c, "withAdminOROwner FindByID %v", err)
-		c.JSON(http.StatusUnauthorized, response.NewErrorResponse(http.StatusUnauthorized, err.Error()))
+		render.ErrorJSON(c, err.Error(), http.StatusUnauthorized)
 		return err
 	}
 	if user.Role == "member" {
 		logging.Errorf(c, "withAdminOROwner Role mismatch")
-		c.JSON(http.StatusUnauthorized, response.NewErrorResponse(http.StatusUnauthorized, "Unauthorized"))
+		render.ErrorJSON(c, "Unauthorized", http.StatusUnauthorized)
 		return fmt.Errorf("role mismatch")
 	}
 
 	if user.OrganizationID != orgID {
 		logging.Errorf(c, "withAdminOROwner OrgID mismatch")
-		c.JSON(http.StatusUnauthorized, response.NewErrorResponse(http.StatusUnauthorized, "Unauthorized"))
+		render.ErrorJSON(c, "Unauthorized", http.StatusUnauthorized)
 		return fmt.Errorf("org_id mismatch")
 	}
 
@@ -172,32 +172,32 @@ func (a *API) withAdmin(c *gin.Context) error {
 	isValid, err := a.tokenService.TokenValid(c)
 	if err != nil || !isValid {
 		logging.Errorf(c, "withAdmin TokenValid %v", err)
-		c.JSON(http.StatusUnauthorized, response.NewErrorResponse(http.StatusUnauthorized, err.Error()))
+		render.ErrorJSON(c, err.Error(), http.StatusUnauthorized)
 		return err
 	}
 
 	userID, orgID, err := a.tokenService.ExtractIDsFromContext(c)
 	if err != nil {
 		logging.Errorf(c, "withAdmin ExtractIDsFromContext %v", err)
-		c.JSON(http.StatusUnauthorized, response.NewErrorResponse(http.StatusUnauthorized, err.Error()))
+		render.ErrorJSON(c, err.Error(), http.StatusUnauthorized)
 		return err
 	}
 
 	user, err := a.userRepo.FindByID(userID)
 	if err != nil {
 		logging.Errorf(c, "withAdmin FindByID %v", err)
-		c.JSON(http.StatusUnauthorized, response.NewErrorResponse(http.StatusUnauthorized, err.Error()))
+		render.ErrorJSON(c, err.Error(), http.StatusUnauthorized)
 		return err
 	}
 	if user.Role != "admin" {
 		logging.Errorf(c, "withAdmin Role mismatch")
-		c.JSON(http.StatusUnauthorized, response.NewErrorResponse(http.StatusUnauthorized, "Unauthorized"))
+		render.ErrorJSON(c, "Unauthorized", http.StatusUnauthorized)
 		return fmt.Errorf("role mismatch")
 	}
 
 	if user.OrganizationID != orgID {
 		logging.Errorf(c, "withAdmin OrgID mismatch")
-		c.JSON(http.StatusUnauthorized, response.NewErrorResponse(http.StatusUnauthorized, "Unauthorized"))
+		render.ErrorJSON(c, "Unauthorized", http.StatusUnauthorized)
 		return fmt.Errorf("org_id mismatch")
 	}
 
@@ -222,32 +222,32 @@ func (a *API) withOwner(c *gin.Context) error {
 	isValid, err := a.tokenService.TokenValid(c)
 	if err != nil || !isValid {
 		logging.Errorf(c, "withOwner TokenValid %v", err)
-		c.JSON(http.StatusUnauthorized, response.NewErrorResponse(http.StatusUnauthorized, err.Error()))
+		render.ErrorJSON(c, err.Error(), http.StatusUnauthorized)
 		return err
 	}
 
 	userID, orgID, err := a.tokenService.ExtractIDsFromContext(c)
 	if err != nil {
 		logging.Errorf(c, "withOwner ExtractIDsFromContext %v", err)
-		c.JSON(http.StatusUnauthorized, response.NewErrorResponse(http.StatusUnauthorized, err.Error()))
+		render.ErrorJSON(c, err.Error(), http.StatusUnauthorized)
 		return err
 	}
 
 	user, err := a.userRepo.FindByID(userID)
 	if err != nil {
 		logging.Errorf(c, "withOwner FindByID %v", err)
-		c.JSON(http.StatusUnauthorized, response.NewErrorResponse(http.StatusUnauthorized, err.Error()))
+		render.ErrorJSON(c, err.Error(), http.StatusUnauthorized)
 		return err
 	}
 	if user.Role != "owner" {
 		logging.Errorf(c, "withOwner Role mismatch")
-		c.JSON(http.StatusUnauthorized, response.NewErrorResponse(http.StatusUnauthorized, "Unauthorized"))
+		render.ErrorJSON(c, "Unauthorized", http.StatusUnauthorized)
 		return fmt.Errorf("role mismatch")
 	}
 
 	if user.OrganizationID != orgID {
 		logging.Errorf(c, "withOwner OrgID mismatch")
-		c.JSON(http.StatusUnauthorized, response.NewErrorResponse(http.StatusUnauthorized, "Unauthorized"))
+		render.ErrorJSON(c, "Unauthorized", http.StatusUnauthorized)
 		return fmt.Errorf("org_id mismatch")
 	}
 
