@@ -38,13 +38,15 @@ func NewCtrl(
 }
 
 type App struct {
-	r   *gin.Engine
-	cfg *config.Config
-	db  *database.DB
+	r          *gin.Engine
+	cfg        *config.Config
+	db         *database.DB
+	middleware *middleware.Middleware
 }
 
-func NewApp(r *gin.Engine, container *container, cfg *config.Config, db *database.DB) *App {
-	r.Use(middleware.CORS())
+func NewApp(r *gin.Engine, container *container, cfg *config.Config, db *database.DB, middleware *middleware.Middleware) *App {
+	// r.Use(middleware.CORS())
+	logging.Init()
 
 	controller.SetUpRoutes(
 		r,
@@ -52,15 +54,14 @@ func NewApp(r *gin.Engine, container *container, cfg *config.Config, db *databas
 		container.organizationCtrl,
 		container.imageCtrl,
 		container.imageDataCtrl,
-		container.tokenService,
+		middleware,
 	)
 
-	logging.Init()
-
 	return &App{
-		r:   r,
-		cfg: cfg,
-		db:  db,
+		r:          r,
+		cfg:        cfg,
+		db:         db,
+		middleware: middleware,
 	}
 }
 

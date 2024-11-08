@@ -1,7 +1,6 @@
 package controller
 
 import (
-	"inbody-ocr-backend/internal/domain/service"
 	"inbody-ocr-backend/internal/middleware"
 
 	"github.com/gin-gonic/gin"
@@ -13,15 +12,15 @@ func SetUpRoutes(
 	organizationCtrl *OrganizationController,
 	imageCtrl *ImageController,
 	imageDataCtrl *ImageDataController,
-	tokenService service.TokenService,
+	middleware *middleware.Middleware,
 ) {
-	r.Use(middleware.UserAgent())
-	r.Use(middleware.LoggingRequestTraceID())
+	r.Use(middleware.UserAgent.UserAgent())
+	r.Use(middleware.Logging.LoggingRequestTraceID())
 
 	v1 := r.Group("api/v1")
 
 	user := v1.Group("user")
-	user.Use(middleware.AuthMiddleware(tokenService))
+	user.Use(middleware.API.VerifyToken())
 	{
 		user.GET("", userCtrl.GetOwnInfo)
 	}
@@ -32,7 +31,7 @@ func SetUpRoutes(
 		organization.POST("/:id/signup", userCtrl.SignUp)
 		organization.POST("/signin", userCtrl.SignIn)
 	}
-	organization.Use(middleware.AuthMiddleware(tokenService))
+	organization.Use(middleware.API.GuaranteeAdminOROwner())
 	{
 		organization.GET("/role", organizationCtrl.GetAllMembers)
 		organization.PUT("/role", organizationCtrl.UpdateRole)
@@ -40,20 +39,27 @@ func SetUpRoutes(
 	}
 
 	image := v1.Group("image")
-	image.Use(middleware.AuthMiddleware(tokenService))
+	image.Use(middleware.API.GuaranteeMember())
 	{
 		image.POST("", imageCtrl.AnalyzeImage)
 	}
 
 	imageData := v1.Group("image-data")
-	imageData.Use(middleware.AuthMiddleware(tokenService))
+
 	{
+		member := imageData
+		member.Use(middleware.API.GuaranteeMember())
 		imageData.POST("", imageDataCtrl.SaveImageData)
 		imageData.GET("/stats/member", imageDataCtrl.GetStatsForMember)
-		imageData.GET("/stats/admin", imageDataCtrl.GetStatsForAdmin)
 		imageData.GET("/chart/member", imageDataCtrl.GetChartDataForMember)
-		imageData.GET("/chart/admin", imageDataCtrl.GetChartDataForAdmin)
 		imageData.GET("/data/member", imageDataCtrl.GetImageDataForMember)
+	}
+
+	{
+		admin := imageData
+		admin.Use(middleware.API.GuaranteeAdminOROwner())
+		imageData.GET("/stats/admin", imageDataCtrl.GetStatsForAdmin)
+		imageData.GET("/chart/admin", imageDataCtrl.GetChartDataForAdmin)
 		imageData.GET("/data/admin", imageDataCtrl.GetImageDataForAdmin)
 		imageData.GET("/data/admin/current", imageDataCtrl.GetCurrentImageDataForAdmin)
 	}

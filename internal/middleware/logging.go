@@ -7,7 +7,13 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func LoggingRequestTraceID() gin.HandlerFunc {
+type Logging struct{}
+
+func NewLogging() *Logging {
+	return &Logging{}
+}
+
+func (l *Logging) LoggingRequestTraceID() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		xcontext.WithLoggingRequestTraceID(c, logging.GetRequestTraceID(c))
 

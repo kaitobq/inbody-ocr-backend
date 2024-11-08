@@ -14,6 +14,7 @@ import (
 	"inbody-ocr-backend/internal/domain/service"
 	"inbody-ocr-backend/internal/infra/db"
 	"inbody-ocr-backend/internal/infra/vision_api"
+	"inbody-ocr-backend/internal/middleware"
 	"inbody-ocr-backend/internal/usecase"
 	"inbody-ocr-backend/pkg/database"
 )
@@ -43,7 +44,8 @@ func New() (*container.App, error) {
 	imageDataController := controller.NewImageDataController(imageDataUsecase, tokenService)
 	containerContainer := container.NewCtrl(userController, organizationController, imageController, imageDataController, tokenService)
 	configConfig := config.New()
-	app := container.NewApp(engine, containerContainer, configConfig, databaseDB)
+	middlewareMiddleware := middleware.NewMiddleware(tokenService, userRepository)
+	app := container.NewApp(engine, containerContainer, configConfig, databaseDB, middlewareMiddleware)
 	return app, nil
 }
 

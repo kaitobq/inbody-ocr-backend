@@ -7,7 +7,13 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func UserAgent() gin.HandlerFunc {
+type UserAgent struct{}
+
+func NewUserAgent() *UserAgent {
+	return &UserAgent{}
+}
+
+func (u *UserAgent) UserAgent() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		ua := c.Request.UserAgent()
 		xcontext.WithUserAgent(c, ua)
