@@ -114,21 +114,21 @@ func (uc *organizationUsecase) UpdateRole(updateUserID string, role entity.Organ
 	return response.NewUpdateRoleResponse(*updatedUser)
 }
 
-func (uc *organizationUsecase) DeleteMember(deleteUserID string, requestUser *entity.User) (*response.DeleteMemberResponse, error) {
+func (uc *organizationUsecase) DeleteMember(deleteUserID string, requestUser *entity.User) error {
 	// ownerは削除不可
 	deleteUser, err := uc.userRepo.FindByID(deleteUserID)
 	if err != nil {
-		return nil, err
+		return err
 	}
 
 	if deleteUser.Role == "owner" {
-		return nil, xerror.ErrCannotDeleteOwner
+		return xerror.ErrCannotDeleteOwner
 	}
 
 	err = uc.userRepo.DeleteUser(deleteUserID)
 	if err != nil {
-		return nil, err
+		return err
 	}
 
-	return response.NewDeleteMemberResponse()
+	return nil
 }

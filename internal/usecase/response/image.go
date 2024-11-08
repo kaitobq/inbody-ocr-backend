@@ -2,7 +2,6 @@ package response
 
 import (
 	"inbody-ocr-backend/internal/domain/entity"
-	"net/http"
 )
 
 type Results struct {
@@ -18,15 +17,11 @@ type Results struct {
 }
 
 type AnalyzeImageResponse struct {
-	Status  int     `json:"status"`
-	Message string  `json:"message"`
 	Results Results `json:"results"`
 }
 
 func NewAnalyzeImageResponse(results entity.ImageData) (*AnalyzeImageResponse, error) {
 	return &AnalyzeImageResponse{
-		Status:  http.StatusOK,
-		Message: "Image analyzed successfully",
 		Results: Results{
 			Weight:       results.Weight,
 			Height:       results.Height,

@@ -3,20 +3,7 @@ package response
 import (
 	"inbody-ocr-backend/internal/domain/entity"
 	jptime "inbody-ocr-backend/pkg/jp_time"
-	"net/http"
 )
-
-type SaveImageDataResponse struct {
-	Status  int    `json:"status"`
-	Message string `json:"message"`
-}
-
-func NewSaveImageDataResponse() (*SaveImageDataResponse, error) {
-	return &SaveImageDataResponse{
-		Status:  http.StatusOK,
-		Message: "Data saved successfully",
-	}, nil
-}
 
 type StatsForMember struct {
 	Weight       float64 `json:"weight"`
@@ -26,8 +13,6 @@ type StatsForMember struct {
 }
 
 type GetStatsForMemberResponse struct {
-	Status   int            `json:"status"`
-	Message  string         `json:"message"`
 	Current  StatsForMember `json:"current"`
 	Previous StatsForMember `json:"previous"`
 }
@@ -37,8 +22,6 @@ func NewGetStatsForMemberResponse(current entity.ImageData, previous entity.Imag
 	previousCreatedAt := jptime.FormatDateTime(previous.CreatedAt)
 
 	return &GetStatsForMemberResponse{
-		Status:  http.StatusOK,
-		Message: "ok",
 		Current: StatsForMember{
 			Weight:       current.Weight,
 			MuscleWeight: current.MuscleWeight,
@@ -62,15 +45,11 @@ type StatsForAdmin struct {
 }
 
 type GetStatsForAdminResponse struct {
-	Status  int           `json:"status"`
-	Message string        `json:"message"`
-	Stats   StatsForAdmin `json:"stats"`
+	Stats StatsForAdmin `json:"stats"`
 }
 
 func NewGetStatsForAdminResponse(stats StatsForAdmin) (*GetStatsForAdminResponse, error) {
 	return &GetStatsForAdminResponse{
-		Status:  http.StatusOK,
-		Message: "ok",
 		Stats: StatsForAdmin{
 			Weight:       stats.Weight,
 			MuscleWeight: stats.MuscleWeight,
@@ -108,15 +87,11 @@ type ChartDataForMember struct {
 }
 
 type GetChartDataForMemberResponse struct {
-	Status  int                `json:"status"`
-	Message string             `json:"message"`
-	Chart   ChartDataForMember `json:"chart"`
+	Chart ChartDataForMember `json:"chart"`
 }
 
 func NewGetChartDataForMemberResponse(kilo []Kilo, percent []Percent, score []Score) (*GetChartDataForMemberResponse, error) {
 	return &GetChartDataForMemberResponse{
-		Status:  http.StatusOK,
-		Message: "ok",
 		Chart: ChartDataForMember{
 			Kilo:    kilo,
 			Percent: percent,
@@ -135,55 +110,41 @@ type ChartDataForAdmin struct {
 }
 
 type GetChartDataForAdminResponse struct {
-	Status  int               `json:"status"`
-	Message string            `json:"message"`
-	Chart   ChartDataForAdmin `json:"chart"`
+	Chart ChartDataForAdmin `json:"chart"`
 }
 
 func NewGetChartDataForAdminResponse(chart ChartDataForAdmin) (*GetChartDataForAdminResponse, error) {
 	return &GetChartDataForAdminResponse{
-		Status:  http.StatusOK,
-		Message: "ok",
-		Chart:   chart,
+		Chart: chart,
 	}, nil
 }
 
 type GetImageDataForMemberResponse struct {
-	Status  int                `json:"status"`
 	Records []entity.ImageData `json:"records"`
 }
 
 func NewGetImageDataForMemberResponse(records []entity.ImageData) (*GetImageDataForMemberResponse, error) {
 	return &GetImageDataForMemberResponse{
-		Status:  http.StatusOK,
 		Records: records,
 	}, nil
 }
 
 type GetImageDataForAdminResponse struct {
-	Status  int             `json:"status"`
-	Message string          `json:"message"`
-	Data    []UserImageData `json:"data"`
+	Data []UserImageData `json:"data"`
 }
 
 func NewGetImageDataForAdminResponse(data []UserImageData) (*GetImageDataForAdminResponse, error) {
 	return &GetImageDataForAdminResponse{
-		Status:  http.StatusOK,
-		Message: "ok",
-		Data:    data,
+		Data: data,
 	}, nil
 }
 
 type GetCurrentImageDataForAdminResponse struct {
-	Status  int             `json:"status"`
-	Message string          `json:"message"`
-	Data    []UserImageData `json:"data"`
+	Data []UserImageData `json:"data"`
 }
 
 func NewGetCurrentImageDataForAdminResponse(data []UserImageData) (*GetCurrentImageDataForAdminResponse, error) {
 	return &GetCurrentImageDataForAdminResponse{
-		Status:  http.StatusOK,
-		Message: "ok",
-		Data:    data,
+		Data: data,
 	}, nil
 }

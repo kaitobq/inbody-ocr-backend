@@ -24,7 +24,7 @@ func NewImageDataUsecase(repo repository.ImageDataRepository, organizationRepo r
 	}
 }
 
-func (uc *imageDataUsecase) CreateData(weight, height, muscleWeight, fatWeight, fatPercent, bodyWater, protein, mineral float64, point uint, user *entity.User) (*response.SaveImageDataResponse, error) {
+func (uc *imageDataUsecase) CreateData(weight, height, muscleWeight, fatWeight, fatPercent, bodyWater, protein, mineral float64, point uint, user *entity.User) error {
 	imageData := &entity.ImageData{
 		ID:             uc.ulidService.GenerateULID(),
 		UserID:         user.ID,
@@ -42,10 +42,10 @@ func (uc *imageDataUsecase) CreateData(weight, height, muscleWeight, fatWeight, 
 
 	_, err := uc.repo.CreateData(*imageData)
 	if err != nil {
-		return nil, err
+		return err
 	}
 
-	return response.NewSaveImageDataResponse()
+	return nil
 }
 
 func (uc *imageDataUsecase) GetStatsForMember(user *entity.User) (*response.GetStatsForMemberResponse, error) {

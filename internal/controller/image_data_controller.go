@@ -34,14 +34,14 @@ func (ct *ImageDataController) SaveImageData(c *gin.Context) {
 
 	user := xcontext.MemberUser(c)
 
-	res, err := ct.uc.CreateData(req.Weight, req.Height, req.MuscleWeight, req.FatWeight, req.FatPercent, req.BodyWater, req.Protein, req.Mineral, req.Point, user)
+	err = ct.uc.CreateData(req.Weight, req.Height, req.MuscleWeight, req.FatWeight, req.FatPercent, req.BodyWater, req.Protein, req.Mineral, req.Point, user)
 	if err != nil {
 		logging.Errorf(c, "SaveImageData CreateData %v", err)
 		render.ErrorJSON(c, err.Error(), http.StatusBadRequest)
 		return
 	}
 
-	render.JSON(c, res)
+	render.OK(c)
 }
 
 func (ct *ImageDataController) GetStatsForMember(c *gin.Context) {

@@ -16,7 +16,7 @@ type OrganizationUsecase interface {
 	CreateOrganization(userName, email, password, OrgName string) (*response.CreateOrganizationResponse, error)
 	GetAllMembers(orgID string) (*response.GetAllMembersResponse, error)
 	UpdateRole(updateUserID string, role entity.OrganizationRole, requestUser *entity.User) (*response.UpdateRoleResponse, error)
-	DeleteMember(deleteUserID string, requestUser *entity.User) (*response.DeleteMemberResponse, error)
+	DeleteMember(deleteUserID string, requestUser *entity.User) error
 }
 
 type ImageUsecase interface {
@@ -24,7 +24,7 @@ type ImageUsecase interface {
 }
 
 type ImageDataUsecase interface {
-	CreateData(weight, height, muscleWeight, fatWeight, fatPercent, bodyWater, protein, mineral float64, point uint, user *entity.User) (*response.SaveImageDataResponse, error)
+	CreateData(weight, height, muscleWeight, fatWeight, fatPercent, bodyWater, protein, mineral float64, point uint, user *entity.User) error
 	GetStatsForMember(user *entity.User) (*response.GetStatsForMemberResponse, error)
 	GetStatsForAdmin(user *entity.User) (*response.GetStatsForAdminResponse, error)
 	GetChartDataForMember(user *entity.User) (*response.GetChartDataForMemberResponse, error)

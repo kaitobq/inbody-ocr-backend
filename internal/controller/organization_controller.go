@@ -95,7 +95,7 @@ func (ct *OrganizationController) DeleteMember(c *gin.Context) {
 	deleteUserID := c.Query("user_id")
 	user := xcontext.AdminUser(c)
 
-	res, err := ct.uc.DeleteMember(deleteUserID, user)
+	err := ct.uc.DeleteMember(deleteUserID, user)
 	if err != nil {
 		switch err {
 		case xerror.ErrCannotDeleteOwner:
@@ -108,5 +108,5 @@ func (ct *OrganizationController) DeleteMember(c *gin.Context) {
 		}
 	}
 
-	render.JSON(c, res)
+	render.OK(c)
 }
