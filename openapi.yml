@@ -78,8 +78,8 @@ paths:
                 $ref: "#/components/schemas/SignInResponse"
   /api/v1/organization/role:
     get:
-      summary: Get All Organization Member And Role
-      description: Get All Organization Member And Role
+      summary: Get All Organization Members And Role
+      description: Get All Organization Members And Role
       security:
         - Auth: []
       parameters: []
@@ -89,7 +89,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/GetAllMemberResponse"
+                $ref: "#/components/schemas/GetAllMembersResponse"
     post:
       summary: Change Member Role
       description: Change Member Role
@@ -365,7 +365,7 @@ components:
       type: object
       properties:
         status:
-          type: string
+          type: integer
         message:
           type: string
         token:
@@ -383,7 +383,7 @@ components:
       type: object
       properties:
         status:
-          type: string
+          type: integer
         message:
           type: string
         token:
@@ -396,7 +396,7 @@ components:
       type: object
       properties:
         status:
-          type: string
+          type: integer
         message:
           type: string
         result:
@@ -424,7 +424,7 @@ components:
       type: object
       properties:
         status:
-          type: string
+          type: integer
         message:
           type: string
         current:
@@ -453,7 +453,7 @@ components:
       type: object
       properties:
         status:
-          type: string
+          type: integer
         message:
           type: string
         chart:
@@ -500,7 +500,7 @@ components:
       type: object
       properties:
         status:
-          type: string
+          type: integer
         message:
           type: string
         data:
@@ -508,6 +508,13 @@ components:
           items:
             type: object
             properties:
+              user:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  name:
+                    type: string
               weight:
                 type: number
               height:
@@ -534,10 +541,10 @@ components:
       type: object
       properties:
         status:
-          type: string
+          type: integer
         message:
           type: string
-        current:
+        stats:
           type: object
           properties:
             weight:
@@ -546,13 +553,13 @@ components:
               type: number
             fat_weight:
               type: number
-            created_at:
-              type: string
+            point:
+              type: number
     GetOrganizationChartDataResponse:
       type: object
       properties:
         status:
-          type: string
+          type: integer
         message:
           type: string
         chart:
@@ -578,7 +585,7 @@ components:
       type: object
       properties:
         status:
-          type: string
+          type: integer
         message:
           type: string
         data:
@@ -586,6 +593,13 @@ components:
           items:
             type: object
             properties:
+              user:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  name:
+                    type: string
               weight:
                 type: number
               height:
@@ -612,7 +626,7 @@ components:
       type: object
       properties:
         status:
-          type: string
+          type: integer
         message:
           type: string
         data:
@@ -620,6 +634,13 @@ components:
           items:
             type: object
             properties:
+              user:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  name:
+                    type: string
               weight:
                 type: number
               height:
@@ -642,13 +663,13 @@ components:
                 type: string
               updated_at:
                 type: string
-    GetAllMemberResponse:
+    GetAllMembersResponse:
       properties:
         status:
-          type: string
+          type: integer
         message:
           type: string
-        member:
+        members:
           type: array
           items:
             type: object
@@ -667,6 +688,6 @@ components:
       type: object
       properties:
         status:
-          type: string
+          type: integer
         message:
           type: string

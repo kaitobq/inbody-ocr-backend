@@ -18,8 +18,9 @@ func SetUpRoutes(
 	v1 := r.Group("api/v1")
 
 	user := v1.Group("user")
+	user.Use(middleware.AuthMiddleware(tokenService))
 	{
-		user.GET("/authenticate", userCtrl.Authenticate)
+		user.GET("", userCtrl.GetOwnInfo)
 	}
 
 	organization := v1.Group("organization")
@@ -27,8 +28,12 @@ func SetUpRoutes(
 		organization.POST("", organizationCtrl.CreateOrganization)
 		organization.POST("/:id/signup", userCtrl.SignUp)
 		organization.POST("/signin", userCtrl.SignIn)
-		organization.GET("/dashboard", organizationCtrl.GetScreenDashboard)
-		organization.GET("/dashboard/admin", organizationCtrl.GetScreenDashboardForAdmin)
+	}
+	organization.Use(middleware.AuthMiddleware(tokenService))
+	{
+		organization.GET("/role", organizationCtrl.GetAllMembers)
+		organization.PUT("/role", organizationCtrl.UpdateRole)
+		organization.DELETE("/role", organizationCtrl.DeleteMember)
 	}
 
 	image := v1.Group("image")
@@ -41,7 +46,12 @@ func SetUpRoutes(
 	imageData.Use(middleware.AuthMiddleware(tokenService))
 	{
 		imageData.POST("", imageDataCtrl.SaveImageData)
-		imageData.GET("", imageDataCtrl.GetImageDataForMember)
-		imageData.GET("/admin", imageDataCtrl.GetImageDataForAdmin)
+		imageData.GET("/stats/member", imageDataCtrl.GetStatsForMember)
+		imageData.GET("/stats/admin", imageDataCtrl.GetStatsForAdmin)
+		imageData.GET("/chart/member", imageDataCtrl.GetChartDataForMember)
+		imageData.GET("/chart/admin", imageDataCtrl.GetChartDataForAdmin)
+		imageData.GET("/data/member", imageDataCtrl.GetImageDataForMember)
+		imageData.GET("/data/admin", imageDataCtrl.GetImageDataForAdmin)
+		imageData.GET("/data/admin/current", imageDataCtrl.GetCurrentImageDataForAdmin)
 	}
 }

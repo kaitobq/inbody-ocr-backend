@@ -113,6 +113,17 @@ func (r *userRepository) FindByID(id string) (*entity.User, error) {
 	return &user, nil
 }
 
+func (r *userRepository) UpdateRole(id string, role entity.OrganizationRole) error {
+	query := `UPDATE users SET role = ? WHERE id = ?`
+
+	_, err := r.db.Exec(query, role, id)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func (r *userRepository) UserExists(email string) (bool, error) {
 	query := `SELECT EXISTS(SELECT 1 FROM users WHERE email = ?)`
 

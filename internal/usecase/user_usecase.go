@@ -71,7 +71,7 @@ func (uc *userUsecase) CreateUser(name, email, password, orgID string) (*respons
 		return nil, err
 	}
 
-	return response.NewSignUpResponse(token, exp, user.ID, user.Name, user.Role)
+	return response.NewSignUpResponse(token, exp, *user)
 }
 
 func (uc *userUsecase) SignIn(email, password string) (*response.SignInResponse, error) {
@@ -99,15 +99,15 @@ func (uc *userUsecase) SignIn(email, password string) (*response.SignInResponse,
 		return nil, err
 	}
 
-	return response.NewSignInResponse(token, exp, user.OrganizationID, user.ID, user.Name, user.Role)
+	return response.NewSignInResponse(token, exp, *user)
 }
 
-func (uc *userUsecase) Authenticate(userID string) (*response.AuthenticateResponse, error) {
+func (uc *userUsecase) GetOwnInfo(userID string) (*response.GetOwnInfoResponse, error) {
 	user, err := uc.repo.FindByID(userID)
 	if err != nil {
-		logger.Error("Authenticate", "func", "FindByID()", "error", err.Error())
+		logger.Error("GetOwnInfo", "func", "FindByID()", "error", err.Error())
 		return nil, err
 	}
 
-	return response.NewAuthenticateResponse(*user)
+	return response.NewGetOwnInfoResponse(*user)
 }

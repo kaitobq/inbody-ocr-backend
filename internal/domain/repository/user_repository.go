@@ -9,5 +9,6 @@ type UserRepository interface {
 	ComparePassword(hashedPassword, password string) error
 	FindByEmail(email string) (*entity.User, error)
 	FindByID(id string) (*entity.User, error)
+	UpdateRole(id string, role entity.OrganizationRole) error
 	UserExists(email string) (bool, error)
 }
