@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"inbody-ocr-backend/internal/domain/repository"
 	"inbody-ocr-backend/internal/domain/service"
+	"inbody-ocr-backend/internal/domain/xcontext"
 	"inbody-ocr-backend/internal/infra/logging"
 	"inbody-ocr-backend/internal/usecase/response"
 	"net/http"
@@ -23,12 +24,41 @@ func NewAPI(tokenService service.TokenService, userRepo repository.UserRepositor
 	}
 }
 
+func (a *API) withUser(c *gin.Context) error {
+	isValid, err := a.tokenService.TokenValid(c)
+	if err != nil || !isValid {
+		logging.Errorf(c, "withUser TokenValid %v", err)
+		c.JSON(http.StatusUnauthorized, response.NewErrorResponse(http.StatusUnauthorized, err.Error()))
+		return err
+	}
+
+	userID, orgID, err := a.tokenService.ExtractIDsFromContext(c)
+	if err != nil {
+		logging.Errorf(c, "withMember ExtractIDsFromContext %v", err)
+		c.JSON(http.StatusUnauthorized, response.NewErrorResponse(http.StatusUnauthorized, err.Error()))
+		return err
+	}
+	user, err := a.userRepo.FindByID(userID)
+	if err != nil {
+		logging.Errorf(c, "withMember FindByID %v", err)
+		c.JSON(http.StatusUnauthorized, response.NewErrorResponse(http.StatusUnauthorized, err.Error()))
+		return err
+	}
+	if user.OrganizationID != orgID {
+		logging.Errorf(c, "withMember OrgID mismatch")
+		c.JSON(http.StatusUnauthorized, response.NewErrorResponse(http.StatusUnauthorized, "Unauthorized"))
+		return fmt.Errorf("org_id mismatch")
+	}
+
+	xcontext.WithUser(c, user)
+
+	return nil
+}
+
 func (a *API) VerifyToken() gin.HandlerFunc {
 	return func(c *gin.Context) {
-		isValid, err := a.tokenService.TokenValid(c)
-		if err != nil || !isValid {
-			logging.Errorf(c, "VerifyToken TokenValid %v", err)
-			c.JSON(http.StatusUnauthorized, response.NewErrorResponse(http.StatusUnauthorized, err.Error()))
+		err := a.withUser(c)
+		if err != nil {
 			c.Abort()
 			return
 		}
@@ -69,6 +99,8 @@ func (a *API) withMember(c *gin.Context) error {
 		c.JSON(http.StatusUnauthorized, response.NewErrorResponse(http.StatusUnauthorized, "Unauthorized"))
 		return fmt.Errorf("org_id mismatch")
 	}
+
+	xcontext.WithMemberUser(c, user)
 
 	return nil
 }
@@ -118,6 +150,9 @@ func (a *API) withAgminOROwner(c *gin.Context) error {
 		return fmt.Errorf("org_id mismatch")
 	}
 
+	// admin, ownerのどちらもアクセス可能なエンドポイントの場合、adminとして扱う
+	xcontext.WithAdminUser(c, user)
+
 	return nil
 }
 
@@ -166,6 +201,8 @@ func (a *API) withAdmin(c *gin.Context) error {
 		return fmt.Errorf("org_id mismatch")
 	}
 
+	xcontext.WithAdminUser(c, user)
+
 	return nil
 }
 
@@ -213,6 +250,8 @@ func (a *API) withOwner(c *gin.Context) error {
 		c.JSON(http.StatusUnauthorized, response.NewErrorResponse(http.StatusUnauthorized, "Unauthorized"))
 		return fmt.Errorf("org_id mismatch")
 	}
+
+	xcontext.WithOwnerUser(c, user)
 
 	return nil
 }

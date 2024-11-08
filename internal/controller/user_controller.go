@@ -2,6 +2,7 @@ package controller
 
 import (
 	"inbody-ocr-backend/internal/domain/service"
+	"inbody-ocr-backend/internal/domain/xcontext"
 	"inbody-ocr-backend/internal/infra/logging"
 	"inbody-ocr-backend/internal/usecase"
 	"inbody-ocr-backend/internal/usecase/request"
@@ -67,14 +68,9 @@ func (ct *UserController) SignIn(c *gin.Context) {
 }
 
 func (ct *UserController) GetOwnInfo(c *gin.Context) {
-	userID, _, err := ct.tokenService.ExtractIDsFromContext(c)
-	if err != nil {
-		logging.Errorf(c, "GetOwnInfo ExtractIDsFromContext %v", err)
-		c.JSON(http.StatusUnauthorized, response.NewErrorResponse(http.StatusUnauthorized, err.Error()))
-		return
-	}
+	user := xcontext.User(c)
 
-	res, err := ct.uc.GetOwnInfo(userID)
+	res, err := ct.uc.GetOwnInfo(*user)
 	if err != nil {
 		logging.Errorf(c, "GetOwnInfo GetOwnInfo %v", err)
 		c.JSON(http.StatusInternalServerError, response.NewErrorResponse(http.StatusInternalServerError, err.Error()))

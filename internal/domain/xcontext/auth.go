@@ -7,12 +7,24 @@ import (
 )
 
 var (
-	authMemberUserKey = "AUTH:MEMBER"
-	authAdminUserKey  = "AUTH:ADMIN"
-	authOwnerUserKey  = "AUTH:OWNER"
+	authUserKey       = "AUTH:USER"   // ロール区分なし
+	authMemberUserKey = "AUTH:MEMBER" // ロール区分：member
+	authAdminUserKey  = "AUTH:ADMIN"  // ロール区分：admin
+	authOwnerUserKey  = "AUTH:OWNER"  // ロール区分：owner
 )
 
-func WithMemberUser(c *gin.Context, user entity.User) {
+func WithUser(c *gin.Context, user *entity.User) {
+	c.Set(authUserKey, user)
+}
+
+func User(c *gin.Context) *entity.User {
+	if v, ok := c.Get(authUserKey); ok {
+		return v.(*entity.User)
+	}
+	return nil
+}
+
+func WithMemberUser(c *gin.Context, user *entity.User) {
 	c.Set(authMemberUserKey, user)
 }
 
@@ -23,7 +35,7 @@ func MemberUser(c *gin.Context) *entity.User {
 	return nil
 }
 
-func WithAdminUser(c *gin.Context, user entity.User) {
+func WithAdminUser(c *gin.Context, user *entity.User) {
 	c.Set(authAdminUserKey, user)
 }
 
@@ -34,7 +46,7 @@ func AdminUser(c *gin.Context) *entity.User {
 	return nil
 }
 
-func WithOwnerUser(c *gin.Context, user entity.User) {
+func WithOwnerUser(c *gin.Context, user *entity.User) {
 	c.Set(authOwnerUserKey, user)
 }
 

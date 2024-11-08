@@ -91,11 +91,6 @@ func (uc *userUsecase) SignIn(email, password string) (*response.SignInResponse,
 	return response.NewSignInResponse(token, exp, *user)
 }
 
-func (uc *userUsecase) GetOwnInfo(userID string) (*response.GetOwnInfoResponse, error) {
-	user, err := uc.repo.FindByID(userID)
-	if err != nil {
-		return nil, err
-	}
-
-	return response.NewGetOwnInfoResponse(*user)
+func (uc *userUsecase) GetOwnInfo(user entity.User) (*response.GetOwnInfoResponse, error) {
+	return response.NewGetOwnInfoResponse(user)
 }
