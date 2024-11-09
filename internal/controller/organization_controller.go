@@ -1,6 +1,7 @@
 package controller
 
 import (
+	"errors"
 	"inbody-ocr-backend/internal/controller/render"
 	"inbody-ocr-backend/internal/domain/service"
 	"inbody-ocr-backend/internal/domain/xcontext"
@@ -35,8 +36,8 @@ func (ct *OrganizationController) CreateOrganization(c *gin.Context) {
 
 	res, err := ct.uc.CreateOrganization(req.UserName, req.Email, req.Password, req.OrgName)
 	if err != nil {
-		switch err {
-		case xerror.ErrEmailAlreadyExists:
+		switch {
+		case errors.Is(err, xerror.ErrEmailAlreadyExists):
 			logging.Errorf(c, "CreateOrganization CreateUser err={%v}", err)
 			render.ErrorCodeJSON(c, err.Error(), http.StatusBadRequest, xerror.CodeEmailAlreadyExists)
 			return
@@ -76,8 +77,8 @@ func (ct *OrganizationController) UpdateRole(c *gin.Context) {
 
 	res, err := ct.uc.UpdateRole(updateUserID, req.Role, user)
 	if err != nil {
-		switch err {
-		case xerror.ErrCannotUpdateOwnerRole:
+		switch {
+		case errors.Is(err, xerror.ErrCannotUpdateOwnerRole):
 			logging.Errorf(c, "UpdateRole UpdateRole err={%v}", err)
 			render.ErrorCodeJSON(c, err.Error(), http.StatusBadRequest, xerror.CodeCannotUpdateOwnerRole)
 			return
@@ -97,8 +98,8 @@ func (ct *OrganizationController) DeleteMember(c *gin.Context) {
 
 	err := ct.uc.DeleteMember(deleteUserID, user)
 	if err != nil {
-		switch err {
-		case xerror.ErrCannotDeleteOwner:
+		switch {
+		case errors.Is(err, xerror.ErrCannotDeleteOwner):
 			logging.Errorf(c, "DeleteMember DeleteMember err={%v}", err)
 			render.ErrorCodeJSON(c, err.Error(), http.StatusBadRequest, xerror.CodeCannotDeleteOwner)
 			return

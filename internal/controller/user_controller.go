@@ -1,6 +1,7 @@
 package controller
 
 import (
+	"errors"
 	"inbody-ocr-backend/internal/controller/render"
 	"inbody-ocr-backend/internal/domain/service"
 	"inbody-ocr-backend/internal/domain/xcontext"
@@ -35,8 +36,8 @@ func (ct *UserController) SignUp(c *gin.Context) {
 
 	res, err := ct.uc.CreateUser(req.Name, req.Email, req.Password, req.OrgID)
 	if err != nil {
-		switch err {
-		case xerror.ErrEmailAlreadyExists:
+		switch {
+		case errors.Is(err, xerror.ErrEmailAlreadyExists):
 			logging.Errorf(c, "SignUp CreateUser err={%v}", err)
 			render.ErrorCodeJSON(c, err.Error(), http.StatusBadRequest, xerror.CodeEmailAlreadyExists)
 			return
