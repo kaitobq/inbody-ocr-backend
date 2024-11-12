@@ -120,12 +120,12 @@ func NewGetChartDataForAdminResponse(chart ChartDataForAdmin) (*GetChartDataForA
 }
 
 type GetImageDataForMemberResponse struct {
-	Records []entity.ImageData `json:"records"`
+	Data []entity.ImageData `json:"data"`
 }
 
-func NewGetImageDataForMemberResponse(records []entity.ImageData) (*GetImageDataForMemberResponse, error) {
+func NewGetImageDataForMemberResponse(data []entity.ImageData) (*GetImageDataForMemberResponse, error) {
 	return &GetImageDataForMemberResponse{
-		Records: records,
+		Data: data,
 	}, nil
 }
 

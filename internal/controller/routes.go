@@ -48,20 +48,20 @@ func SetUpRoutes(
 	imageData := v1.Group("image-data")
 
 	{
-		member := imageData
+		member := imageData.Group("member")
 		member.Use(middleware.API.GuaranteeMember())
-		imageData.POST("", imageDataCtrl.SaveImageData)
-		imageData.GET("/stats/member", imageDataCtrl.GetStatsForMember)
-		imageData.GET("/chart/member", imageDataCtrl.GetChartDataForMember)
-		imageData.GET("/data/member", imageDataCtrl.GetImageDataForMember)
+		member.POST("", imageDataCtrl.SaveImageData)
+		member.GET("/stats", imageDataCtrl.GetStatsForMember)
+		member.GET("/chart", imageDataCtrl.GetChartDataForMember)
+		member.GET("/data", imageDataCtrl.GetImageDataForMember)
 	}
 
 	{
-		admin := imageData
+		admin := imageData.Group("admin")
 		admin.Use(middleware.API.GuaranteeAdminOROwner())
-		imageData.GET("/stats/admin", imageDataCtrl.GetStatsForAdmin)
-		imageData.GET("/chart/admin", imageDataCtrl.GetChartDataForAdmin)
-		imageData.GET("/data/admin", imageDataCtrl.GetImageDataForAdmin)
-		imageData.GET("/data/admin/current", imageDataCtrl.GetCurrentImageDataForAdmin)
+		admin.GET("/stats", imageDataCtrl.GetStatsForAdmin)
+		admin.GET("/chart", imageDataCtrl.GetChartDataForAdmin)
+		admin.GET("/data", imageDataCtrl.GetImageDataForAdmin)
+		admin.GET("/data/current", imageDataCtrl.GetCurrentImageDataForAdmin)
 	}
 }
