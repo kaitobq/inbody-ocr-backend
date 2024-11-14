@@ -65,3 +65,27 @@ func NewUserImageDataList(users []entity.User, data []entity.ImageData) []UserIm
 
 	return userDataList
 }
+
+type MeasurementDateResponse struct {
+	ID        string    `json:"id"`
+	Date      time.Time `json:"date"`
+	CreatedAt time.Time `json:"created_at"`
+	UpdatedAt time.Time `json:"updated_at"`
+}
+
+func NewMeasurementDateResponse(data entity.MeasurementDate) MeasurementDateResponse {
+	return MeasurementDateResponse{
+		ID:        data.ID,
+		Date:      data.Date,
+		CreatedAt: data.CreatedAt,
+		UpdatedAt: data.UpdatedAt,
+	}
+}
+
+func NewMeasurementDateResponseList(data []entity.MeasurementDate) []MeasurementDateResponse {
+	res := make([]MeasurementDateResponse, 0, len(data))
+	for _, d := range data {
+		res = append(res, NewMeasurementDateResponse(d))
+	}
+	return res
+}

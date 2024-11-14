@@ -33,3 +33,7 @@ type ImageDataUsecase interface {
 	GetDataForAdmin(user *entity.User) (*response.GetImageDataForAdminResponse, error)
 	GetCurrentDataForAdmin(user *entity.User) (*response.GetCurrentImageDataForAdminResponse, error)
 }
+
+type MeasurementDateUsecase interface {
+	GetMeasurementDate(orgID string) (*response.GetMeasurementDateResponse, error)
+}

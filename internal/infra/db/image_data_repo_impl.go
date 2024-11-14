@@ -18,13 +18,13 @@ func NewImageDataRepository(db *database.DB) repository.ImageDataRepository {
 }
 
 func (r *imageDataRepository) CreateData(data entity.ImageData) (*entity.ImageData, error) {
-	query := `INSERT INTO image_data (id, organization_id, user_id, weight, height, muscle_weight, fat_weight, fat_percent, body_water, protein, mineral, point, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+	query := `INSERT INTO image_data (id, organization_id, user_id, measurement_date_id, weight, height, muscle_weight, fat_weight, fat_percent, body_water, protein, mineral, point, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
 
 	now := jptime.Now()
 	data.CreatedAt = now
 	data.UpdatedAt = now
 
-	_, err := r.db.Exec(query, data.ID, data.OrganizationID, data.UserID, data.Weight, data.Height, data.MuscleWeight, data.FatWeight, data.FatPercent, data.BodyWater, data.Protein, data.Mineral, data.Point, data.CreatedAt, data.UpdatedAt)
+	_, err := r.db.Exec(query, data.ID, data.OrganizationID, data.UserID, data.MeasurementDateID, data.Weight, data.Height, data.MuscleWeight, data.FatWeight, data.FatPercent, data.BodyWater, data.Protein, data.Mineral, data.Point, data.CreatedAt, data.UpdatedAt)
 	if err != nil {
 		return nil, err
 	}
@@ -46,7 +46,7 @@ func (r *imageDataRepository) FindByUserID(userID string) ([]entity.ImageData, e
 	for rows.Next() {
 		var record entity.ImageData
 		var createdAt, updatedAt string
-		err := rows.Scan(&record.ID, &record.OrganizationID, &record.UserID, &record.Weight, &record.Height, &record.MuscleWeight, &record.FatWeight, &record.FatPercent, &record.BodyWater, &record.Protein, &record.Mineral, &record.Point, &createdAt, &updatedAt)
+		err := rows.Scan(&record.ID, &record.OrganizationID, &record.UserID, &record.MeasurementDateID, &record.Weight, &record.Height, &record.MuscleWeight, &record.FatWeight, &record.FatPercent, &record.BodyWater, &record.Protein, &record.Mineral, &record.Point, &createdAt, &updatedAt)
 		if err != nil {
 			return nil, err
 		}
@@ -81,7 +81,7 @@ func (r *imageDataRepository) FindByOrganizationID(orgID string) ([]entity.Image
 	for rows.Next() {
 		var record entity.ImageData
 		var createdAt, updatedAt string
-		err := rows.Scan(&record.ID, &record.OrganizationID, &record.UserID, &record.Weight, &record.Height, &record.MuscleWeight, &record.FatWeight, &record.FatPercent, &record.BodyWater, &record.Protein, &record.Mineral, &record.Point, &createdAt, &updatedAt)
+		err := rows.Scan(&record.ID, &record.OrganizationID, &record.UserID, &record.MeasurementDateID, &record.Weight, &record.Height, &record.MuscleWeight, &record.FatWeight, &record.FatPercent, &record.BodyWater, &record.Protein, &record.Mineral, &record.Point, &createdAt, &updatedAt)
 		if err != nil {
 			return nil, err
 		}

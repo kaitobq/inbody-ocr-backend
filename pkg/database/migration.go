@@ -80,14 +80,14 @@ func (db *DB) SeedData() error {
 	measurementDate := entity.MeasurementDate{
 		ID:             "date1",
 		OrganizationID: "org1",
-		Date:           "2021-09-01",
+		Date:           time.Now(),
 		CreatedAt:      time.Now(),
 		UpdatedAt:      time.Now(),
 	}
 	_, err = db.DB.ExecContext(ctx, `
 			INSERT INTO measurement_date (id, organization_id, date, created_at, updated_at)
 			VALUES (?, ?, ?, ?, ?)
-		`, measurementDate.ID, measurementDate.OrganizationID, measurementDate.Date, measurementDate.CreatedAt, measurementDate.UpdatedAt)
+		`, measurementDate.ID, measurementDate.OrganizationID, measurementDate.Date.Format("2006-01-02"), measurementDate.CreatedAt, measurementDate.UpdatedAt)
 	if err != nil {
 		return fmt.Errorf("failed to insert measurement date: %w", err)
 	}

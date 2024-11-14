@@ -12,6 +12,7 @@ func SetUpRoutes(
 	organizationCtrl *OrganizationController,
 	imageCtrl *ImageController,
 	imageDataCtrl *ImageDataController,
+	measurementDateCtrl *MeasurementDateController,
 	middleware *middleware.Middleware,
 ) {
 	r.Use(middleware.CORS.CORS())
@@ -63,5 +64,11 @@ func SetUpRoutes(
 		admin.GET("/chart", imageDataCtrl.GetChartDataForAdmin)
 		admin.GET("/data", imageDataCtrl.GetImageDataForAdmin)
 		admin.GET("/data/current", imageDataCtrl.GetCurrentImageDataForAdmin)
+	}
+
+	measurementDate := v1.Group("measurement-date")
+	measurementDate.Use(middleware.API.VerifyToken())
+	{
+		measurementDate.GET("", measurementDateCtrl.GetMeasurementDate)
 	}
 }
