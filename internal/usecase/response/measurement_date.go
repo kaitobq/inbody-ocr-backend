@@ -11,3 +11,13 @@ func NewGetMeasurementDateResponse(measurementDates []entity.MeasurementDate) (*
 		MeasurementDates: NewMeasurementDateResponseList(measurementDates),
 	}, nil
 }
+
+type CreateMeasurementDateResponse struct {
+	MeasurementDate MeasurementDateResponse `json:"measurement_date"`
+}
+
+func NewCreateMeasurementDateResponse(measurementDate entity.MeasurementDate) (*CreateMeasurementDateResponse, error) {
+	return &CreateMeasurementDateResponse{
+		MeasurementDate: NewMeasurementDateResponse(measurementDate),
+	}, nil
+}

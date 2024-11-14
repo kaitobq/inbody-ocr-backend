@@ -60,3 +60,19 @@ func (r *measurementDateRepository) FindByOrganizationID(orgID string) ([]entity
 
 	return dates, nil
 }
+
+func (r *measurementDateRepository) CreateMeasurementDate(date entity.MeasurementDate) error {
+	query := `INSERT INTO measurement_date (id, organization_id, date, created_at, updated_at) VALUES (?, ?, ?, ?, ?)`
+
+	now := jptime.Now()
+	date.CreatedAt = now
+	date.UpdatedAt = now
+	dateStr := jptime.FormatDate(date.Date)
+
+	_, err := r.db.Exec(query, date.ID, date.OrganizationID, dateStr, date.CreatedAt, date.UpdatedAt)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}

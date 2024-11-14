@@ -36,4 +36,5 @@ type ImageDataUsecase interface {
 
 type MeasurementDateUsecase interface {
 	GetMeasurementDate(orgID string) (*response.GetMeasurementDateResponse, error)
+	CreateMeasurementDate(user *entity.User, dateStr string) (*response.CreateMeasurementDateResponse, error)
 }

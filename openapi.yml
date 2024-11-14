@@ -285,6 +285,42 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/GetAllOrganizationDataResponse"
+  /api/v1/measurement-date:
+    get:
+      summary: Get Measurement Date
+      description: Get Measurement Date
+      security:
+        - Auth: []
+      parameters: []
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetMeasurementDateResponse"
+  /api/v1/measurement-date/admin:
+    post:
+      summary: Create Measurement Date
+      description: Create Measurement Date
+      security:
+        - Auth: []
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                date:
+                  type: string
+      responses:
+        "200":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MeasurementDateReponse"
 components:
   securitySchemes:
     Auth:
@@ -651,3 +687,21 @@ components:
           type: integer
         status:
           type: integer
+    MeasurementDateReponse:
+      type: object
+      properties:
+        id:
+          type: string
+        date:
+          type: string
+        created_at:
+          type: string
+        updated_at:
+          type: string
+    GetMeasurementDateResponse:
+      type: object
+      properties:
+        measurement_dates:
+          type: array
+          items:
+            $ref: "#/components/schemas/MeasurementDateReponse"

@@ -71,4 +71,8 @@ func SetUpRoutes(
 	{
 		measurementDate.GET("", measurementDateCtrl.GetMeasurementDate)
 	}
+	{
+		admin := measurementDate.Group("admin")
+		admin.POST("", measurementDateCtrl.CreateMeasurementDate)
+	}
 }
