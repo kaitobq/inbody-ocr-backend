@@ -5,7 +5,6 @@ import (
 	"inbody-ocr-backend/internal/domain/entity"
 	"inbody-ocr-backend/internal/domain/repository"
 	"inbody-ocr-backend/internal/domain/service"
-	"inbody-ocr-backend/internal/infra/logger"
 	"inbody-ocr-backend/internal/usecase/response"
 	jptime "inbody-ocr-backend/pkg/jp_time"
 	"math"
@@ -14,24 +13,22 @@ import (
 type imageDataUsecase struct {
 	repo             repository.ImageDataRepository
 	organizationRepo repository.OrganizationRepository
-	userRepo         repository.UserRepository
 	ulidService      service.ULIDService
 }
 
-func NewImageDataUsecase(repo repository.ImageDataRepository, organizationRepo repository.OrganizationRepository, userRepo repository.UserRepository, ulidService service.ULIDService) ImageDataUsecase {
+func NewImageDataUsecase(repo repository.ImageDataRepository, organizationRepo repository.OrganizationRepository, ulidService service.ULIDService) ImageDataUsecase {
 	return &imageDataUsecase{
 		repo:             repo,
 		organizationRepo: organizationRepo,
-		userRepo:         userRepo,
 		ulidService:      ulidService,
 	}
 }
 
-func (uc *imageDataUsecase) CreateData(weight, height, muscleWeight, fatWeight, fatPercent, bodyWater, protein, mineral float64, point uint, userID, orgID string) (*response.SaveImageDataResponse, error) {
+func (uc *imageDataUsecase) CreateData(weight, height, muscleWeight, fatWeight, fatPercent, bodyWater, protein, mineral float64, point uint, user *entity.User) error {
 	imageData := &entity.ImageData{
 		ID:             uc.ulidService.GenerateULID(),
-		UserID:         userID,
-		OrganizationID: orgID,
+		UserID:         user.ID,
+		OrganizationID: user.OrganizationID,
 		Weight:         weight,
 		Height:         height,
 		MuscleWeight:   muscleWeight,
@@ -45,17 +42,15 @@ func (uc *imageDataUsecase) CreateData(weight, height, muscleWeight, fatWeight, 
 
 	_, err := uc.repo.CreateData(*imageData)
 	if err != nil {
-		logger.Error("CreateData", "func", "CreateData()", "error", err.Error())
-		return nil, err
+		return err
 	}
 
-	return response.NewSaveImageDataResponse()
+	return nil
 }
 
-func (uc *imageDataUsecase) GetStatsForMember(userID, orgID string) (*response.GetStatsForMemberResponse, error) {
-	records, err := uc.repo.FindByUserID(userID)
+func (uc *imageDataUsecase) GetStatsForMember(user *entity.User) (*response.GetStatsForMemberResponse, error) {
+	records, err := uc.repo.FindByUserID(user.ID)
 	if err != nil {
-		logger.Error("GetStatsForMember", "func", "FindByUserID()", "error", err.Error())
 		return nil, err
 	}
 
@@ -78,10 +73,9 @@ func (uc *imageDataUsecase) GetStatsForMember(userID, orgID string) (*response.G
 	return response.NewGetStatsForMemberResponse(current, previous)
 }
 
-func (uc *imageDataUsecase) GetStatsForAdmin(orgID string) (*response.GetStatsForAdminResponse, error) {
-	records, err := uc.repo.FindByOrganizationID(orgID)
+func (uc *imageDataUsecase) GetStatsForAdmin(user *entity.User) (*response.GetStatsForAdminResponse, error) {
+	records, err := uc.repo.FindByOrganizationID(user.OrganizationID)
 	if err != nil {
-		logger.Error("GetStatsForAdmin", "func", "FindByOrganizationID()", "error", err.Error())
 		return nil, err
 	}
 
@@ -125,10 +119,9 @@ func calcAvg(latestRecords map[string]entity.ImageData) response.StatsForAdmin {
 	}
 }
 
-func (uc *imageDataUsecase) GetChartDataForMember(userID string) (*response.GetChartDataForMemberResponse, error) {
-	records, err := uc.repo.FindByUserID(userID)
+func (uc *imageDataUsecase) GetChartDataForMember(user *entity.User) (*response.GetChartDataForMemberResponse, error) {
+	records, err := uc.repo.FindByUserID(user.ID)
 	if err != nil {
-		logger.Error("GetChartDataForMember", "func", "FindByUserID()", "error", err.Error())
 		return nil, err
 	}
 
@@ -178,10 +171,9 @@ func sortRecords(records []entity.ImageData) []entity.ImageData {
 	return records
 }
 
-func (uc *imageDataUsecase) GetChartDataForAdmin(orgID string) (*response.GetChartDataForAdminResponse, error) {
-	records, err := uc.repo.FindByOrganizationID(orgID)
+func (uc *imageDataUsecase) GetChartDataForAdmin(user *entity.User) (*response.GetChartDataForAdminResponse, error) {
+	records, err := uc.repo.FindByOrganizationID(user.OrganizationID)
 	if err != nil {
-		logger.Error("GetChartDataForAdmin", "func", "FindByOrganizationID()", "error", err.Error())
 		return nil, err
 	}
 
@@ -284,37 +276,23 @@ func generateBinData(data []float64, bins []float64, binWidth float64) map[strin
 	return counts
 }
 
-func (uc *imageDataUsecase) GetDataForMember(userID string) (*response.GetImageDataForMemberResponse, error) {
-	records, err := uc.repo.FindByUserID(userID)
+func (uc *imageDataUsecase) GetDataForMember(user *entity.User) (*response.GetImageDataForMemberResponse, error) {
+	records, err := uc.repo.FindByUserID(user.ID)
 	if err != nil {
-		logger.Error("GetDataForMember", "func", "FindByUserID()", "error", err.Error())
 		return nil, err
 	}
 
 	return response.NewGetImageDataForMemberResponse(records)
 }
 
-func (uc *imageDataUsecase) GetDataForAdmin(userID, orgID string) (*response.GetImageDataForAdminResponse, error) {
-	user, err := uc.userRepo.FindByID(userID)
+func (uc *imageDataUsecase) GetDataForAdmin(user *entity.User) (*response.GetImageDataForAdminResponse, error) {
+	records, err := uc.repo.FindByOrganizationID(user.OrganizationID)
 	if err != nil {
-		logger.Error("GetDataForAdmin", "func", "FindByID()", "error", err.Error())
 		return nil, err
 	}
 
-	if user.Role != "admin" && user.Role != "owner" { // TODO: use middleware
-		logger.Error("GetDataForAdmin", "error", "user is not admin")
-		return nil, fmt.Errorf("user is not admin")
-	}
-
-	records, err := uc.repo.FindByOrganizationID(orgID)
+	users, err := uc.organizationRepo.GetMember(user.OrganizationID)
 	if err != nil {
-		logger.Error("GetDataForAdmin", "func", "FindByOrganizationID()", "error", err.Error())
-		return nil, err
-	}
-
-	users, err := uc.organizationRepo.GetMember(orgID)
-	if err != nil {
-		logger.Error("GetDataForAdmin", "func", "GetMember()", "error", err.Error())
 		return nil, err
 	}
 
@@ -323,27 +301,14 @@ func (uc *imageDataUsecase) GetDataForAdmin(userID, orgID string) (*response.Get
 	return response.NewGetImageDataForAdminResponse(userImgData)
 }
 
-func (uc *imageDataUsecase) GetCurrentDataForAdmin(userID, orgID string) (*response.GetCurrentImageDataForAdminResponse, error) {
-	user, err := uc.userRepo.FindByID(userID)
+func (uc *imageDataUsecase) GetCurrentDataForAdmin(user *entity.User) (*response.GetCurrentImageDataForAdminResponse, error) {
+	records, err := uc.repo.FindByOrganizationID(user.OrganizationID)
 	if err != nil {
-		logger.Error("GetDataForAdmin", "func", "FindByID()", "error", err.Error())
 		return nil, err
 	}
 
-	if user.Role != "admin" && user.Role != "owner" { // TODO: use middleware
-		logger.Error("GetDataForAdmin", "error", "user is not admin")
-		return nil, fmt.Errorf("user is not admin")
-	}
-
-	records, err := uc.repo.FindByOrganizationID(orgID)
+	users, err := uc.organizationRepo.GetMember(user.OrganizationID)
 	if err != nil {
-		logger.Error("GetDataForAdmin", "func", "FindByOrganizationID()", "error", err.Error())
-		return nil, err
-	}
-
-	users, err := uc.organizationRepo.GetMember(orgID)
-	if err != nil {
-		logger.Error("GetDataForAdmin", "func", "GetMember()", "error", err.Error())
 		return nil, err
 	}
 

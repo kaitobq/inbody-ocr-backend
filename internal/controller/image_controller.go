@@ -1,11 +1,14 @@
 package controller
 
 import (
-	"fmt"
+	"errors"
+	"inbody-ocr-backend/internal/controller/render"
 	"inbody-ocr-backend/internal/domain/service"
+	"inbody-ocr-backend/internal/domain/xcontext"
+	"inbody-ocr-backend/internal/domain/xerror"
+	"inbody-ocr-backend/internal/infra/logging"
 	"inbody-ocr-backend/internal/usecase"
 	"inbody-ocr-backend/internal/usecase/request"
-	"inbody-ocr-backend/internal/usecase/response"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -27,21 +30,26 @@ func NewImageController(uc usecase.ImageUsecase, tokenService service.TokenServi
 func (ct *ImageController) AnalyzeImage(c *gin.Context) {
 	file, fileHeader, err := request.GetImgFileFromContext(c)
 	if err != nil {
-		c.JSON(http.StatusBadRequest, response.NewErrorResponse(http.StatusBadRequest, "Failed to get image from request"))
+		logging.Errorf(c, "AnalyzeImage GetImgFileFromContext %v", err)
+		render.ErrorJSON(c, err.Error(), http.StatusBadRequest)
 		return
 	}
 
-	userID, orgID, err := ct.tokenService.ExtractIDsFromContext(c)
+	user := xcontext.MemberUser(c)
+
+	res, err := ct.uc.AnalyzeImage(file, fileHeader, user)
 	if err != nil {
-		c.JSON(http.StatusUnauthorized, response.NewErrorResponse(http.StatusUnauthorized, err.Error()))
-		return
+		switch {
+		case errors.Is(err, xerror.ErrHEICNotSupported):
+			logging.Errorf(c, "AnalyzeImage AnalyzeImage err={%v}", err)
+			render.ErrorCodeJSON(c, err.Error(), http.StatusBadRequest, xerror.CodeHEICNotSupported)
+			return
+		default:
+			logging.Errorf(c, "AnalyzeImage AnalyzeImage %v", err)
+			render.ErrorJSON(c, err.Error(), http.StatusInternalServerError)
+			return
+		}
 	}
 
-	res, err := ct.uc.AnalyzeImage(file, fileHeader, userID, orgID)
-	if err != nil {
-		c.JSON(http.StatusInternalServerError, response.NewErrorResponse(http.StatusInternalServerError, fmt.Sprintf("Failed to detect text from image: %v", err)))
-		return
-	}
-
-	c.JSON(http.StatusOK, res)
+	render.JSON(c, res)
 }

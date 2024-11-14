@@ -5,7 +5,13 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func CORS() gin.HandlerFunc {
+type CORS struct{}
+
+func NewCORS() *CORS {
+	return &CORS{}
+}
+
+func (c *CORS) CORS() gin.HandlerFunc {
 	config := cors.DefaultConfig()
 	config.AllowOrigins = []string{"http://localhost:3000"}
 	config.AllowCredentials = true

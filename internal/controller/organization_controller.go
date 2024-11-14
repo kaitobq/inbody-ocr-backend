@@ -1,10 +1,14 @@
 package controller
 
 import (
+	"errors"
+	"inbody-ocr-backend/internal/controller/render"
 	"inbody-ocr-backend/internal/domain/service"
+	"inbody-ocr-backend/internal/domain/xcontext"
+	"inbody-ocr-backend/internal/domain/xerror"
+	"inbody-ocr-backend/internal/infra/logging"
 	"inbody-ocr-backend/internal/usecase"
 	"inbody-ocr-backend/internal/usecase/request"
-	"inbody-ocr-backend/internal/usecase/response"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -25,77 +29,85 @@ func NewOrganizationController(uc usecase.OrganizationUsecase, tokenService serv
 func (ct *OrganizationController) CreateOrganization(c *gin.Context) {
 	req, err := request.NewCreateOrganizationRequest(c)
 	if err != nil {
-		c.JSON(http.StatusBadRequest, response.NewErrorResponse(http.StatusBadRequest, err.Error()))
+		logging.Errorf(c, "CreateOrganization NewCreateOrganizationRequest %v", err)
+		render.ErrorJSON(c, err.Error(), http.StatusBadRequest)
 		return
 	}
 
 	res, err := ct.uc.CreateOrganization(req.UserName, req.Email, req.Password, req.OrgName)
 	if err != nil {
-		if err.Error() == "email already exists" {
-			c.JSON(http.StatusBadRequest, response.NewErrorResponse(http.StatusBadRequest, err.Error()))
+		switch {
+		case errors.Is(err, xerror.ErrEmailAlreadyExists):
+			logging.Errorf(c, "CreateOrganization CreateUser err={%v}", err)
+			render.ErrorCodeJSON(c, err.Error(), http.StatusBadRequest, xerror.CodeEmailAlreadyExists)
+			return
+		default:
+			logging.Errorf(c, "CreateOrganization CreateUser %v", err)
+			render.ErrorJSON(c, err.Error(), http.StatusInternalServerError)
 			return
 		}
-
-		c.JSON(http.StatusInternalServerError, response.NewErrorResponse(http.StatusInternalServerError, err.Error()))
-		return
 	}
 
-	c.JSON(http.StatusCreated, res)
+	render.JSON(c, res)
 }
 
 func (ct *OrganizationController) GetAllMembers(c *gin.Context) {
-	_, orgID, err := ct.tokenService.ExtractIDsFromContext(c)
+	user := xcontext.AdminUser(c)
+
+	res, err := ct.uc.GetAllMembers(user.OrganizationID)
 	if err != nil {
-		c.JSON(http.StatusUnauthorized, response.NewErrorResponse(http.StatusUnauthorized, err.Error()))
+		logging.Errorf(c, "GetAllMembers GetAllMembers %v", err)
+		render.ErrorJSON(c, err.Error(), http.StatusInternalServerError)
 		return
 	}
 
-	res, err := ct.uc.GetAllMembers(orgID)
-	if err != nil {
-		c.JSON(http.StatusInternalServerError, response.NewErrorResponse(http.StatusInternalServerError, err.Error()))
-		return
-	}
-
-	c.JSON(http.StatusOK, res)
+	render.JSON(c, res)
 }
 
 func (ct *OrganizationController) UpdateRole(c *gin.Context) {
 	updateUserID := c.Query("user_id")
 	req, err := request.NewUpdateRoleRequest(c)
 	if err != nil {
-		c.JSON(http.StatusBadRequest, response.NewErrorResponse(http.StatusBadRequest, err.Error()))
+		logging.Errorf(c, "UpdateRole NewUpdateRoleRequest %v", err)
+		render.ErrorJSON(c, err.Error(), http.StatusBadRequest)
 		return
 	}
 
-	userID, orgID, err := ct.tokenService.ExtractIDsFromContext(c)
+	user := xcontext.AdminUser(c)
+
+	res, err := ct.uc.UpdateRole(updateUserID, req.Role, user)
 	if err != nil {
-		c.JSON(http.StatusUnauthorized, response.NewErrorResponse(http.StatusUnauthorized, err.Error()))
-		return
+		switch {
+		case errors.Is(err, xerror.ErrCannotUpdateOwnerRole):
+			logging.Errorf(c, "UpdateRole UpdateRole err={%v}", err)
+			render.ErrorCodeJSON(c, err.Error(), http.StatusBadRequest, xerror.CodeCannotUpdateOwnerRole)
+			return
+		default:
+			logging.Errorf(c, "UpdateRole UpdateRole %v", err)
+			render.ErrorJSON(c, err.Error(), http.StatusInternalServerError)
+			return
+		}
 	}
 
-	res, err := ct.uc.UpdateRole(updateUserID, req.Role, orgID, userID)
-	if err != nil {
-		c.JSON(http.StatusInternalServerError, response.NewErrorResponse(http.StatusInternalServerError, err.Error()))
-		return
-	}
-
-	c.JSON(http.StatusOK, res)
+	render.JSON(c, res)
 }
 
 func (ct *OrganizationController) DeleteMember(c *gin.Context) {
 	deleteUserID := c.Query("user_id")
+	user := xcontext.AdminUser(c)
 
-	userID, orgID, err := ct.tokenService.ExtractIDsFromContext(c)
+	err := ct.uc.DeleteMember(deleteUserID, user)
 	if err != nil {
-		c.JSON(http.StatusUnauthorized, response.NewErrorResponse(http.StatusUnauthorized, err.Error()))
-		return
+		switch {
+		case errors.Is(err, xerror.ErrCannotDeleteOwner):
+			logging.Errorf(c, "DeleteMember DeleteMember err={%v}", err)
+			render.ErrorCodeJSON(c, err.Error(), http.StatusBadRequest, xerror.CodeCannotDeleteOwner)
+			return
+		default:
+			render.ErrorJSON(c, err.Error(), http.StatusInternalServerError)
+			return
+		}
 	}
 
-	res, err := ct.uc.DeleteMember(deleteUserID, orgID, userID)
-	if err != nil {
-		c.JSON(http.StatusInternalServerError, response.NewErrorResponse(http.StatusInternalServerError, err.Error()))
-		return
-	}
-
-	c.JSON(http.StatusOK, res)
+	render.OK(c)
 }

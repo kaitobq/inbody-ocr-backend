@@ -9,6 +9,7 @@ import (
 	"inbody-ocr-backend/internal/domain/service"
 	"inbody-ocr-backend/internal/infra/db"
 	"inbody-ocr-backend/internal/infra/vision_api"
+	"inbody-ocr-backend/internal/middleware"
 	"inbody-ocr-backend/internal/usecase"
 	"inbody-ocr-backend/pkg/database"
 
@@ -30,7 +31,7 @@ func New() (*container.App, error) {
 		container.NewApp,
 		container.NewCtrl,
 
-		// user
+		// user1
 		controller.NewUserController,
 		usecase.NewUserUsecase,
 		db.NewUserRepository,
@@ -49,6 +50,9 @@ func New() (*container.App, error) {
 		controller.NewImageDataController,
 		usecase.NewImageDataUsecase,
 		db.NewImageDataRepository,
+
+		// middleware
+		middleware.NewMiddleware,
 	)
 
 	return nil, nil

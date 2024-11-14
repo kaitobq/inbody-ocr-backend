@@ -30,7 +30,7 @@ paths:
             schema:
               $ref: "#/components/schemas/CreateOrganizationRequest"
       responses:
-        "201":
+        "200":
           description: Created
           content:
             application/json:
@@ -53,7 +53,7 @@ paths:
             schema:
               $ref: "#/components/schemas/SignUpRequest"
       responses:
-        "201":
+        "200":
           description: Created
           content:
             application/json:
@@ -116,7 +116,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/NoInfoResponse"
+                $ref: "#/components/schemas/UpdateRoleResponse"
     delete:
       summary: Delete Member
       description: Delete Member
@@ -135,7 +135,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/NoInfoResponse"
+                $ref: "#/components/schemas/OK"
   /api/v1/image:
     post:
       summary: Analyze Image
@@ -295,10 +295,6 @@ components:
     GetOwnInfoResponse:
       type: object
       properties:
-        status:
-          type: integer
-        message:
-          type: string
         user:
           $ref: "#/components/schemas/UserResponse"
     UserResponse:
@@ -324,10 +320,6 @@ components:
     CreateOrganizationResponse:
       type: object
       properties:
-        status:
-          type: integer
-        message:
-          type: string
         organization:
           $ref: "#/components/schemas/OrganizationResponse"
         user:
@@ -364,10 +356,6 @@ components:
     SignUpResponse:
       type: object
       properties:
-        status:
-          type: integer
-        message:
-          type: string
         token:
           $ref: "#/components/schemas/TokenResponse"
         user:
@@ -382,10 +370,6 @@ components:
     SignInResponse:
       type: object
       properties:
-        status:
-          type: integer
-        message:
-          type: string
         token:
           $ref: "#/components/schemas/TokenResponse"
         organization_id:
@@ -395,10 +379,6 @@ components:
     AnalyzeImageResponse:
       type: object
       properties:
-        status:
-          type: integer
-        message:
-          type: string
         result:
           type: object
           properties:
@@ -423,10 +403,6 @@ components:
     GetPersonalStatsResponse:
       type: object
       properties:
-        status:
-          type: integer
-        message:
-          type: string
         current:
           type: object
           properties:
@@ -452,10 +428,6 @@ components:
     GetPersonalChartDataResponse:
       type: object
       properties:
-        status:
-          type: integer
-        message:
-          type: string
         chart:
           type: object
           properties:
@@ -499,10 +471,6 @@ components:
     GetPersonalDataResponse:
       type: object
       properties:
-        status:
-          type: integer
-        message:
-          type: string
         data:
           type: array
           items:
@@ -540,10 +508,6 @@ components:
     GetOrganizationStatsResponse:
       type: object
       properties:
-        status:
-          type: integer
-        message:
-          type: string
         stats:
           type: object
           properties:
@@ -558,10 +522,6 @@ components:
     GetOrganizationChartDataResponse:
       type: object
       properties:
-        status:
-          type: integer
-        message:
-          type: string
         chart:
           type: object
           properties:
@@ -584,10 +544,6 @@ components:
     GetCurrentOrganizationDataResponse:
       type: object
       properties:
-        status:
-          type: integer
-        message:
-          type: string
         data:
           type: array
           items:
@@ -625,10 +581,6 @@ components:
     GetAllOrganizationDataResponse:
       type: object
       properties:
-        status:
-          type: integer
-        message:
-          type: string
         data:
           type: array
           items:
@@ -665,10 +617,6 @@ components:
                 type: string
     GetAllMembersResponse:
       properties:
-        status:
-          type: integer
-        message:
-          type: string
         members:
           type: array
           items:
@@ -684,10 +632,22 @@ components:
                 type: string
               updated_at:
                 type: string
-    NoInfoResponse:
+    UpdateRoleResponse:
       type: object
       properties:
-        status:
-          type: integer
+        updated:
+          $ref: "#/components/schemas/UserResponse"
+    OK:
+      type: object
+      properties:
+        ok:
+          type: boolean
+    ErrorResponse:
+      type: object
+      properties:
         message:
           type: string
+        code:
+          type: integer
+        status:
+          type: integer

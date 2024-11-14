@@ -1,7 +1,6 @@
 package controller
 
 import (
-	"inbody-ocr-backend/internal/domain/service"
 	"inbody-ocr-backend/internal/middleware"
 
 	"github.com/gin-gonic/gin"
@@ -13,12 +12,16 @@ func SetUpRoutes(
 	organizationCtrl *OrganizationController,
 	imageCtrl *ImageController,
 	imageDataCtrl *ImageDataController,
-	tokenService service.TokenService,
+	middleware *middleware.Middleware,
 ) {
+	r.Use(middleware.CORS.CORS())
+	r.Use(middleware.UserAgent.UserAgent())
+	r.Use(middleware.Logging.LoggingRequestTraceID())
+
 	v1 := r.Group("api/v1")
 
 	user := v1.Group("user")
-	user.Use(middleware.AuthMiddleware(tokenService))
+	user.Use(middleware.API.VerifyToken())
 	{
 		user.GET("", userCtrl.GetOwnInfo)
 	}
@@ -29,29 +32,36 @@ func SetUpRoutes(
 		organization.POST("/:id/signup", userCtrl.SignUp)
 		organization.POST("/signin", userCtrl.SignIn)
 	}
-	organization.Use(middleware.AuthMiddleware(tokenService))
+	organization.Use(middleware.API.GuaranteeAdminOROwner())
 	{
-		organization.GET("/role", organizationCtrl.GetAllMembers)
+		organization.GET("/role", organizationCtrl.GetAllMembers) // memberも取得できるようにするusecaseが出てくるかも
 		organization.PUT("/role", organizationCtrl.UpdateRole)
 		organization.DELETE("/role", organizationCtrl.DeleteMember)
 	}
 
 	image := v1.Group("image")
-	image.Use(middleware.AuthMiddleware(tokenService))
+	image.Use(middleware.API.GuaranteeMember())
 	{
 		image.POST("", imageCtrl.AnalyzeImage)
 	}
 
 	imageData := v1.Group("image-data")
-	imageData.Use(middleware.AuthMiddleware(tokenService))
+
 	{
-		imageData.POST("", imageDataCtrl.SaveImageData)
-		imageData.GET("/stats/member", imageDataCtrl.GetStatsForMember)
-		imageData.GET("/stats/admin", imageDataCtrl.GetStatsForAdmin)
-		imageData.GET("/chart/member", imageDataCtrl.GetChartDataForMember)
-		imageData.GET("/chart/admin", imageDataCtrl.GetChartDataForAdmin)
-		imageData.GET("/data/member", imageDataCtrl.GetImageDataForMember)
-		imageData.GET("/data/admin", imageDataCtrl.GetImageDataForAdmin)
-		imageData.GET("/data/admin/current", imageDataCtrl.GetCurrentImageDataForAdmin)
+		member := imageData.Group("member")
+		member.Use(middleware.API.GuaranteeMember())
+		member.POST("", imageDataCtrl.SaveImageData)
+		member.GET("/stats", imageDataCtrl.GetStatsForMember)
+		member.GET("/chart", imageDataCtrl.GetChartDataForMember)
+		member.GET("/data", imageDataCtrl.GetImageDataForMember)
+	}
+
+	{
+		admin := imageData.Group("admin")
+		admin.Use(middleware.API.GuaranteeAdminOROwner())
+		admin.GET("/stats", imageDataCtrl.GetStatsForAdmin)
+		admin.GET("/chart", imageDataCtrl.GetChartDataForAdmin)
+		admin.GET("/data", imageDataCtrl.GetImageDataForAdmin)
+		admin.GET("/data/current", imageDataCtrl.GetCurrentImageDataForAdmin)
 	}
 }
