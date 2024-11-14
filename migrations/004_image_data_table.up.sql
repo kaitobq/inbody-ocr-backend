@@ -2,6 +2,7 @@ CREATE TABLE IF NOT EXISTS image_data (
     id char(26) PRIMARY KEY,
     organization_id char(26) NOT NULL,
     user_id char(26) NOT NULL,
+    measurement_date_id char(26) NOT NULL,
     weight float NOT NULL,
     height float NOT NULL,
     muscle_weight float NOT NULL,
@@ -12,5 +13,8 @@ CREATE TABLE IF NOT EXISTS image_data (
     mineral float NOT NULL,
     point int NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (organization_id) REFERENCES organizations(id),
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (measurement_date_id) REFERENCES measurement_date(id)
 );
