@@ -1,6 +1,7 @@
 package usecase
 
 import (
+	"fmt"
 	"inbody-ocr-backend/internal/domain/entity"
 	"inbody-ocr-backend/internal/domain/repository"
 	"inbody-ocr-backend/internal/domain/service"
@@ -42,10 +43,16 @@ func (uc *measurementDateUsecase) CreateMeasurementDate(user *entity.User, dateS
 	}
 	defer func() {
 		if p := recover(); p != nil {
-			tx.Rollback()
+			if rerr := tx.Rollback(); rerr != nil {
+				// ロールバックに失敗した場合
+				fmt.Printf("failed to rollback transaction: %v\n", rerr)
+			}
 			panic(p) // パニックが発生した場合はロールバックして再スロー
 		} else if err != nil {
-			tx.Rollback() // エラーが発生した場合はロールバック
+			if rerr := tx.Rollback(); rerr != nil {
+				// ロールバックに失敗した場合
+				fmt.Printf("failed to rollback transaction: %v\n", rerr)
+			}
 		}
 	}()
 
