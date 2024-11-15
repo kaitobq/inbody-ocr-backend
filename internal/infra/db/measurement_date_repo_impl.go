@@ -51,7 +51,7 @@ func (r *measurementDateRepository) FindByID(id string) (*entity.MeasurementDate
 }
 
 func (r *measurementDateRepository) FindByOrganizationID(orgID string) ([]entity.MeasurementDate, error) {
-	query := `SELECT id, organization_id, DATE_FORMAT(date, '%Y-%m-%d') as date, created_at, updated_at FROM measurement_date WHERE organization_id = ?`
+	query := `SELECT id, organization_id, DATE_FORMAT(date, '%Y-%m-%d') as date, created_at, updated_at FROM measurement_date WHERE organization_id = ? ORDER BY date DESC`
 
 	var dates []entity.MeasurementDate
 

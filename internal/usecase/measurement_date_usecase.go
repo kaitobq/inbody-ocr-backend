@@ -79,7 +79,7 @@ func (uc *measurementDateUsecase) CreateMeasurementDate(user *entity.User, dateS
 		return nil, err
 	}
 
-	if count == 1 {
+	if count == 0 {
 		err = uc.createMeasurementStatusesWithTx(tx, measurementDateID, user.OrganizationID)
 		if err != nil {
 			return nil, err
