@@ -73,14 +73,33 @@ func (uc *measurementDateUsecase) CreateMeasurementDate(user *entity.User, dateS
 		return nil, err
 	}
 
-	// 測定ステータスを作成
+	// ステータスを作成
 	count, err := uc.repo.CountByOrganizationID(user.OrganizationID)
 	if err != nil {
 		return nil, err
 	}
-
 	if count == 0 {
 		err = uc.createMeasurementStatusesWithTx(tx, measurementDateID, user.OrganizationID)
+		if err != nil {
+			return nil, err
+		}
+	}
+
+	// メンバーのステータスを更新
+	members, err := uc.organizationRepo.GetMember(user.OrganizationID)
+	if err != nil {
+		return nil, err
+	}
+	for _, member := range members {
+		err = uc.userMeasurementStatusRepo.UpdateHasRegisteredByUserIDWithTx(tx, member.ID, false)
+		if err != nil {
+			return nil, err
+		}
+		err = uc.userMeasurementStatusRepo.UpdateImageDataIDByUserIDWithTx(tx, member.ID, nil)
+		if err != nil {
+			return nil, err
+		}
+		err = uc.userMeasurementStatusRepo.UpdateMeasurementDateIDByUserIDWithTx(tx, member.ID, measurementDateID)
 		if err != nil {
 			return nil, err
 		}

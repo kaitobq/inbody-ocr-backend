@@ -87,7 +87,7 @@ func (r *userMeasurementStatusRepository) UpdateHasRegisteredByUserID(userID str
 func (r *userMeasurementStatusRepository) UpdateHasRegisteredByUserIDWithTx(tx bun.Tx, userID string, registered bool) error {
 	query := `UPDATE user_measurement_status SET has_registered = ? WHERE user_id = ?`
 
-	_, err := tx.Exec(query, true, userID)
+	_, err := tx.Exec(query, registered, userID)
 	if err != nil {
 		return err
 	}
@@ -117,7 +117,7 @@ func (r *userMeasurementStatusRepository) UpdateImageDataIDByUserIDWithTx(tx bun
 	return nil
 }
 
-func (r *userMeasurementStatusRepository) UpdateMeasurementDateIDByUserID(userID string, measurementDateID string) error {
+func (r *userMeasurementStatusRepository) UpdateMeasurementDateIDByUserID(userID, measurementDateID string) error {
 	query := `UPDATE user_measurement_status SET measurement_date_id = ? WHERE user_id = ?`
 
 	_, err := r.db.Exec(query, measurementDateID, userID)
@@ -128,7 +128,7 @@ func (r *userMeasurementStatusRepository) UpdateMeasurementDateIDByUserID(userID
 	return nil
 }
 
-func (r *userMeasurementStatusRepository) UpdateMeasurementDateIDByUserIDWithTx(tx bun.Tx, userID string, measurementDateID string) error {
+func (r *userMeasurementStatusRepository) UpdateMeasurementDateIDByUserIDWithTx(tx bun.Tx, userID, measurementDateID string) error {
 	query := `UPDATE user_measurement_status SET measurement_date_id = ? WHERE user_id = ?`
 
 	_, err := tx.Exec(query, measurementDateID, userID)
