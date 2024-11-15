@@ -7,6 +7,7 @@ import (
 )
 
 type MeasurementDateRepository interface {
+	FindByID(id string) (*entity.MeasurementDate, error)
 	FindByOrganizationID(orgID string) ([]entity.MeasurementDate, error)
 	CreateMeasurementDate(date entity.MeasurementDate) error
 	CountByOrganizationID(orgID string) (int, error)

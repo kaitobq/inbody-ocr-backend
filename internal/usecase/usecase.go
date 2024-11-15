@@ -24,7 +24,7 @@ type ImageUsecase interface {
 }
 
 type ImageDataUsecase interface {
-	CreateData(weight, height, muscleWeight, fatWeight, fatPercent, bodyWater, protein, mineral float64, point uint, user *entity.User) error
+	CreateData(weight, height, muscleWeight, fatWeight, fatPercent, bodyWater, protein, mineral float64, point uint, user *entity.User, dateID string) error
 	GetStatsForMember(user *entity.User) (*response.GetStatsForMemberResponse, error)
 	GetStatsForAdmin(user *entity.User) (*response.GetStatsForAdminResponse, error)
 	GetChartDataForMember(user *entity.User) (*response.GetChartDataForMemberResponse, error)

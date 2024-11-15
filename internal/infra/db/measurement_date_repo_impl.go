@@ -19,6 +19,37 @@ func NewMeasurementDateRepository(db *database.DB) repository.MeasurementDateRep
 	}
 }
 
+func (r *measurementDateRepository) FindByID(id string) (*entity.MeasurementDate, error) {
+	query := `SELECT id, organization_id, DATE_FORMAT(date, '%Y-%m-%d') as date, created_at, updated_at FROM measurement_date WHERE id = ?`
+
+	var record entity.MeasurementDate
+	var dateStr string
+	var createdAt, updatedAt string
+
+	err := r.db.QueryRow(query, id).Scan(&record.ID, &record.OrganizationID, &dateStr, &createdAt, &updatedAt)
+
+	if err != nil {
+		return nil, err
+	}
+	// 文字列をtime.Timeに変換
+	record.Date, err = jptime.ParseDate(dateStr)
+	if err != nil {
+		return nil, err
+	}
+
+	// 作成日と更新日のパース
+	record.CreatedAt, err = jptime.ParseDateTime(createdAt)
+	if err != nil {
+		return nil, err
+	}
+	record.UpdatedAt, err = jptime.ParseDateTime(updatedAt)
+	if err != nil {
+		return nil, err
+	}
+
+	return &record, nil
+}
+
 func (r *measurementDateRepository) FindByOrganizationID(orgID string) ([]entity.MeasurementDate, error) {
 	query := `SELECT id, organization_id, DATE_FORMAT(date, '%Y-%m-%d') as date, created_at, updated_at FROM measurement_date WHERE organization_id = ?`
 
