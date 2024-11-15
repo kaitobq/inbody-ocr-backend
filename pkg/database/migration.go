@@ -39,7 +39,11 @@ func (db *DB) Migrate() error {
 func (db *DB) SeedData() error {
 	// 全てのテーブルからデータを削除
 	ctx := context.Background()
-	_, err := db.DB.ExecContext(ctx, "DELETE FROM image_data")
+	_, err := db.DB.ExecContext(ctx, "DELETE FROM user_measurement_status")
+	if err != nil {
+		return fmt.Errorf("failed to delete user measurement status: %w", err)
+	}
+	_, err = db.DB.ExecContext(ctx, "DELETE FROM image_data")
 	if err != nil {
 		return fmt.Errorf("failed to delete image data: %w", err)
 	}

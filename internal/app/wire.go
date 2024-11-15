@@ -56,6 +56,9 @@ func New() (*container.App, error) {
 		usecase.NewMeasurementDateUsecase,
 		db.NewMeasurementDateRepository,
 
+		// user measurement status
+		db.NewUserMeasurementStatusRepository,
+
 		// middleware
 		middleware.NewMiddleware,
 	)

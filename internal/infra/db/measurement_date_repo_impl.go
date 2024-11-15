@@ -5,6 +5,8 @@ import (
 	"inbody-ocr-backend/internal/domain/repository"
 	"inbody-ocr-backend/pkg/database"
 	jptime "inbody-ocr-backend/pkg/jp_time"
+
+	"github.com/uptrace/bun"
 )
 
 type measurementDateRepository struct {
@@ -70,6 +72,41 @@ func (r *measurementDateRepository) CreateMeasurementDate(date entity.Measuremen
 	dateStr := jptime.FormatDate(date.Date)
 
 	_, err := r.db.Exec(query, date.ID, date.OrganizationID, dateStr, date.CreatedAt, date.UpdatedAt)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (r *measurementDateRepository) CountByOrganizationID(orgID string) (int, error) {
+	query := `SELECT COUNT(*) FROM measurement_date WHERE organization_id = ?`
+
+	var count int
+
+	err := r.db.QueryRow(query, orgID).Scan(&count)
+	if err != nil {
+		return 0, err
+	}
+
+	return count, nil
+}
+
+func (r *measurementDateRepository) BeginTransaction() (bun.Tx, error) {
+	return r.db.Begin()
+}
+
+func (r *measurementDateRepository) CreateMeasurementDateWithTx(tx bun.Tx, date entity.MeasurementDate) error {
+	query := `
+		INSERT INTO measurement_date (id, organization_id, date, created_at, updated_at)
+		VALUES (?, ?, ?, ?, ?)
+	`
+
+	now := jptime.Now()
+	date.CreatedAt = now
+	date.UpdatedAt = now
+
+	_, err := tx.Exec(query, date.ID, date.OrganizationID, date.Date, date.CreatedAt, date.UpdatedAt)
 	if err != nil {
 		return err
 	}
