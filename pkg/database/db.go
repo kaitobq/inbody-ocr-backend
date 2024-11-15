@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"fmt"
 	"inbody-ocr-backend/internal/app/config"
+	"time"
 
 	"github.com/uptrace/bun"
 	"github.com/uptrace/bun/dialect/mysqldialect"
@@ -23,6 +24,9 @@ func New(cfg *config.DBConfig) (*DB, error) {
 	}
 
 	db := bun.NewDB(sqldb, mysqldialect.New())
+
+	time.Sleep(5 * time.Second)
+
 	if err := db.Ping(); err != nil {
 		return nil, fmt.Errorf("failed to ping database: %w", err)
 	}

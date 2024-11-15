@@ -39,13 +39,21 @@ func (db *DB) Migrate() error {
 func (db *DB) SeedData() error {
 	// 全てのテーブルからデータを削除
 	ctx := context.Background()
-	_, err := db.DB.ExecContext(ctx, "DELETE FROM image_data")
+	_, err := db.DB.ExecContext(ctx, "DELETE FROM user_measurement_status")
+	if err != nil {
+		return fmt.Errorf("failed to delete user measurement status: %w", err)
+	}
+	_, err = db.DB.ExecContext(ctx, "DELETE FROM image_data")
 	if err != nil {
 		return fmt.Errorf("failed to delete image data: %w", err)
 	}
 	_, err = db.DB.ExecContext(ctx, "DELETE FROM users")
 	if err != nil {
 		return fmt.Errorf("failed to delete users: %w", err)
+	}
+	_, err = db.DB.ExecContext(ctx, "DELETE FROM measurement_date")
+	if err != nil {
+		return fmt.Errorf("failed to delete measurement date: %w", err)
 	}
 	_, err = db.DB.ExecContext(ctx, "DELETE FROM organizations")
 	if err != nil {
@@ -71,6 +79,21 @@ func (db *DB) SeedData() error {
 		if err != nil {
 			return fmt.Errorf("failed to insert organization: %w", err)
 		}
+	}
+
+	measurementDate := entity.MeasurementDate{
+		ID:             "date1",
+		OrganizationID: "org1",
+		Date:           time.Now(),
+		CreatedAt:      time.Now(),
+		UpdatedAt:      time.Now(),
+	}
+	_, err = db.DB.ExecContext(ctx, `
+			INSERT INTO measurement_date (id, organization_id, date, created_at, updated_at)
+			VALUES (?, ?, ?, ?, ?)
+		`, measurementDate.ID, measurementDate.OrganizationID, measurementDate.Date.Format("2006-01-02"), measurementDate.CreatedAt, measurementDate.UpdatedAt)
+	if err != nil {
+		return fmt.Errorf("failed to insert measurement date: %w", err)
 	}
 
 	// ユーザーのシードデータを生成
@@ -106,29 +129,30 @@ func (db *DB) SeedData() error {
 			muscleWeight := weight * (1 - fatPercent/100) * (rand.Float64()*0.1 + 0.4)
 
 			imageData := entity.ImageData{
-				ID:             fmt.Sprintf("%s-%d", userID, i),
-				OrganizationID: user.OrganizationID,
-				UserID:         user.ID,
-				Weight:         weight,
-				Height:         height,
-				MuscleWeight:   muscleWeight,
-				FatWeight:      weight * fatPercent / 100,
-				FatPercent:     fatPercent,
-				BodyWater:      rand.Float64()*40 + 40, // 40%～80%
-				Protein:        rand.Float64()*20 + 10, // 10%～30%
-				Mineral:        rand.Float64()*5 + 3,   // 3kg～8kg
-				Point:          uint(rand.Intn(100)),
+				ID:                fmt.Sprintf("%s-%d", userID, i),
+				OrganizationID:    user.OrganizationID,
+				UserID:            user.ID,
+				MeasurementDateID: measurementDate.ID,
+				Weight:            weight,
+				Height:            height,
+				MuscleWeight:      muscleWeight,
+				FatWeight:         weight * fatPercent / 100,
+				FatPercent:        fatPercent,
+				BodyWater:         rand.Float64()*40 + 40, // 40%～80%
+				Protein:           rand.Float64()*20 + 10, // 10%～30%
+				Mineral:           rand.Float64()*5 + 3,   // 3kg～8kg
+				Point:             uint(rand.Intn(100)),
 				// 20日分のデータを生成
 				CreatedAt: time.Now().Add(-time.Duration(rand.Intn(20)) * 24 * time.Hour),
 				UpdatedAt: time.Now().Add(-time.Duration(rand.Intn(1000)) * time.Hour),
 			}
 			// 画像データをデータベースに挿入
 			_, err := db.DB.ExecContext(ctx, `
-                INSERT INTO image_data (
-                    id, organization_id, user_id, weight, height, muscle_weight, fat_weight, fat_percent,
-                    body_water, protein, mineral, point, created_at, updated_at
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-            `, imageData.ID, imageData.OrganizationID, imageData.UserID, imageData.Weight, imageData.Height,
+				INSERT INTO image_data (
+					id, organization_id, user_id, measurement_date_id, weight, height, muscle_weight, fat_weight, fat_percent,
+					body_water, protein, mineral, point, created_at, updated_at
+				) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+			`, imageData.ID, imageData.OrganizationID, imageData.UserID, imageData.MeasurementDateID, imageData.Weight, imageData.Height,
 				imageData.MuscleWeight, imageData.FatWeight, imageData.FatPercent, imageData.BodyWater,
 				imageData.Protein, imageData.Mineral, imageData.Point, imageData.CreatedAt, imageData.UpdatedAt)
 			if err != nil {

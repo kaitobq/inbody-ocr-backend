@@ -24,7 +24,7 @@ type ImageUsecase interface {
 }
 
 type ImageDataUsecase interface {
-	CreateData(weight, height, muscleWeight, fatWeight, fatPercent, bodyWater, protein, mineral float64, point uint, user *entity.User) error
+	CreateData(weight, height, muscleWeight, fatWeight, fatPercent, bodyWater, protein, mineral float64, point uint, user *entity.User, dateID string) error
 	GetStatsForMember(user *entity.User) (*response.GetStatsForMemberResponse, error)
 	GetStatsForAdmin(user *entity.User) (*response.GetStatsForAdminResponse, error)
 	GetChartDataForMember(user *entity.User) (*response.GetChartDataForMemberResponse, error)
@@ -32,4 +32,9 @@ type ImageDataUsecase interface {
 	GetDataForMember(user *entity.User) (*response.GetImageDataForMemberResponse, error)
 	GetDataForAdmin(user *entity.User) (*response.GetImageDataForAdminResponse, error)
 	GetCurrentDataForAdmin(user *entity.User) (*response.GetCurrentImageDataForAdminResponse, error)
+}
+
+type MeasurementDateUsecase interface {
+	GetMeasurementDate(orgID string) (*response.GetMeasurementDateResponse, error)
+	CreateMeasurementDate(user *entity.User, dateStr string) (*response.CreateMeasurementDateResponse, error)
 }

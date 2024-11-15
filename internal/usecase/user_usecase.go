@@ -1,6 +1,7 @@
 package usecase
 
 import (
+	"fmt"
 	"inbody-ocr-backend/internal/domain/entity"
 	"inbody-ocr-backend/internal/domain/repository"
 	"inbody-ocr-backend/internal/domain/service"
@@ -9,18 +10,22 @@ import (
 )
 
 type userUsecase struct {
-	repo         repository.UserRepository
-	orgRepo      repository.OrganizationRepository
-	tokenService service.TokenService
-	ulidService  service.ULIDService
+	repo                      repository.UserRepository
+	orgRepo                   repository.OrganizationRepository
+	measurementDateRepo       repository.MeasurementDateRepository
+	userMeasurementStatusRepo repository.UserMeasurementStatusRepository
+	tokenService              service.TokenService
+	ulidService               service.ULIDService
 }
 
-func NewUserUsecase(repo repository.UserRepository, orgRepo repository.OrganizationRepository, tokenService service.TokenService, ulidService service.ULIDService) UserUsecase {
+func NewUserUsecase(repo repository.UserRepository, orgRepo repository.OrganizationRepository, measurementDateRepo repository.MeasurementDateRepository, userMeasurementStatusRepo repository.UserMeasurementStatusRepository, tokenService service.TokenService, ulidService service.ULIDService) UserUsecase {
 	return &userUsecase{
-		repo:         repo,
-		orgRepo:      orgRepo,
-		tokenService: tokenService,
-		ulidService:  ulidService,
+		repo:                      repo,
+		orgRepo:                   orgRepo,
+		measurementDateRepo:       measurementDateRepo,
+		userMeasurementStatusRepo: userMeasurementStatusRepo,
+		tokenService:              tokenService,
+		ulidService:               ulidService,
 	}
 }
 
@@ -39,6 +44,23 @@ func (uc *userUsecase) CreateUser(name, email, password, orgID string) (*respons
 		return nil, err
 	}
 
+	tx, err := uc.repo.BeginTransaction()
+	if err != nil {
+		return nil, err
+	}
+	defer func() {
+		if p := recover(); p != nil {
+			if rerr := tx.Rollback(); rerr != nil {
+				fmt.Printf("failed to rollback transaction: %v\n", rerr)
+			}
+			panic(p)
+		} else if err != nil {
+			if rerr := tx.Rollback(); rerr != nil {
+				fmt.Printf("failed to rollback transaction: %v\n", rerr)
+			}
+		}
+	}()
+
 	id := uc.ulidService.GenerateULID()
 	user := &entity.User{
 		ID:             id,
@@ -49,9 +71,25 @@ func (uc *userUsecase) CreateUser(name, email, password, orgID string) (*respons
 		Role:           entity.OrganizationRoleMember,
 	}
 
-	user, err = uc.repo.CreateUser(*user)
+	user, err = uc.repo.CreateUserWithTx(tx, *user)
 	if err != nil {
 		return nil, err
+	}
+
+	// 組織に測定日があればstatusを作成する
+	measurementDates, err := uc.measurementDateRepo.FindByOrganizationID(orgID)
+	if err != nil {
+		return nil, err
+	}
+
+	if len(measurementDates) > 0 {
+		ent := entity.UserMeasurementStatus{
+			ID:                uc.ulidService.GenerateULID(),
+			UserID:            user.ID,
+			MeasurementDateID: measurementDates[0].ID, // 最新
+			HasRegistered:     false,
+		}
+		err = uc.userMeasurementStatusRepo.CreateUserMeasurementStatusWithTx(tx, ent)
 	}
 
 	token, err := uc.tokenService.GenerateTokenFromID(user.ID, user.OrganizationID)
@@ -60,6 +98,11 @@ func (uc *userUsecase) CreateUser(name, email, password, orgID string) (*respons
 	}
 
 	exp, err := uc.tokenService.ExtractExpFromToken(token)
+	if err != nil {
+		return nil, err
+	}
+
+	err = tx.Commit()
 	if err != nil {
 		return nil, err
 	}

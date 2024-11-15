@@ -32,9 +32,16 @@ func (ct *ImageDataController) SaveImageData(c *gin.Context) {
 		return
 	}
 
+	dateID := c.Query("date_id")
+	if dateID == "" {
+		logging.Errorf(c, "SaveImageData Measurement date_id is empty")
+		render.ErrorJSON(c, "date_id is empty", http.StatusBadRequest)
+		return
+	}
+
 	user := xcontext.MemberUser(c)
 
-	err = ct.uc.CreateData(req.Weight, req.Height, req.MuscleWeight, req.FatWeight, req.FatPercent, req.BodyWater, req.Protein, req.Mineral, req.Point, user)
+	err = ct.uc.CreateData(req.Weight, req.Height, req.MuscleWeight, req.FatWeight, req.FatPercent, req.BodyWater, req.Protein, req.Mineral, req.Point, user, dateID)
 	if err != nil {
 		logging.Errorf(c, "SaveImageData CreateData %v", err)
 		render.ErrorJSON(c, err.Error(), http.StatusBadRequest)

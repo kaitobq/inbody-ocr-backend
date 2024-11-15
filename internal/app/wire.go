@@ -51,6 +51,14 @@ func New() (*container.App, error) {
 		usecase.NewImageDataUsecase,
 		db.NewImageDataRepository,
 
+		// measurement date
+		controller.NewMeasurementDateController,
+		usecase.NewMeasurementDateUsecase,
+		db.NewMeasurementDateRepository,
+
+		// user measurement status
+		db.NewUserMeasurementStatusRepository,
+
 		// middleware
 		middleware.NewMiddleware,
 	)

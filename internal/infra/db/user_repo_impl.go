@@ -8,6 +8,7 @@ import (
 	"inbody-ocr-backend/pkg/database"
 	jptime "inbody-ocr-backend/pkg/jp_time"
 
+	"github.com/uptrace/bun"
 	"golang.org/x/crypto/bcrypt"
 )
 
@@ -28,6 +29,20 @@ func (r *userRepository) CreateUser(user entity.User) (*entity.User, error) {
 	user.CreatedAt = now
 	user.UpdatedAt = now
 	_, err := r.db.Exec(query, user.ID, user.Name, user.Email, user.Password, user.OrganizationID, user.Role, user.CreatedAt, user.UpdatedAt)
+	if err != nil {
+		return nil, err
+	}
+
+	return &user, nil
+}
+
+func (r *userRepository) CreateUserWithTx(tx bun.Tx, user entity.User) (*entity.User, error) {
+	query := `INSERT INTO users (id, name, email, password, organization_id, role, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)`
+
+	now := jptime.Now()
+	user.CreatedAt = now
+	user.UpdatedAt = now
+	_, err := tx.Exec(query, user.ID, user.Name, user.Email, user.Password, user.OrganizationID, user.Role, user.CreatedAt, user.UpdatedAt)
 	if err != nil {
 		return nil, err
 	}
@@ -134,4 +149,8 @@ func (r *userRepository) UserExists(email string) (bool, error) {
 	}
 
 	return exists, nil
+}
+
+func (r *userRepository) BeginTransaction() (bun.Tx, error) {
+	return r.db.Begin()
 }

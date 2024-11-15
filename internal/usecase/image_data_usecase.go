@@ -11,36 +11,94 @@ import (
 )
 
 type imageDataUsecase struct {
-	repo             repository.ImageDataRepository
-	organizationRepo repository.OrganizationRepository
-	ulidService      service.ULIDService
+	repo                      repository.ImageDataRepository
+	organizationRepo          repository.OrganizationRepository
+	measurementDateRepo       repository.MeasurementDateRepository
+	userMeasurementStatusRepo repository.UserMeasurementStatusRepository
+	ulidService               service.ULIDService
 }
 
-func NewImageDataUsecase(repo repository.ImageDataRepository, organizationRepo repository.OrganizationRepository, ulidService service.ULIDService) ImageDataUsecase {
+func NewImageDataUsecase(repo repository.ImageDataRepository, organizationRepo repository.OrganizationRepository, measurementDateRepo repository.MeasurementDateRepository, userMeasurementStatusRepository repository.UserMeasurementStatusRepository, ulidService service.ULIDService) ImageDataUsecase {
 	return &imageDataUsecase{
-		repo:             repo,
-		organizationRepo: organizationRepo,
-		ulidService:      ulidService,
+		repo:                      repo,
+		organizationRepo:          organizationRepo,
+		measurementDateRepo:       measurementDateRepo,
+		userMeasurementStatusRepo: userMeasurementStatusRepository,
+		ulidService:               ulidService,
 	}
 }
 
-func (uc *imageDataUsecase) CreateData(weight, height, muscleWeight, fatWeight, fatPercent, bodyWater, protein, mineral float64, point uint, user *entity.User) error {
-	imageData := &entity.ImageData{
-		ID:             uc.ulidService.GenerateULID(),
-		UserID:         user.ID,
-		OrganizationID: user.OrganizationID,
-		Weight:         weight,
-		Height:         height,
-		MuscleWeight:   muscleWeight,
-		FatWeight:      fatWeight,
-		FatPercent:     fatPercent,
-		BodyWater:      bodyWater,
-		Protein:        protein,
-		Mineral:        mineral,
-		Point:          point,
+func (uc *imageDataUsecase) CreateData(weight, height, muscleWeight, fatWeight, fatPercent, bodyWater, protein, mineral float64, point uint, user *entity.User, dateID string) error {
+	// Begin transaction
+	tx, err := uc.repo.BeginTransaction()
+	if err != nil {
+		return err
+	}
+	defer func() {
+		if p := recover(); p != nil {
+			if rerr := tx.Rollback(); rerr != nil {
+				fmt.Printf("failed to rollback transaction: %v\n", rerr)
+			}
+			panic(p)
+		} else if err != nil {
+			if rerr := tx.Rollback(); rerr != nil {
+				fmt.Printf("failed to rollback transaction: %v\n", rerr)
+			}
+		}
+	}()
+
+	// Check if the user has registered
+	status, err := uc.userMeasurementStatusRepo.FindByUserID(user.ID)
+	if err != nil {
+		return err
+	}
+	if status.HasRegistered {
+		return fmt.Errorf("already registered")
 	}
 
-	_, err := uc.repo.CreateData(*imageData)
+	fmt.Println("dateID: ", dateID, "status.ID: ", status.ID)
+	// Check if the date is matched
+	measurementDate, err := uc.measurementDateRepo.FindByID(status.MeasurementDateID)
+	if err != nil {
+		return err
+	}
+	if measurementDate.ID != dateID {
+		return fmt.Errorf("date_id is not matched")
+	}
+
+	// Create image data
+	imageData := &entity.ImageData{
+		ID:                uc.ulidService.GenerateULID(),
+		UserID:            user.ID,
+		OrganizationID:    user.OrganizationID,
+		MeasurementDateID: status.MeasurementDateID,
+		Weight:            weight,
+		Height:            height,
+		MuscleWeight:      muscleWeight,
+		FatWeight:         fatWeight,
+		FatPercent:        fatPercent,
+		BodyWater:         bodyWater,
+		Protein:           protein,
+		Mineral:           mineral,
+		Point:             point,
+	}
+	data, err := uc.repo.CreateDataWithTx(tx, *imageData)
+	if err != nil {
+		return err
+	}
+
+	// Update user measurement status
+	err = uc.userMeasurementStatusRepo.UpdateHasRegisteredByUserIDWithTx(tx, user.ID, true)
+	if err != nil {
+		return err
+	}
+	err = uc.userMeasurementStatusRepo.UpdateImageDataIDByUserIDWithTx(tx, user.ID, &data.ID)
+	if err != nil {
+		return err
+	}
+
+	// Commit transaction
+	err = tx.Commit()
 	if err != nil {
 		return err
 	}
